@@ -2,10 +2,8 @@
 
 # Core Java 
 
-# 🚀 Core Java — Complete Student Notes
-## 📘 By [Your Name] | [Your Institute / College]
+##  By Maheswaram | ApexSwaram
 
-> **Purpose:** This document covers all Core Java topics in a structured format with **definitions, explanations, syntax, example programs, and detailed output explanations.**
 
 ---
 
