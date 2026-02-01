@@ -2970,6 +2970,3 @@ Row 2 (length=4): 6 7 8 9
 ---
 
 ---
-
-> 
-> Prepared for students. All examples are self-contained and can be compiled and run independently.
