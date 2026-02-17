@@ -3128,3 +3128,159 @@ HAS-A Relationship (Association)
 
 
 ---
+
+````markdown
+# Association (HAS-A Relationship) in Java
+
+---
+
+## Concept
+
+Association represents a relationship between two separate classes where one class uses
+another class as a dependency.  
+When one class **has an object of another class**, it is called a **HAS-A relationship**.
+
+In association:
+- Both classes can exist independently
+- Relationship is created through object reference
+
+Example:
+Student has an Address
+
+---
+
+## Why Association (HAS-A)
+
+- To reuse functionality of another class
+- To represent real-world relationships
+- To achieve loose coupling
+- To improve code modularity and readability
+
+---
+
+## Syntax
+
+```java
+class A {
+    B obj = new B();
+}
+````
+
+or using constructor injection:
+
+```java
+class A {
+    B obj;
+    A(B obj) {
+        this.obj = obj;
+    }
+}
+```
+
+---
+
+## Code (From Your Project)
+
+### Student Class
+
+```java
+package basics;
+
+public class Student {
+
+    void StudentInfo() {
+        System.out.println("This is Student Class StudentInfo() method ");
+    }
+}
+```
+
+---
+
+### Address Class (HAS-A Relationship)
+
+```java
+package basics;
+
+public class Address {
+
+    private Student name;
+
+    Address(Student name) {
+        this.name = name;
+    }
+
+    void display() {
+        name.StudentInfo();
+        System.out.println("display method called in Address Class");
+    }
+}
+```
+
+---
+
+### Main Class
+
+```java
+package basics;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student name = new Student();
+        Address addr = new Address(name);
+
+        addr.display();
+    }
+}
+```
+
+---
+
+## Explanation
+
+* `Student` is an independent class
+* `Address` has a reference of `Student`
+* The `Student` object is passed to `Address` using constructor
+* This is called **Constructor Injection**
+* `Address` uses `Student` without extending it
+
+---
+
+## Relationship Type
+
+* Student and Address are separate entities
+* Address depends on Student
+* No inheritance is used
+* This confirms HAS-A (Association), not IS-A
+
+---
+
+## Object Creation Flow
+
+1. JVM loads Main class
+2. Student object is created
+3. Address object is created with Student dependency
+4. Address method accesses Student method
+
+---
+
+## Key Points
+
+* Association uses object reference
+* Classes remain loosely coupled
+* One class can use multiple other classes
+* Preferred over inheritance when relationship is "uses-a"
+
+---
+
+## OOP Concepts Used
+
+* Association
+* HAS-A relationship
+* Constructor Injection
+* Dependency handling
+
+```
+```
+---
