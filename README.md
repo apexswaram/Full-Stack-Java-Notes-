@@ -3129,7 +3129,6 @@ HAS-A Relationship (Association)
 
 ---
 
-````markdown
 # Association (HAS-A Relationship) in Java
 
 ---
@@ -3284,7 +3283,6 @@ public class Main {
 ```
 ```
 ---
-````markdown
 # Inheritance (Single Inheritance) in Java
 
 ---
@@ -3441,7 +3439,6 @@ public class Main {
 ```
 ```
 ---
-````markdown
 # Inheritance (Multilevel Inheritance) in Java
 
 ---
@@ -3646,7 +3643,6 @@ public class Main {
 ```
 ```
 ---
-```markdown
 # Inheritance (Hierarchical Inheritance) in Java
 
 ---
@@ -3871,7 +3867,6 @@ Same flow applies to `E`.
 ```
 ```
 ---
-````markdown
 # Polymorphism in Java (Runtime Polymorphism)
 
 ---
@@ -4049,7 +4044,6 @@ Same logic applies for `Andrabank`.
 ```
 ---
 
-````markdown
 # Abstraction in Java (Abstract Class & Interface)
 
 ---
@@ -4335,7 +4329,6 @@ public class Main {
 * Abstract Class
 * Loose Coupling
 ---
-````markdown id="w0z7p8"
 # Encapsulation in Java
 
 ---
@@ -4475,7 +4468,6 @@ public class Main {
 * Getter and Setter Methods
 
 ---
-````markdown
 # Interface Multiple Inheritance in Java
 
 ---
@@ -4633,10 +4625,8 @@ This allows polymorphic behavior using interface references.
 * Abstraction
 * Polymorphism
 
-```
-```
+
 ---
-```markdown
 # Diamond Problem Handling in Java (Using Interfaces)
 
 ---
@@ -4674,7 +4664,7 @@ This situation forms a diamond-shaped inheritance structure.
     D
 ```
 
-````
+
 
 - Interface `A` defines a method
 - Interfaces `B` and `C` extend `A` and override the same method
@@ -4808,7 +4798,7 @@ public class D implements B, C {
 ```
 ```
 ---
-````markdown
+
 # Constructor Injection in Java
 
 ---
