@@ -3284,3 +3284,160 @@ public class Main {
 ```
 ```
 ---
+````markdown
+# Inheritance (Single Inheritance) in Java
+
+---
+
+## Concept
+
+Inheritance is an OOP mechanism where one class acquires the properties and methods of another class.  
+In **single inheritance**, a child class inherits from **only one parent class**.
+
+This creates an **IS-A relationship**.
+
+Example:  
+Child IS-A Father
+
+---
+
+## Why Single Inheritance
+
+- To reuse existing code
+- To avoid code duplication
+- To create logical parent–child relationships
+- To allow method overriding
+
+---
+
+## Syntax
+
+```java
+class Parent {
+    // variables and methods
+}
+
+class Child extends Parent {
+    // additional variables and methods
+}
+````
+
+---
+
+## Code (From Your Project)
+
+### Parent Class (Father)
+
+```java
+package basics;
+
+public class Father {
+    String FatherName = "Pullayya";
+    int age = 55;
+
+    void fatherMethod() {
+        System.out.println("i'am " + FatherName + " age " + age);
+        System.out.println("i love Family ");
+    }
+
+    void hobbies() {
+        System.out.println("Reading Paper");
+        System.out.println("Cycling ");
+        System.out.println("exercise ");
+        System.out.println("Farming ");
+    }
+}
+```
+
+---
+
+### Child Class (Children)
+
+```java
+package basics;
+
+public class Children extends Father {
+
+    String name = "Raju";
+    int age = 20;
+
+    void childMethod() {
+        System.out.println("i'am " + name + " age " + age);
+        System.out.println("I love C7");
+    }
+}
+```
+
+---
+
+### Main Class
+
+```java
+package basics;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Children c1 = new Children();
+
+        c1.fatherMethod();
+        c1.childMethod();
+        c1.hobbies();
+    }
+}
+```
+
+---
+
+## Explanation
+
+* `Father` is the parent class
+* `Children` is the child class
+* `extends` keyword establishes inheritance
+* Child class gets access to public and protected members of parent
+* Child object can call both parent and child methods
+
+---
+
+## IS-A Relationship
+
+* Children IS-A Father
+* This relationship allows reuse of parent functionality
+
+---
+
+## Method Access Flow
+
+* `c1.fatherMethod()` → method inherited from Father
+* `c1.hobbies()` → method inherited from Father
+* `c1.childMethod()` → method of Children class
+
+---
+
+## Key Rules of Single Inheritance
+
+* One child class can extend only one parent class
+* Java does not support multiple inheritance using classes
+* Constructors are not inherited
+* Private members are not directly accessible
+
+---
+
+## Memory Behavior
+
+* One object of Children is created
+* Parent class variables exist inside child object
+* Methods are resolved using inheritance hierarchy
+
+---
+
+## OOP Concepts Used
+
+* Inheritance
+* Single Inheritance
+* IS-A relationship
+* Code Reusability
+
+```
+```
+---
