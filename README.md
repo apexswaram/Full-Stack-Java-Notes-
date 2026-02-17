@@ -3441,3 +3441,208 @@ public class Main {
 ```
 ```
 ---
+````markdown
+# Inheritance (Multilevel Inheritance) in Java
+
+---
+
+## Concept
+
+Multilevel inheritance occurs when a class is derived from another derived class.  
+This forms a **chain of inheritance** where each class inherits from its immediate parent.
+
+Structure:
+GrandFather → Father → Children
+
+Each lower-level class automatically gets access to all higher-level class members
+(except private members).
+
+---
+
+## Why Multilevel Inheritance
+
+- To represent real-world hierarchical relationships
+- To reuse code across multiple levels
+- To extend functionality step by step
+- To organize complex systems logically
+
+---
+
+## Syntax
+
+```java
+class A {
+}
+
+class B extends A {
+}
+
+class C extends B {
+}
+````
+
+---
+
+## Code (From Your Project)
+
+### GrandFather Class
+
+```java
+package basics;
+
+public class GrandFather {
+    String GrandFatherName = "rammaya";
+    int age = 75;
+
+    void GrandfatherMethod() {
+        System.out.println("i'am " + GrandFatherName + " age " + age);
+        System.out.println("i love Family ");
+    }
+
+    void Grandfatherhobbies() {
+        System.out.println("Chilling with friends");
+        System.out.println("Farming ");
+        System.out.println("camp fire ");
+        System.out.println("... ");
+    }
+}
+```
+
+---
+
+### Father Class
+
+```java
+package basics;
+
+public class Father extends GrandFather {
+    String FatherName = "Pullayya";
+    int age = 55;
+
+    void fatherMethod() {
+        System.out.println("i'am " + FatherName + " age " + age);
+        System.out.println("i love Family ");
+    }
+
+    void fatherhobbies() {
+        System.out.println("Reading Paper");
+        System.out.println("Cycling ");
+        System.out.println("exercise ");
+        System.out.println("Farming ");
+    }
+}
+```
+
+---
+
+### Children Class
+
+```java
+package basics;
+
+public class Children extends Father {
+
+    String name = "Raju";
+    int age = 20;
+
+    void childMethod() {
+        System.out.println("i'am " + name + " age " + age);
+        System.out.println("I love C7");
+    }
+
+    void childrenhobbies() {
+        System.out.println("Movies");
+        System.out.println("Cars");
+        System.out.println("Food");
+        System.out.println("JFS");
+    }
+}
+```
+
+---
+
+### Main Class
+
+```java
+package basics;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Children c1 = new Children();
+
+        System.out.println("GarndFather Method called with child object");
+        System.out.println("-------------------------------------------");
+        c1.GrandfatherMethod();
+        c1.Grandfatherhobbies();
+
+        System.out.println("-------------------------------------------");
+        System.out.println("Father Method called with child object");
+        System.out.println("-------------------------------------------");
+        c1.fatherMethod();
+        c1.fatherhobbies();
+
+        System.out.println("-------------------------------------------");
+        System.out.println("Child Method called with child object");
+        System.out.println("-------------------------------------------");
+        c1.childMethod();
+        c1.childrenhobbies();
+    }
+}
+```
+
+---
+
+## Explanation
+
+* `GrandFather` is the root parent class
+* `Father` inherits from `GrandFather`
+* `Children` inherits from `Father`
+* `Children` object can access methods from all three classes
+* Inheritance flows upward in the hierarchy
+
+---
+
+## Method Resolution Flow
+
+* JVM searches method in Children class first
+* If not found, it moves to Father class
+* If still not found, it moves to GrandFather class
+
+---
+
+## IS-A Relationship Chain
+
+* Children IS-A Father
+* Father IS-A GrandFather
+* Therefore, Children IS-A GrandFather
+
+---
+
+## Key Rules of Multilevel Inheritance
+
+* Java supports multilevel inheritance
+* Private members are not inherited
+* Constructors execute from parent to child
+* Method overriding works across levels
+
+---
+
+## Memory Behavior
+
+* Only one object is created (Children)
+* Parent class data exists inside child object
+* Separate memory is not created for parent objects
+
+---
+
+## OOP Concepts Used
+
+* Inheritance
+* Multilevel Inheritance
+* IS-A relationship
+* Code Reusability
+
+```
+```
+---
