@@ -2969,4 +2969,162 @@ Row 2 (length=4): 6 7 8 9
 
 ---
 
+Understood.
+Below is the **same content**, **cleaned**, **NO icons**, **pure notes**, **Markdown only**.
+
+---
+
+# Class & Object (Java)
+
+---
+
+## Concept
+
+A class is a blueprint or template that defines variables (data) and methods (behavior).
+An object is a real instance of a class created at runtime using the `new` keyword.
+
+A class represents the structure.
+An object represents the actual working entity.
+
+---
+
+## Why Class & Object
+
+* To represent real-world entities in code
+* To group related data and behavior
+* To enable code reuse
+* To execute logic at runtime
+
+---
+
+## Syntax
+
+```java
+class ClassName {
+    variables;
+    methods;
+}
+
+ClassName objectName = new ClassName();
+```
+
+---
+
+## Code (From Your Project)
+
+### Address Class
+
+```java
+public class Address {
+    String city = "Guntur";
+    String State = "Andra Pradesh";
+    String contry = "INDIA";
+
+    void DisplayAddess() {
+        System.out.println("City :" + city);
+        System.out.println("State :" + State);
+        System.out.println("Country :" + contry);
+    }
+}
+```
+
+---
+
+### Student Class
+
+```java
+public class Student {
+
+    String name = "NavyaSri";
+    int RollNo = 101;
+
+    Address address1 = new Address();
+
+    void DisplayInfo() {
+        System.out.println("Name : " + name);
+        System.out.println("Roll No : " + RollNo);
+        address1.DisplayAddess();
+    }
+}
+```
+
+---
+
+### Main Class
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Student st1 = new Student();
+        st1.DisplayInfo();
+
+    }
+}
+```
+
+---
+
+## Line-by-Line Explanation
+
+### Address Class
+
+* `public class Address` defines a class named Address
+* `city`, `State`, `contry` are instance variables
+* `DisplayAddess()` is a method
+* Method prints address details stored inside the object
+
+---
+
+### Student Class
+
+* `Student` is a class
+* `name` and `RollNo` are instance variables
+* `Address address1 = new Address();` creates an Address object
+* `DisplayInfo()` prints student details and calls Address method
+
+---
+
+### Main Class
+
+* Program execution starts from `main()`
+* `new Student()` creates an object in heap memory
+* `st1.DisplayInfo()` calls method using object reference
+
+---
+
+## Object Creation Flow
+
+1. JVM loads the Main class
+2. main() method starts execution
+3. Student object is created
+4. Address object is created inside Student
+5. Methods execute using object references
+
+---
+
+## Key Points
+
+* Class does not consume memory
+* Object consumes memory
+* Instance variables belong to objects
+* Methods are accessed using object reference
+
+---
+
+## OOP Concepts Used
+
+* Class
+* Object
+* Method invocation
+
+---
+
+Next topic to request:
+
+```
+HAS-A Relationship (Association)
+```
+
+
 ---
