@@ -3646,3 +3646,1342 @@ public class Main {
 ```
 ```
 ---
+```markdown
+# Inheritance (Hierarchical Inheritance) in Java
+
+---
+
+## Concept
+
+Hierarchical inheritance occurs when **multiple child classes inherit from the same parent class**.
+
+One parent → many children
+
+Each child class gets access to the parent class members, but **child classes do not share
+their own members with each other**.
+
+---
+
+## Why Hierarchical Inheritance
+
+- To reuse common behavior in multiple classes
+- To represent real-world structures with one base entity
+- To avoid duplication of common logic
+- To maintain clear class separation
+
+---
+
+## Structure
+
+```
+
+```
+    Parent
+    |
+```
+
+---
+
+|              |
+Child1         Child2
+
+````
+
+---
+
+## Syntax
+
+```java
+class Parent {
+}
+
+class Child1 extends Parent {
+}
+
+class Child2 extends Parent {
+}
+````
+
+---
+
+## Code (From Your Project)
+
+### Parent Class (C)
+
+```java
+package inheritance;
+
+public class C extends B {
+    void displayC() {
+        System.out.println("-------------------------------------------");
+        System.out.println("this is display method C");
+        System.out.println("Class C inherits from B");
+    }
+}
+```
+
+---
+
+### Child Class 1 (D)
+
+```java
+package inheritance;
+
+public class D extends C {
+    void displayD() {
+        System.out.println("-------------------------------------------");
+        System.out.println("this is display method D");
+        System.out.println("Class D inherits from C (child 1)");
+    }
+}
+```
+
+---
+
+### Child Class 2 (E)
+
+```java
+package inheritance;
+
+public class E extends C {
+    void displayE() {
+        System.out.println("-------------------------------------------");
+        System.out.println("this is display method E");
+        System.out.println("Class E inherits from C (child 2)");
+    }
+}
+```
+
+---
+
+### Supporting Parent Classes
+
+```java
+package inheritance;
+
+public class A {
+    void DisplayForA() {
+        System.out.println("-------------------------------------------");
+        System.out.println("this is display method A");
+        System.out.println("class A Root parent class");
+    }
+}
+```
+
+```java
+package inheritance;
+
+public class B extends A {
+    void displayB() {
+        System.out.println("-------------------------------------------");
+        System.out.println("this is display method B");
+        System.out.println("Class B inherits from A");
+    }
+}
+```
+
+---
+
+### Main Class
+
+```java
+package inheritance;
+
+public class Main {
+    public static void main(String[] args) {
+
+        D objD = new D();
+        objD.displayD();
+        objD.displayC();
+        objD.displayB();
+        objD.DisplayForA();
+
+        System.out.println("--------------------");
+
+        E objE = new E();
+        objE.displayE();
+        objE.displayC();
+        objE.displayB();
+        objE.DisplayForA();
+    }
+}
+```
+
+---
+
+## Explanation
+
+* `C` acts as the **common parent** for `D` and `E`
+* `D` and `E` both inherit from `C`
+* Both child classes reuse methods from:
+
+  * `C`
+  * `B`
+  * `A`
+* `D` and `E` do not inherit from each other
+
+---
+
+## IS-A Relationship
+
+* D IS-A C
+* E IS-A C
+* D IS-A B and A (through C)
+* E IS-A B and A (through C)
+
+---
+
+## Method Resolution Flow
+
+For object of class `D`:
+
+1. JVM checks `D`
+2. Then `C`
+3. Then `B`
+4. Then `A`
+
+Same flow applies to `E`.
+
+---
+
+## Key Rules of Hierarchical Inheritance
+
+* One parent can have multiple child classes
+* Java supports hierarchical inheritance
+* Private members are not inherited
+* Each child class remains independent
+
+---
+
+## Memory Behavior
+
+* Separate objects are created for `D` and `E`
+* Parent class members exist inside each child object
+* No shared object memory between sibling classes
+
+---
+
+## OOP Concepts Used
+
+* Inheritance
+* Hierarchical Inheritance
+* IS-A relationship
+* Code Reusability
+
+```
+```
+---
+````markdown
+# Polymorphism in Java (Runtime Polymorphism)
+
+---
+
+## Concept
+
+Polymorphism means **many forms**.  
+In Java, polymorphism allows the **same method name** to behave differently based on the
+**object type at runtime**.
+
+Runtime polymorphism is achieved using:
+- Method overriding
+- Parent class reference pointing to child class object
+
+---
+
+## Why Polymorphism
+
+- To achieve flexibility in code
+- To support dynamic behavior
+- To follow the Open–Closed Principle
+- To reduce dependency on specific implementations
+
+---
+
+## Types of Polymorphism in Java
+
+1. Compile-time Polymorphism (Method Overloading)
+2. Runtime Polymorphism (Method Overriding)
+
+This example demonstrates **Runtime Polymorphism**.
+
+---
+
+## Syntax (Runtime Polymorphism)
+
+```java
+class Parent {
+    void method() { }
+}
+
+class Child extends Parent {
+    @Override
+    void method() { }
+}
+
+Parent obj = new Child();
+obj.method();
+````
+
+---
+
+## Code (From Your Project)
+
+### Parent Class (Bank)
+
+```java
+package polymarphism;
+
+public class Bank {
+    double RateOfIntrent() {
+        return 1.0;
+    }
+}
+```
+
+---
+
+### Child Class 1 (SBI)
+
+```java
+package polymarphism;
+
+public class SBI extends Bank {
+    @Override
+    double RateOfIntrent() {
+        return 2.0;
+    }
+}
+```
+
+---
+
+### Child Class 2 (Andrabank)
+
+```java
+package polymarphism;
+
+public class Andrabank extends Bank {
+    @Override
+    double RateOfIntrent() {
+        return 3.0;
+    }
+}
+```
+
+---
+
+### Main Class
+
+```java
+package polymarphism;
+
+public class Main {
+    public static void main(String args[]) {
+
+        Bank obj = new Bank();
+        System.out.println("Bank Interest : " + obj.RateOfIntrent());
+
+        Bank obj1 = new SBI();
+        System.out.println("SBI Bank Interest : " + obj1.RateOfIntrent());
+
+        Bank obj2 = new Andrabank();
+        System.out.println("AndraBank Interest : " + obj2.RateOfIntrent());
+    }
+}
+```
+
+---
+
+## Explanation
+
+* `Bank` defines a method `RateOfIntrent()`
+* `SBI` and `Andrabank` override the same method
+* Parent reference (`Bank`) holds child objects
+* Method call is resolved at **runtime**, not compile time
+
+---
+
+## Runtime Method Dispatch
+
+When `obj1.RateOfIntrent()` is called:
+
+* JVM checks object type (SBI)
+* SBI's overridden method is executed
+
+Same logic applies for `Andrabank`.
+
+---
+
+## Key Rules of Runtime Polymorphism
+
+* Method overriding is mandatory
+* Inheritance is required
+* Method signature must be same
+* Return type must be same or covariant
+* Access level cannot be reduced
+
+---
+
+## IS-A Relationship
+
+* SBI IS-A Bank
+* Andrabank IS-A Bank
+* Allows parent reference to hold child object
+
+---
+
+## Memory Behavior
+
+* Reference type decides accessible methods
+* Object type decides method implementation
+* Only one method executes at runtime
+
+---
+
+## OOP Concepts Used
+
+* Polymorphism
+* Runtime Polymorphism
+* Method Overriding
+* Dynamic Method Dispatch
+
+```
+```
+---
+
+````markdown
+# Abstraction in Java (Abstract Class & Interface)
+
+---
+
+## Concept
+
+Abstraction means **hiding implementation details and showing only essential features** to the user.
+
+In Java, abstraction is achieved using:
+1. **Abstract classes**
+2. **Interfaces**
+
+The user knows **what** the object does, not **how** it does it.
+
+---
+
+## Why Abstraction
+
+- To hide internal implementation
+- To reduce complexity
+- To improve security
+- To support loose coupling
+- To enable runtime flexibility
+
+---
+
+# Part A: Abstraction using Abstract Class
+
+---
+
+## Abstract Class Concept
+
+An abstract class:
+- Is declared using the `abstract` keyword
+- Can contain abstract and non-abstract methods
+- Cannot be instantiated
+- Is used when classes share common behavior with partial implementation
+
+---
+
+## Abstract Class Syntax
+
+```java
+abstract class ClassName {
+    abstract void method();
+    void normalMethod() { }
+}
+````
+
+---
+
+## Code (From Your Project)
+
+### Abstract Class (ATM)
+
+```java
+package AbstractionDemo;
+
+public abstract class ATM {
+    double balance = 100000;
+
+    public abstract void withdraw(double Amount);
+    public abstract void checkBalance();
+}
+```
+
+---
+
+### Implementation Class (SBIATM)
+
+```java
+package AbstractionDemo;
+
+public class SBIATM extends ATM {
+
+    public void withdraw(double Amount) {
+
+        if (Amount <= balance) {
+            balance = balance - Amount;
+            System.out.println("Withdraw Successfull");
+            System.out.println("Remaning Balance: " + balance);
+        } else {
+            System.out.println("Insufficent Amount");
+            System.out.println("Your Current Balance: " + balance);
+        }
+    }
+
+    public void checkBalance() {
+        System.out.println("Your Current Balance: " + balance);
+    }
+}
+```
+
+---
+
+### Main Class
+
+```java
+package AbstractionDemo;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String args[]) {
+
+        ATM atm = new SBIATM();
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Amount for Withdraw : ");
+        double money = sc.nextDouble();
+
+        atm.checkBalance();
+        atm.withdraw(money);
+    }
+}
+```
+
+---
+
+## Explanation (Abstract Class)
+
+* `ATM` hides balance handling logic
+* User interacts using ATM reference
+* `SBIATM` provides concrete implementation
+* Implementation can change without affecting user code
+
+---
+
+## Key Rules of Abstract Class
+
+* Can have constructors
+* Can have variables
+* Can have abstract and non-abstract methods
+* Cannot create object directly
+
+---
+
+# Part B: Abstraction using Interface
+
+---
+
+## Interface Concept
+
+An interface:
+
+* Is a pure abstraction blueprint
+* Contains method declarations (contracts)
+* Supports multiple inheritance
+* Forces implementation classes to define behavior
+
+---
+
+## Interface Syntax
+
+```java
+interface InterfaceName {
+    void method();
+}
+```
+
+---
+
+## Code (From Your Project)
+
+### Interface (FoodApp)
+
+```java
+package abstraction;
+
+public interface FoodApp {
+    void placeOrder();
+    void makePayment();
+}
+```
+
+---
+
+### Implementation Class (Swiggy)
+
+```java
+package abstraction;
+
+public class Swiggy implements FoodApp {
+
+    public void placeOrder() {
+        System.out.println("Order Placed Via Swiggy");
+    }
+
+    public void makePayment() {
+        System.out.println("Payment done using Swiggy Gateway");
+    }
+}
+```
+
+---
+
+### Implementation Class (Zomato)
+
+```java
+package abstraction;
+
+public class Zomato implements FoodApp {
+
+    public void placeOrder() {
+        System.out.println("Order Placed Via Zomato");
+    }
+
+    public void makePayment() {
+        System.out.println("Payment done using Zomato Gateway");
+    }
+}
+```
+
+---
+
+### Implementation Class (EatClub)
+
+```java
+package abstraction;
+
+public class EatClub implements FoodApp {
+
+    public void placeOrder() {
+        System.out.println("Order Placed Via EatClub");
+    }
+
+    public void makePayment() {
+        System.out.println("Payment done using EatClub Gateway");
+    }
+}
+```
+
+---
+
+### Main Class
+
+```java
+package abstraction;
+
+public class Main {
+    public static void main(String args[]) {
+
+        FoodApp app;
+
+        app = new Swiggy();
+        app.placeOrder();
+        app.makePayment();
+
+        System.out.println("-------------------");
+
+        app = new Zomato();
+        app.placeOrder();
+        app.makePayment();
+    }
+}
+```
+
+---
+
+## Explanation (Interface)
+
+* `FoodApp` defines what actions must be performed
+* Implementation classes define how actions are performed
+* Main program is independent of implementation
+* Switching implementation requires no code change in logic
+
+---
+
+## Abstract Class vs Interface
+
+| Feature              | Abstract Class      | Interface                  |
+| -------------------- | ------------------- | -------------------------- |
+| Methods              | Abstract + Concrete | Abstract (default allowed) |
+| Variables            | Allowed             | public static final        |
+| Multiple Inheritance | No                  | Yes                        |
+| Object Creation      | No                  | No                         |
+
+---
+
+## OOP Concepts Used
+
+* Abstraction
+* Interface
+* Abstract Class
+* Loose Coupling
+---
+````markdown id="w0z7p8"
+# Encapsulation in Java
+
+---
+
+## Concept
+
+Encapsulation is the process of **binding data (variables) and methods together** and
+**restricting direct access to data** from outside the class.
+
+Data is hidden using `private` access modifier and accessed only through
+**public getter and setter methods**.
+
+Encapsulation provides **data protection and controlled access**.
+
+---
+
+## Why Encapsulation
+
+- To protect data from unauthorized access
+- To control how data is read and modified
+- To improve maintainability
+- To follow security and design principles
+
+---
+
+## Encapsulation Syntax
+
+```java
+class ClassName {
+    private data;
+
+    public void setData(value) { }
+    public dataType getData() { }
+}
+````
+
+---
+
+## Code (From Your Project)
+
+### Encapsulated Class (Car)
+
+```java id="gxj9yq"
+package encapsulation;
+
+public class Car {
+
+    private String brand;
+    private int speed;
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public void printinfo() {
+        System.out.println("Barnd : " + brand);
+        System.out.println("Speed : " + speed);
+    }
+}
+```
+
+---
+
+### Main Class
+
+```java id="r6k5tu"
+package encapsulation;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Car porsch = new Car();
+
+        porsch.setBrand("Porsch 911");
+        porsch.setSpeed(100);
+
+        porsch.printinfo();
+    }
+}
+```
+
+---
+
+## Explanation
+
+* `brand` and `speed` are declared as `private`
+* Direct access from outside the class is not allowed
+* Setter methods modify the data safely
+* Getter methods provide read-only access
+* `this` keyword refers to current object
+
+---
+
+## Data Protection Flow
+
+1. Data is hidden inside the class
+2. External class cannot access variables directly
+3. Access is allowed only through methods
+4. Validation logic can be added in setters
+
+---
+
+## Key Rules of Encapsulation
+
+* Variables should be `private`
+* Methods should be `public`
+* Class should provide controlled access
+* Internal data cannot be modified directly
+
+---
+
+## Advantages of Encapsulation
+
+* Better security
+* Flexibility to change implementation
+* Improved code readability
+* Reduced complexity
+
+---
+
+## OOP Concepts Used
+
+* Encapsulation
+* Data Hiding
+* Getter and Setter Methods
+
+---
+````markdown
+# Interface Multiple Inheritance in Java
+
+---
+
+## Concept
+
+Java does not support multiple inheritance using classes because of ambiguity problems.
+However, Java **supports multiple inheritance using interfaces**.
+
+A class can implement **more than one interface**, allowing it to inherit multiple behaviors
+without ambiguity.
+
+This is called **Multiple Inheritance using Interfaces**.
+
+---
+
+## Why Interface Multiple Inheritance
+
+- To achieve multiple inheritance safely
+- To avoid ambiguity present in class multiple inheritance
+- To follow abstraction and loose coupling
+- To allow a class to follow multiple contracts
+
+---
+
+## Syntax
+
+```java
+interface A {
+    void methodA();
+}
+
+interface B {
+    void methodB();
+}
+
+class C implements A, B {
+    public void methodA() { }
+    public void methodB() { }
+}
+````
+
+---
+
+## Code (From Your Project)
+
+### Interface A
+
+```java
+package interfaceconsept;
+
+public interface A {
+    void methodA();
+}
+```
+
+---
+
+### Interface B
+
+```java
+package interfaceconsept;
+
+public interface B {
+    void methodB();
+}
+```
+
+---
+
+### Implementation Class (C)
+
+```java
+package interfaceconsept;
+
+public class C implements A, B {
+
+    @Override
+    public void methodA() {
+        System.out.println("This is Interface A ");
+    }
+
+    @Override
+    public void methodB() {
+        System.out.println("This is Interface B ");
+    }
+
+    public void methodC() {
+        System.out.println(
+            "This is Class C implements Interface A , B to form a Multiple-inheritance using interfaces"
+        );
+    }
+
+    public static void main(String[] args) {
+        C cobj = new C();
+
+        cobj.methodA();
+        cobj.methodB();
+        cobj.methodC();
+    }
+}
+```
+
+---
+
+## Explanation
+
+* `A` and `B` are independent interfaces
+* Both define separate method contracts
+* Class `C` implements both interfaces
+* `C` must provide implementation for all interface methods
+* No ambiguity occurs because interfaces do not contain state
+
+---
+
+## Key Rules of Interface Multiple Inheritance
+
+* A class can implement multiple interfaces
+* Interfaces contain method declarations
+* Implementation class must override all methods
+* No multiple inheritance using classes
+
+---
+
+## IS-A Relationship
+
+* C IS-A A
+* C IS-A B
+
+This allows polymorphic behavior using interface references.
+
+---
+
+## Memory Behavior
+
+* Only one object of class `C` is created
+* Interface references point to same object
+* No duplicate data members exist
+
+---
+
+## Advantages
+
+* Solves multiple inheritance problem
+* Improves flexibility
+* Supports abstraction
+* Encourages loose coupling
+
+---
+
+## OOP Concepts Used
+
+* Interface
+* Multiple Inheritance
+* Abstraction
+* Polymorphism
+
+```
+```
+---
+```markdown
+# Diamond Problem Handling in Java (Using Interfaces)
+
+---
+
+## Concept
+
+The **Diamond Problem** occurs when a class implements **multiple interfaces** that contain
+methods with the **same name and signature**.
+
+Java allows multiple inheritance using interfaces, but when **default methods** are involved,
+method ambiguity can arise.  
+Java resolves this by forcing the implementing class to **explicitly override the method**.
+
+---
+
+## Why Diamond Problem Occurs
+
+- Java allows a class to implement multiple interfaces
+- Interfaces can have `default` methods
+- If two interfaces provide the same default method, JVM cannot decide which one to execute
+
+This situation forms a diamond-shaped inheritance structure.
+
+---
+
+## Diamond Structure
+
+```
+
+```
+    A
+   / \
+  B   C
+   \ /
+    D
+```
+
+````
+
+- Interface `A` defines a method
+- Interfaces `B` and `C` extend `A` and override the same method
+- Class `D` implements both `B` and `C`
+
+---
+
+## Rule to Handle Diamond Problem
+
+If a class implements two interfaces that have the **same default method**, then:
+- The class **must override the method**
+- Inside the method, it can explicitly call:
+  - `InterfaceName.super.methodName()`
+
+---
+
+## Syntax for Conflict Resolution
+
+```java
+InterfaceName.super.methodName();
+````
+
+---
+
+## Code (From Your Project)
+
+### Interface A
+
+```java
+package interfaceconsept;
+
+public interface A {
+    default void method() {
+        System.out.println("this is method a for X purpose ");
+    }
+}
+```
+
+---
+
+### Interface B
+
+```java
+package interfaceconsept;
+
+public interface B extends A {
+    default void method() {
+        System.out.println("this is method a for Y purpose");
+    }
+}
+```
+
+---
+
+### Interface C
+
+```java
+package interfaceconsept;
+
+public interface C extends A {
+    default void method() {
+        System.out.println("this is method a for Z purpose");
+    }
+}
+```
+
+---
+
+### Implementation Class (D)
+
+```java
+package interfaceconsept;
+
+public class D implements B, C {
+
+    @Override
+    public void method() {
+
+        B.super.method();
+        C.super.method();
+    }
+
+    public static void main(String args[]) {
+        D x = new D();
+        x.method();
+    }
+}
+```
+
+---
+
+## Explanation
+
+* Interfaces `B` and `C` both provide a default implementation of `method()`
+* Class `D` implements both interfaces
+* JVM cannot decide which `method()` to call
+* Java forces class `D` to override the method
+* Inside the overridden method:
+
+  * `B.super.method()` calls B’s version
+  * `C.super.method()` calls C’s version
+
+---
+
+## Important Rules
+
+* Diamond problem occurs only with **default methods**
+* Interfaces without default methods do not cause ambiguity
+* Class method always has higher priority than interface default method
+* Explicit override is mandatory to resolve conflict
+
+---
+
+## Key Points
+
+* Java avoids diamond problem using strict rules
+* Multiple inheritance is safe with interfaces
+* Ambiguity is resolved at compile time
+* `InterfaceName.super.method()` is allowed only inside implementing class
+
+---
+
+## OOP Concepts Used
+
+* Interface
+* Multiple Inheritance
+* Diamond Problem
+* Method Conflict Resolution
+* Default Methods
+
+```
+```
+---
+````markdown
+# Constructor Injection in Java
+
+---
+
+## Concept
+
+Constructor Injection is a form of **Dependency Injection** where an object receives its
+dependency **through its constructor** instead of creating it internally.
+
+The dependent class does **not create** the object it depends on.
+Instead, the dependency is **passed from outside**.
+
+This improves **loose coupling** and **testability**.
+
+---
+
+## Why Constructor Injection
+
+- To avoid tight coupling between classes
+- To make code flexible and reusable
+- To follow Dependency Inversion Principle
+- To make unit testing easier
+- To control object creation externally
+
+---
+
+## Basic Idea
+
+Instead of this (tight coupling):
+
+```java
+class A {
+    B obj = new B();
+}
+````
+
+Use this (constructor injection):
+
+```java
+class A {
+    B obj;
+
+    A(B obj) {
+        this.obj = obj;
+    }
+}
+```
+
+---
+
+## Code (From Your Project)
+
+### Dependent Class (Student)
+
+```java
+package basics;
+
+public class Student {
+
+    void StudentInfo() {
+        System.out.println("This is Student Class StudentInfo() method ");
+    }
+}
+```
+
+---
+
+### Dependee Class Using Constructor Injection (Address)
+
+```java
+package basics;
+
+public class Address {
+
+    private Student name;
+
+    Address(Student name) {
+        this.name = name;
+    }
+
+    void display() {
+        name.StudentInfo();
+        System.out.println("display method called in Address Class");
+    }
+}
+```
+
+---
+
+### Main Class (Injecting Dependency)
+
+```java
+package basics;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Student name = new Student();      // Dependency created
+        Address addr = new Address(name);  // Dependency injected
+
+        addr.display();
+    }
+}
+```
+
+---
+
+## Explanation
+
+* `Student` is the dependency
+* `Address` depends on `Student`
+* `Address` does not create `Student` object
+* Dependency is passed through the constructor
+* This is called **Constructor Injection**
+
+---
+
+## Flow of Execution
+
+1. JVM starts `main()`
+2. `Student` object is created
+3. `Address` object is created by passing `Student`
+4. `Address` stores dependency reference
+5. `Address` uses `Student` methods
+
+---
+
+## HAS-A Relationship with Constructor Injection
+
+* Address HAS-A Student
+* Relationship is created externally
+* Address does not control dependency lifecycle
+
+---
+
+## Advantages of Constructor Injection
+
+* Clear dependency requirement
+* Object is always in valid state
+* Easier to test with mock objects
+* Promotes loose coupling
+* Recommended over field injection
+
+---
+
+## Comparison: Normal HAS-A vs Constructor Injection
+
+| Aspect          | Normal HAS-A | Constructor Injection |
+| --------------- | ------------ | --------------------- |
+| Object creation | Inside class | Outside class         |
+| Coupling        | Tight        | Loose                 |
+| Flexibility     | Low          | High                  |
+| Testability     | Hard         | Easy                  |
+
+---
+
+## Key Rules
+
+* Dependency is passed via constructor
+* Constructor is called only once
+* Dependency cannot be null (recommended)
+* Preferred DI method in Java
+
+---
+
+## OOP Concepts Used
+
+* Association
+* HAS-A relationship
+* Dependency Injection
+* Constructor Injection
+
+```
+```
+---
+
