@@ -6481,12 +6481,593 @@ removeAll()  → Difference   → {1, 2}
 
 ---
 
->  **Next Topics to Cover:**
-> - Map Interface (HashMap, LinkedHashMap, TreeMap)
-> - Queue Interface (PriorityQueue, Deque)
-> - Iterator and for-each with Collections
-> - Collections utility class methods
+#  TreeSet
+
+## Definition
+
+`TreeSet` is a class that implements the `Set` interface.
+
+* Stores **unique elements**
+* Maintains **ascending sorted order**
+* Internally uses a **Red-Black Tree**
+* Does NOT allow duplicates
+* Does NOT allow null (from Java 8+ for natural ordering)
 
 ---
 
-*Notes prepared for Java students — Java Collection Framework (JCF)*
+## Syntax
+
+```java
+TreeSet<DataType> setName = new TreeSet<>();
+```
+
+Example:
+
+```java
+TreeSet<Integer> tree = new TreeSet<>();
+```
+
+---
+
+## Example Program
+
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        TreeSet<Integer> tree = new TreeSet<>();
+
+        tree.add(50);
+        tree.add(70);
+        tree.add(40);
+        tree.add(30);
+        tree.add(10);
+
+        System.out.println(tree);
+    }
+}
+```
+
+### Output
+
+```
+[10, 30, 40, 50, 70]
+```
+
+TreeSet automatically sorts elements in ascending order.
+
+---
+
+# TreeSet Methods
+
+---
+
+## 1. first()
+
+### Definition
+
+Returns the smallest (leftmost) element.
+
+### Syntax
+
+```java
+set.first();
+```
+
+### Example
+
+```java
+System.out.println(tree.first());
+```
+
+### Output
+
+```
+10
+```
+
+---
+
+## 2. last()
+
+### Definition
+
+Returns the largest (rightmost) element.
+
+### Syntax
+
+```java
+set.last();
+```
+
+### Example
+
+```java
+System.out.println(tree.last());
+```
+
+### Output
+
+```
+70
+```
+
+---
+
+## 3. subSet()
+
+### Definition
+
+Returns elements between a given range.
+
+* FromElement → Inclusive
+* ToElement → Exclusive
+
+### Syntax
+
+```java
+set.subSet(fromElement, toElement);
+```
+
+### Example
+
+```java
+System.out.println(tree.subSet(30, 50));
+```
+
+### Output
+
+```
+[30, 40]
+```
+
+---
+
+## 4. pollFirst()
+
+### Definition
+
+Removes and returns the smallest element.
+
+### Syntax
+
+```java
+set.pollFirst();
+```
+
+### Example
+
+```java
+System.out.println(tree.pollFirst());
+```
+
+If tree = [10, 30, 40, 50, 70]
+
+Output:
+
+```
+10
+```
+
+After removal:
+
+```
+[30, 40, 50, 70]
+```
+
+---
+
+## 5. pollLast()
+
+### Definition
+
+Removes and returns the largest element.
+
+### Syntax
+
+```java
+set.pollLast();
+```
+
+### Example
+
+```java
+System.out.println(tree.pollLast());
+```
+
+Output:
+
+```
+70
+```
+
+---
+
+## 6. lower()
+
+### Definition
+
+Returns the element strictly less than the given element.
+
+### Syntax
+
+```java
+set.lower(element);
+```
+
+### Example
+
+```java
+System.out.println(tree.lower(50));
+```
+
+If tree = [30, 40, 50, 70]
+
+Output:
+
+```
+40
+```
+
+If no smaller element exists:
+
+```
+null
+```
+
+---
+
+## 7. higher()
+
+### Definition
+
+Returns the element strictly greater than the given element.
+
+### Syntax
+
+```java
+set.higher(element);
+```
+
+### Example
+
+```java
+System.out.println(tree.higher(40));
+```
+
+Output:
+
+```
+50
+```
+
+If no greater element exists:
+
+```
+null
+```
+
+---
+
+## 8. descendingSet()
+
+### Definition
+
+Returns reverse order view of TreeSet.
+
+### Syntax
+
+```java
+set.descendingSet();
+```
+
+### Example
+
+```java
+System.out.println(tree.descendingSet());
+```
+
+If tree = [30, 40, 50, 70]
+
+Output:
+
+```
+[70, 50, 40, 30]
+```
+
+---
+
+# HashSet
+
+## Definition
+
+* Implements Set interface
+* Stores unique elements
+* Does NOT maintain insertion order
+* Does NOT maintain sorted order
+* Allows one null
+* Uses Hashing internally
+
+---
+
+## Syntax
+
+```java
+HashSet<DataType> setName = new HashSet<>();
+```
+
+---
+
+## clone() Method
+
+### Definition
+
+Creates a shallow copy of HashSet.
+
+Shallow Copy:
+
+* New Set object created
+* Elements are NOT cloned
+* References are copied
+
+### Syntax
+
+```java
+set.clone();
+```
+
+### Example
+
+```java
+HashSet<Integer> set1 = new HashSet<>();
+set1.add(1);
+set1.add(44);
+set1.add(495);
+set1.add(7884);
+
+HashSet<Integer> set2 = (HashSet<Integer>) set1.clone();
+
+System.out.println(set1);
+System.out.println(set2);
+
+set2.add(100);
+System.out.println(set1);
+System.out.println(set2);
+```
+
+### Important
+
+* Type casting required
+* Original set is not affected by modifications in cloned set
+
+---
+
+#  LinkedHashSet
+
+## Definition
+
+* Maintains insertion order
+* Stores unique elements
+* Internally uses Hash table + Linked List
+
+---
+
+## Syntax
+
+```java
+LinkedHashSet<DataType> setName = new LinkedHashSet<>();
+```
+
+---
+
+## clone() Method
+
+Same behavior as HashSet clone().
+
+### Example
+
+```java
+LinkedHashSet<Integer> Lset1 = new LinkedHashSet<>();
+Lset1.add(10);
+Lset1.add(20);
+Lset1.add(30);
+Lset1.add(40);
+
+LinkedHashSet<Integer> Lset2 =
+    (LinkedHashSet<Integer>) Lset1.clone();
+
+System.out.println(Lset1);
+System.out.println(Lset2);
+
+Lset2.add(50);
+System.out.println(Lset2);
+```
+
+Output:
+
+```
+[10, 20, 30, 40, 50]
+```
+
+Maintains insertion order.
+
+---
+
+#  Map Interface (Dictionary in Java)
+
+In Python:
+
+```
+Dictionary → Key : Value
+```
+
+In Java:
+
+```
+Map → Key : Value
+```
+
+---
+
+## Key Rules
+
+* Keys must be UNIQUE
+* Values can be duplicate
+* One key maps to one value
+* If same key inserted again → old value replaced
+
+Example:
+
+```
+101 -> Aparna
+102 -> Uday
+102 -> Mahesh   (Uday replaced)
+```
+
+---
+
+# Map Implementations
+
+* HashMap
+* LinkedHashMap
+* TreeMap
+* Hashtable
+
+---
+
+#  HashMap
+
+## Definition
+
+* Implements Map interface
+* Stores key-value pairs
+* Does NOT maintain insertion order
+* Allows one null key
+* Allows multiple null values
+* Uses Hashing
+
+---
+
+## Syntax
+
+```java
+HashMap<KeyType, ValueType> mapName = new HashMap<>();
+```
+
+Example:
+
+```java
+HashMap<Integer, String> map1 = new HashMap<>();
+```
+
+---
+
+## 1. put()
+
+### Definition
+
+Adds key-value pair to map.
+
+### Syntax
+
+```java
+map.put(key, value);
+```
+
+### Example
+
+```java
+map1.put(101, "Aparna");
+map1.put(102, "Uday");
+map1.put(103, "Ramya");
+```
+
+---
+
+## 2. get()
+
+### Definition
+
+Returns value associated with given key.
+
+### Syntax
+
+```java
+map.get(key);
+```
+
+### Example
+
+```java
+System.out.println(map1.get(102));
+```
+
+Output:
+
+```
+Uday
+```
+
+If key not present:
+
+```
+null
+```
+
+---
+
+## 3. keySet()
+
+### Definition
+
+Returns all keys from map.
+
+### Syntax
+
+```java
+map.keySet();
+```
+
+### Example
+
+```java
+for(Integer key : map1.keySet()) {
+    System.out.println("Student at " + key +
+                       " : " + map1.get(key));
+}
+```
+
+### Output
+
+```
+Student at 101 : Aparna
+Student at 102 : Uday
+Student at 103 : Ramya
+```
+
+---
+
+# Summary Table
+
+| Feature            | HashSet        | LinkedHashSet            | TreeSet        |
+| ------------------ | -------------- | ------------------------ | -------------- |
+| Duplicates         | Not Allowed    | Not Allowed              | Not Allowed    |
+| Order              | Not Maintained | Insertion Order          | Sorted Order   |
+| Null               | One null       | One null                 | No null        |
+| Internal Structure | Hash Table     | Hash Table + Linked List | Red Black Tree |
+
+---
+
+| Feature          | HashMap        |
+| ---------------- | -------------- |
+| Duplicate Keys   | Not Allowed    |
+| Duplicate Values | Allowed        |
+| Order            | Not Maintained |
+| Null Key         | One Allowed    |
+| Null Values      | Allowed        |
+
+---
+
+
