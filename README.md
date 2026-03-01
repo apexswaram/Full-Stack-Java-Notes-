@@ -21,8 +21,20 @@
 10. [Strings and String Methods](#10-strings-and-string-methods)
 11. [Methods in Java](#11-methods-in-java)
 12. [Arrays in Java](#12-arrays-in-java)
+13. [Oop's in Java] (#Oops-in-java)
+14. [What is the Java Collection Framework?](#1-what-is-the-java-collection-framework)
+15. [JCF Hierarchy Overview](#2-jcf-hierarchy-overview)
+16. [List Interface](#3-list-interface)
+   - [What is a List?](#what-is-a-list)
+   - [Types of List](#types-of-list)
+   - [Creating a List](#creating-a-list)
+   - [List Methods](#list-methods)
+16. [Set Interface](#4-set-interface)
+   - [What is a Set?](#what-is-a-set)
+   - [Types of Set](#types-of-set)
+   - [Creating a Set](#creating-a-set)
+   - [Set Methods](#set-methods)
 
----
 ---
 
 # 1. Java History
@@ -2973,6 +2985,8 @@ Understood.
 Below is the **same content**, **cleaned**, **NO icons**, **pure notes**, **Markdown only**.
 
 ---
+
+# Oops in java
 
 # Class & Object (Java)
 
