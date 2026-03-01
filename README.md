@@ -4975,3 +4975,1504 @@ public class Main {
 ```
 ---
 
+#  Java Collection Framework (JCF) — Student Notes
+
+---
+
+## 1. What is the Java Collection Framework?
+
+The **Java Collection Framework (JCF)** is a set of **classes and interfaces** in Java that provide ready-made data structures to store, manage, and manipulate groups of objects efficiently.
+
+Before JCF, developers had to write their own data structures from scratch. JCF solves this problem by providing:
+
+- **Interfaces** → Define what operations can be performed (e.g., `List`, `Set`, `Map`)
+- **Classes** → Actual implementations of those interfaces (e.g., `ArrayList`, `HashSet`, `HashMap`)
+- **Algorithms** → Utility methods like sorting and searching (via `Collections` class)
+
+### Why use JCF?
+
+| Without JCF | With JCF |
+|---|---|
+| Write your own data structures | Ready-made, tested data structures |
+| Manual memory management | Automatic resizing |
+| No standard API | Consistent, standard methods |
+| More bugs | Less code, fewer bugs |
+
+---
+
+## 2. JCF Hierarchy Overview
+
+```
+java.util
+│
+├── Collection (Interface)
+│   ├── List (Interface)         → Ordered, allows duplicates
+│   │   ├── ArrayList
+│   │   ├── LinkedList
+│   │   └── Vector
+│   │
+│   ├── Set (Interface)          → No duplicates
+│   │   ├── HashSet
+│   │   ├── LinkedHashSet
+│   │   └── TreeSet
+│   │
+│   └── Queue (Interface)        → FIFO order
+│       ├── PriorityQueue
+│       └── LinkedList
+│
+└── Map (Interface)              → Key-Value pairs
+    ├── HashMap
+    ├── LinkedHashMap
+    └── TreeMap
+```
+
+>   **In these notes**, we will cover **List** and **Set** in detail.
+
+---
+
+## 3. List Interface
+
+### What is a List?
+
+A **List** is an **ordered collection** (also called a sequence) that:
+
+-   Maintains **insertion order** (elements stay in the order you add them)
+-   **Allows duplicate** values
+-   Allows **null** values
+-   Elements are accessed by **index** (starting from 0)
+
+```
+List = [10, 20, 20, 30, null, 40]
+        ↑                          ↑
+      index 0                   index 5
+```
+
+---
+
+### Types of List
+
+| Type | Class | Order | Null Allowed | Performance |
+|---|---|---|---|---|
+| Dynamic Array | `ArrayList` | Insertion order | Yes | Fast for access |
+| Doubly Linked | `LinkedList` | Insertion order | Yes | Fast for insert/delete |
+| Synchronized Array | `Vector` | Insertion order | Yes | Thread-safe, slower |
+
+>  Most commonly used → **ArrayList**
+
+---
+
+### Creating a List
+
+```java
+import java.util.*;
+
+// Method 1: Using interface type (Recommended)
+List<String> list = new ArrayList<>();
+
+// Method 2: Using class type directly
+ArrayList<String> list = new ArrayList<>();
+
+// Method 3: ArrayList with initial capacity
+ArrayList<String> list = new ArrayList<>(10);
+
+// Method 4: Initialize with values directly
+List<String> list = new ArrayList<>(Arrays.asList("Aparna", "Navya", "Ramya"));
+```
+
+>     **Best Practice:** Always use `List<Type>` on the left side. This makes your code flexible — you can switch between `ArrayList` and `LinkedList` without changing much.
+
+---
+
+### List Methods
+
+---
+
+####   1. `add()`
+
+**Definition:**  
+Adds an element to the list. You can add at the **end** or at a **specific index**.
+
+**Syntax:**
+```java
+listName.add(value);               // Adds at the end
+listName.add(index, value);        // Inserts at specific position
+```
+
+**Use:**  
+Used whenever you want to insert elements into a list.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class AddDemo {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+
+        list.add("Maheswaram");        // Adds at end → index 0
+        list.add(1, "Sri");            // Inserts "Sri" at index 1
+
+        System.out.println(list);
+    }
+}
+```
+
+**Output:**
+```
+[Maheswaram, Sri]
+```
+
+**Explanation:**  
+- `list.add("Maheswaram")` → Adds `"Maheswaram"` at position 0.
+- `list.add(1, "Sri")` → Inserts `"Sri"` at position 1, shifting existing elements to the right.
+
+---
+
+####   2. `addAll()`
+
+**Definition:**  
+Adds **all elements** from one list into another list at the end.
+
+**Syntax:**
+```java
+list1.addAll(list2);               // Adds all of list2 into list1 at end
+list1.addAll(index, list2);        // Inserts list2 starting at given index
+```
+
+**Use:**  
+Used when you want to merge two lists together. Returns `true` if the list changed.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class AddAllDemo {
+    public static void main(String[] args) {
+        List<Integer> nums = new ArrayList<>();
+        nums.add(1);
+        nums.add(2);
+        nums.add(3);
+        System.out.println("First List  : " + nums);
+
+        List<Integer> nums1 = new ArrayList<>();
+        nums1.add(11);
+        nums1.add(22);
+        nums1.add(33);
+        System.out.println("Second List : " + nums1);
+
+        nums.addAll(nums1);
+
+        System.out.println("After addAll: " + nums);
+    }
+}
+```
+
+**Output:**
+```
+First List  : [1, 2, 3]
+Second List : [11, 22, 33]
+After addAll: [1, 2, 3, 11, 22, 33]
+```
+
+**Explanation:**  
+`addAll()` copies every element from `nums1` and appends them to the end of `nums`. The original `nums1` list remains unchanged.
+
+---
+
+####   3. `get()`
+
+**Definition:**  
+Retrieves (reads) the element at a specific index. Does **not** remove the element.
+
+**Syntax:**
+```java
+listName.get(index);
+```
+
+>    Index starts from **0** and ends at **size - 1**. Accessing an invalid index throws `IndexOutOfBoundsException`.
+
+**Use:**  
+Used when you need to read a specific element without modifying the list.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class GetDemo {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(100);   // index 0
+        numbers.add(200);   // index 1
+        numbers.add(200);   // index 2
+        numbers.add(400);   // index 3
+
+        int value = numbers.get(3);
+
+        System.out.println("Element at index 3 is : " + value);
+    }
+}
+```
+
+**Output:**
+```
+Element at index 3 is : 400
+```
+
+**Explanation:**  
+`numbers.get(3)` fetches the element at index 3, which is `400`. The list is not modified.
+
+---
+
+####   4. `set()`
+
+**Definition:**  
+**Replaces** the element at a given index with a new value. The size of the list remains the same.
+
+**Syntax:**
+```java
+listName.set(index, newValue);
+```
+
+**Use:**  
+Used when you want to **update** an existing element at a particular position.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SetDemo {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(100);
+        numbers.add(200);
+        numbers.add(200);   // duplicate — we'll fix this
+        numbers.add(400);
+
+        System.out.println("Before updating: " + numbers);
+
+        numbers.set(2, 300);   // replace index 2 (200 → 300)
+        numbers.set(3, 999);   // replace index 3 (400 → 999)
+
+        System.out.println("After updating : " + numbers);
+    }
+}
+```
+
+**Output:**
+```
+Before updating: [100, 200, 200, 400]
+After updating : [100, 200, 300, 999]
+```
+
+**Explanation:**  
+`set(2, 300)` replaces the value `200` at index 2 with `300`. `set(3, 999)` replaces `400` at index 3 with `999`. List size stays at 4.
+
+---
+
+####   5. `remove(int index)`
+
+**Definition:**  
+Removes the element at the **specified index**. All elements after it **shift left**, and the list size decreases by 1.
+
+**Syntax:**
+```java
+listName.remove(index);
+```
+
+**Use:**  
+Used when you know the **position** of the element you want to delete.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class RemoveIndexDemo {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(100);  // index 0
+        numbers.add(200);  // index 1
+        numbers.add(200);  // index 2
+        numbers.add(400);  // index 3
+
+        System.out.println("Before removing: " + numbers);
+
+        numbers.remove(2);   // removes element at index 2
+
+        System.out.println("After removing : " + numbers);
+    }
+}
+```
+
+**Output:**
+```
+Before removing: [100, 200, 200, 400]
+After removing : [100, 200, 400]
+```
+
+**Explanation:**  
+`remove(2)` deletes the element at index 2 (the second `200`). The remaining elements shift left: `400` moves from index 3 to index 2.
+
+---
+
+####   6. `remove(Object)`
+
+**Definition:**  
+Removes the **first occurrence** of the specified value from the list.
+
+**Syntax:**
+```java
+listName.remove(Integer.valueOf(value));   // For Integer lists, use Integer.valueOf()
+listName.remove("stringValue");            // For String lists
+```
+
+>    **Important:** For `List<Integer>`, always use `Integer.valueOf()` to avoid confusion with `remove(int index)`.
+
+**Use:**  
+Used when you know the **value** of the element you want to delete (not the position).
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class RemoveObjectDemo {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(100);
+        numbers.add(200);
+        numbers.add(200);
+        numbers.add(400);
+
+        System.out.println("Before removing: " + numbers);
+
+        numbers.remove(Integer.valueOf(400));   // removes value 400
+
+        System.out.println("After removing : " + numbers);
+    }
+}
+```
+
+**Output:**
+```
+Before removing: [100, 200, 200, 400]
+After removing : [100, 200, 200]
+```
+
+**Explanation:**  
+`Integer.valueOf(400)` tells Java to treat `400` as an **object value**, not an index. It finds and removes the first element equal to `400`.
+
+---
+
+####   7. `size()`
+
+**Definition:**  
+Returns the **total number of elements** currently in the list.
+
+**Syntax:**
+```java
+listName.size();
+```
+
+**Use:**  
+Used in loops, validations, or whenever you need to know how many items are in the list.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SizeDemo {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(100);
+        numbers.add(200);
+        numbers.add(300);
+        numbers.add(400);
+
+        System.out.println("Size of list: " + numbers.size());
+    }
+}
+```
+
+**Output:**
+```
+Size of list: 4
+```
+
+**Explanation:**  
+`size()` counts all elements and returns `4` since we added 4 elements.
+
+---
+
+####   8. `isEmpty()`
+
+**Definition:**  
+Checks whether the list has **no elements**. Returns `true` if empty, `false` if it has elements.
+
+**Syntax:**
+```java
+listName.isEmpty();
+```
+
+**Use:**  
+Used before performing operations to avoid errors on empty lists.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class IsEmptyDemo {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+
+        System.out.println("Before adding elements: " + numbers.isEmpty());   // true
+
+        numbers.add(100);
+        numbers.add(200);
+        numbers.add(300);
+        numbers.add(400);
+
+        System.out.println("After adding elements : " + numbers.isEmpty());   // false
+    }
+}
+```
+
+**Output:**
+```
+Before adding elements: true
+After adding elements : false
+```
+
+**Explanation:**  
+Before any `add()`, the list is empty so `isEmpty()` returns `true`. After adding elements, it returns `false`.
+
+---
+
+####   9. `contains()`
+
+**Definition:**  
+Checks if a specific **value exists** in the list. Returns `true` if found, `false` if not.
+
+**Syntax:**
+```java
+listName.contains(value);
+```
+
+**Use:**  
+Used to verify if an element is present before performing operations like remove or update.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class ContainsDemo {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(100);
+        numbers.add(200);
+        numbers.add(300);
+        numbers.add(400);
+
+        System.out.println("Contains 500? " + numbers.contains(500));   // false
+        System.out.println("Contains 400? " + numbers.contains(400));   // true
+    }
+}
+```
+
+**Output:**
+```
+Contains 500? false
+Contains 400? true
+```
+
+**Explanation:**  
+`500` is not in the list → returns `false`. `400` exists → returns `true`.
+
+---
+
+####   10. `indexOf()`
+
+**Definition:**  
+Returns the **index of the first occurrence** of the specified element. Returns `-1` if the element is not found.
+
+**Syntax:**
+```java
+listName.indexOf(value);
+```
+
+**Use:**  
+Used when you want to find **where** an element first appears in the list.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class IndexOfDemo {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(100);
+        numbers.add(200);
+        numbers.add(300);
+        numbers.add(1400);
+        numbers.add(1400);   // duplicate
+        numbers.add(1500);
+        numbers.add(1400);   // another duplicate
+
+        System.out.println("First index of 1400 : " + numbers.indexOf(1400));
+        System.out.println("First index of 500  : " + numbers.indexOf(500));
+    }
+}
+```
+
+**Output:**
+```
+First index of 1400 : 3
+First index of 500  : -1
+```
+
+**Explanation:**  
+`1400` appears first at index 3 → returns `3`. Even though `1400` appears 3 times, `indexOf()` only returns the **first** position. `500` doesn't exist → returns `-1`.
+
+---
+
+####   11. `lastIndexOf()`
+
+**Definition:**  
+Returns the **index of the last occurrence** of the specified element. Returns `-1` if not found.
+
+**Syntax:**
+```java
+listName.lastIndexOf(value);
+```
+
+**Use:**  
+Used when an element appears multiple times and you need its **last position**.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class LastIndexOfDemo {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(100);
+        numbers.add(200);
+        numbers.add(300);
+        numbers.add(1400);   // index 3
+        numbers.add(1400);   // index 4
+        numbers.add(1500);
+        numbers.add(1400);   // index 6
+
+        System.out.println("Last index of 1400 : " + numbers.lastIndexOf(1400));
+        System.out.println("Last index of 500  : " + numbers.lastIndexOf(500));
+    }
+}
+```
+
+**Output:**
+```
+Last index of 1400 : 6
+Last index of 500  : -1
+```
+
+**Explanation:**  
+`1400` appears at indexes 3, 4, and 6. `lastIndexOf()` returns the **last** position, which is `6`. `500` is not found → returns `-1`.
+
+---
+
+####   12. `clear()`
+
+**Definition:**  
+**Removes all elements** from the list. The list becomes empty but the list object still exists.
+
+**Syntax:**
+```java
+listName.clear();
+```
+
+**Use:**  
+Used to reset or empty a list completely, ready to be reused.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class ClearDemo {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(100);
+        numbers.add(200);
+        numbers.add(300);
+        numbers.add(400);
+        numbers.add(500);
+
+        System.out.println("Before clear(): " + numbers);
+
+        numbers.clear();
+
+        System.out.println("After clear() : " + numbers);
+        System.out.println("Size after clear: " + numbers.size());
+    }
+}
+```
+
+**Output:**
+```
+Before clear(): [100, 200, 300, 400, 500]
+After clear() : []
+Size after clear: 0
+```
+
+**Explanation:**  
+`clear()` wipes all elements from the list. The list is now empty (`[]`) with size `0`. The list object `numbers` still exists and can be reused.
+
+---
+
+####   13. `removeAll()`
+
+**Definition:**  
+Removes **all elements** from the list that are also present in another collection.
+
+**Syntax:**
+```java
+list1.removeAll(list2);   // Removes from list1 all elements that exist in list2
+```
+
+**Use:**  
+Used to perform a **set difference** — keep only elements that are NOT in another list.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class RemoveAllDemo {
+    public static void main(String[] args) {
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(10);
+        list1.add(20);
+        list1.add(30);
+        list1.add(40);
+        System.out.println("Before removeAll(): " + list1);
+
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(20);
+        list2.add(30);
+
+        list1.removeAll(list2);
+
+        System.out.println("After removeAll() : " + list1);
+    }
+}
+```
+
+**Output:**
+```
+Before removeAll(): [10, 20, 30, 40]
+After removeAll() : [10, 40]
+```
+
+**Explanation:**  
+`list2` contains `[20, 30]`. `removeAll()` goes through `list1` and removes any element that matches a value in `list2`. So `20` and `30` are deleted, leaving `[10, 40]`.
+
+---
+
+####   14. `retainAll()`
+
+**Definition:**  
+Keeps **only the elements** that are also present in another collection. All other elements are removed.
+
+**Syntax:**
+```java
+list1.retainAll(list2);   // Keeps in list1 only elements that exist in list2
+```
+
+**Use:**  
+Used to find **common elements** between two lists (intersection).
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class RetainAllDemo {
+    public static void main(String[] args) {
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(10);
+        list1.add(20);
+        list1.add(30);
+        list1.add(40);
+        System.out.println("Before retainAll(): " + list1);
+
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(20);
+        list2.add(30);
+
+        list1.retainAll(list2);
+
+        System.out.println("After retainAll() : " + list1);
+    }
+}
+```
+
+**Output:**
+```
+Before retainAll(): [10, 20, 30, 40]
+After retainAll() : [20, 30]
+```
+
+**Explanation:**  
+`list2` contains `[20, 30]`. `retainAll()` keeps only those elements in `list1` that also appear in `list2`. So `10` and `40` are removed, leaving `[20, 30]`.
+
+---
+
+####   15. `subList()`
+
+**Definition:**  
+Extracts a **portion** (sub-section) of the list between two indexes.
+
+**Syntax:**
+```java
+listName.subList(fromIndex, toIndex);
+```
+
+>    `fromIndex` is **inclusive** (included), `toIndex` is **exclusive** (not included).
+
+**Use:**  
+Used when you need only a portion of a list, like pagination or slicing data.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SubListDemo {
+    public static void main(String[] args) {
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(10);    // index 0
+        list1.add(50);    // index 1
+        list1.add(70);    // index 2
+        list1.add(40);    // index 3
+        list1.add(50);    // index 4
+        list1.add(90);    // index 5
+        list1.add(30);    // index 6
+        list1.add(20);    // index 7
+
+        List<Integer> sub = list1.subList(4, 8);
+
+        System.out.println("Full List : " + list1);
+        System.out.println("SubList   : " + sub);
+    }
+}
+```
+
+**Output:**
+```
+Full List : [10, 50, 70, 40, 50, 90, 30, 20]
+SubList   : [50, 90, 30, 20]
+```
+
+**Explanation:**  
+`subList(4, 8)` returns elements from index 4 (inclusive) to index 8 (exclusive). So elements at indexes 4, 5, 6, 7 → `[50, 90, 30, 20]`.
+
+---
+
+####  16. `toArray()`
+
+**Definition:**  
+Converts a **List** into an **Array**.
+
+**Syntax:**
+```java
+Object[] arr = listName.toArray();
+```
+
+**Use:**  
+Used when you need to pass list data to a method that only accepts arrays, or when working with APIs that require arrays.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class ToArrayDemo {
+    public static void main(String[] args) {
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(10);
+        list1.add(50);
+        list1.add(70);
+        list1.add(40);
+        list1.add(90);
+
+        Object[] arr = list1.toArray();
+
+        System.out.println("List to Array: " + Arrays.toString(arr));
+    }
+}
+```
+
+**Output:**
+```
+List to Array: [10, 50, 70, 40, 90]
+```
+
+**Explanation:**  
+`toArray()` converts the `ArrayList` into an `Object[]` array. We use `Arrays.toString()` to print the array properly.
+
+---
+
+####  17. `sort()` / `Collections.sort()`
+
+**Definition:**  
+Sorts the elements of the list in **ascending (natural) order** by default.
+
+**Syntax:**
+```java
+Collections.sort(listName);      // Sorts in ascending order
+listName.sort(null);             // Same result using List's sort method
+```
+
+**Use:**  
+Used whenever you need the list elements in sorted order.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SortDemo {
+    public static void main(String[] args) {
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(10);
+        list1.add(50);
+        list1.add(70);
+        list1.add(40);
+        list1.add(50);
+        list1.add(90);
+        list1.add(30);
+        list1.add(20);
+
+        System.out.println("Before sort(): " + list1);
+
+        Collections.sort(list1);
+
+        System.out.println("After sort() : " + list1);
+    }
+}
+```
+
+**Output:**
+```
+Before sort(): [10, 50, 70, 40, 50, 90, 30, 20]
+After sort() : [10, 20, 30, 40, 50, 50, 70, 90]
+```
+
+**Explanation:**  
+`Collections.sort()` arranges all elements in ascending order. Duplicate values like `50` remain and are preserved in sorted position.
+
+---
+
+####  18. `replaceAll()`
+
+**Definition:**  
+Replaces **every element** in the list using a given expression or logic (Lambda Expression).
+
+**Syntax:**
+```java
+listName.replaceAll(element -> expression);   // Lambda expression
+```
+
+**Use:**  
+Used when you want to apply a transformation to every element — like doubling numbers, converting to uppercase, etc.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class ReplaceAllDemo {
+    public static void main(String[] args) {
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(10);
+        list1.add(50);
+        list1.add(70);
+        list1.add(40);
+
+        System.out.println("Before replaceAll(): " + list1);
+
+        list1.replaceAll(n -> n * 2);   // Multiply every element by 2
+
+        System.out.println("After replaceAll() : " + list1);
+    }
+}
+```
+
+**Output:**
+```
+Before replaceAll(): [10, 50, 70, 40]
+After replaceAll() : [20, 100, 140, 80]
+```
+
+**Explanation:**  
+`replaceAll(n -> n * 2)` is a **Lambda Expression** that takes each element `n` and replaces it with `n * 2`. Every element in the list is doubled in place.
+
+---
+
+###  Quick Reference — List Methods Summary
+
+| Method | Purpose | Returns |
+|---|---|---|
+| `add(value)` | Add at end | — |
+| `add(index, value)` | Insert at position | — |
+| `addAll(list)` | Add all from another list | `boolean` |
+| `get(index)` | Read element at index | `element` |
+| `set(index, value)` | Update element at index | old value |
+| `remove(index)` | Delete by position | removed element |
+| `remove(Object)` | Delete by value | `boolean` |
+| `size()` | Count elements | `int` |
+| `isEmpty()` | Check if empty | `boolean` |
+| `contains(value)` | Check if value exists | `boolean` |
+| `indexOf(value)` | First position of value | `int` |
+| `lastIndexOf(value)` | Last position of value | `int` |
+| `clear()` | Remove all elements | — |
+| `removeAll(list)` | Remove matched elements | `boolean` |
+| `retainAll(list)` | Keep only matched elements | `boolean` |
+| `subList(from, to)` | Get portion of list | `List` |
+| `toArray()` | Convert to array | `Object[]` |
+| `sort()` | Sort in ascending order | — |
+| `replaceAll(lambda)` | Transform all elements | — |
+
+---
+
+## 4. Set Interface
+
+### What is a Set?
+
+A **Set** is a collection that:
+
+-  Does **NOT allow duplicate** values
+-  Allows **at most one null** (in `HashSet` and `LinkedHashSet`)
+-  `TreeSet` does **NOT allow null**
+-  Elements are **NOT accessible by index**
+-  Best used when you need **unique values only**
+
+```
+Set = {10, 20, 30, 40}
+// If you try to add 20 again → it is IGNORED
+```
+
+>  **Key Difference from List:**  
+> List allows `[10, 20, 20, 30]` but Set only stores `{10, 20, 30}` — duplicates are silently ignored.
+
+---
+
+### Types of Set
+
+| Type | Class | Order | Null | Performance | Underlying Structure |
+|---|---|---|---|---|---|
+| Hash-based | `HashSet` | **No order** (random) | One null allowed | Fastest | Hash Table |
+| Linked Hash | `LinkedHashSet` | **Insertion order** | One null allowed | Slightly slower | Hash Table + Linked List |
+| Tree-based | `TreeSet` | **Sorted order** |  No null | Slowest | Red-Black Tree |
+
+---
+
+### Creating a Set
+
+```java
+import java.util.*;
+
+// HashSet — no guaranteed order
+Set<Integer> set1 = new HashSet<>();
+HashSet<Integer> set2 = new HashSet<>();
+HashSet<Integer> set3 = new HashSet<>(10);   // initial capacity of 10
+
+// LinkedHashSet — maintains insertion order
+LinkedHashSet<String> lhs = new LinkedHashSet<>();
+Set<String> lhs2 = new LinkedHashSet<>();
+
+// TreeSet — maintains sorted order
+TreeSet<Integer> treeSet = new TreeSet<>();
+Set<Integer> treeSet2 = new TreeSet<>();
+```
+
+**Full Example:**
+```java
+import java.util.*;
+
+public class SetCreationDemo {
+    public static void main(String[] args) {
+
+        // HashSet — random order
+        HashSet<Integer> set = new HashSet<>();
+        set.add(10);
+        set.add(20);
+        set.add(30);
+        set.add(40);
+        System.out.println("HashSet       : " + set);   // order not guaranteed
+
+        // LinkedHashSet — insertion order
+        LinkedHashSet<String> lhs = new LinkedHashSet<>();
+        lhs.add("Andra");
+        lhs.add("Karnataka");
+        lhs.add("Tamilnadu");
+        System.out.println("LinkedHashSet : " + lhs);   // insertion order maintained
+
+        // TreeSet — sorted order
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(20);
+        treeSet.add(10);
+        treeSet.add(50);
+        treeSet.add(8);
+        treeSet.add(11);
+        System.out.println("TreeSet       : " + treeSet);   // always sorted
+    }
+}
+```
+
+**Output:**
+```
+HashSet       : [20, 40, 10, 30]     ← random (may vary each run)
+LinkedHashSet : [Andra, Karnataka, Tamilnadu]
+TreeSet       : [8, 10, 11, 20, 50]
+```
+
+---
+
+### Set Methods
+
+---
+
+####  1. `add()`
+
+**Definition:**  
+Adds an element to the set. If the element **already exists**, it is **ignored** (no error, no duplicate stored).
+
+**Syntax:**
+```java
+set.add(element);
+```
+
+**Use:**  
+Used to insert unique values into the set.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SetAddDemo {
+    public static void main(String[] args) {
+        Set<Integer> set = new HashSet<>();
+        set.add(10);
+        set.add(20);
+        set.add(30);
+        set.add(20);   // duplicate — will be ignored
+
+        System.out.println("Set: " + set);
+        System.out.println("Size: " + set.size());   // Still 3, not 4
+    }
+}
+```
+
+**Output:**
+```
+Set: [20, 10, 30]
+Size: 3
+```
+
+**Explanation:**  
+`add(20)` is called twice but the set only stores it once. The duplicate `20` is automatically ignored. Size remains 3.
+
+---
+
+####  2. `addAll()`
+
+**Definition:**  
+Adds **all elements** from one collection (Set or List) into another set. Duplicates are still ignored.
+
+**Syntax:**
+```java
+set1.addAll(set2);    // Adds all elements of set2 into set1
+```
+
+**Use:**  
+Used to combine two sets (union operation).
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SetAddAllDemo {
+    public static void main(String[] args) {
+        Set<Integer> set1 = new HashSet<>();
+        set1.add(1);
+        set1.add(2);
+        set1.add(3);
+        System.out.println("Set1 before addAll: " + set1);
+
+        Set<Integer> set2 = new HashSet<>();
+        set2.add(4);
+        set2.add(5);
+        set2.add(3);   // duplicate — will be ignored
+        System.out.println("Set2              : " + set2);
+
+        set1.addAll(set2);
+
+        System.out.println("Set1 after addAll : " + set1);
+    }
+}
+```
+
+**Output:**
+```
+Set1 before addAll: [1, 2, 3]
+Set2              : [3, 4, 5]
+Set1 after addAll : [1, 2, 3, 4, 5]
+```
+
+**Explanation:**  
+All elements from `set2` are merged into `set1`. The duplicate `3` is ignored since it already exists. Result is the **union** of both sets.
+
+---
+
+####  3. `remove()`
+
+**Definition:**  
+Removes the specified element from the set if it exists. Returns `true` if removed, `false` if not found.
+
+**Syntax:**
+```java
+set.remove(element);
+```
+
+**Use:**  
+Used to delete a specific value from the set.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SetRemoveDemo {
+    public static void main(String[] args) {
+        Set<String> names = new HashSet<>();
+        names.add("Aradhana");
+        names.add("Maha");
+        System.out.println("Set: " + names);
+
+        System.out.println("Removing 'Maha' : " + names.remove("Maha"));   // true
+        System.out.println("Set after remove: " + names);
+
+        System.out.println("Removing 'Arya' : " + names.remove("Arya"));   // false (doesn't exist)
+        System.out.println("Set after remove: " + names);
+    }
+}
+```
+
+**Output:**
+```
+Set: [Aradhana, Maha]
+Removing 'Maha' : true
+Set after remove: [Aradhana]
+Removing 'Arya' : false
+Set after remove: [Aradhana]
+```
+
+**Explanation:**  
+`remove("Maha")` finds `"Maha"` and deletes it → returns `true`. `remove("Arya")` doesn't find it → returns `false`, set unchanged.
+
+---
+
+####  4. `removeAll()`
+
+**Definition:**  
+Removes from the set **all elements** that are also present in another collection. (Set Difference)
+
+**Syntax:**
+```java
+set1.removeAll(set2);   // Removes from set1 all values found in set2
+```
+
+**Use:**  
+Used to find elements in one set that are **not** in another (set difference operation).
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SetRemoveAllDemo {
+    public static void main(String[] args) {
+        Set<Integer> set1 = new HashSet<>(Arrays.asList(1, 2, 3, 4));
+        Set<Integer> set2 = new HashSet<>(Arrays.asList(3, 4));
+
+        System.out.println("Before removeAll(): " + set1);
+
+        set1.removeAll(set2);
+
+        System.out.println("After removeAll() : " + set1);
+    }
+}
+```
+
+**Output:**
+```
+Before removeAll(): [1, 2, 3, 4]
+After removeAll() : [1, 2]
+```
+
+**Explanation:**  
+`set2` contains `{3, 4}`. `removeAll()` deletes `3` and `4` from `set1`. Only `{1, 2}` remain.
+
+---
+
+####  5. `retainAll()`
+
+**Definition:**  
+Keeps **only** the elements in the set that are also present in another collection. All others are removed. (Set Intersection)
+
+**Syntax:**
+```java
+set1.retainAll(set2);   // Keeps in set1 only values found in set2
+```
+
+**Use:**  
+Used to find **common elements** between two sets (intersection operation).
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SetRetainAllDemo {
+    public static void main(String[] args) {
+        Set<Integer> set1 = new HashSet<>(Arrays.asList(1, 2, 3, 4));
+        Set<Integer> set2 = new HashSet<>(Arrays.asList(3, 4));
+
+        System.out.println("Before retainAll(): " + set1);
+
+        set1.retainAll(set2);
+
+        System.out.println("After retainAll() : " + set1);
+    }
+}
+```
+
+**Output:**
+```
+Before retainAll(): [1, 2, 3, 4]
+After retainAll() : [3, 4]
+```
+
+**Explanation:**  
+Only `3` and `4` exist in both `set1` and `set2`. `retainAll()` removes everything else (`1` and `2`), leaving only the common elements `{3, 4}`.
+
+---
+
+####  6. `contains()`
+
+**Definition:**  
+Checks if a specific element **exists** in the set. Returns `true` or `false`.
+
+**Syntax:**
+```java
+set.contains(value);
+```
+
+**Use:**  
+Used to verify the presence of an element before operations.
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SetContainsDemo {
+    public static void main(String[] args) {
+        Set<String> cities = new HashSet<>();
+        cities.add("Hyderabad");
+        cities.add("Bangalore");
+        cities.add("Chennai");
+
+        System.out.println("Contains 'Bangalore'? " + cities.contains("Bangalore"));   // true
+        System.out.println("Contains 'Mumbai'?    " + cities.contains("Mumbai"));       // false
+    }
+}
+```
+
+**Output:**
+```
+Contains 'Bangalore'? true
+Contains 'Mumbai'?    false
+```
+
+**Explanation:**  
+`"Bangalore"` is in the set → `true`. `"Mumbai"` is not → `false`.
+
+---
+
+####   7. `size()`
+
+**Definition:**  
+Returns the **number of unique elements** in the set.
+
+**Syntax:**
+```java
+set.size();
+```
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SetSizeDemo {
+    public static void main(String[] args) {
+        Set<Integer> set = new HashSet<>();
+        set.add(10);
+        set.add(20);
+        set.add(30);
+        set.add(20);   // duplicate — ignored
+        set.add(10);   // duplicate — ignored
+
+        System.out.println("Set  : " + set);
+        System.out.println("Size : " + set.size());   // 3, not 5
+    }
+}
+```
+
+**Output:**
+```
+Set  : [20, 10, 30]
+Size : 3
+```
+
+**Explanation:**  
+Even though `add()` is called 5 times, only 3 unique values are stored. `size()` returns `3`.
+
+---
+
+####   8. `isEmpty()`
+
+**Definition:**  
+Returns `true` if the set has **no elements**, `false` otherwise.
+
+**Syntax:**
+```java
+set.isEmpty();
+```
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SetIsEmptyDemo {
+    public static void main(String[] args) {
+        Set<String> set = new HashSet<>();
+
+        System.out.println("Is empty (before add): " + set.isEmpty());   // true
+
+        set.add("Java");
+        set.add("Python");
+
+        System.out.println("Is empty (after add) : " + set.isEmpty());   // false
+    }
+}
+```
+
+**Output:**
+```
+Is empty (before add): true
+Is empty (after add) : false
+```
+
+---
+
+####   9. `clear()`
+
+**Definition:**  
+**Removes all elements** from the set. Set becomes empty but the object still exists.
+
+**Syntax:**
+```java
+set.clear();
+```
+
+**Example Program:**
+```java
+import java.util.*;
+
+public class SetClearDemo {
+    public static void main(String[] args) {
+        Set<Integer> set = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5));
+
+        System.out.println("Before clear(): " + set);
+        System.out.println("Size          : " + set.size());
+
+        set.clear();
+
+        System.out.println("After clear() : " + set);
+        System.out.println("Size          : " + set.size());
+    }
+}
+```
+
+**Output:**
+```
+Before clear(): [1, 2, 3, 4, 5]
+Size          : 5
+After clear() : []
+Size          : 0
+```
+
+---
+
+###  Set Types Comparison Summary
+
+| Feature | HashSet | LinkedHashSet | TreeSet |
+|---|---|---|---|
+| Order |  No order |  Insertion order |  Sorted order |
+| Duplicates |  No |  No |  No |
+| Null value |  One null |  One null |  No null |
+| Speed |  Fastest |  Medium |  Slowest |
+| Use case | Fast lookup | Ordered uniqueness | Sorted uniqueness |
+
+---
+
+###  Set Operations — Visual Summary
+
+```
+set1 = {1, 2, 3, 4}
+set2 = {3, 4, 5}
+
+addAll()     → Union        → {1, 2, 3, 4, 5}
+retainAll()  → Intersection → {3, 4}
+removeAll()  → Difference   → {1, 2}
+```
+
+---
+
+###  Quick Reference — Set Methods Summary
+
+| Method | Purpose | Returns |
+|---|---|---|
+| `add(element)` | Add unique element | `boolean` |
+| `addAll(collection)` | Add all from collection | `boolean` |
+| `remove(element)` | Remove specific element | `boolean` |
+| `removeAll(set)` | Remove all matching elements | `boolean` |
+| `retainAll(set)` | Keep only matching elements | `boolean` |
+| `contains(value)` | Check if element exists | `boolean` |
+| `size()` | Count of unique elements | `int` |
+| `isEmpty()` | Check if set is empty | `boolean` |
+| `clear()` | Remove all elements | — |
+
+---
+
+##  Key Differences: List vs Set
+
+| Feature | List | Set |
+|---|---|---|
+| Duplicates |  Allowed |  Not allowed |
+| Order |  Insertion order maintained | Depends on type |
+| Index access |  Yes (`get(index)`) |  No index |
+| Null values |  Multiple nulls allowed | At most one null |
+| Use case | Ordered sequences | Unique collections |
+| Main classes | `ArrayList`, `LinkedList` | `HashSet`, `LinkedHashSet`, `TreeSet` |
+
+---
+
+>  **Next Topics to Cover:**
+> - Map Interface (HashMap, LinkedHashMap, TreeMap)
+> - Queue Interface (PriorityQueue, Deque)
+> - Iterator and for-each with Collections
+> - Collections utility class methods
+
+---
+
+*Notes prepared for Java students — Java Collection Framework (JCF)*
