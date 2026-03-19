@@ -7069,5 +7069,401 @@ Student at 103 : Ramya
 | Null Values      | Allowed        |
 
 ---
+#  Java Collection Framework — Map
+
+---
+
+##  What is a Map?
+
+In Python, we use **Dictionary** to store data as `Key → Value` pairs.
+Java uses **Map** for the same purpose.
+
+```
+Key   →   Value
+101   →   Aparna
+102   →   Uday
+103   →   Ramya
+104   →   Aparna    (duplicate value allowed)
+102   →   Maheswaram   (duplicate key NOT allowed — overwrites old value)
+```
+
+### Rules:
+-  Keys must be **unique**
+-  Values **can be duplicate**
+-  Each key maps to exactly **one value**
+
+---
+
+## Map Interface & Implementations
+
+```
+Map (Interface)
+ ├── HashMap
+ ├── LinkedHashMap
+ └── TreeMap
+```
+
+| Feature             | HashMap      | LinkedHashMap     | TreeMap            |
+|---------------------|--------------|-------------------|--------------------|
+| Order               |  No order    |  Insertion order  |  Sorted by key     |
+| Null Keys           |  One allowed |  One allowed      |  Not allowed       |
+| Null Values         |  Multiple    |  Multiple         |  Multiple          |
+| Duplicate Keys      |  Not allowed |  Not allowed      |  Not allowed       |
+| Duplicate Values    |  Allowed     |  Allowed          |  Allowed           |
+| Speed               |  Fastest     |  Slightly slower  |  Slowest (sorted)  |
+
+---
+
+##  HashMap
+
+### Definition
+- Stores data as **Key-Value pairs**
+- Does **NOT maintain** any order
+- Allows **one null key** and **multiple null values**
+- Does **not allow duplicate keys**
+
+### Syntax
+```java
+HashMap<KeyDataType, ValueDataType> mapName = new HashMap<>();
+```
+
+---
+
+###  put(key, value)
+Adds a key-value pair into the HashMap.
+If the key already exists, it **overwrites** the old value.
+
+```java
+HashMap<Integer, String> map1 = new HashMap<>();
+
+map1.put(1, "Seetha");
+map1.put(2, "Ram");
+map1.put(3, "Hanuma");
+map1.put(4, "Bheem");
+map1.put(11, "Lakshman");
+map1.put(21, "Balaram");
+map1.put(53, "Ravan");
+map1.put(94, "Nakul");
+
+System.out.println(map1);
+// Output: {1=Seetha, 2=Ram, 3=Hanuma, ...} (order not guaranteed)
+```
+
+**Explanation:**
+- `put(1, "Seetha")` → key `1` maps to value `"Seetha"`
+- If you call `put(1, "Lava")` again → key `1` now maps to `"Lava"` (old value replaced)
+
+---
+
+###  get(key)
+Retrieves the value associated with the given key.
+
+```java
+System.out.println("Student at 102 : " + map1.get(102));
+// Output: Student at 102 : Uday
+```
+
+**Iterating all keys using keySet():**
+```java
+for (Integer key : map1.keySet()) {
+    System.out.println("Student at " + key + " : " + map1.get(key));
+}
+// key=101 → map1.get(101) → Aparna
+// key=102 → map1.get(102) → Uday
+// key=103 → map1.get(103) → Ramya
+```
+
+---
+
+###  remove(key)
+Removes the key-value pair from the HashMap for the given key.
+
+```java
+map1.remove(1);
+System.out.println("After Remove: " + map1);
+// Key 1 and its value "Seetha" are removed
+```
+
+---
+
+###  containsKey(key)
+Checks whether the specified key exists in the HashMap.
+Returns `true` if found, `false` otherwise.
+
+```java
+System.out.println(map1.containsKey(94));   // true
+System.out.println(map1.containsKey(74));   // false
+```
+
+---
+
+###  containsValue(value)
+Checks whether the specified value exists in the HashMap.
+Returns `true` if found, `false` otherwise.
+
+```java
+System.out.println(map1.containsValue("Ram"));    // true
+System.out.println(map1.containsValue("Aparna")); // false
+```
+
+---
+
+###  size()
+Returns the total number of key-value pairs in the HashMap.
+
+```java
+System.out.println("Size: " + map1.size()); // Output: 7
+```
+
+---
+
+###  isEmpty()
+Checks whether the HashMap is empty or not.
+Returns `true` if empty, `false` otherwise.
+
+```java
+System.out.println(map1.isEmpty()); // false (has elements)
+
+HashMap<Integer, String> map2 = new HashMap<>();
+System.out.println(map2.isEmpty()); // true (empty)
+```
+
+---
+
+###  keySet()
+Returns all the **keys** present in the HashMap as a Set.
+
+```java
+HashMap<String, String> map3 = new HashMap<>();
+map3.put("Bahubali", "Prabas");
+map3.put("Pushpa", "AA");
+map3.put("RRR", "NTR");
+map3.put("PEDDI", "RC");
+map3.put("MANAM", "Nagarjuna");
+map3.put("Kantara", "RST");
+map3.put("Animal", "Ranberkapoor");
+map3.put("Varanasi", "SSMB");
+
+System.out.println(map3.keySet());
+// Output: [Bahubali, Pushpa, RRR, PEDDI, MANAM, Kantara, Animal, Varanasi]
+```
+
+---
+
+###  values()
+Returns all the **values** present in the HashMap as a Collection.
+
+```java
+System.out.println(map3.values());
+// Output: [Prabas, AA, NTR, RC, Nagarjuna, RST, Ranberkapoor, SSMB]
+```
+
+---
+
+###  entrySet()
+Returns all **key-value pairs** as a Set of `Map.Entry` objects.
+
+```java
+System.out.println(map3.entrySet());
+// Output: [Bahubali=Prabas, Pushpa=AA, RRR=NTR, ...]
+```
+
+---
+
+###  Iterating HashMap using entrySet() + getKey() + getValue()
+
+The best way to iterate a HashMap and access both key and value together.
+
+```java
+HashMap<Float, String> map4 = new HashMap<>();
+map4.put(1.1F, "Java");
+map4.put(1.2F, "Cpp");
+map4.put(1.3F, "VIVADO");
+map4.put(1.4F, "Vitis");
+map4.put(1.5F, "Verilog");
+map4.put(1.6F, "VHDL");
+map4.put(1.7F, "Matlab");
+map4.put(1.8F, "Vitis-AI");
+
+for (Map.Entry<Float, String> entry : map4.entrySet()) {
+    System.out.println(entry.getKey() + " : " + entry.getValue());
+}
+```
+
+**Output:**
+```
+1.1 : Java
+1.2 : Cpp
+1.3 : VIVADO
+...
+```
+
+**Explanation:**
+- `map4.entrySet()` → returns all pairs as a Set
+- `entry.getKey()` → returns the key of that pair
+- `entry.getValue()` → returns the value of that pair
+
+---
+
+###  putIfAbsent(key, value)
+Inserts the key-value pair **only if the key does NOT already exist**.
+If the key already exists, it does nothing.
+
+```java
+HashMap<Integer, String> map = new HashMap<>();
+map.put(1, "Java");
+map.put(2, "C");
+map.put(3, "C++");
+
+map.put(1, "Python");  // key 1 exists → value updated to Python
+
+map.putIfAbsent(1, "Angular"); // key 1 exists → does NOTHING
+map.putIfAbsent(4, "Angular"); // key 4 does NOT exist → inserts it
+
+System.out.println(map);
+// Output: {1=Python, 2=C, 3=C++, 4=Angular}
+```
+
+**Difference between `put()` and `putIfAbsent()`:**
+
+| Method          | Key Exists?       | Behavior              |
+|-----------------|-------------------|-----------------------|
+| `put()`         | Yes               | Overwrites old value  |
+| `putIfAbsent()` | Yes               | Does nothing          |
+| `put()`         | No                | Inserts new pair      |
+| `putIfAbsent()` | No                | Inserts new pair      |
+
+---
+
+###  replace(key, value)
+Replaces the value of an existing key with a new value.
+
+```java
+map.replace(3, "Spring Boot");
+System.out.println(map);
+// Key 3's value changed from "C++" to "Spring Boot"
+```
+
+---
+
+###  replace(key, oldValue, newValue)
+Replaces the value only if the current value matches `oldValue`.
+This is a **safe replace** — it only updates if you provide the correct old value.
+
+```java
+map.replace(3, "Spring Boot", "Spring");
+System.out.println(map);
+// Key 3's value changed from "Spring Boot" to "Spring"
+
+map.replace(3, "Django", "Flask");
+// Does NOTHING — because key 3's current value is "Spring", not "Django"
+```
+
+---
+
+##  TreeMap
+
+### Definition
+- Stores data as **Key-Value pairs**
+- Keys are stored in **sorted (ascending) order automatically**
+- Does **NOT allow null keys** (throws `NullPointerException`)
+- Slower than HashMap but useful when **sorted order is needed**
+
+### Syntax
+```java
+TreeMap<KeyType, ValueType> mapName = new TreeMap<>();
+```
+
+---
+
+### Basic Usage
+
+```java
+TreeMap<Integer, String> map = new TreeMap<>();
+
+map.put(30, "Java");
+map.put(11, "Python");
+map.put(12, "C++");
+map.put(34, "Go");
+map.put(21, "C");
+map.put(26, "C#");
+
+System.out.println(map);
+// Output: {11=Python, 12=C++, 21=C, 26=C#, 30=Java, 34=Go}
+// Automatically sorted by key!
+```
+
+---
+
+###  firstKey()
+Returns the **smallest (first/leftmost) key** in the TreeMap.
+
+```java
+System.out.println(map.firstKey()); // Output: 11
+```
+
+---
+
+### lastKey()
+Returns the **largest (last/rightmost) key** in the TreeMap.
+
+```java
+System.out.println(map.lastKey()); // Output: 34
+```
+
+---
+
+###  higherKey(key)
+Returns the **next key that is strictly greater than** the given key.
+Returns `null` if no such key exists.
+
+```java
+System.out.println(map.higherKey(34)); // Output: null  (34 is the largest)
+System.out.println(map.higherKey(21)); // Output: 26
+```
+
+---
+
+###  lowerKey(key)
+Returns the **next key that is strictly less than** the given key.
+Returns `null` if no such key exists.
+
+```java
+System.out.println(map.lowerKey(11)); // Output: null  (11 is the smallest)
+System.out.println(map.lowerKey(26)); // Output: 21
+```
+
+---
+
+## Quick Method Reference Table
+
+### HashMap Methods
+
+| Method                        | Description                                        | Returns        |
+|-------------------------------|----------------------------------------------------|----------------|
+| `put(key, value)`             | Add or update a key-value pair                     | Old value / null |
+| `get(key)`                    | Get value by key                                   | Value / null   |
+| `remove(key)`                 | Remove pair by key                                 | Removed value  |
+| `containsKey(key)`            | Check if key exists                                | boolean        |
+| `containsValue(value)`        | Check if value exists                              | boolean        |
+| `size()`                      | Number of key-value pairs                          | int            |
+| `isEmpty()`                   | Check if map is empty                              | boolean        |
+| `keySet()`                    | Get all keys                                       | Set            |
+| `values()`                    | Get all values                                     | Collection     |
+| `entrySet()`                  | Get all key-value pairs                            | Set<Map.Entry> |
+| `putIfAbsent(key, value)`     | Add only if key doesn't exist                      | Old value / null |
+| `replace(key, value)`         | Replace value of existing key                      | Old value      |
+| `replace(key, old, new)`      | Replace only if old value matches                  | boolean        |
+
+### TreeMap Extra Methods
+
+| Method             | Description                                         | Returns     |
+|--------------------|-----------------------------------------------------|-------------|
+| `firstKey()`       | Smallest key                                        | Key         |
+| `lastKey()`        | Largest key                                         | Key         |
+| `higherKey(key)`   | Next key greater than given key                     | Key / null  |
+| `lowerKey(key)`    | Next key less than given key                        | Key / null  |
+
+---
 
 
