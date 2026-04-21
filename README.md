@@ -7466,4 +7466,392 @@ System.out.println(map.lowerKey(26)); // Output: 21
 
 ---
 
+````markdown
+# Java Exception Handling – Detailed Notes (Complete Guide)
+
+## 1. What is an Exception?
+
+An **Exception** in Java is an unwanted or unexpected event that occurs during the execution of a program (runtime) and disrupts the normal flow of instructions.
+
+In simple terms:
+- Exception = Runtime problem
+- It stops the program if not handled
+
+### Example:
+```java
+int a = 10;
+int b = 0;
+int c = a / b; // causes ArithmeticException
+````
+
+---
+
+## 2. What is an Error?
+
+An **Error** is a serious issue that occurs due to system-level failures and cannot usually be handled by the program.
+
+### Examples:
+
+* OutOfMemoryError
+* StackOverflowError
+
+---
+
+## 3. Difference Between Error and Exception
+
+| Feature    | Error              | Exception           |
+| ---------- | ------------------ | ------------------- |
+| Nature     | Serious problem    | Recoverable problem |
+| Occurrence | JVM/System related | Application related |
+| Handling   | Not handled        | Can be handled      |
+| Example    | OutOfMemoryError   | ArithmeticException |
+
+---
+
+## 4. Exception Hierarchy
+
+All exceptions in Java are derived from the `Throwable` class.
+
+```
+Throwable
+│
+├── Error
+│
+└── Exception
+     │
+     ├── Checked Exceptions
+     │
+     └── RuntimeException (Unchecked Exceptions)
+```
+
+---
+
+## 5. Types of Exceptions
+
+### 5.1 Checked Exceptions
+
+* Checked at **compile time**
+* Must be handled using:
+
+  * try-catch OR
+  * throws keyword
+
+### Examples:
+
+* IOException
+* SQLException
+* ClassNotFoundException
+* FileNotFoundException
+
+### Example Code:
+
+```java
+try {
+    Class.forName("java.lang.string");
+    System.out.println("Class Found");
+}
+catch(ClassNotFoundException e) {
+    System.out.println("Class Not Found");
+}
+```
+
+Explanation:
+
+* Compiler forces you to handle it
+* If not handled → compilation error
+
+---
+
+### 5.2 Unchecked Exceptions
+
+* Occur at **runtime**
+* Not mandatory to handle
+
+### Examples:
+
+* ArithmeticException
+* NullPointerException
+* ArrayIndexOutOfBoundsException
+* InputMismatchException
+
+---
+
+## 6. Common Runtime Exceptions Explained
+
+### 6.1 ArithmeticException
+
+Occurs when dividing by zero.
+
+```java
+try {
+    int a = 10;
+    int b = 0;
+    int c = a / b;
+}
+catch(ArithmeticException e) {
+    System.out.println("Cannot divide by zero");
+}
+```
+
+---
+
+### 6.2 NullPointerException
+
+Occurs when calling methods on a null object.
+
+```java
+try {
+    String s = null;
+    System.out.println(s.length());
+}
+catch(NullPointerException e) {
+    System.out.println("Object is null");
+}
+```
+
+---
+
+### 6.3 ArrayIndexOutOfBoundsException
+
+Occurs when accessing invalid index.
+
+```java
+try {
+    int arr[] = {1,2,3};
+    System.out.println(arr[5]);
+}
+catch(ArrayIndexOutOfBoundsException e) {
+    System.out.println("Invalid index");
+}
+```
+
+---
+
+### 6.4 InputMismatchException
+
+Occurs when input type is wrong.
+
+```java
+Scanner sc = new Scanner(System.in);
+
+try {
+    int num = sc.nextInt();
+}
+catch(InputMismatchException e) {
+    System.out.println("Invalid input type");
+}
+```
+
+---
+
+## 7. Try-Catch Block
+
+Used to handle exceptions.
+
+### Syntax:
+
+```java
+try {
+    // risky code
+}
+catch(ExceptionType e) {
+    // handling code
+}
+```
+
+---
+
+## 8. Multiple Catch Blocks
+
+Used when multiple exceptions may occur.
+
+```java
+try {
+    int num = Integer.parseInt("abc");
+}
+catch(NumberFormatException e) {
+    System.out.println("Invalid number format");
+}
+catch(Exception e) {
+    System.out.println("General Exception");
+}
+```
+
+---
+
+## 9. Finally Block
+
+* Always executes
+* Used for cleanup (closing resources)
+
+```java
+try {
+    int a = 10 / 2;
+}
+catch(Exception e) {
+    System.out.println("Error");
+}
+finally {
+    System.out.println("This always runs");
+}
+```
+
+---
+
+## 10. Throw Keyword
+
+Used to manually throw exceptions.
+
+```java
+if(age < 18) {
+    throw new ArithmeticException("Not eligible");
+}
+```
+
+---
+
+## 11. Throws Keyword
+
+Used in method declaration to declare exceptions.
+
+```java
+public void readFile() throws IOException {
+    // code
+}
+```
+
+---
+
+## 12. Custom Validation Example
+
+```java
+Scanner sc = new Scanner(System.in);
+
+try {
+    System.out.print("Enter a number:");
+    int num = sc.nextInt();
+
+    if(num < 0) {
+        throw new IllegalArgumentException("-ve numbers not allowed");
+    }
+
+    int result = 10 / num;
+
+    if(num == 0) {
+        throw new ArithmeticException("Infinite");
+    }
+
+    System.out.println("Result: " + result);
+}
+catch(IllegalArgumentException e) {
+    System.out.println(e.getMessage());
+}
+catch(ArithmeticException e) {
+    System.out.println(e.getMessage());
+}
+```
+
+---
+
+## 13. Important Exception Methods
+
+| Method            | Description               |
+| ----------------- | ------------------------- |
+| getMessage()      | Returns error message     |
+| printStackTrace() | Shows full error trace    |
+| toString()        | Returns exception details |
+
+---
+
+## 14. Real World Example (Bank System)
+
+```java
+int balance = 20000;
+
+Scanner sc = new Scanner(System.in);
+
+try {
+    System.out.print("Enter withdrawal amount: ");
+    int amount = sc.nextInt();
+
+    if(amount > balance) {
+        throw new ArithmeticException("Insufficient Balance");
+    }
+
+    balance -= amount;
+
+    System.out.println("Transaction Successful");
+    System.out.println("Remaining Balance: " + balance);
+}
+catch(InputMismatchException e) {
+    System.out.println("Invalid input");
+}
+catch(ArithmeticException e) {
+    System.out.println(e.getMessage());
+}
+```
+
+---
+
+## 15. Best Practices
+
+* Always handle expected exceptions
+* Avoid using generic Exception
+* Use specific exception classes
+* Do not ignore exceptions
+* Use finally for resource closing
+* Validate input before processing
+
+---
+
+## 16. Common Mistakes
+
+* Not handling checked exceptions
+* Catching wrong exception type
+* Writing empty catch blocks
+* Overusing try-catch
+* Throwing exceptions unnecessarily
+
+---
+
+## 17. Summary
+
+* Exception = runtime error
+* Error = system failure
+* Two types:
+
+  * Checked
+  * Unchecked
+* Use try-catch to handle exceptions
+* Use throw for manual exceptions
+* Use finally for cleanup
+* Proper handling ensures stable programs
+
+---
+
+## 18. Interview Questions
+
+### Q1: Difference between throw and throws?
+
+* throw → used inside method
+* throws → used in method declaration
+
+### Q2: What is checked exception?
+
+* Compile-time checked exception
+
+### Q3: Can we have multiple catch blocks?
+
+* Yes
+
+### Q4: What is finally block?
+
+* Always executes block
+
+### Q5: What happens if exception is not handled?
+
+* Program terminates
+
+----
+
 
