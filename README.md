@@ -7852,6 +7852,306 @@ catch(ArithmeticException e) {
 
 * Program terminates
 
-----
+---
+
+---
+````markdown id="zq7m2p"
+# Structured Query Language (SQL) – Complete Notes
+
+## 1. Introduction
+
+Structured Query Language (SQL) is the standard language used to interact with relational databases.
+
+It allows users to:
+- Store data
+- Retrieve data
+- Update data
+- Manage data efficiently using simple commands
+
+SQL is known for:
+- User-friendly syntax
+- Powerful capabilities
+- Wide usage across industries
+
+---
+
+## 2. Before and After SQL
+
+Before SQL:
+- Data was managed manually or using complex programming logic
+- Difficult to maintain and retrieve structured data
+
+After SQL:
+- Easy interaction with databases
+- Standardized way to manage data
+- Faster and more efficient operations
+
+---
+
+## 3. How SQL Works
+
+We interact with databases using SQL queries. DBMS tools like MySQL and SQL Server provide:
+- SQL engine
+- Interface to write and execute queries
+
+### Steps in SQL Query Execution
+
+1. Input  
+   The user sends a SQL query (e.g., SELECT, INSERT)
+
+2. Parsing  
+   The system checks if the query syntax is correct
+
+3. Optimization  
+   The system decides the most efficient way to execute the query
+
+4. Execution  
+   The database executes the query
+
+5. Output  
+   The result or confirmation is returned to the user
+
+---
+
+## 4. Components of a SQL System
+
+### 4.1 Database
+A structured collection of data stored in tables.
+
+### 4.2 Tables
+- Organize data into rows and columns
+- Maintain data consistency and accuracy
+
+### 4.3 Indexes
+- Improve data retrieval speed
+- Avoid full table scanning
+
+### 4.4 Views
+- Virtual tables created using SELECT queries
+- Simplify complex queries
+
+### 4.5 Stored Procedures
+- Predefined SQL code
+- Improve performance and security
+
+### 4.6 Transactions
+- Group of SQL operations
+- Ensures all operations succeed or fail together
+
+### 4.7 Security and Permissions
+- Controls user access
+- Defines who can view or modify data
+
+### 4.8 Joins
+- Combine data from multiple tables
+- Based on relationships
+
+---
+
+## 5. Rules for Writing SQL Queries
+
+### 5.1 Semicolon (;)
+- Ends an SQL statement
+
+### 5.2 Case Insensitivity
+- SQL keywords are not case-sensitive
+  Example: SELECT = select
+
+### 5.3 Whitespace
+- Spaces and line breaks improve readability
+
+### 5.4 Reserved Words
+- Avoid using SQL keywords as identifiers
+- Use quotes/backticks if necessary
+
+### 5.5 Comments
+
+Single-line comment:
+```sql
+-- This is a comment
+````
+
+Multi-line comment:
+
+```sql
+/* This is a 
+   multi-line comment */
+```
+
+### 5.6 Data Constraints
+
+* NOT NULL
+* UNIQUE
+* PRIMARY KEY
+* Used to ensure data integrity
+
+### 5.7 String Values
+
+* Always use single quotes
+
+```sql
+'text'
+```
+
+### 5.8 Naming Rules
+
+* Must start with a letter
+* Maximum 30 characters
+* Only letters, numbers, and underscore (_)
+
+---
+
+## 6. Types of SQL Commands
+
+SQL commands are used to:
+
+* Create database structures
+* Manipulate data
+* Retrieve data
+* Control access
+* Manage transactions
+
+<img width="1407" height="509" alt="image" src="https://github.com/user-attachments/assets/9d548b50-d883-45d6-8ef4-83f0dfe1f273" />
+
+
+---
+
+## 6.1 Data Definition Language (DDL)
+
+Used to define and manage database structure.
+
+| Command  | Description                             |
+| -------- | --------------------------------------- |
+| CREATE   | Creates tables, views, indexes          |
+| ALTER    | Modifies existing objects               |
+| DROP     | Deletes objects                         |
+| TRUNCATE | Removes all records but keeps structure |
+| RENAME   | Changes object name                     |
+
+---
+
+## 6.2 Data Manipulation Language (DML)
+
+Used to modify data inside tables.
+
+| Command | Description               |
+| ------- | ------------------------- |
+| INSERT  | Adds new records          |
+| UPDATE  | Modifies existing records |
+| DELETE  | Removes records           |
+
+---
+
+## 6.3 Data Query Language (DQL)
+
+Used to retrieve data.
+
+| Command | Description              |
+| ------- | ------------------------ |
+| SELECT  | Fetches data from tables |
+
+---
+
+## 6.4 Data Control Language (DCL)
+
+Used to control user access and permissions.
+
+| Command | Description         |
+| ------- | ------------------- |
+| GRANT   | Gives permissions   |
+| REVOKE  | Removes permissions |
+
+---
+
+## 6.5 Transaction Control Language (TCL)
+
+Used to manage transactions.
+
+| Command   | Description               |
+| --------- | ------------------------- |
+| COMMIT    | Saves changes permanently |
+| ROLLBACK  | Reverts changes           |
+| SAVEPOINT | Sets a rollback point     |
+
+---
+
+## 7. Benefits of SQL
+
+* Efficient
+  Works fast even with large datasets
+
+* Standard
+  Works across most database systems
+
+* Scalable
+  Suitable for small to large databases
+
+* Flexible
+  Supports advanced logic using PL/SQL, T-SQL
+
+---
+
+## 8. Limitations of SQL
+
+* Complex
+  Advanced optimization can be difficult
+
+* Scalability Issues
+  Not ideal for very large or unstructured data
+
+* Different Versions
+  Syntax may vary across databases
+
+* Not Real-Time
+  Traditional SQL is not designed for real-time analytics
+
+---
+
+## 9. Applications of SQL
+
+### 9.1 E-Commerce
+
+* Manage orders
+* Handle product catalogs
+* Track inventory
+
+### 9.2 Healthcare
+
+* Store patient records
+* Manage appointments
+
+### 9.3 Banking
+
+* Analyze transactions
+* Generate financial reports
+
+### 9.4 Web Development
+
+* Build dynamic websites
+* Manage user data
+
+### 9.5 Machine Learning and Data Science
+
+* Work with structured datasets
+* Integrate with Python, R, TensorFlow
+
+---
+
+## 10. Summary
+
+* SQL is used to manage relational databases
+* Provides simple and powerful commands
+* Divided into:
+
+  * DDL
+  * DML
+  * DQL
+  * DCL
+  * TCL
+* Ensures efficient data handling and security
+* Widely used in real-world applications across industries
+
+```
+```
 
 
