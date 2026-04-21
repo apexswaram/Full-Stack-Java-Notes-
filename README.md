@@ -8151,7 +8151,278 @@ Used to manage transactions.
 * Ensures efficient data handling and security
 * Widely used in real-world applications across industries
 
+
+````markdown 
+
+In SQL, databases are used to store structured data in tables.  
+Each table contains:
+- Rows (records)
+- Columns (fields)
+
+To maintain data accuracy and integrity, SQL provides **constraints** such as:
+- NOT NULL
+- UNIQUE
+- PRIMARY KEY
+
+This section explains database creation, table creation, inserting data, and constraints using examples.
+
+---
+
+## 2. Creating a Database
+
+### Definition
+
+A **database** is a collection of related data stored in an organized manner.
+
+### Syntax
+````
+
+```sql
+CREATE DATABASE database_name;
 ```
+
+### Example
+
+```sql
+CREATE DATABASE instagramDB;
 ```
+
+---
+
+## 3. Selecting a Database
+
+Before working with tables, we must select the database.
+
+### Syntax
+
+```sql
+USE database_name;
+```
+
+### Example
+
+```sql
+USE instagramDB;
+```
+
+---
+
+## 4. Creating a Table
+
+### Definition
+
+A **table** is a structure used to store data in rows and columns.
+
+### Syntax
+
+```sql
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype
+);
+```
+
+### Example
+
+```sql
+CREATE TABLE STUDENTS (
+    STD_ID INT,
+    STD_NAME VARCHAR(25)
+);
+```
+
+---
+
+## 5. Retrieving Data (SELECT)
+
+### Definition
+
+The `SELECT` statement is used to retrieve data from a table.
+
+### Syntax
+
+```sql
+SELECT * FROM table_name;
+SELECT column_name FROM table_name;
+```
+
+### Example
+
+```sql
+SELECT * FROM STUDENTS;
+SELECT STD_ID FROM STUDENTS;
+SELECT STD_NAME FROM STUDENTS;
+```
+
+Explanation:
+
+* `*` retrieves all columns
+* Specific column names retrieve selected data
+
+---
+
+## 6. Inserting Data (INSERT)
+
+### Definition
+
+The `INSERT` statement is used to add records into a table.
+
+### Syntax
+
+```sql
+INSERT INTO table_name VALUES (value1, value2);
+```
+
+### Example
+
+```sql
+insert into STUDENTS values (1, 'APARNA');
+insert into STUDENTS values (2, 'udhay');
+insert into STUDENTS values (1, 'maheswaram');
+```
+
+Observation:
+
+* Duplicate values are allowed
+* No restrictions applied
+
+---
+
+## 7. Constraints in SQL
+
+Constraints are rules applied on columns to ensure data accuracy and integrity.
+
+---
+
+## 7.1 NOT NULL Constraint
+
+### Definition
+
+Ensures that a column cannot have NULL (empty) values.
+
+---
+
+## 7.2 UNIQUE Constraint
+
+### Definition
+
+Ensures that all values in a column are unique (no duplicates allowed).
+
+---
+
+### Example: NOT NULL + UNIQUE
+
+```sql
+CREATE TABLE STUDENTS1 (
+    STD_ID INT NOT NULL UNIQUE,
+    STD_NAME VARCHAR(25)
+);
+```
+
+### Insert Data
+
+```sql
+insert into STUDENTS1 values (1, 'APARNA');
+insert into STUDENTS1 values (2, 'udhay');
+insert into STUDENTS1 values (1, 'maheswaram');
+```
+
+### Output
+
+```sql
+SELECT * FROM STUDENTS1;
+```
+
+Explanation:
+
+* First two inserts succeed
+* Third insert fails because STD_ID must be unique
+
+---
+
+## 7.3 PRIMARY KEY Constraint
+
+### Definition
+
+A **PRIMARY KEY** is a combination of:
+
+* NOT NULL
+* UNIQUE
+
+It uniquely identifies each record in a table.
+
+### Rules:
+
+* Cannot contain NULL values
+* Cannot contain duplicate values
+* Only one primary key per table
+
+---
+
+### Example: PRIMARY KEY
+
+```sql
+CREATE TABLE STUDENTS2 (
+    STD_ID INT PRIMARY KEY,
+    STD_NAME VARCHAR(25)
+);
+```
+
+### Insert Data
+
+```sql
+insert into STUDENTS2 values (1, 'APARNA');
+insert into STUDENTS2 values (2, 'udhay');
+insert into STUDENTS2 values (1, 'maheswaram');
+```
+
+### Output
+
+```sql
+SELECT * FROM STUDENTS2;
+```
+
+Explanation:
+
+* First two inserts succeed
+* Third insert fails due to duplicate PRIMARY KEY
+
+---
+
+## 8. Comparison of Constraints
+
+| Constraint  | Allows NULL | Allows Duplicates |
+| ----------- | ----------- | ----------------- |
+| NOT NULL    | No          | Yes               |
+| UNIQUE      | Yes         | No                |
+| PRIMARY KEY | No          | No                |
+
+---
+
+## 9. Key Observations
+
+* Without constraints → duplicate and invalid data allowed
+* UNIQUE → prevents duplicate values
+* NOT NULL → prevents empty values
+* PRIMARY KEY → ensures both uniqueness and non-null
+
+---
+
+## 10. Summary
+
+* CREATE DATABASE creates a database
+* USE selects a database
+* CREATE TABLE creates a table
+* INSERT adds data
+* SELECT retrieves data
+* Constraints ensure data integrity
+
+This example demonstrates:
+
+* Basic SQL operations
+* Use of constraints
+* Importance of PRIMARY KEY in real-world databases
+
+
 
 
