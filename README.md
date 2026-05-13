@@ -8399,30 +8399,4 @@ Explanation:
 
 ---
 
-## 9. Key Observations
-
-* Without constraints → duplicate and invalid data allowed
-* UNIQUE → prevents duplicate values
-* NOT NULL → prevents empty values
-* PRIMARY KEY → ensures both uniqueness and non-null
-
----
-
-## 10. Summary
-
-* CREATE DATABASE creates a database
-* USE selects a database
-* CREATE TABLE creates a table
-* INSERT adds data
-* SELECT retrieves data
-* Constraints ensure data integrity
-
-This example demonstrates:
-
-* Basic SQL operations
-* Use of constraints
-* Importance of PRIMARY KEY in real-world databases
-
-
-
 
