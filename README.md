@@ -10385,3 +10385,139 @@ ORDER BY marks DESC;
 
 ---
 
+
+# SubQueries  
+-- A subquery means query inside another query 
+-- inner query 
+-- outer query (nested query)
+
+#### syntax for subqueries
+```sql
+ select column_name 
+ from table_name 
+ where column_name OPERATOER 
+ ( 
+ select colmun_name from Table_name;
+  );
+```
+-- first query retult -> used by the second query 
+-- inner query execuites first then the outer query execute next 
+
+```sql
+CREATE DATABASE JFSEMPLOYEES;
+USE JFSEMPLOYEES;
+
+CREATE TABLE EMPLOYEES (EMP_ID INT, EMP_NAME VARCHAR(45), EMP_DEPT VARCHAR(25), EMP_SAL INT);
+
+INSERT INTO EMPLOYEES VALUES 
+(1,'MAHESH', 'IT',50000),
+(2,'RAHUL', 'HR',30000),
+(3,'TEJA', 'IT',55000),
+(4,'KIRAN', 'SALES',45000),
+(5,'SURESH', 'IT',60000),
+(6,'INDRA', 'HR',40000),
+(7,'RAMESH', 'DEV',20000);
+
+SELECT * FROM EMPLOYEES
+```
+
+ ### SUBQUERIES Types
+-- SINGLE ROW SUBQURIES --> RETURENS ONE ROW 
+-- MULTIPLE ROW SUBQURIES --> RETURNS MULTIPLE ROWS 
+-- CORELATED SUBQUERIES --> INNER QUUERY DEPENDS ON OUTER QUERY 
+-- NESTED SUBQUERIES --> QUERY INSED QUERY INSIDE ANOTHER QUERY 
+
+ ## SINGLE ROW SUBQURIES 
+-- SUBQUERY RETURNS ONLY ONE VALUE
+
+-- TO FINED THE EMPLOYEES EARNING MORE THAN AVERAGE SALARY 
+```sql
+SELECT AVG(EMP_SAL) FROM EMPLOYEES;
+SELECT * FROM EMPLOYEES WHERE EMP_SAL > 42857;
+
+
+SELECT * FROM EMPLOYEES 
+WHERE EMP_SAL > (SELECT AVG(EMP_SAL) FROM EMPLOYEES);
+```
+
+## MULTIPLE ROW SUBQUERY 
+-- SUBQUERY RETURNS MULTPLE VALUES 
+```sql
+-- FIND EMPLOYEES FROM DEPERTEMTS WHERE SALARY IS ABOVE 50000;
+
+
+SELECT EMP_NAME , EMP_DEPT , EMP_SAL
+FROM EMPLOYEES 
+WHERE EMP_DEPT IN 
+(SELECT EMP_DEPT FROM EMPLOYEES WHERE EMP_SAL > 50000 );
+```
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
