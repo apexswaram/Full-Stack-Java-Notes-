@@ -9080,12 +9080,129 @@ customer_id int
 ```
 
 ---
+# SQL Joins and Functions Notes
 
-# INNER JOIN
+## Myntra / Ajio Orders Management System
+
+---
+
+# 1. Database Creation
 
 ## Definition
 
-Returns matching rows from both tables.
+A database is a collection of organized data stored electronically.
+
+## Syntax
+
+```sql
+CREATE DATABASE database_name;
+USE database_name;
+```
+
+## Example
+
+```sql
+CREATE DATABASE Ajio;
+USE Ajio;
+```
+
+---
+
+# 2. Customers Table
+
+## Definition
+
+The `Customers` table stores customer information.
+
+## Table Creation Syntax
+
+```sql
+CREATE TABLE table_name(
+    column_name datatype constraints
+);
+```
+
+## Example
+
+```sql
+CREATE TABLE Customers(
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(200),
+    city VARCHAR(50)
+);
+```
+
+## Insert Data Syntax
+
+```sql
+INSERT INTO table_name VALUES(value1, value2, ...);
+```
+
+## Example
+
+```sql
+INSERT INTO Customers VALUES
+(1, 'rahul', 'hyd'),
+(2, 'ramesh', 'vij'),
+(3, 'suresh', 'hyd'),
+(4, 'ram', 'viz'),
+(5, 'rakesh', 'mtm'),
+(6, 'akash', 'rzm');
+```
+
+## View Table Data
+
+```sql
+SELECT * FROM Customers;
+```
+
+---
+
+# 3. Orders Table
+
+## Definition
+
+The `Ordres` table stores order details placed by customers.
+
+## Example
+
+```sql
+CREATE TABLE Ordres(
+    order_id INT PRIMARY KEY,
+    product_name VARCHAR(70),
+    amount INT,
+    customer_id INT
+);
+```
+
+## Insert Data
+
+```sql
+INSERT INTO Ordres VALUES
+(101, 'laptop',55000, 1),
+(102, 'mobile',20000, 2),
+(103, 'headphoes',3000, 1),
+(104, 'keyboard',1000, 3),
+(105, 'mouse',2000, 7),
+(106, 'lunch box',200, 4),
+(107, 'TV',15000, 3);
+```
+
+## View Table
+
+```sql
+SELECT * FROM Ordres;
+```
+
+---
+
+# 4. SQL Joins
+
+# A) INNER JOIN
+
+## Definition
+
+`INNER JOIN` returns only matching rows from both tables.
 
 ## Syntax
 
@@ -9093,144 +9210,635 @@ Returns matching rows from both tables.
 SELECT columns
 FROM table1
 INNER JOIN table2
-ON condition;
+ON table1.column = table2.column;
 ```
 
 ## Example
 
 ```sql
-select Customers.customer_id, Customers.customer_name,
-Ordres.product_name,
-Ordres.amount
-from Customers
-inner join Ordres
+SELECT Customers.customer_id,
+       Customers.customer_name,
+       Ordres.product_name,
+       Ordres.amount
+FROM Customers
+INNER JOIN Ordres
+ON Customers.customer_id = Ordres.customer_id;
+```
+
+## Output Concept
+
+Only customers having matching orders are displayed.
+
+---
+
+# B) LEFT JOIN
+
+## Definition
+
+`LEFT JOIN` returns all records from the left table and matching records from the right table.
+If no match exists, NULL values are returned.
+
+## Syntax
+
+```sql
+SELECT columns
+FROM table1
+LEFT JOIN table2
+ON table1.column = table2.column;
+```
+
+## Example
+
+```sql
+SELECT Customers.customer_name,
+       Ordres.product_name
+FROM Customers
+LEFT JOIN Ordres
+ON Customers.customer_id = Ordres.customer_id;
+```
+
+## Output Concept
+
+All customers are shown even if they did not place any orders.
+
+---
+
+# C) RIGHT JOIN
+
+## Definition
+
+`RIGHT JOIN` returns all records from the right table and matching records from the left table.
+
+## Syntax
+
+```sql
+SELECT columns
+FROM table1
+RIGHT JOIN table2
+ON table1.column = table2.column;
+```
+
+## Example
+
+```sql
+SELECT Customers.customer_id,
+       Customers.customer_name,
+       Ordres.product_name
+FROM Customers
+RIGHT JOIN Ordres
+ON Customers.customer_id = Ordres.customer_id;
+```
+
+## Output Concept
+
+All orders are shown even if customer data is missing.
+
+---
+
+# D) FULL JOIN
+
+## Definition
+
+`FULL JOIN` returns all records from both tables.
+Non-matching records return NULL values.
+
+## Syntax
+
+```sql
+SELECT columns
+FROM table1
+FULL JOIN table2
+ON table1.column = table2.column;
+```
+
+## Example
+
+```sql
+SELECT Customers.customer_name,
+       Ordres.product_name
+FROM Customers
+FULL JOIN Ordres
 ON Customers.customer_id = Ordres.customer_id;
 ```
 
 ---
 
-# LEFT JOIN
+# FULL JOIN Using UNION
 
 ## Definition
 
-Returns:
-
-* All records from left table
-* Matching records from right table
-
-Non-matching values become NULL.
+MySQL does not directly support FULL JOIN.
+We can achieve it using `LEFT JOIN + RIGHT JOIN + UNION`.
 
 ## Example
 
 ```sql
-select Customers.customer_name,
-Ordres.product_name
-from Customers
-left join Ordres
-on Customers.customer_id = Ordres.customer_id;
-```
-
----
-
-# RIGHT JOIN
-
-## Definition
-
-Returns:
-
-* All records from right table
-* Matching records from left table
-
-## Example
-
-```sql
-select Customers.customer_id, Customers.customer_name,
-Ordres.product_name
-from Customers
-right join Ordres
-on Customers.customer_id = Ordres.customer_id;
-```
-
----
-
-# FULL JOIN
-
-## Definition
-
-Returns all rows from both tables.
-
----
-
-## Example
-
-```sql
-select Customers.customer_name,
-Ordres.product_name
-from Customers
-FULL JOIN Ordres
-on Customers.customer_id = Ordres.customer_id;
-```
-
----
-
-# FULL JOIN USING UNION
-
-```sql
-select Customers.customer_name,
-Ordres.product_name
-from Customers
-left join Ordres
-on Customers.customer_id = Ordres.customer_id
+SELECT Customers.customer_name,
+       Ordres.product_name
+FROM Customers
+LEFT JOIN Ordres
+ON Customers.customer_id = Ordres.customer_id
 
 UNION
 
-select Customers.customer_name,
-Ordres.product_name
-from Customers
-right join Ordres
-on Customers.customer_id = Ordres.customer_id;
+SELECT Customers.customer_name,
+       Ordres.product_name
+FROM Customers
+RIGHT JOIN Ordres
+ON Customers.customer_id = Ordres.customer_id;
 ```
 
 ---
 
-# CROSS JOIN
+# E) NATURAL JOIN
 
 ## Definition
 
-Returns Cartesian product.
+`NATURAL JOIN` automatically joins tables using columns with the same name.
 
-Every row from first table combines with every row from second table.
+## Syntax
 
----
-
-# SELF JOIN
-
-## Definition
-
-A table joins with itself.
-
-Used in:
-
-* Employee-manager relationships
-* Hierarchical data
-
----
-
-# NATURAL JOIN
-
-## Definition
-
-Automatically joins tables using same column names.
+```sql
+SELECT columns
+FROM table1
+NATURAL JOIN table2;
+```
 
 ## Example
 
 ```sql
-select customer_name, product_name, amount
-from Customers
-natural join Ordres;
+SELECT customer_name,
+       product_name,
+       amount
+FROM Customers
+NATURAL JOIN Ordres;
 ```
 
 ---
+
+# F) CROSS JOIN
+
+## Definition
+
+`CROSS JOIN` returns all possible combinations of rows from both tables.
+
+## Formula
+
+```text
+Rows in Table A × Rows in Table B
+```
+
+---
+
+## Employee Table
+
+```sql
+CREATE TABLE employeeCJ(
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(200)
+);
+
+INSERT INTO employeeCJ VALUES
+(3,'Vijay'),
+(4,'Rajesh'),
+(5,'Rajini'),
+(6,'Kanth');
+```
+
+---
+
+## Shifts Table
+
+```sql
+CREATE TABLE Shifts(
+    shift_id INT PRIMARY KEY,
+    shift_name VARCHAR(10)
+);
+
+INSERT INTO Shifts VALUES
+(101,'Morning'),
+(102,'Night');
+```
+
+---
+
+## CROSS JOIN Example
+
+```sql
+SELECT employeeCJ.emp_name,
+       Shifts.shift_name
+FROM employeeCJ
+CROSS JOIN Shifts;
+```
+
+## Output Concept
+
+Each employee is combined with every shift.
+
+---
+
+# G) SELF JOIN
+
+## Definition
+
+A `SELF JOIN` joins a table with itself.
+
+---
+
+## Manager Table
+
+```sql
+CREATE TABLE manager(
+    manager_id INT PRIMARY KEY,
+    manager_name VARCHAR(200)
+);
+
+INSERT INTO manager VALUES
+(1,'Indira'),
+(2,'Rahul'),
+(3,'Mahatma');
+```
+
+---
+
+## Employee Self Join Table
+
+```sql
+CREATE TABLE employeeSJ(
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(200),
+    manager_id INT
+);
+
+INSERT INTO employeeSJ VALUES
+(1,'Vijay',NULL),
+(2,'Rajesh',1),
+(3,'Rajini',1),
+(4,'Kanth',2);
+```
+
+---
+
+## SELF JOIN Syntax
+
+```sql
+SELECT columns
+FROM table1 a
+JOIN table1 b
+ON a.column = b.column;
+```
+
+## Example
+
+```sql
+SELECT e.emp_name AS Employee,
+       m.emp_name AS Manager
+FROM employeeSJ e
+JOIN employeeSJ m
+ON e.emp_id = m.manager_id;
+```
+
+---
+
+# 5. SQL Functions
+
+# Types of Functions
+
+## 1. Single Row Functions
+
+Works on each row individually.
+
+### Examples
+
+* UPPER()
+* LOWER()
+* LENGTH()
+* CONCAT()
+* SUBSTRING()
+* ROUND()
+* MOD()
+* NOW()
+* CURDATE()
+* IFNULL()
+
+---
+
+## 2. Group Functions (Aggregate Functions)
+
+Works on multiple rows and returns one result.
+
+### Examples
+
+* SUM()
+* MAX()
+* MIN()
+* COUNT()
+* AVG()
+
+---
+
+# 6. Instagram Users Table
+
+## Table Creation
+
+```sql
+CREATE TABLE instagram_users(
+    user_id INT,
+    username VARCHAR(200),
+    city VARCHAR(50),
+    followers INT,
+    amonut DECIMAL(10,2)
+);
+```
+
+## Insert Data
+
+```sql
+INSERT INTO instagram_users
+(user_id, username, city, followers, amonut)
+VALUES
+(1, 'virat_kohli', 'Delhi', 270000000, 1250000.50),
+(2, 'msdhoni', 'Ranchi', 45000000, 850000.75),
+(3, 'sachintendulkar', 'Mumbai', 42000000, 950000.00);
+```
+
+---
+
+# 7. Character Functions
+
+# A) UPPER()
+
+## Definition
+
+Converts text into uppercase letters.
+
+## Syntax
+
+```sql
+SELECT UPPER(column_name)
+FROM table_name;
+```
+
+## Example
+
+```sql
+SELECT UPPER(username)
+FROM instagram_users;
+```
+
+---
+
+# B) LOWER()
+
+## Definition
+
+Converts text into lowercase letters.
+
+## Syntax
+
+```sql
+SELECT LOWER(column_name)
+FROM table_name;
+```
+
+## Example
+
+```sql
+SELECT LOWER(username)
+FROM instagram_users;
+```
+
+---
+
+# C) LENGTH()
+
+## Definition
+
+Returns the number of characters in a string.
+
+## Syntax
+
+```sql
+SELECT LENGTH(column_name)
+FROM table_name;
+```
+
+## Example
+
+```sql
+SELECT username,
+       LENGTH(username) AS total_characters
+FROM instagram_users;
+```
+
+---
+
+# D) CONCAT()
+
+## Definition
+
+Combines multiple strings into one string.
+
+## Syntax
+
+```sql
+SELECT CONCAT(string1, column_name, string2)
+FROM table_name;
+```
+
+## Example
+
+```sql
+SELECT CONCAT('Hello iam ',
+              username,
+              ' i lives in ',
+              city) AS Profile_info
+FROM instagram_users;
+```
+
+---
+
+# E) SUBSTRING()
+
+## Definition
+
+Extracts part of a string.
+
+## Syntax
+
+```sql
+SELECT SUBSTRING(column_name, start, length)
+FROM table_name;
+```
+
+## Example
+
+```sql
+SELECT username,
+       SUBSTRING(username,1,4) AS short_name
+FROM instagram_users;
+```
+
+---
+
+# 8. Number Functions
+
+# A) ROUND()
+
+## Definition
+
+Rounds decimal values.
+
+## Syntax
+
+```sql
+SELECT ROUND(column_name)
+FROM table_name;
+```
+
+## Example
+
+```sql
+SELECT amonut,
+       ROUND(amonut) AS rounded_amount
+FROM instagram_users;
+```
+
+---
+
+# B) MOD()
+
+## Definition
+
+Returns the remainder after division.
+
+## Syntax
+
+```sql
+SELECT MOD(a,b);
+```
+
+## Example
+
+```sql
+SELECT MOD(10,3);
+```
+
+## Output
+
+```text
+1
+```
+
+---
+
+# 9. Date Functions
+
+# A) NOW()
+
+## Definition
+
+Returns current date and time.
+
+## Example
+
+```sql
+SELECT NOW();
+```
+
+---
+
+# B) CURDATE()
+
+## Definition
+
+Returns current date only.
+
+## Example
+
+```sql
+SELECT CURDATE();
+```
+
+---
+
+# 10. General Functions
+
+# IFNULL()
+
+## Definition
+
+Replaces NULL values with another value.
+
+## Syntax
+
+```sql
+SELECT IFNULL(column_name, 'replacement')
+FROM table_name;
+```
+
+---
+
+## Insert NULL Values
+
+```sql
+INSERT INTO instagram_users
+(user_id, username, city, followers, amonut)
+VALUES
+(61, 'virat_kohli', NULL, 270000000, 1250000.50),
+(62, 'msdhoni', NULL, 45000000, 850000.75),
+(63, 'sachintendulkar', NULL, 42000000, 950000.00);
+```
+
+## Example
+
+```sql
+SELECT username,
+       IFNULL(city, 'City Not Updated') AS City
+FROM instagram_users;
+```
+
+---
+
+# 11. Important Interview Points
+
+## Difference Between INNER JOIN and LEFT JOIN
+
+| INNER JOIN                 | LEFT JOIN                        |
+| -------------------------- | -------------------------------- |
+| Returns matching rows only | Returns all rows from left table |
+| Non-matching rows ignored  | Non-matching rows show NULL      |
+
+---
+
+## Difference Between CROSS JOIN and SELF JOIN
+
+| CROSS JOIN            | SELF JOIN                  |
+| --------------------- | -------------------------- |
+| Combines every row    | Joins table with itself    |
+| Used for combinations | Used for hierarchical data |
+
+---
+
+# 12. Short Summary
+
+## SQL Joins
+
+* INNER JOIN → Matching rows only
+* LEFT JOIN → All left rows
+* RIGHT JOIN → All right rows
+* FULL JOIN → All rows from both tables
+* NATURAL JOIN → Automatic join
+* CROSS JOIN → Every combination
+* SELF JOIN → Same table join
+
+## SQL Functions
+
+* Character Functions → Text operations
+* Number Functions → Numeric calculations
+* Date Functions → Current date/time
+* General Functions → Handle NULL values
+
 
 # 20. SINGLE ROW FUNCTIONS
 
