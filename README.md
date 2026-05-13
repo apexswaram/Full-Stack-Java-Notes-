@@ -7853,549 +7853,1927 @@ catch(ArithmeticException e) {
 * Program terminates
 
 ---
-
 ---
-# Structured Query Language (SQL) – Complete Notes
+# COMPLETE MYSQL MASTER NOTES
 
-## 1. Introduction
+## Industry-Oriented MySQL Notes with Real-Time Examples
 
-Structured Query Language (SQL) is the standard language used to interact with relational databases.
-
-It allows users to:
-- Store data
-- Retrieve data
-- Update data
-- Manage data efficiently using simple commands
-
-SQL is known for:
-- User-friendly syntax
-- Powerful capabilities
-- Wide usage across industries
+### Prepared for Students Learning SQL & Database Management
 
 ---
 
-## 2. Before and After SQL
+# TABLE OF CONTENTS
 
-Before SQL:
-- Data was managed manually or using complex programming logic
-- Difficult to maintain and retrieve structured data
-
-After SQL:
-- Easy interaction with databases
-- Standardized way to manage data
-- Faster and more efficient operations
-
----
-
-## 3. How SQL Works
-
-We interact with databases using SQL queries. DBMS tools like MySQL and SQL Server provide:
-- SQL engine
-- Interface to write and execute queries
-
-### Steps in SQL Query Execution
-
-1. Input  
-   The user sends a SQL query (e.g., SELECT, INSERT)
-
-2. Parsing  
-   The system checks if the query syntax is correct
-
-3. Optimization  
-   The system decides the most efficient way to execute the query
-
-4. Execution  
-   The database executes the query
-
-5. Output  
-   The result or confirmation is returned to the user
-
----
-
-## 4. Components of a SQL System
-
-### 4.1 Database
-A structured collection of data stored in tables.
-
-### 4.2 Tables
-- Organize data into rows and columns
-- Maintain data consistency and accuracy
-
-### 4.3 Indexes
-- Improve data retrieval speed
-- Avoid full table scanning
-
-### 4.4 Views
-- Virtual tables created using SELECT queries
-- Simplify complex queries
-
-### 4.5 Stored Procedures
-- Predefined SQL code
-- Improve performance and security
-
-### 4.6 Transactions
-- Group of SQL operations
-- Ensures all operations succeed or fail together
-
-### 4.7 Security and Permissions
-- Controls user access
-- Defines who can view or modify data
-
-### 4.8 Joins
-- Combine data from multiple tables
-- Based on relationships
+1. Introduction to Databases
+2. Introduction to MySQL
+3. SQL Basics
+4. Database Creation
+5. Table Creation
+6. Data Types
+7. DDL Commands
+8. DML Commands
+9. DQL Commands
+10. Operators in SQL
+11. WHERE Clause
+12. DISTINCT Keyword
+13. Aggregate Functions
+14. GROUP BY Clause
+15. HAVING Clause
+16. ORDER BY Clause
+17. LIMIT Clause
+18. Constraints
+19. Joins
+20. Single Row Functions
+21. Character Functions
+22. Number Functions
+23. Date Functions
+24. General Functions
+25. TCL Commands
+26. DCL Commands
+27. Real-Time Flipkart Examples
+28. Real-Time Instagram Examples
+29. Real-Time Swiggy Examples
+30. Interview Questions
+31. Important Notes
+32. Practice Queries
 
 ---
 
-## 5. Rules for Writing SQL Queries
+# 1. INTRODUCTION TO DATABASES
 
-### 5.1 Semicolon (;)
-- Ends an SQL statement
+## What is a Database?
 
-### 5.2 Case Insensitivity
-- SQL keywords are not case-sensitive
-  Example: SELECT = select
+A Database is a collection of related data stored in an organized manner.
 
-### 5.3 Whitespace
-- Spaces and line breaks improve readability
+A database helps us:
 
-### 5.4 Reserved Words
-- Avoid using SQL keywords as identifiers
-- Use quotes/backticks if necessary
+* Store data
+* Manage data
+* Retrieve data quickly
+* Update data easily
+* Delete unwanted data
 
-### 5.5 Comments
+### Real-Time Examples
 
-Single-line comment:
-```sql
--- This is a comment
-````
-
-Multi-line comment:
-
-```sql
-/* This is a 
-   multi-line comment */
-```
-
-### 5.6 Data Constraints
-
-* NOT NULL
-* UNIQUE
-* PRIMARY KEY
-* Used to ensure data integrity
-
-### 5.7 String Values
-
-* Always use single quotes
-
-```sql
-'text'
-```
-
-### 5.8 Naming Rules
-
-* Must start with a letter
-* Maximum 30 characters
-* Only letters, numbers, and underscore (_)
+| Application    | Data Stored                               |
+| -------------- | ----------------------------------------- |
+| Instagram      | Users, Posts, Likes, Followers            |
+| Flipkart       | Products, Customers, Orders               |
+| Swiggy         | Restaurants, Food Items, Delivery Details |
+| WhatsApp       | Chats, Contacts, Media Files              |
+| Banking System | Customer Accounts, Transactions           |
 
 ---
 
-## 6. Types of SQL Commands
+# 2. INTRODUCTION TO MYSQL
 
-SQL commands are used to:
+## What is MySQL?
 
-* Create database structures
-* Manipulate data
-* Retrieve data
-* Control access
-* Manage transactions
+MySQL is an open-source Relational Database Management System (RDBMS).
 
-<img width="1407" height="509" alt="image" src="https://github.com/user-attachments/assets/9d548b50-d883-45d6-8ef4-83f0dfe1f273" />
+It is used to:
 
+* Create databases
+* Create tables
+* Insert records
+* Update records
+* Delete records
+* Retrieve records
 
----
+## Features of MySQL
 
-## 6.1 Data Definition Language (DDL)
+* Fast
+* Secure
+* Easy to use
+* Supports large databases
+* Used by major companies
 
-Used to define and manage database structure.
+## Companies Using MySQL
 
-| Command  | Description                             |
-| -------- | --------------------------------------- |
-| CREATE   | Creates tables, views, indexes          |
-| ALTER    | Modifies existing objects               |
-| DROP     | Deletes objects                         |
-| TRUNCATE | Removes all records but keeps structure |
-| RENAME   | Changes object name                     |
-
----
-
-## 6.2 Data Manipulation Language (DML)
-
-Used to modify data inside tables.
-
-| Command | Description               |
-| ------- | ------------------------- |
-| INSERT  | Adds new records          |
-| UPDATE  | Modifies existing records |
-| DELETE  | Removes records           |
+* Facebook
+* Instagram
+* Twitter
+* YouTube
+* Netflix
+* Uber
 
 ---
 
-## 6.3 Data Query Language (DQL)
+# 3. SQL BASICS
 
-Used to retrieve data.
+## What is SQL?
 
-| Command | Description              |
-| ------- | ------------------------ |
-| SELECT  | Fetches data from tables |
+SQL stands for Structured Query Language.
 
----
+It is used to communicate with databases.
 
-## 6.4 Data Control Language (DCL)
+Using SQL we can:
 
-Used to control user access and permissions.
-
-| Command | Description         |
-| ------- | ------------------- |
-| GRANT   | Gives permissions   |
-| REVOKE  | Removes permissions |
+* Create databases
+* Create tables
+* Insert data
+* Update data
+* Delete data
+* Fetch data
 
 ---
 
-## 6.5 Transaction Control Language (TCL)
+# TYPES OF SQL COMMANDS
 
-Used to manage transactions.
-
-| Command   | Description               |
-| --------- | ------------------------- |
-| COMMIT    | Saves changes permanently |
-| ROLLBACK  | Reverts changes           |
-| SAVEPOINT | Sets a rollback point     |
-
----
-
-## 7. Benefits of SQL
-
-* Efficient
-  Works fast even with large datasets
-
-* Standard
-  Works across most database systems
-
-* Scalable
-  Suitable for small to large databases
-
-* Flexible
-  Supports advanced logic using PL/SQL, T-SQL
+| Category | Full Form                    | Purpose                    |
+| -------- | ---------------------------- | -------------------------- |
+| DDL      | Data Definition Language     | Defines database structure |
+| DML      | Data Manipulation Language   | Manipulates data           |
+| DQL      | Data Query Language          | Retrieves data             |
+| TCL      | Transaction Control Language | Controls transactions      |
+| DCL      | Data Control Language        | Controls permissions       |
 
 ---
 
-## 8. Limitations of SQL
+# 4. DATABASE CREATION
 
-* Complex
-  Advanced optimization can be difficult
+## Definition
 
-* Scalability Issues
-  Not ideal for very large or unstructured data
+A database is a container that stores tables.
 
-* Different Versions
-  Syntax may vary across databases
-
-* Not Real-Time
-  Traditional SQL is not designed for real-time analytics
-
----
-
-## 9. Applications of SQL
-
-### 9.1 E-Commerce
-
-* Manage orders
-* Handle product catalogs
-* Track inventory
-
-### 9.2 Healthcare
-
-* Store patient records
-* Manage appointments
-
-### 9.3 Banking
-
-* Analyze transactions
-* Generate financial reports
-
-### 9.4 Web Development
-
-* Build dynamic websites
-* Manage user data
-
-### 9.5 Machine Learning and Data Science
-
-* Work with structured datasets
-* Integrate with Python, R, TensorFlow
-
----
-
-## 10. Summary
-
-* SQL is used to manage relational databases
-* Provides simple and powerful commands
-* Divided into:
-
-  * DDL
-  * DML
-  * DQL
-  * DCL
-  * TCL
-* Ensures efficient data handling and security
-* Widely used in real-world applications across industries
-
-
-````markdown 
-
-In SQL, databases are used to store structured data in tables.  
-Each table contains:
-- Rows (records)
-- Columns (fields)
-
-To maintain data accuracy and integrity, SQL provides **constraints** such as:
-- NOT NULL
-- UNIQUE
-- PRIMARY KEY
-
-This section explains database creation, table creation, inserting data, and constraints using examples.
-
----
-
-## 2. Creating a Database
-
-### Definition
-
-A **database** is a collection of related data stored in an organized manner.
-
-### Syntax
-````
+## Syntax
 
 ```sql
 CREATE DATABASE database_name;
 ```
 
-### Example
+## Example
 
 ```sql
-CREATE DATABASE instagramDB;
+CREATE DATABASE LEARNING2;
 ```
+
+## Using Database
+
+```sql
+USE LEARNING2;
+```
+
+### Explanation
+
+* CREATE DATABASE creates a new database.
+* USE selects the database for operations.
 
 ---
 
-## 3. Selecting a Database
+# 5. TABLE CREATION
 
-Before working with tables, we must select the database.
+## What is a Table?
 
-### Syntax
+A table stores data in rows and columns.
 
-```sql
-USE database_name;
-```
+### Real-Time Example
 
-### Example
+Instagram User Table:
 
-```sql
-USE instagramDB;
-```
+| user_id | username | followers |
+| ------- | -------- | --------- |
+| 1       | mahesh   | 1200      |
+| 2       | vishnu   | 800       |
 
 ---
 
-## 4. Creating a Table
-
-### Definition
-
-A **table** is a structure used to store data in rows and columns.
-
-### Syntax
+## Syntax
 
 ```sql
-CREATE TABLE table_name (
-    column1 datatype,
-    column2 datatype
+CREATE TABLE table_name(
+column1 datatype,
+column2 datatype
 );
 ```
 
-### Example
+## Example
 
 ```sql
-CREATE TABLE STUDENTS (
-    STD_ID INT,
-    STD_NAME VARCHAR(25)
+create table students(
+std_id INT,
+std_name varchar(200)
+);
+```
+
+## Explanation
+
+| Column   | Meaning             |
+| -------- | ------------------- |
+| std_id   | Stores student ID   |
+| std_name | Stores student name |
+
+---
+
+# 6. DATA TYPES
+
+## What are Data Types?
+
+Data types define what kind of data can be stored in a column.
+
+---
+
+# COMMON MYSQL DATA TYPES
+
+| Data Type | Description            |
+| --------- | ---------------------- |
+| INT       | Stores integers        |
+| VARCHAR() | Stores strings         |
+| CHAR()    | Fixed-length strings   |
+| DECIMAL() | Decimal values         |
+| FLOAT     | Floating-point numbers |
+| DATE      | Stores dates           |
+| TIME      | Stores time            |
+| DATETIME  | Stores date and time   |
+| TIMESTAMP | Stores timestamp       |
+| BOOLEAN   | True or False          |
+
+---
+
+## Examples
+
+```sql
+age INT
+name VARCHAR(100)
+price DECIMAL(10,2)
+```
+
+---
+
+# 7. DDL COMMANDS
+
+# DDL - Data Definition Language
+
+DDL commands define database structure.
+
+## DDL Commands
+
+* CREATE
+* ALTER
+* DROP
+* TRUNCATE
+* RENAME
+
+---
+
+# CREATE COMMAND
+
+## Definition
+
+Used to create:
+
+* Database
+* Tables
+
+## Syntax
+
+```sql
+CREATE TABLE table_name(
+column_name datatype
+);
+```
+
+## Example
+
+```sql
+CREATE TABLE STUDENTS1(
+id int,
+name varchar(50),
+age int,
+marks int,
+city varchar(50)
 );
 ```
 
 ---
 
-## 5. Retrieving Data (SELECT)
+# ALTER COMMAND
 
-### Definition
+## Definition
 
-The `SELECT` statement is used to retrieve data from a table.
+Used to modify table structure.
 
-### Syntax
+## Operations
+
+* Add column
+* Modify column
+* Drop column
+
+## Syntax
 
 ```sql
-SELECT * FROM table_name;
+ALTER TABLE table_name
+ADD column_name datatype;
+```
+
+## Example
+
+```sql
+ALTER TABLE STUDENTS1
+ADD phone_number VARCHAR(20);
+```
+
+---
+
+# DROP COMMAND
+
+## Definition
+
+Deletes entire table permanently.
+
+## Syntax
+
+```sql
+DROP TABLE table_name;
+```
+
+## Example
+
+```sql
+DROP TABLE students;
+```
+
+---
+
+# TRUNCATE COMMAND
+
+## Definition
+
+Deletes all rows from table.
+
+## Syntax
+
+```sql
+TRUNCATE TABLE table_name;
+```
+
+## Example
+
+```sql
+TRUNCATE TABLE students;
+```
+
+### Important Point
+
+* Structure remains.
+* Data gets deleted.
+
+---
+
+# RENAME COMMAND
+
+## Definition
+
+Used to rename a table.
+
+## Syntax
+
+```sql
+RENAME TABLE old_name TO new_name;
+```
+
+## Example
+
+```sql
+RENAME TABLE students TO college_students;
+```
+
+---
+
+# 8. DML COMMANDS
+
+# DML - Data Manipulation Language
+
+Used to manipulate table data.
+
+## DML Commands
+
+* INSERT
+* UPDATE
+* DELETE
+
+---
+
+# INSERT COMMAND
+
+## Definition
+
+Used to insert data into table.
+
+## Syntax
+
+```sql
+INSERT INTO table_name VALUES(value1, value2);
+```
+
+## Example
+
+```sql
+insert into students values (1, 'vishnu');
+```
+
+## Multiple Insertions
+
+```sql
+insert into students values (3, 'aparna');
+insert into students values (3, 'uday');
+insert into students values (4, 'vishnu');
+insert into students values (5, 'maheswaram');
+insert into students values (6, 'vishnu');
+insert into students values (6, 'aparna');
+insert into students values (1, 'vishnu');
+insert into students values (5, 'uday');
+```
+
+---
+
+# UPDATE COMMAND
+
+## Definition
+
+Used to modify existing data.
+
+## Syntax
+
+```sql
+UPDATE table_name
+SET column_name = value
+WHERE condition;
+```
+
+## Example
+
+```sql
+UPDATE EMPLOYEES
+SET EMP_DEPT = 'IT'
+WHERE EMP_ID = 11;
+```
+
+## Explanation
+
+* UPDATE modifies data.
+* SET changes values.
+* WHERE specifies which row to update.
+
+---
+
+# DELETE COMMAND
+
+## Definition
+
+Deletes records from table.
+
+## Syntax
+
+```sql
+DELETE FROM table_name
+WHERE condition;
+```
+
+## Example
+
+```sql
+DELETE FROM EMPLOYEES
+WHERE EMP_SAL < 45000;
+```
+
+---
+
+# 9. DQL COMMANDS
+
+# DQL - Data Query Language
+
+Used to retrieve data.
+
+## Main Command
+
+* SELECT
+
+---
+
+# SELECT COMMAND
+
+## Definition
+
+Used to retrieve data from tables.
+
+## Syntax
+
+```sql
 SELECT column_name FROM table_name;
 ```
 
-### Example
+---
+
+## Select All Columns
 
 ```sql
-SELECT * FROM STUDENTS;
-SELECT STD_ID FROM STUDENTS;
-SELECT STD_NAME FROM STUDENTS;
+select * from students;
 ```
 
-Explanation:
+### Explanation
 
-* `*` retrieves all columns
-* Specific column names retrieve selected data
+* * means all columns.
 
 ---
 
-## 6. Inserting Data (INSERT)
-
-### Definition
-
-The `INSERT` statement is used to add records into a table.
-
-### Syntax
+## Select Specific Columns
 
 ```sql
-INSERT INTO table_name VALUES (value1, value2);
+select std_id from students;
 ```
 
-### Example
+---
+
+## Real-Time Example
+
+### Flipkart Example
 
 ```sql
-insert into STUDENTS values (1, 'APARNA');
-insert into STUDENTS values (2, 'udhay');
-insert into STUDENTS values (1, 'maheswaram');
+SELECT product_name, price
+FROM flipkart_products;
 ```
 
-Observation:
+This retrieves:
 
-* Duplicate values are allowed
-* No restrictions applied
-
----
-
-## 7. Constraints in SQL
-
-Constraints are rules applied on columns to ensure data accuracy and integrity.
+* Product name
+* Product price
 
 ---
 
-## 7.1 NOT NULL Constraint
+# 10. OPERATORS IN SQL
 
-### Definition
+## What are Operators?
 
-Ensures that a column cannot have NULL (empty) values.
-
----
-
-## 7.2 UNIQUE Constraint
-
-### Definition
-
-Ensures that all values in a column are unique (no duplicates allowed).
+Operators are symbols used to perform comparisons.
 
 ---
 
-### Example: NOT NULL + UNIQUE
+# TYPES OF OPERATORS
+
+| Operator | Meaning                  |
+| -------- | ------------------------ |
+| =        | Equal                    |
+| >        | Greater than             |
+| <        | Less than                |
+| >=       | Greater than or equal    |
+| <=       | Less than or equal       |
+| <>       | Not equal                |
+| BETWEEN  | Range checking           |
+| LIKE     | Pattern matching         |
+| IN       | Multiple values checking |
+
+---
+
+# EQUAL OPERATOR (=)
+
+## Example
 
 ```sql
-CREATE TABLE STUDENTS1 (
-    STD_ID INT NOT NULL UNIQUE,
-    STD_NAME VARCHAR(25)
+SELECT * FROM STUDENTS1
+WHERE city = 'HYD';
+```
+
+### Explanation
+
+Returns students whose city is HYD.
+
+---
+
+# GREATER THAN (>)
+
+```sql
+SELECT * FROM STUDENTS1
+WHERE marks > 88;
+```
+
+---
+
+# LESS THAN (<)
+
+```sql
+SELECT * FROM STUDENTS1
+WHERE marks < 88;
+```
+
+---
+
+# GREATER THAN EQUAL (>=)
+
+```sql
+SELECT * FROM STUDENTS1
+WHERE marks >= 88;
+```
+
+---
+
+# LESS THAN EQUAL (<=)
+
+```sql
+SELECT * FROM STUDENTS1
+WHERE marks <= 88;
+```
+
+---
+
+# NOT EQUAL (<>)
+
+```sql
+select * from STUDENTS1
+where city <> 'TPG';
+```
+
+---
+
+# BETWEEN OPERATOR
+
+## Definition
+
+Used to select values within a range.
+
+## Syntax
+
+```sql
+column_name BETWEEN start_value AND end_value
+```
+
+## Example
+
+```sql
+SELECT * FROM STUDENTS1
+WHERE age BETWEEN 19 AND 21;
+```
+
+---
+
+# LIKE OPERATOR
+
+## Definition
+
+Used for pattern matching.
+
+---
+
+# PATTERNS
+
+| Pattern | Meaning       |
+| ------- | ------------- |
+| A%      | Starts with A |
+| %A      | Ends with A   |
+| %A%     | Contains A    |
+
+---
+
+## Examples
+
+### Starts with C
+
+```sql
+select * from flipkart_products
+where product_name LIKE 'C%';
+```
+
+### Ends with s
+
+```sql
+select * from flipkart_products
+where product_name LIKE '%s';
+```
+
+### Contains Air
+
+```sql
+select * from flipkart_products
+where product_name LIKE '%Air%';
+```
+
+---
+
+# IN OPERATOR
+
+## Definition
+
+Used to specify multiple values.
+
+## Without IN
+
+```sql
+select * from STUDENTS1
+where city = 'HYD' or city = 'TPG' or city = 'VIJ';
+```
+
+## With IN
+
+```sql
+select * from STUDENTS1
+where city IN ('HYD','TPG','VIJ');
+```
+
+---
+
+# 11. WHERE CLAUSE
+
+## Definition
+
+Used to filter records.
+
+## Syntax
+
+```sql
+SELECT columns
+FROM table_name
+WHERE condition;
+```
+
+## Example
+
+```sql
+SELECT * FROM STUDENTS1
+WHERE name = 'APARNA';
+```
+
+---
+
+# 12. DISTINCT KEYWORD
+
+## Definition
+
+Returns only unique values.
+
+## Syntax
+
+```sql
+SELECT DISTINCT column_name
+FROM table_name;
+```
+
+## Example
+
+```sql
+select distinct std_name FROM students;
+```
+
+---
+
+# DISTINCT MULTIPLE COLUMNS
+
+```sql
+SELECT distinct EMP_DEPT, EMP_SAL FROM EMPLOYEES;
+```
+
+---
+
+# 13. AGGREGATE FUNCTIONS
+
+## What are Aggregate Functions?
+
+Aggregate functions perform calculations on multiple rows.
+
+---
+
+# TYPES OF AGGREGATE FUNCTIONS
+
+| Function | Purpose       |
+| -------- | ------------- |
+| COUNT()  | Counts rows   |
+| SUM()    | Adds values   |
+| AVG()    | Finds average |
+| MAX()    | Maximum value |
+| MIN()    | Minimum value |
+
+---
+
+# COUNT()
+
+## Definition
+
+Counts number of records.
+
+## Example
+
+```sql
+SELECT COUNT(std_name) FROM students;
+```
+
+---
+
+# COUNT DISTINCT
+
+```sql
+SELECT COUNT(distinct std_name) FROM students;
+```
+
+---
+
+# SUM()
+
+## Example
+
+```sql
+SELECT EMP_DEPT , SUM(EMP_SAL) AS TOTAL_SALARY
+FROM EMPLOYEES GROUP BY EMP_DEPT;
+```
+
+---
+
+# AVG()
+
+```sql
+SELECT EMP_DEPT , AVG(EMP_SAL) AS AVG_SAL_FOREACH_DEPT
+FROM EMPLOYEES GROUP BY EMP_DEPT;
+```
+
+---
+
+# MAX()
+
+```sql
+SELECT EMP_DEPT , MAX(EMP_SAL) AS MAX_SAL_FOREACH_DEPT
+FROM EMPLOYEES GROUP BY EMP_DEPT;
+```
+
+---
+
+# MIN()
+
+```sql
+SELECT EMP_DEPT , MIN(EMP_SAL) AS MIN_SAL_FOREACH_DEPT
+FROM EMPLOYEES GROUP BY EMP_DEPT;
+```
+
+---
+
+# 14. GROUP BY CLAUSE
+
+## Definition
+
+GROUP BY groups rows having same values.
+
+### Real-Time Example
+
+In a company:
+
+* HR Department Salary Total
+* IT Department Salary Total
+* Testing Department Salary Total
+
+---
+
+# EMPLOYEE TABLE
+
+```sql
+CREATE TABLE EMPLOYEES(
+EMP_ID INT primary KEY,
+EMP_NAME VARCHAR(200) NOT NULL,
+EMP_DEPT VARCHAR(20) NOT NULL,
+EMP_SAL INT
 );
 ```
 
-### Insert Data
+---
+
+# INSERT DATA
 
 ```sql
-insert into STUDENTS1 values (1, 'APARNA');
-insert into STUDENTS1 values (2, 'udhay');
-insert into STUDENTS1 values (1, 'maheswaram');
+INSERT INTO EMPLOYEES VALUES
+(1, 'ARYAN','HR',45000),
+(2,'AYYAN','IT',60000),
+(3,'RAHUL','HR',40000),
+(4,'APARNA', 'IT',65000),
+(5,'UDHAY','TESTING',67000);
 ```
-
-### Output
-
-```sql
-SELECT * FROM STUDENTS1;
-```
-
-Explanation:
-
-* First two inserts succeed
-* Third insert fails because STD_ID must be unique
 
 ---
 
-## 7.3 PRIMARY KEY Constraint
+# GROUP BY SYNTAX
 
-### Definition
-
-A **PRIMARY KEY** is a combination of:
-
-* NOT NULL
-* UNIQUE
-
-It uniquely identifies each record in a table.
-
-### Rules:
-
-* Cannot contain NULL values
-* Cannot contain duplicate values
-* Only one primary key per table
+```sql
+SELECT COLUMN_1,
+AGGREGATE_FUNCTION()
+FROM TABLE_NAME
+GROUP BY COLUMN_NAME;
+```
 
 ---
 
-### Example: PRIMARY KEY
+# GROUP BY SINGLE COLUMN
 
 ```sql
-CREATE TABLE STUDENTS2 (
-    STD_ID INT PRIMARY KEY,
-    STD_NAME VARCHAR(25)
+SELECT EMP_DEPT , COUNT(*) AS COUNT_OF_DEPT
+FROM EMPLOYEES GROUP BY EMP_DEPT;
+```
+
+---
+
+# GROUP BY MULTIPLE COLUMNS
+
+```sql
+SELECT EMP_DEPT , EMP_SAL, COUNT(*)
+FROM EMPLOYEES GROUP BY EMP_DEPT , EMP_SAL;
+```
+
+---
+
+# 15. HAVING CLAUSE
+
+## Definition
+
+HAVING filters grouped records.
+
+### Difference Between WHERE and HAVING
+
+| WHERE                | HAVING              |
+| -------------------- | ------------------- |
+| Filters rows         | Filters groups      |
+| Used before GROUP BY | Used after GROUP BY |
+
+---
+
+# HAVING SYNTAX
+
+```sql
+SELECT column_name,
+aggregate_function()
+FROM table_name
+GROUP BY column_name
+HAVING condition;
+```
+
+---
+
+# Examples
+
+## Count Employees Less Than 5
+
+```sql
+SELECT EMP_DEPT , COUNT(EMP_ID) AS EMP_COUNT
+FROM EMPLOYEES
+GROUP BY EMP_DEPT HAVING COUNT(EMP_ID) < 5;
+```
+
+---
+
+## Average Salary Greater Than 55000
+
+```sql
+SELECT EMP_DEPT , AVG(EMP_SAL) AS AVG_SAL
+FROM EMPLOYEES
+GROUP BY EMP_DEPT HAVING AVG(EMP_SAL) > 55000;
+```
+
+---
+
+## Maximum Salary Greater Than 64000
+
+```sql
+SELECT EMP_DEPT , MAX(EMP_SAL) AS AVG_SAL
+FROM EMPLOYEES
+GROUP BY EMP_DEPT HAVING MAX(EMP_SAL) > 64000;
+```
+
+---
+
+# 16. ORDER BY CLAUSE
+
+## Definition
+
+Used to sort data.
+
+---
+
+# TYPES OF SORTING
+
+| Keyword | Meaning    |
+| ------- | ---------- |
+| ASC     | Ascending  |
+| DESC    | Descending |
+
+---
+
+# SYNTAX
+
+```sql
+SELECT columns
+FROM table_name
+ORDER BY column_name ASC;
+```
+
+---
+
+# DESCENDING ORDER
+
+```sql
+SELECT EMP_ID, EMP_NAME , EMP_DEPT , EMP_SAL FROM EMPLOYEES
+ORDER BY EMP_NAME DESC;
+```
+
+---
+
+# ASCENDING ORDER
+
+```sql
+SELECT EMP_ID, EMP_NAME , EMP_DEPT , EMP_SAL FROM EMPLOYEES
+ORDER BY EMP_NAME ASC;
+```
+
+---
+
+# MULTIPLE COLUMN SORTING
+
+```sql
+SELECT * FROM EMPLOYEES
+ORDER BY EMP_NAME, EMP_SAL ASC;
+```
+
+---
+
+# 17. LIMIT CLAUSE
+
+## Definition
+
+Restricts number of rows returned.
+
+---
+
+# SYNTAX
+
+```sql
+SELECT column_name
+FROM table_name
+LIMIT offset, row_count;
+```
+
+---
+
+# EXAMPLES
+
+```sql
+SELECT * FROM EMPLOYEES LIMIT 5;
+```
+
+```sql
+SELECT * FROM EMPLOYEES LIMIT 9, 2;
+```
+
+---
+
+# 18. CONSTRAINTS
+
+## What are Constraints?
+
+Constraints enforce rules on data.
+
+---
+
+# TYPES OF CONSTRAINTS
+
+| Constraint     | Purpose             |
+| -------------- | ------------------- |
+| PRIMARY KEY    | Unique identifier   |
+| FOREIGN KEY    | Links tables        |
+| UNIQUE         | Prevents duplicates |
+| NOT NULL       | Cannot store NULL   |
+| DEFAULT        | Default value       |
+| CHECK          | Validates values    |
+| AUTO_INCREMENT | Automatic numbering |
+
+---
+
+# PRIMARY KEY
+
+## Definition
+
+Uniquely identifies each row.
+
+## Example
+
+```sql
+customer_id INT PRIMARY KEY
+```
+
+---
+
+# FOREIGN KEY
+
+## Definition
+
+Creates relationship between tables.
+
+## Example
+
+```sql
+customer_id int,
+FOREIGN KEY(customer_id)
+REFERENCES Customers(customer_id)
+```
+
+---
+
+# UNIQUE
+
+## Definition
+
+Prevents duplicate values.
+
+## Example
+
+```sql
+email VARCHAR(100) UNIQUE
+```
+
+---
+
+# NOT NULL
+
+## Definition
+
+Column cannot contain NULL values.
+
+## Example
+
+```sql
+EMP_NAME VARCHAR(200) NOT NULL
+```
+
+---
+
+# DEFAULT
+
+## Definition
+
+Provides default value.
+
+## Example
+
+```sql
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+```
+
+---
+
+# CHECK
+
+## Definition
+
+Restricts values.
+
+## Example
+
+```sql
+age INT CHECK(age >= 18)
+```
+
+---
+
+# AUTO_INCREMENT
+
+## Definition
+
+Automatically increases values.
+
+## Example
+
+```sql
+product_id INT AUTO_INCREMENT PRIMARY KEY
+```
+
+---
+
+# 19. JOINS
+
+# What are Joins?
+
+Joins combine records from multiple tables.
+
+### Real-Time Example
+
+In Myntra:
+
+* Customer table stores customer data.
+* Orders table stores order data.
+
+Using joins we connect both tables.
+
+---
+
+# CUSTOMER TABLE
+
+```sql
+create table Customers(
+customer_id INT primary key,
+customer_name varchar(200),
+city varchar(50)
 );
 ```
 
-### Insert Data
+---
+
+# ORDERS TABLE
 
 ```sql
-insert into STUDENTS2 values (1, 'APARNA');
-insert into STUDENTS2 values (2, 'udhay');
-insert into STUDENTS2 values (1, 'maheswaram');
+create table Ordres(
+order_id int primary key,
+product_name varchar(70),
+amount int,
+customer_id int
+);
 ```
-
-### Output
-
-```sql
-SELECT * FROM STUDENTS2;
-```
-
-Explanation:
-
-* First two inserts succeed
-* Third insert fails due to duplicate PRIMARY KEY
 
 ---
 
-## 8. Comparison of Constraints
+# INNER JOIN
 
-| Constraint  | Allows NULL | Allows Duplicates |
-| ----------- | ----------- | ----------------- |
-| NOT NULL    | No          | Yes               |
-| UNIQUE      | Yes         | No                |
-| PRIMARY KEY | No          | No                |
+## Definition
+
+Returns matching rows from both tables.
+
+## Syntax
+
+```sql
+SELECT columns
+FROM table1
+INNER JOIN table2
+ON condition;
+```
+
+## Example
+
+```sql
+select Customers.customer_id, Customers.customer_name,
+Ordres.product_name,
+Ordres.amount
+from Customers
+inner join Ordres
+ON Customers.customer_id = Ordres.customer_id;
+```
 
 ---
 
+# LEFT JOIN
+
+## Definition
+
+Returns:
+
+* All records from left table
+* Matching records from right table
+
+Non-matching values become NULL.
+
+## Example
+
+```sql
+select Customers.customer_name,
+Ordres.product_name
+from Customers
+left join Ordres
+on Customers.customer_id = Ordres.customer_id;
+```
+
+---
+
+# RIGHT JOIN
+
+## Definition
+
+Returns:
+
+* All records from right table
+* Matching records from left table
+
+## Example
+
+```sql
+select Customers.customer_id, Customers.customer_name,
+Ordres.product_name
+from Customers
+right join Ordres
+on Customers.customer_id = Ordres.customer_id;
+```
+
+---
+
+# FULL JOIN
+
+## Definition
+
+Returns all rows from both tables.
+
+---
+
+## Example
+
+```sql
+select Customers.customer_name,
+Ordres.product_name
+from Customers
+FULL JOIN Ordres
+on Customers.customer_id = Ordres.customer_id;
+```
+
+---
+
+# FULL JOIN USING UNION
+
+```sql
+select Customers.customer_name,
+Ordres.product_name
+from Customers
+left join Ordres
+on Customers.customer_id = Ordres.customer_id
+
+UNION
+
+select Customers.customer_name,
+Ordres.product_name
+from Customers
+right join Ordres
+on Customers.customer_id = Ordres.customer_id;
+```
+
+---
+
+# CROSS JOIN
+
+## Definition
+
+Returns Cartesian product.
+
+Every row from first table combines with every row from second table.
+
+---
+
+# SELF JOIN
+
+## Definition
+
+A table joins with itself.
+
+Used in:
+
+* Employee-manager relationships
+* Hierarchical data
+
+---
+
+# NATURAL JOIN
+
+## Definition
+
+Automatically joins tables using same column names.
+
+## Example
+
+```sql
+select customer_name, product_name, amount
+from Customers
+natural join Ordres;
+```
+
+---
+
+# 20. SINGLE ROW FUNCTIONS
+
+## Definition
+
+Functions that operate on one row at a time.
+
+---
+
+# TYPES OF SINGLE ROW FUNCTIONS
+
+1. Character Functions
+2. Number Functions
+3. Date Functions
+4. General Functions
+
+---
+
+# 21. CHARACTER FUNCTIONS
+
+# UPPER()
+
+## Definition
+
+Converts text to uppercase.
+
+## Syntax
+
+```sql
+UPPER(column_name)
+```
+
+## Example
+
+```sql
+SELECT UPPER(name)
+FROM STUDENTS1;
+```
+
+---
+
+# LOWER()
+
+## Definition
+
+Converts text to lowercase.
+
+## Example
+
+```sql
+SELECT LOWER(name)
+FROM STUDENTS1;
+```
+
+---
+
+# LENGTH()
+
+## Definition
+
+Returns number of characters.
+
+## Example
+
+```sql
+SELECT LENGTH(name)
+FROM STUDENTS1;
+```
+
+---
+
+# CONCAT()
+
+## Definition
+
+Combines strings.
+
+## Example
+
+```sql
+SELECT CONCAT(name, ' - ', city)
+FROM STUDENTS1;
+```
+
+---
+
+# SUBSTRING()
+
+## Definition
+
+Extracts part of string.
+
+## Syntax
+
+```sql
+SUBSTRING(string, start, length)
+```
+
+## Example
+
+```sql
+SELECT SUBSTRING(name, 1, 3)
+FROM STUDENTS1;
+```
+
+---
+
+# 22. NUMBER FUNCTIONS
+
+# ROUND()
+
+## Definition
+
+Rounds decimal values.
+
+## Example
+
+```sql
+SELECT ROUND(45.678, 2);
+```
+
+---
+
+# MOD()
+
+## Definition
+
+Returns remainder.
+
+## Example
+
+```sql
+SELECT MOD(10,3);
+```
+
+---
+
+# 23. DATE FUNCTIONS
+
+# NOW()
+
+## Definition
+
+Returns current date and time.
+
+## Example
+
+```sql
+SELECT NOW();
+```
+
+---
+
+# CURDATE()
+
+## Definition
+
+Returns current date.
+
+## Example
+
+```sql
+SELECT CURDATE();
+```
+
+---
+
+# 24. GENERAL FUNCTIONS
+
+# IFNULL()
+
+## Definition
+
+Replaces NULL with another value.
+
+## Example
+
+```sql
+SELECT IFNULL(NULL, 'No Data');
+```
+
+---
+
+# 25. TCL COMMANDS
+
+# TCL - Transaction Control Language
+
+Used to manage transactions.
+
+## TCL Commands
+
+* COMMIT
+* ROLLBACK
+* SAVEPOINT
+
+---
+
+# COMMIT
+
+## Definition
+
+Permanently saves transaction.
+
+## Example
+
+```sql
+COMMIT;
+```
+
+---
+
+# ROLLBACK
+
+## Definition
+
+Undo changes.
+
+## Example
+
+```sql
+ROLLBACK;
+```
+
+---
+
+# SAVEPOINT
+
+## Definition
+
+Creates rollback point.
+
+## Example
+
+```sql
+SAVEPOINT sp1;
+```
+
+---
+
+# 26. DCL COMMANDS
+
+# DCL - Data Control Language
+
+Controls permissions.
+
+## Commands
+
+* GRANT
+* REVOKE
+
+---
+
+# GRANT
+
+## Definition
+
+Gives permissions.
+
+## Example
+
+```sql
+GRANT SELECT ON students TO user1;
+```
+
+---
+
+# REVOKE
+
+## Definition
+
+Removes permissions.
+
+## Example
+
+```sql
+REVOKE SELECT ON students FROM user1;
+```
+
+---
+
+# 27. REAL-TIME FLIPKART PROJECT EXAMPLE
+
+# Flipkart Product Table
+
+```sql
+CREATE TABLE flipkart_products (
+product_id INT AUTO_INCREMENT PRIMARY KEY,
+product_name VARCHAR(255),
+category VARCHAR(100),
+brand VARCHAR(100),
+price DECIMAL(10,2),
+rating DECIMAL(2,1),
+stock INT,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+---
+
+# Real-Time Queries
+
+## Find Expensive Products
+
+```sql
+SELECT * FROM flipkart_products
+WHERE price > 50000;
+```
+
+---
+
+## Find Apple Products
+
+```sql
+SELECT * FROM flipkart_products
+WHERE brand = 'Apple';
+```
+
+---
+
+## Find Products Starting with S
+
+```sql
+SELECT * FROM flipkart_products
+WHERE product_name LIKE 'S%';
+```
+
+---
+
+## Find Average Price
+
+```sql
+SELECT AVG(price)
+FROM flipkart_products;
+```
+
+---
+
+## Find Category Wise Product Count
+
+```sql
+SELECT category, COUNT(*)
+FROM flipkart_products
+GROUP BY category;
+```
+
+---
+
+# 28. REAL-TIME INSTAGRAM EXAMPLES
+
+## Instagram Users Table
+
+```sql
+CREATE TABLE instagram_users(
+user_id INT PRIMARY KEY,
+username VARCHAR(100),
+followers INT,
+following INT
+);
+```
+
+---
+
+## Insert Data
+
+```sql
+INSERT INTO instagram_users VALUES
+(1,'mahesh',1200,500),
+(2,'vishnu',800,200),
+(3,'aparna',5000,1000);
+```
+
+---
+
+## Find Popular Users
+
+```sql
+SELECT * FROM instagram_users
+WHERE followers > 1000;
+```
+
+---
+
+# 29. REAL-TIME SWIGGY EXAMPLES
+
+## Swiggy Orders Table
+
+```sql
+CREATE TABLE swiggy_orders(
+order_id INT PRIMARY KEY,
+customer_name VARCHAR(100),
+restaurant_name VARCHAR(100),
+amount INT
+);
+```
+
+---
+
+## Insert Data
+
+```sql
+INSERT INTO swiggy_orders VALUES
+(1,'Rahul','Paradise',450),
+(2,'Ajay','KFC',650),
+(3,'Vishnu','Dominos',700);
+```
+
+---
+
+## Find Highest Order
+
+```sql
+SELECT MAX(amount)
+FROM swiggy_orders;
+```
+
+---
+
+# 30. INTERVIEW QUESTIONS
+
+# Basic Questions
+
+1. What is MySQL?
+2. Difference between DELETE, DROP, TRUNCATE?
+3. What is PRIMARY KEY?
+4. What is FOREIGN KEY?
+5. Difference between WHERE and HAVING?
+6. Difference between CHAR and VARCHAR?
+7. What are joins?
+8. Difference between INNER JOIN and LEFT JOIN?
+9. What is GROUP BY?
+10. What are aggregate functions?
+
+---
+
+# 31. IMPORTANT NOTES
+
+## DELETE vs TRUNCATE vs DROP
+
+| Command  | Deletes Data | Deletes Structure |
+| -------- | ------------ | ----------------- |
+| DELETE   | Yes          | No                |
+| TRUNCATE | Yes          | No                |
+| DROP     | Yes          | Yes               |
+
+---
+
+# WHERE vs HAVING
+
+| WHERE           | HAVING         |
+| --------------- | -------------- |
+| Filters rows    | Filters groups |
+| Before GROUP BY | After GROUP BY |
+
+---
+
+# PRIMARY KEY RULES
+
+* Cannot contain NULL
+* Must be unique
+* One primary key per table
+
+---
+
+# FOREIGN KEY PURPOSE
+
+Maintains relationship between tables.
+
+---
+
+# AUTO_INCREMENT PURPOSE
+
+Automatically generates IDs.
+
+---
+
+# 32. PRACTICE QUERIES
+
+# STUDENT PRACTICE
+
+## Create Table
+
+```sql
+CREATE TABLE students_practice(
+id INT,
+name VARCHAR(100),
+marks INT
+);
+```
+
+---
+
+## Insert Values
+
+```sql
+INSERT INTO students_practice VALUES
+(1,'Ajay',90),
+(2,'Rahul',80),
+(3,'Aparna',95);
+```
+
+---
+
+## Fetch All Data
+
+```sql
+SELECT * FROM students_practice;
+```
+
+---
+
+## Students with Marks Greater Than 85
+
+```sql
+SELECT * FROM students_practice
+WHERE marks > 85;
+```
+
+---
+
+## Count Students
+
+```sql
+SELECT COUNT(*)
+FROM students_practice;
+```
+
+---
+
+## Average Marks
+
+```sql
+SELECT AVG(marks)
+FROM students_practice;
+```
+
+---
+
+## Sort Students by Marks
+
+```sql
+SELECT * FROM students_practice
+ORDER BY marks DESC;
+```
+
+---
 
