@@ -7855,7 +7855,6 @@ catch(ArithmeticException e) {
 ---
 
 ---
-````markdown id="zq7m2p"
 # Structured Query Language (SQL) – Complete Notes
 
 ## 1. Introduction
