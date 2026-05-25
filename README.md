@@ -10454,6 +10454,724 @@ WHERE EMP_DEPT IN
 
 ---
 
+# MySQL Stored Procedures and Triggers - Complete Notes
+
+> Database Used: Banking_System  
+> Tables Used:
+> - bank_accounts
+> - transaction_log
+> - deleted_accounts
+
+Based on the same tables and data used in class. :contentReference[oaicite:0]{index=0}
+
+---
+
+# PART 1 : STORED PROCEDURES
+
+# What is a Stored Procedure?
+
+A Stored Procedure is a collection of SQL statements stored inside the database that can be executed whenever needed.
+
+Instead of writing the same SQL query repeatedly, we create a procedure once and call it whenever required.
+
+---
+
+# Advantages of Stored Procedures
+
+1. Reduces code duplication
+2. Improves performance
+3. Easy maintenance
+4. Better security
+5. Faster execution
+6. Reusable code
+
+---
+
+# Basic Syntax
+
+```sql
+DELIMITER //
+
+CREATE PROCEDURE procedure_name()
+
+BEGIN
+
+SQL Statements;
+
+END //
+
+DELIMITER ;
+```
+
+---
+
+# Create Database
+
+```sql
+CREATE DATABASE Banking_System;
+
+USE Banking_System;
+```
+
+---
+
+# Create Table
+
+```sql
+CREATE TABLE bank_accounts
+(
+acc_no INT PRIMARY KEY,
+customer_name VARCHAR(50),
+balance INT
+);
+```
+
+---
+
+# Insert Data
+
+```sql
+INSERT INTO bank_accounts
+(acc_no,customer_name,balance)
+
+VALUES
+
+(1001,'Aarav Sharma',24567),
+(1002,'Priya Patel',85643),
+(1003,'Rahul Kumar',12345),
+(1004,'Ananya Singh',67890),
+(1005,'Vikram Reddy',45678),
+(1006,'Sneha Gupta',78901),
+(1007,'Arjun Mehta',23456),
+(1008,'Divya Joshi',56789),
+(1009,'Karan Desai',89012),
+(1010,'Riya Nair',34567),
+(1011,'Siddharth Iyer',11234),
+(1012,'Meera Pillai',55678),
+(1013,'Rohan Banerjee',77890),
+(1014,'Pooja Agarwal',33456),
+(1015,'Aditya Verma',66789),
+(1016,'Nisha Yadav',88901),
+(1017,'Kunal Mishra',22345),
+(1018,'Tanya Saxena',44567),
+(1019,'Manish Chauhan',55678),
+(1020,'Shreya Malhotra',77890),
+(1021,'Vishal Thakur',11223),
+(1022,'Aishwarya Roy',33445),
+(1023,'Gaurav Pandey',55667),
+(1024,'Neha Kapoor',77889),
+(1025,'Rajesh Jain',99012),
+(1026,'Swati Bhatia',22334),
+(1027,'Akash Dubey',44556),
+(1028,'Kavya Singhania',66778),
+(1029,'Prateek Rawat',88990),
+(1030,'Anjali Tyagi',11234),
+(1031,'Saurabh Biswas',33456),
+(1032,'Riddhi Shah',55678),
+(1033,'Nikhil Pawar',77890),
+(1034,'Simran Kaur',99012),
+(1035,'Abhishek Das',22345),
+(1036,'Payal Sen',44567),
+(1037,'Yashwant Rao',66789),
+(1038,'Deepika Shetty',88901);
+```
+
+---
+
+# View Data
+
+```sql
+SELECT * FROM bank_accounts;
+```
+
+---
+
+# Procedure Example 1
+
+## Display all accounts
+
+```sql
+DELIMITER //
+
+CREATE PROCEDURE getAllAccounts()
+
+BEGIN
+
+SELECT * FROM bank_accounts;
+
+END //
+
+DELIMITER ;
+```
+
+---
+
+# Execute Procedure
+
+```sql
+CALL getAllAccounts();
+```
+
+---
+
+# Procedure Example 2
+
+## High Balance Accounts
+
+```sql
+DELIMITER //
+
+CREATE PROCEDURE HighBalanceAccounts()
+
+BEGIN
+
+SELECT *
+FROM bank_accounts
+WHERE balance>50000;
+
+END //
+
+DELIMITER ;
+```
+
+---
+
+# Execute
+
+```sql
+CALL HighBalanceAccounts();
+```
+
+---
+
+# Delete Procedure
+
+```sql
+DROP PROCEDURE HighBalanceAccounts;
+```
+
+---
+
+# Show Procedures
+
+```sql
+SHOW PROCEDURE STATUS;
+```
+
+---
+
+# Parameters in Procedures
+
+There are 3 types:
+
+1. IN
+2. OUT
+3. INOUT
+
+---
+
+# IN Parameter
+
+Accepts values from user.
+
+## Syntax
+
+```sql
+DELIMITER //
+
+CREATE PROCEDURE procedure_name
+(IN variable datatype)
+
+BEGIN
+
+SQL Statements;
+
+END//
+
+DELIMITER ;
+```
+
+---
+
+## Example
+
+```sql
+DELIMITER //
+
+CREATE PROCEDURE getAccount
+(
+IN p_accountNo INT
+)
+
+BEGIN
+
+SELECT *
+FROM bank_accounts
+WHERE acc_no=p_accountNo;
+
+END//
+
+DELIMITER ;
+```
+
+---
+
+## Execute
+
+```sql
+CALL getAccount(1030);
+```
+
+---
+
+# OUT Parameter
+
+Returns values to user.
+
+---
+
+## Example
+
+```sql
+DELIMITER //
+
+CREATE PROCEDURE GetBalance
+(
+IN p_accountNo INT,
+OUT p_balance INT
+)
+
+BEGIN
+
+SELECT balance
+INTO p_balance
+
+FROM bank_accounts
+
+WHERE acc_no=p_accountNo;
+
+END//
+
+DELIMITER ;
+```
+
+---
+
+## Execute
+
+```sql
+CALL GetBalance(1030,@balance);
+
+SELECT @balance;
+```
+
+---
+
+# INOUT Parameter
+
+Accepts and returns values.
+
+---
+
+## Example
+
+```sql
+DELIMITER //
+
+CREATE PROCEDURE BONUS
+(
+INOUT amount INT
+)
+
+BEGIN
+
+SET amount=amount+5000;
+
+END//
+
+DELIMITER ;
+```
+
+---
+
+## Execute
+
+```sql
+SET @money=10000;
+
+CALL BONUS(@money);
+
+SELECT @money;
+```
+
+---
+
+# Procedure Flow
+
+```text
+Create Procedure
+       ↓
+Store in Database
+       ↓
+Call Procedure
+       ↓
+Procedure Executes
+       ↓
+Returns Result
+```
+
+---
+
+# PART 2 : TRIGGERS
+
+# What is Trigger?
+
+A Trigger is a special stored program that automatically executes when an event occurs in a table.
+
+Events:
+
+1. INSERT
+2. UPDATE
+3. DELETE
+
+---
+
+# Trigger Types
+
+### BEFORE INSERT
+
+Runs before insertion.
+
+### AFTER INSERT
+
+Runs after insertion.
+
+### BEFORE UPDATE
+
+Runs before update.
+
+### AFTER UPDATE
+
+Runs after update.
+
+### BEFORE DELETE
+
+Runs before deletion.
+
+### AFTER DELETE
+
+Runs after deletion.
+
+---
+
+# Trigger Syntax
+
+```sql
+DELIMITER //
+
+CREATE TRIGGER trigger_name
+
+BEFORE/AFTER
+
+INSERT/UPDATE/DELETE
+
+ON table_name
+
+FOR EACH ROW
+
+BEGIN
+
+SQL Statements;
+
+END//
+
+DELIMITER ;
+```
+
+---
+
+# Create Supporting Tables
+
+## Transaction Log Table
+
+```sql
+CREATE TABLE transaction_log
+(
+id INT AUTO_INCREMENT PRIMARY KEY,
+message VARCHAR(200)
+);
+```
+
+---
+
+## Deleted Accounts Table
+
+```sql
+CREATE TABLE deleted_accounts
+(
+acc_no INT,
+customer_name VARCHAR(50),
+balance INT
+);
+```
+
+---
+
+# BEFORE INSERT Trigger
+
+```sql
+DELIMITER //
+
+CREATE TRIGGER BEFORE_INSERT_BALANCE
+
+BEFORE INSERT
+ON bank_accounts
+
+FOR EACH ROW
+
+BEGIN
+
+IF NEW.balance<1000 THEN
+
+SET NEW.balance=1000;
+
+END IF;
+
+END//
+
+DELIMITER ;
+```
+
+---
+
+## Test
+
+```sql
+INSERT INTO bank_accounts
+VALUES
+(1039,'Mahesh',500);
+
+SELECT * FROM bank_accounts;
+```
+
+---
+
+# AFTER INSERT Trigger
+
+```sql
+DELIMITER //
+
+CREATE TRIGGER AFTER_INSERT_LOG
+
+AFTER INSERT
+ON bank_accounts
+
+FOR EACH ROW
+
+BEGIN
+
+INSERT INTO transaction_log(message)
+
+VALUES
+(CONCAT
+(
+'NEW CUSTOMER ADDED : ',
+NEW.customer_name
+));
+
+END//
+
+DELIMITER ;
+```
+
+---
+
+# BEFORE UPDATE Trigger
+
+```sql
+DELIMITER //
+
+CREATE TRIGGER BEFORE_UPDATE_BALANCE
+
+BEFORE UPDATE
+ON bank_accounts
+
+FOR EACH ROW
+
+BEGIN
+
+IF NEW.balance<0 THEN
+
+SET NEW.balance=0;
+
+END IF;
+
+END//
+
+DELIMITER ;
+```
+
+---
+
+# AFTER UPDATE Trigger
+
+```sql
+DELIMITER //
+
+CREATE TRIGGER AFTER_UPDATE_LOG
+
+AFTER UPDATE
+ON bank_accounts
+
+FOR EACH ROW
+
+BEGIN
+
+INSERT INTO transaction_log(message)
+
+VALUES
+(
+CONCAT
+(
+'BALANCE UPDATED FOR : ',
+NEW.customer_name
+)
+);
+
+END//
+
+DELIMITER ;
+```
+
+---
+
+# BEFORE DELETE Trigger
+
+```sql
+DELIMITER //
+
+CREATE TRIGGER BEFORE_DELETE_BACKUP
+
+BEFORE DELETE
+ON bank_accounts
+
+FOR EACH ROW
+
+BEGIN
+
+INSERT INTO deleted_accounts
+
+VALUES
+(
+OLD.acc_no,
+OLD.customer_name,
+OLD.balance
+);
+
+END//
+
+DELIMITER ;
+```
+
+---
+
+# AFTER DELETE Trigger
+
+```sql
+DELIMITER //
+
+CREATE TRIGGER AFTER_DELETE_LOG
+
+AFTER DELETE
+ON bank_accounts
+
+FOR EACH ROW
+
+BEGIN
+
+INSERT INTO transaction_log(message)
+
+VALUES
+(
+CONCAT
+(
+'DELETED CUSTOMER : ',
+OLD.customer_name
+)
+);
+
+END//
+
+DELIMITER ;
+```
+
+---
+
+# Show Triggers
+
+```sql
+SHOW TRIGGERS;
+```
+
+---
+
+# Delete Trigger
+
+```sql
+DROP TRIGGER AFTER_DELETE_LOG;
+```
+
+---
+
+# Difference Between Procedures and Triggers
+
+| Stored Procedure | Trigger |
+|-----------------|----------|
+| Called manually | Executes automatically |
+| Uses CALL statement | No CALL required |
+| Can accept parameters | Cannot accept parameters |
+| Can return values | Cannot return values |
+| User controls execution | Event controls execution |
+
+---
+
+# Interview Questions
+
+### What is Stored Procedure?
+
+A stored procedure is a stored collection of SQL statements executed when called.
+
+---
+
+### What is Trigger?
+
+A trigger is a stored program that automatically executes when INSERT, UPDATE, or DELETE events occur.
+
+---
+
+### Difference between OLD and NEW?
+
+NEW → New values
+
+OLD → Previous values
+
+---
+
+### Types of Parameters?
+
+IN
+
+OUT
+
+INOUT
+
+---
+
+### Which trigger is used for backup?
+
+BEFORE DELETE
+
+---
 
 
 
