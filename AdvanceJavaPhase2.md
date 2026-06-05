@@ -1,9 +1,405 @@
 
+
+# HTML Forms for Java Web Applications
+
+---
+
+# Why Do We Need Forms?
+
+### Instagram
+
 ```text
-src/main/java
-src/main/webapp
+Username
+Email
+Phone Number
+Password
 ```
 
+How does Instagram collect this information?
+
+
+Using a **Form**.
+
+---
+
+# Definition of Form
+
+> A form is used to collect data from users and send that data to a server.
+
+Examples:
+
+* Login Form
+* Registration Form
+* Feedback Form
+* Contact Form
+
+---
+
+# Basic Form Syntax
+
+```html
+<form>
+
+</form>
+```
+
+Everything that collects user data should be inside the form tag.
+
+---
+
+# Instagram Registration Example
+
+```html
+<form>
+
+Username :
+<input type="text">
+
+<br><br>
+
+Password :
+<input type="password">
+
+<br><br>
+
+<input type="submit">
+
+</form>
+```
+
+---
+
+# Form Tag
+
+## Syntax
+
+```html
+<form action="" method="">
+
+</form>
+```
+
+Two important attributes:
+
+### action
+
+### method
+
+---
+
+# action Attribute
+
+## Syntax
+
+```html
+<form action="register">
+```
+
+Meaning:
+
+```text
+After clicking submit,
+send data to register servlet
+```
+
+Visualization:
+
+```text
+HTML Form
+      ↓
+action="register"
+      ↓
+RegisterServlet
+```
+
+---
+
+# method Attribute
+
+## Syntax
+
+```html
+<form action="register"
+      method="post">
+```
+
+Two methods:
+
+### GET
+
+### POST
+
+---
+
+# GET Method
+
+```html
+method="get"
+```
+
+Data visible in URL.
+
+Example:
+
+```text
+localhost:8080/register?
+username=mahesh
+```
+
+Not secure.
+
+---
+
+# POST Method
+
+```html
+method="post"
+```
+
+Data hidden.
+
+Used for:
+
+* Login
+* Registration
+* Banking
+* Payment Applications
+
+Instagram uses POST.
+
+---
+
+# Input Tag
+
+## Syntax
+
+```html
+<input>
+```
+
+Used to collect user input.
+
+---
+
+# Text Box
+
+## Syntax
+
+```html
+<input type="text">
+```
+
+Used for:
+
+* Username
+* Name
+* City
+
+Example:
+
+```html
+Username:
+<input type="text">
+```
+
+---
+
+# Password Field
+
+## Syntax
+
+```html
+<input type="password">
+```
+
+Output:
+
+```text
+*****
+```
+
+Used for passwords.
+
+---
+
+# Email Field
+
+## Syntax
+
+```html
+<input type="email">
+```
+
+Used for email addresses.
+
+Example:
+
+```html
+Email:
+<input type="email">
+```
+
+---
+
+# Submit Button
+
+## Syntax
+
+```html
+<input type="submit">
+```
+
+Used to send data to server.
+
+Visualization:
+
+```text
+User fills form
+       ↓
+Clicks Submit
+       ↓
+Data goes to Servlet
+```
+
+---
+
+# The Most Important Attribute
+
+# name
+
+Students usually miss this concept.
+
+---
+
+## Syntax
+
+```html
+<input type="text"
+       name="username">
+```
+
+---
+
+### Why name is important?
+
+Servlet reads data using name.
+
+HTML
+
+```html
+<input type="text"
+       name="username">
+```
+
+Servlet
+
+```java
+String username =
+request.getParameter("username");
+```
+
+Both names must match.
+
+---
+
+# Example
+
+HTML
+
+```html
+<input type="text"
+       name="username">
+```
+
+Servlet
+
+```java
+request.getParameter("username");
+```
+
+Works.
+
+---
+
+HTML
+
+```html
+<input type="text"
+       name="username">
+```
+
+Servlet
+
+```java
+request.getParameter("name");
+```
+
+Returns:
+
+```text
+null
+```
+
+Because names are different.
+
+---
+
+
+# Connect Form With Servlet
+
+HTML
+
+```html
+<form action="register"
+      method="post">
+```
+
+↓
+
+Servlet
+
+```java
+@WebServlet("/register")
+```
+
+↓
+
+Receive Data
+
+```java
+String username =
+request.getParameter("username");
+```
+
+---
+
+# Full Flow Diagram
+
+```text
+User
+ ↓
+HTML Form
+ ↓
+Username
+Email
+Phone
+Password
+ ↓
+Submit Button
+ ↓
+action="register"
+ ↓
+Tomcat Server
+ ↓
+RegisterServlet
+ ↓
+request.getParameter()
+ ↓
+Java Variables
+ ↓
+Console Output
+
+```
 
 # Project Structure
 
