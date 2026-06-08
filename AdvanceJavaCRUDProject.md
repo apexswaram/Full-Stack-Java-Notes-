@@ -1,20 +1,3 @@
-This is the kind of project where students learn **Servlets + JDBC + MySQL + CRUD Operations** together. For GitHub sharing, your README should not only contain code, but also explain:
-
-* What is the project?
-* Technologies used
-* Project structure
-* Database setup
-* Servlet flow
-* CRUD operations
-* Explanation of every file
-* Interview questions
-* Practice tasks
-* Improvements
-
-Below is a professional README structure you can directly put into your repository.
-
----
-
 # Instagram User Management System (Servlet CRUD Project)
 
 ## Project Overview
