@@ -1468,22 +1468,6 @@ content="Maheswaram">
 
 ---
 
-# Mini Project 1
-
-Student Details Table
-
-# Mini Project 2
-
-College Timetable
-
-# Mini Project 3
-
-Semantic Webpage Layout
-
-Header + Nav + Main + Footer
-
----
-
 # Practice Tasks
 
 1. Create Employee Table.
@@ -2207,4 +2191,320 @@ day2.html
 
 </html>
 ```
+---
+
+# Mini Project 1
+
+Student Details Table
+
+# Mini Project 2
+
+College Timetable
+
+# Mini Project 3
+
+Semantic Webpage Layout
+
+Header + Nav + Main + Footer
+
+---
+
+# Mini Project 1: Student Details Table
+
+## Objective
+
+Create a student information table using HTML tables.
+
+## Requirements
+
+Create a webpage with the title:
+
+```html
+Student Details
+```
+
+Add a table containing:
+
+| ID  | Name  | Course            | Email                                     | Phone      |
+| --- | ----- | ----------------- | ----------------------------------------- | ---------- |
+| 101 | Ravi  | Java Full Stack   | [ravi@gmail.com](mailto:ravi@gmail.com)   | 9876543210 |
+| 102 | Priya | Python Full Stack | [priya@gmail.com](mailto:priya@gmail.com) | 9876543211 |
+| 103 | Arjun | Data Science      | [arjun@gmail.com](mailto:arjun@gmail.com) | 9876543212 |
+| 104 | Sneha | UI/UX Design      | [sneha@gmail.com](mailto:sneha@gmail.com) | 9876543213 |
+| 105 | Kiran | Cyber Security    | [kiran@gmail.com](mailto:kiran@gmail.com) | 9876543214 |
+
+---
+
+## Concepts Student Must Use
+
+### Table Tags
+
+```html
+<table>
+<tr>
+<th>
+<td>
+```
+
+### Formatting
+
+```html
+<h1>
+<hr>
+```
+
+### Table Attributes
+
+```html
+border
+cellpadding
+cellspacing
+```
+
+Example:
+
+```html
+<table border="1" cellpadding="10" cellspacing="0">
+```
+
+---
+
+## Expected Output
+
+```text
+Student Details
+
+-------------------------------------------------
+
++-----+---------+-----------------+-------------------+------------+
+| ID  | Name    | Course          | Email             | Phone      |
++-----+---------+-----------------+-------------------+------------+
+|101  | Ravi    | Java Full Stack | ravi@gmail.com    |9876543210  |
+|102  | Priya   | Python Full Stack|priya@gmail.com   |9876543211  |
+|103  | Arjun   | Data Science    | arjun@gmail.com   |9876543212  |
+|104  | Sneha   | UI/UX Design    | sneha@gmail.com   |9876543213  |
+|105  | Kiran   | Cyber Security  | kiran@gmail.com   |9876543214  |
++-----+---------+-----------------+-------------------+------------+
+```
+
+---
+
+# Mini Project 2: College Timetable
+
+## Objective
+
+Create a weekly college timetable using HTML tables.
+
+---
+
+## Requirements
+
+Create a table with:
+
+```text
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+```
+
+Time slots:
+
+```text
+9:00 - 10:00
+10:00 - 11:00
+11:00 - 12:00
+12:00 - 1:00
+2:00 - 3:00
+3:00 - 4:00
+```
+
+Subjects:
+
+```text
+HTML
+CSS
+JavaScript
+Core Java
+SQL
+Aptitude
+```
+
+Include:
+
+```text
+Lunch Break
+```
+
+using:
+
+```html
+colspan
+```
+
+---
+
+## Concepts Student Must Use
+
+### Table Tags
+
+```html
+<table>
+<tr>
+<th>
+<td>
+```
+
+### Table Attributes
+
+```html
+border
+cellpadding
+cellspacing
+```
+
+### Special Table Feature
+
+```html
+colspan
+```
+
+Example:
+
+```html
+<td colspan="6">Lunch Break</td>
+```
+
+---
+
+## Expected Learning
+
+Students understand:
+
+* Large Tables
+* Row & Column Management
+* colspan
+* Data Organization
+
+---
+
+# Mini Project 3: Semantic Webpage Layout
+
+## Objective
+
+Create a complete webpage structure using semantic HTML tags.
+
+---
+
+## Requirements
+
+Create the following layout:
+
+```text
+---------------------------------
+            HEADER
+---------------------------------
+
+HOME | ABOUT | COURSES | CONTACT
+
+---------------------------------
+              MAIN
+---------------------------------
+
+Welcome to Our Training Institute
+
+We provide:
+
+• Java Full Stack
+• Python Full Stack
+• Data Science
+• UI/UX Design
+
+---------------------------------
+             FOOTER
+---------------------------------
+
+© 2026 Training Institute
+```
+
+---
+
+## Mandatory Semantic Tags
+
+Students must use:
+
+```html
+<header>
+<nav>
+<main>
+<section>
+<footer>
+```
+
+---
+
+## Concepts Student Must Use
+
+### Headings
+
+```html
+<h1>
+<h2>
+```
+
+### Paragraph
+
+```html
+<p>
+```
+
+### Lists
+
+```html
+<ul>
+<li>
+```
+
+### Horizontal Line
+
+```html
+<hr>
+```
+
+### Links
+
+```html
+<a>
+```
+
+Example:
+
+```html
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Courses</a>
+<a href="#">Contact</a>
+```
+
+---
+
+# Skills Covered by These 3 Projects
+
+| Topic                | Project      |
+| -------------------- | ------------ |
+| Headings             | 3            |
+| Paragraphs           | 3            |
+| Horizontal Line      | 1,2,3        |
+| Lists                | 3            |
+| Links                | 3            |
+| Tables               | 1,2          |
+| Rows & Columns       | 1,2          |
+| colspan              | 2            |
+| Semantic Tags        | 3            |
+| Basic Page Structure | 3            |
+| HTML Boilerplate     | All Projects |
+
+
 **End of Day2**
