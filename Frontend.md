@@ -3319,8 +3319,616 @@ This project demonstrates:
 ```
 
 ---
+# Assignment 1: Student Portfolio Website
 
+## Objective
 
+Create a complete Student Portfolio Website using all concepts learned in Day 1, Day 2, and Day 3.
+
+---
+
+## Requirements
+
+### Header Section
+
+Display:
+
+* Student Name using Heading Tag
+* Short Introduction using Paragraph Tag
+* Horizontal Rule
+
+---
+
+### About Me Section
+
+Use:
+
+* div
+* span
+* bold
+* italic
+* underline
+* mark
+
+Example:
+
+* Name
+* Course
+* Career Goal
+* Skills
+
+---
+
+### Skills Section
+
+Use:
+
+* Ordered List
+* Unordered List
+* Nested List
+
+Example:
+
+Frontend Skills
+
+* HTML
+* CSS
+
+Backend Skills
+
+* Java
+* JDBC
+* Servlets
+
+---
+
+### Education Section
+
+Create a Table containing:
+
+* Qualification
+* Institution
+* Year
+* Percentage
+
+Use:
+
+* table
+* rowspan
+* colspan
+
+---
+
+### Learning Progress Section
+
+Use Progress Bars for:
+
+* HTML
+* CSS
+* JavaScript
+* Java
+* SQL
+
+Use Meter Tag for:
+
+* Communication Skills
+* Problem Solving
+* Team Work
+
+---
+
+### Certifications Section
+
+Use Details Tag.
+
+Each certificate should open when clicked.
+
+Example:
+
+* Java Certificate
+* SQL Certificate
+* DSA Certificate
+
+---
+
+### Project Section
+
+Use:
+
+* figure
+* img
+* figcaption
+
+Display at least 3 projects.
+
+---
+
+### Contact Section
+
+Add Hyperlinks:
+
+* GitHub
+* LinkedIn
+* Email
+
+---
+
+## Mandatory Concepts
+
+✔ Headings
+
+✔ Paragraph
+
+✔ Hyperlinks
+
+✔ Images
+
+✔ Lists
+
+✔ Tables
+
+✔ Semantic Tags
+
+✔ Details
+
+✔ Progress
+
+✔ Meter
+
+✔ Figure
+
+✔ Span
+
+✔ Internal CSS
+
+✔ Tag Selector
+
+✔ Class Selector
+
+✔ ID Selector
+
+---
+
+## Expected Output
+
+A complete personal portfolio website.
+```
+--------------------------------------------------
+          STUDENT PORTFOLIO
+--------------------------------------------------
+
+Student Photo
+
+Name: John Doe
+Course: Full Stack Java Development
+
+About Me
+--------------------------------
+Short introduction paragraph
+
+Skills
+--------------------------------
+Frontend
+ - HTML
+ - CSS
+ - JavaScript
+
+Backend
+ - Core Java
+ - JDBC
+ - Servlets
+
+Education
+--------------------------------
+Table displaying qualification details
+
+Learning Progress
+--------------------------------
+HTML      [=====80%=====]
+CSS       [=====70%=====]
+Java      [=====60%=====]
+
+Projects
+--------------------------------
+Project Images with Captions
+
+Certificates
+--------------------------------
+▶ Java Certificate
+▶ SQL Certificate
+▶ DSA Certificate
+
+Contact
+--------------------------------
+GitHub
+LinkedIn
+Email
+```
+---
+# Assignment 2: Full Stack Developer Learning Dashboard
+
+## Objective
+
+Build a learning dashboard that tracks your Full Stack Development journey.
+
+---
+
+## Sections
+
+### Dashboard Title
+
+Example:
+
+# Full Stack Developer Roadmap
+
+---
+
+### Technologies Table
+
+Create a table containing:
+
+| Technology | Category | Status |
+| ---------- | -------- | ------ |
+
+Categories:
+
+* Frontend
+* Backend
+* Database
+
+Use rowspan and colspan.
+
+---
+
+### Learning Roadmap
+
+Use Details Tag.
+
+Example:
+
+Frontend
+
+* HTML
+* CSS
+* JavaScript
+
+Backend
+
+* Java
+* JDBC
+* Servlets
+
+Database
+
+* MySQL
+
+Each category should expand and collapse.
+
+---
+
+### Progress Tracking
+
+Use Progress Bars.
+
+Example:
+
+HTML → 80%
+
+CSS → 60%
+
+JavaScript → 40%
+
+Java → 50%
+
+MySQL → 70%
+
+---
+
+### Skill Rating
+
+Use Meter Tag.
+
+Rate yourself:
+
+* Communication
+* Coding
+* Problem Solving
+* Team Work
+
+---
+
+### Resource Section
+
+Add Hyperlinks:
+
+* W3Schools
+* MDN
+* GitHub
+
+---
+
+### Code Snippet Section
+
+Use Code Tag.
+
+Example:
+
+```java
+System.out.println("Hello World");
+```
+
+Display at least 5 code snippets.
+
+---
+
+### Styling Requirements
+
+Create:
+
+* One Tag Selector
+* Two Class Selectors
+* Two ID Selectors
+
+---
+
+## Expected Output
+```
+
+--------------------------------------------------
+      FULL STACK LEARNING DASHBOARD
+--------------------------------------------------
+
+Roadmap Table
+
+Frontend
+Backend
+Database
+
+----------------------------------
+Progress Tracking
+
+HTML         [90%]
+CSS          [80%]
+JavaScript   [60%]
+Java         [70%]
+
+----------------------------------
+Skill Ratings
+
+Coding         [8/10]
+Problem Solving[8/10]
+
+----------------------------------
+Learning Resources
+
+GitHub
+MDN
+W3Schools
+
+----------------------------------
+Code Snippets
+
+System.out.println("Hello Java");
+```
+# Assignment 3: Student Service Community (Mini Project)
+
+## Objective
+
+Create a landing page for "Student Service Community".
+
+This project combines all concepts learned so far.
+
+---
+
+## Page Sections
+
+### Hero Section
+
+Display:
+
+* Community Name
+* Tagline
+* Description
+* Join Button
+
+Use:
+
+* Heading
+* Paragraph
+* Span
+* Button
+
+---
+
+### Community Features
+
+Create a list showing:
+
+* Coding Practice
+* Mock Interviews
+* Resume Building
+* Placement Training
+
+Use nested lists.
+
+---
+
+### Learning Tracks
+
+Create a table:
+
+Frontend
+
+Backend
+
+Database
+
+DSA
+
+Use rowspan and colspan.
+
+---
+
+### Community Progress
+
+Use progress bars.
+
+Example:
+
+Students Completed HTML
+
+Students Completed CSS
+
+Students Completed Java
+
+Students Completed SQL
+
+---
+
+### Success Meter
+
+Use meter tags showing:
+
+* Placement Rate
+* Course Completion Rate
+* Student Satisfaction
+
+---
+
+### Community Gallery
+
+Use:
+
+* figure
+* figcaption
+* images
+
+Minimum 4 images.
+
+---
+
+### FAQ Section
+
+Use details and summary.
+
+Minimum 5 FAQs.
+
+---
+
+### Resources Section
+
+Add hyperlinks.
+
+Example:
+
+* GitHub Repository
+* YouTube Channel
+* LinkedIn Page
+
+---
+
+### Footer
+
+Include:
+
+* Copyright
+* Contact Information
+* Social Links
+
+---
+
+## Styling Requirements
+
+Must use:
+
+### Tag Selectors
+
+Style:
+
+* h1
+* p
+* button
+
+### Class Selectors
+
+Create:
+
+* hero-section
+* feature-card
+* footer-section
+
+### ID Selectors
+
+Create:
+
+* main-title
+* contact-section
+
+---
+
+## Bonus Challenge
+
+Add:
+
+* Audio Tag
+* Video Tag
+* iframe (YouTube Video)
+
+---
+
+## Expected Output
+
+```
+--------------------------------------------------
+       STUDENT SERVICE COMMUNITY
+--------------------------------------------------
+
+Learn • Build • Grow Together
+
+Community Description
+
+[ Join Community ]
+
+----------------------------------
+Features
+
+✓ Coding Practice
+✓ Resume Building
+✓ Mock Interviews
+
+----------------------------------
+Learning Tracks Table
+
+Frontend
+Backend
+Database
+DSA
+
+----------------------------------
+Community Progress
+
+HTML [80%]
+CSS  [75%]
+JAVA [65%]
+
+----------------------------------
+Community Gallery
+
+Image 1
+Image 2
+Image 3
+Image 4
+
+----------------------------------
+FAQ
+
+▶ How do I join SSC?
+▶ Is DSA mandatory?
+▶ Will certificates be provided?
+
+----------------------------------
+Footer
+```
 # Day 3 Summary
 
 Topics Covered:
