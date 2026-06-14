@@ -2638,7 +2638,7 @@ Creates collapsible content sections.
 
 ### Output
 
-▶ Register
+> Register
 
 (Click to expand)
 
