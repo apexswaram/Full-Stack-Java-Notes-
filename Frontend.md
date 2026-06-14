@@ -2508,3 +2508,835 @@ Example:
 
 
 **End of Day2**
+
+
+# Day 3 - HTML Semantic Tags & CSS Basics
+
+## Topics Covered
+
+* `<div>` Tag
+* `<span>` Tag
+* `data-*` Attributes
+* `<details>` & `<summary>` Tags
+* Progress Bar
+* Meter Tag
+* Figure & Figcaption
+* Abbreviation Tag
+* Code Tag
+* Introduction to CSS
+* CSS Selectors
+
+  * Tag Selector
+  * ID Selector
+  * Class Selector
+
+---
+
+# HTML DIV Tag
+
+The `<div>` tag is a block-level container used to group multiple HTML elements together.
+
+### Syntax
+
+```html
+<div>
+    <h1>Student Service Community</h1>
+    <p>SSC is a community for student services.</p>
+</div>
+```
+
+### Output
+
+Student Service Community
+
+SSC is a community for student services.
+
+### Uses
+
+* Group related elements
+* Create webpage sections
+* Apply CSS styling to multiple elements
+
+---
+
+# HTML SPAN Tag
+
+The `<span>` tag is an inline container used to style or manipulate a portion of text.
+
+### Syntax
+
+```html
+<p>
+    <span>SSC</span> is a community for student services.
+</p>
+```
+
+### CSS Example
+
+```css
+span{
+    color: blue;
+    font-weight: bold;
+}
+```
+
+### Uses
+
+* Style specific text
+* Apply colors
+* Highlight words
+* Inline content formatting
+
+---
+
+# HTML data-* Attribute
+
+Used to store custom data inside HTML elements.
+
+### Syntax
+
+```html
+<button data-id="101">
+    Click Me
+</button>
+```
+
+### Why Use?
+
+Custom data can later be accessed using JavaScript.
+
+Example:
+
+```javascript
+let id = button.dataset.id;
+```
+
+### Uses
+
+* Store IDs
+* Product information
+* User information
+* Dynamic content handling
+
+---
+
+# HTML Details Tag
+
+Creates collapsible content sections.
+
+### Syntax
+
+```html
+<details>
+    <summary>Register</summary>
+
+    <p>
+        Register for the challenge.
+    </p>
+</details>
+```
+
+### Output
+
+▶ Register
+
+(Click to expand)
+
+### Uses
+
+* FAQ Sections
+* Instructions
+* Hidden content
+* Read More functionality
+
+---
+
+# HTML Summary Tag
+
+Used inside the `<details>` tag as the clickable heading.
+
+### Syntax
+
+```html
+<details>
+
+    <summary>Start Coding</summary>
+
+    <p>Begin solving problems.</p>
+
+</details>
+```
+
+---
+
+# HTML Progress Bar
+
+Represents task completion progress.
+
+### Syntax
+
+```html
+<progress value="70" max="100"></progress>
+```
+
+### Example
+
+```html
+Java
+
+<progress value="90" max="100"></progress>
+```
+
+### Uses
+
+* Course completion
+* Download progress
+* Project tracking
+* Task completion
+
+---
+
+# HTML Meter Tag
+
+Represents a measurement within a known range.
+
+### Syntax
+
+```html
+<meter value="8" min="0" max="10"></meter>
+```
+
+### Example
+
+```html
+Skill Level
+
+<meter value="9" min="0" max="10"></meter>
+```
+
+### Uses
+
+* Skill rating
+* Battery level
+* Performance score
+* Temperature indicator
+
+---
+
+# HTML Figure Tag
+
+Represents self-contained content such as images, diagrams, charts, etc.
+
+### Syntax
+
+```html
+<figure>
+
+    <img src="image.jpg">
+
+</figure>
+```
+
+### Uses
+
+* Images
+* Charts
+* Diagrams
+* Illustrations
+
+---
+
+# HTML Figcaption Tag
+
+Adds a caption to a figure.
+
+### Syntax
+
+```html
+<figure>
+
+    <img src="image.jpg">
+
+    <figcaption>
+        Professional Image
+    </figcaption>
+
+</figure>
+```
+
+### Output
+
+Image
+
+Professional Image
+
+---
+
+# HTML Abbreviation Tag
+
+Displays abbreviated text with a tooltip explanation.
+
+### Syntax
+
+```html
+<abbr title="HyperText Markup Language">
+    HTML
+</abbr>
+```
+
+### Example
+
+```html
+<abbr title="World Health Organization">
+    WHO
+</abbr>
+```
+
+### Uses
+
+* Short forms
+* Technical terms
+* Organization names
+
+---
+
+# HTML Code Tag
+
+Used to display code snippets.
+
+### Syntax
+
+```html
+<code>
+System.out.println("Hello Java");
+</code>
+```
+
+### Example
+
+Output:
+
+```java
+System.out.println("Hello Java");
+```
+
+### Uses
+
+* Programming tutorials
+* Documentation
+* Technical blogs
+
+---
+
+# Introduction to CSS
+
+CSS stands for:
+
+```text
+Cascading Style Sheets
+```
+
+CSS is used to design and style webpages.
+
+It controls:
+
+* Colors
+* Fonts
+* Spacing
+* Layout
+* Borders
+* Animations
+
+---
+
+# Internal CSS
+
+CSS written inside the `<style>` tag.
+
+### Syntax
+
+```html
+<head>
+
+<style>
+
+h1{
+    color:red;
+}
+
+</style>
+
+</head>
+```
+
+---
+
+# CSS Syntax
+
+```css
+selector{
+    property:value;
+}
+```
+
+Example:
+
+```css
+h1{
+    color:red;
+}
+```
+
+### Components
+
+* Selector → Target Element
+* Property → What to change
+* Value → New value
+
+---
+
+# CSS Selectors
+
+Selectors are used to target HTML elements.
+
+There are 3 important selectors:
+
+1. Tag Selector
+2. ID Selector
+3. Class Selector
+
+---
+
+# 1. Tag Selector
+
+Targets all elements with the same tag name.
+
+### Syntax
+
+```css
+h1{
+    color:red;
+}
+```
+
+### HTML
+
+```html
+<h1>Hello</h1>
+<h1>Welcome</h1>
+```
+
+### Output
+
+Both headings become red.
+
+---
+
+# 2. ID Selector
+
+Used to uniquely style a single element.
+
+### HTML
+
+```html
+<h1 id="title">
+    Welcome
+</h1>
+```
+
+### CSS
+
+```css
+#title{
+    color:green;
+}
+```
+
+### Rules
+
+* ID should be unique.
+* One element should have one ID.
+
+---
+
+# 3. Class Selector
+
+Used to style multiple elements together.
+
+### HTML
+
+```html
+<h1 class="heading">
+    HTML
+</h1>
+
+<h2 class="heading">
+    CSS
+</h2>
+```
+
+### CSS
+
+```css
+.heading{
+    color:blue;
+}
+```
+
+### Output
+
+Both elements become blue.
+
+---
+
+# Difference Between ID and Class
+
+| Feature           | ID  | Class |
+| ----------------- | --- | ----- |
+| Symbol            | #   | .     |
+| Unique            | Yes | No    |
+| Multiple Elements | No  | Yes   |
+| Reusable          | No  | Yes   |
+
+### Example
+
+```html
+<h1 id="mainHeading">
+    Welcome
+</h1>
+
+<p class="content">
+    Paragraph 1
+</p>
+
+<p class="content">
+    Paragraph 2
+</p>
+```
+
+```css
+#mainHeading{
+    color:red;
+}
+
+.content{
+    color:blue;
+}
+```
+
+---
+# Day 3 - HTML Semantic Tags & CSS Basics
+
+## Complete Example Project
+
+This project demonstrates:
+
+* Div Tag
+* Span Tag
+* data-* Attribute
+* Details Tag
+* Summary Tag
+* Progress Bar
+* Meter Tag
+* Figure & Figcaption
+* Abbreviation Tag
+* Code Tag
+* Internal CSS
+* Tag Selector
+* ID Selector
+* Class Selector
+
+---
+
+## Complete Code
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3 HTML & CSS Concepts</title>
+
+    <style>
+
+        /* Tag Selector */
+        span{
+            color: blue;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        h1{
+            color: brown;
+        }
+
+        button{
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* Class Selector */
+        .leetcode{
+            color: blue;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .heading{
+            color: blue;
+            font-size: 20px;
+        }
+
+        /* ID Selector */
+        #h1-dis{
+            color: black;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- DIV TAG -->
+
+    <h2>DIV Tag</h2>
+
+    <div>
+        <h1>Student Service Community SSC</h1>
+        <p>SSC is a community for student services.</p>
+    </div>
+
+    <hr>
+
+    <!-- SPAN TAG -->
+
+    <h2>SPAN Tag</h2>
+
+    <p>
+        <span>SSC</span> is a community for student services.
+    </p>
+
+    <p>
+        <span>Student Service Community</span>
+    </p>
+
+    <hr>
+
+    <!-- CLASS AND ID SELECTOR EXAMPLE -->
+
+    <section>
+
+        <h1 class="heading">
+            #DSAwithApexSwaram
+        </h1>
+
+        <h1 id="h1-dis">
+            100 Days
+            <span class="leetcode">LeetCode</span>
+            Challenge
+        </h1>
+
+        <p>
+            By <span>ApexSwaram</span>
+        </p>
+
+        <p>
+            Join the 100 Days LeetCode Challenge and improve your
+            coding skills by solving problems daily.
+        </p>
+
+        <button>
+            LeetCode Problems
+        </button>
+
+    </section>
+
+    <hr>
+
+    <!-- DATA ATTRIBUTE -->
+
+    <h2>data-* Attribute</h2>
+
+    <button data-id="101">
+        Click Me
+    </button>
+
+    <hr>
+
+    <!-- DETAILS TAG -->
+
+    <h2>Details Tag</h2>
+
+    <details>
+
+        <summary>Register</summary>
+
+        <p>
+            Register for the challenge and confirm participation.
+        </p>
+
+    </details>
+
+    <details>
+
+        <summary>Start Coding</summary>
+
+        <p>
+            Begin solving the assigned coding problems.
+        </p>
+
+    </details>
+
+    <details>
+
+        <summary>Submit Progress</summary>
+
+        <p>
+            Share your progress on LinkedIn.
+        </p>
+
+    </details>
+
+    <details>
+
+        <summary>Learn & Grow</summary>
+
+        <p>
+            Participate in discussions and clear doubts.
+        </p>
+
+    </details>
+
+    <details>
+
+        <summary>Certification</summary>
+
+        <p>
+            Complete the challenge to receive a certificate.
+        </p>
+
+    </details>
+
+    <hr>
+
+    <!-- PROGRESS BAR -->
+
+    <h2>Progress Bar</h2>
+
+    HTML <br>
+    <progress value="70" max="100"></progress>
+
+    <br><br>
+
+    CSS <br>
+    <progress value="60" max="100"></progress>
+
+    <br><br>
+
+    JavaScript <br>
+    <progress value="40" max="100"></progress>
+
+    <br><br>
+
+    Core Java <br>
+    <progress value="90" max="100"></progress>
+
+    <br><br>
+
+    MySQL <br>
+    <progress value="80" max="100"></progress>
+
+    <hr>
+
+    <!-- METER TAG -->
+
+    <h2>Meter Tag</h2>
+
+    Skill Rating
+
+    <br><br>
+
+    <meter value="8" min="0" max="10"></meter>
+
+    <hr>
+
+    <!-- FIGURE AND FIGCAPTION -->
+
+    <h2>Figure & Figcaption</h2>
+
+    <figure>
+
+        <img
+            src="https://res.cloudinary.com/doogigafl/image/upload/v1781450206/Passport_Size_Photo_cwtt3p.jpg"
+            height="200"
+            width="200"
+        >
+
+        <figcaption>
+            Professional Image
+        </figcaption>
+
+    </figure>
+
+    <hr>
+
+    <!-- ABBR TAG -->
+
+    <h2>Abbreviation Tag</h2>
+
+    <abbr title="HyperText Markup Language">
+        HTML
+    </abbr>
+
+    <br><br>
+
+    <abbr title="World Health Organization">
+        WHO
+    </abbr>
+
+    <hr>
+
+    <!-- CODE TAG -->
+
+    <h2>Code Tag</h2>
+
+    <code>
+        System.out.println("Hello Java");
+    </code>
+
+</body>
+
+</html>
+```
+
+---
+
+
+# Day 3 Summary
+
+Topics Covered:
+
+* Div Tag
+* Span Tag
+* data-* Attribute
+* Details Tag
+* Summary Tag
+* Progress Bar
+* Meter Tag
+* Figure Tag
+* Figcaption Tag
+* Abbreviation Tag
+* Code Tag
+* Internal CSS
+* Tag Selector
+* ID Selector
+* Class Selector
