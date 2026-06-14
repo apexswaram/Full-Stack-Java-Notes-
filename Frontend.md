@@ -3453,42 +3453,6 @@ Add Hyperlinks:
 
 ---
 
-## Mandatory Concepts
-
-✔ Headings
-
-✔ Paragraph
-
-✔ Hyperlinks
-
-✔ Images
-
-✔ Lists
-
-✔ Tables
-
-✔ Semantic Tags
-
-✔ Details
-
-✔ Progress
-
-✔ Meter
-
-✔ Figure
-
-✔ Span
-
-✔ Internal CSS
-
-✔ Tag Selector
-
-✔ Class Selector
-
-✔ ID Selector
-
----
-
 ## Expected Output
 
 A complete personal portfolio website.
