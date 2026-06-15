@@ -3914,7 +3914,7 @@ Topics Covered:
 * Class Selector
 
 ---
-# CSS Complete Notes — Topics 1 to 25
+# Day 4 CSS Complete Notes — Topics 1 to 25
 
 > Prepared for JFS Batch students. Each topic includes: **Definition**, **HTML snippet**, and **Corresponding CSS**.
 
@@ -4793,3 +4793,192 @@ Topics Covered:
 </body>
 </html>
 ```
+---
+
+# Assignment 1: Digital Business Card
+
+## Objective
+
+Create a personal digital business card for yourself.
+
+## Requirements
+
+### HTML Content
+
+* Your Name
+* Role (Frontend Developer / Student)
+* Short Introduction (3–4 lines)
+* Skills List
+* Contact Information
+* Portfolio Link
+
+### CSS Requirements
+
+Use the following:
+
+Background Color
+Text Color
+Font Family
+Font Size
+Font Weight
+Text Align
+Border
+Border Radius
+Width & Height
+Padding
+Margin
+Box Shadow
+Hover Effect on Portfolio Link
+Cursor Property
+
+### Expected Output
+
+```
+-------------------------------------
+|                                   |
+|      JOHN DOE                    |
+|      Frontend Developer          |
+|                                   |
+|  Passionate about Web Design     |
+|  HTML | CSS | JavaScript         |
+|                                   |
+|  Email: abc@gmail.com            |
+|  Phone: 9999999999               |
+|                                   |
+|   [ View Portfolio ]             |
+|                                   |
+-------------------------------------
+```
+
+### Challenge
+
+When user hovers on the portfolio button:
+
+* Background color should change.
+* Cursor should become pointer.
+
+---
+
+# Assignment 2: Movie Poster Design
+
+## Objective
+
+Create a movie poster using only HTML and CSS.
+
+## Requirements
+
+### HTML Content
+
+* Movie Name
+* Tagline
+* Release Date
+* Main Actor Names
+* Watch Now Button
+
+### CSS Requirements
+
+Large Font Sizes
+Text Transform (UPPERCASE)
+Letter Spacing
+Word Spacing
+Background Color
+Text Color
+Border
+Border Radius
+Text Align
+Box Shadow
+Hover Effect
+
+### Expected Output
+
+```
+****************************************
+*                                      *
+*          THE LAST WARRIOR            *
+*                                      *
+*     "A Battle Beyond Imagination"    *
+*                                      *
+*       RELEASES JULY 2026             *
+*                                      *
+*     Starring: Actor A, Actor B       *
+*                                      *
+*          [ WATCH NOW ]               *
+*                                      *
+****************************************
+```
+
+### Challenge
+
+Make the movie title look dramatic using:
+
+* Letter Spacing
+* Font Weight
+* Text Transform
+
+---
+
+# Assignment 3: Product Advertisement Card
+
+## Objective
+
+Design an advertisement card for any product.
+
+Examples:
+
+* Mobile Phone
+* Laptop
+* Headphones
+* Smart Watch
+* Gaming Mouse
+
+## Requirements
+
+### HTML Content
+
+* Product Name
+* Product Image
+* Price
+* Features (unordered list)
+* Buy Now Button
+
+### CSS Requirements
+
+Image Width & Height
+Background Color
+Font Styling
+Border
+Border Radius
+Padding
+Margin
+Box Shadow
+Hover Effect
+Text Decoration
+Display Property (inline-block)
+
+### Expected Output
+
+```
+----------------------------------
+|                                |
+|       PRODUCT IMAGE            |
+|                                |
+|      Gaming Headset            |
+|                                |
+|      ₹2,999                    |
+|                                |
+|  ✓ Noise Cancellation          |
+|  ✓ RGB Lights                  |
+|  ✓ Wireless                    |
+|                                |
+|      [ BUY NOW ]               |
+|                                |
+----------------------------------
+```
+
+### Challenge
+
+* Strike the old price using `text-decoration: line-through`.
+* Change button color on hover.
+* Use `display: inline-block` for feature badges.
+
+---
