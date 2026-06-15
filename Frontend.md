@@ -3914,7 +3914,7 @@ Topics Covered:
 * Class Selector
 
 ---
-# CSS Complete Notes — Topics 1 to 50
+# CSS Complete Notes — Topics 1 to 25
 
 > Prepared for JFS Batch students. Each topic includes: **Definition**, **HTML snippet**, and **Corresponding CSS**.
 
