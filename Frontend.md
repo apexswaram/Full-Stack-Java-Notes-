@@ -3912,3 +3912,383 @@ Topics Covered:
 * Tag Selector
 * ID Selector
 * Class Selector
+
+
+# Day 4 Full code 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Complete Notes </title>
+
+    <style>
+        body {
+            font-family:'Times New Roman', Times, sans-serif;
+            margin:20px;
+            line-height:1.8;
+
+        }
+        section{
+            margin-bottom:40px;
+        }
+        hr {
+            margin:40px 0;
+        }
+        .targent-notes
+        {
+            font-size: 13px;
+            color:#555;
+            background: #f2f3f2;
+            padding:6px 10px;
+            margin-top:8px;
+            font-family: monospace;
+            border-left: 4px solid #2196F3;
+
+
+        }
+        
+        .color-demo{ 
+            color:red;
+        } 
+        .demo-box, .bg-demo
+        {
+            padding : 15px;
+            border: 2px solid #000;
+            margin-top:10px;
+
+        }
+        .bg-demo{
+            background-color: yellow;
+        }
+        .font-family-demo{
+            font-family: Arial;
+        }
+        .font-size-demo {
+            font-size:25px;
+        }
+        .font-weight-demo {
+            font-weight:bold;
+        } 
+         .font-style-demo {
+            font-style:italic;
+        } 
+        .text-align-c-demo {
+            text-align:center;
+        }
+        .text-align-l-demo {
+            text-align:left;
+        }
+        .text-align-r-demo {
+            text-align:right;
+        }
+        .underline{
+            text-decoration: underline;
+        }
+        .overline{
+            text-decoration: overline;
+        }
+        .line-through{
+            text-decoration: line-through;
+        }
+        .none{
+            text-decoration: none;
+        }
+        .uppercase{
+            text-transform: uppercase;
+        }
+        .lowercase{
+            text-transform: lowercase;
+        }
+        .capitlize{
+            text-transform: capitalize;
+        }
+        .letter-spacing-demo {
+            letter-spacing:10px;
+        } 
+        .word-spacing-demo {
+            word-spacing:10px;
+        } 
+        .line-height-demo {
+            line-height:4;
+        } 
+        .border-solid{
+            border: 3px solid;
+            margin:5px;
+            padding:5px;
+
+        }
+        .border-dotted{
+            border: 3px dotted maroon;
+            margin:5px;
+            padding:5px;
+            
+        }
+        .border-dashed{
+            border: 3px dashed green;
+            margin:5px;
+            padding:5px;
+        }
+        .border-double{
+            border: 5px double black;
+            margin:5px;
+            padding:5px;
+        }
+        .radius-demo {
+            border:2px solid black;
+            border-radius:20px;
+            padding :20px;
+        } 
+        .circle{
+            width:150px;
+            height:150px;
+            border-radius: 50%;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 150px;
+        }
+        .size-demo{
+            height:100px;
+             width:300px;
+        }
+        .padding-demo {
+            border:2px solid black;
+            padding:30px;
+        }
+        .margin-demo {
+            border:2px solid black;
+            margin:40px;
+        } 
+        .shadow-demo {
+            padding :20px ;
+            box-shadow:0px 0px 15px gray;
+        }
+        .cursor-demo {
+            cursor:pointer;
+        } 
+        .inline{
+            display: inline;
+            background-color: yellow;
+        }
+        .block{
+            display:block;
+            background-color: lightblue;
+        }
+        .lnline-block {
+            display:inline-block;
+            background-color: limegreen;
+            width:150px;
+        }
+        .hover-btn{
+            padding:10px 20px;
+            border:none;
+            background-color: blue;
+            color:white;
+        }
+        .hover-btn:hover {
+            background-color: red;
+        }
+        .box-model{
+            margin :20px;
+            border:5px solid red;
+            padding:30px;
+            background-color: lightyellow;
+        }
+         
+
+        
+
+    </style>
+</head>
+<body>
+    <h1> CSS Complete Notes</h1>
+    <hr>
+    <section>
+        <h2>1. Color Proporty</h2>
+        <p>Used to change the color of the text.</p>
+        <p class="color-demo">This text is red.</p>
+        <div class="targent-notes"> CSS Target: &lt; class="color-demo" &gt; -> .color-demo{ color:red;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>2. Background Color</h2>
+        <div class="demo-box bg-demo"> Bacakground Color Example.</div>
+        <div class="targent-notes"> CSS Target: &lt; class="demo-box bg-demo" &gt; -> .bg-demo {background-color: yellow;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>3. Font Family</h2>
+        <div class="font-family-demo"> This text Arial Font Family </div>
+        <div class="targent-notes"> CSS Target: &lt; class="font-family-demo" &gt; -> .font-family-demo {font-family:Arial;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>4. Font Size</h2>
+        <div class="font-size-demo"> Font size is 25px </div>
+        <div class="targent-notes"> CSS Target: &lt; class="font-size-demo" &gt; -> .font-size-demo {font-size:25px}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>5. Font weight</h2>
+        <div class="font-weight-demo"> Bold text Example </div>
+        <div class="targent-notes"> CSS Target: &lt; class="font-weight-demo" &gt; -> .font-weight-demo {font-weight:Bold}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>6. Font style</h2>
+        <div class="font-style-demo"> Italic text Example </div>
+        <div class="targent-notes"> CSS Target: &lt; class="font-style-demo" &gt; -> .font-style-demo {font-style:italic}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>7. Text Align</h2>
+        <div class="text-align-c-demo demo-box"> centered Text  </div>
+        <div class="text-align-l-demo demo-box"> left Text  </div>
+        <div class="text-align-r-demo demo-box"> Right Text  </div>
+        <div class="targent-notes"> CSS Target: &lt; class="text-align-c-demo" &gt; -> .text-align-c-demo {text-align:center}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>8. Text Decoration</h2>
+        <p class="underline">underline text </p>
+        <p class="overline">overline text </p>
+        <p class="line-through"> line Through 72000</p>
+        <a class="none" href="#"> </a>
+        <div class="targent-notes"> CSS Target: &lt; class="underline/overline/line-through" &gt; -> Css {text-decoration:value;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>9. Text Transformation</h2>
+        <p class="uppercase"> hello world </p>
+        <p class="lowercase"> HELLO WORLD </p>
+        <p class="capitlize">hello world </p>
+        <div class="targent-notes"> CSS Target: &lt; class="uppercase/lowercase/capitlize" &gt; -> css {text-transform:value}  </div>
+    </section>
+    
+    <hr>
+    <section>
+        <h2>10. letter Spacing</h2>
+        <p class="letter-spacing-demo"> LETTER SPACING </p>
+        
+        <div class="targent-notes"> CSS Target: &lt; class="letter-spacing-demo" &gt; -> .letter-spacing-demo {letter-spacing:10px;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>11. Word Spacing</h2>
+        <p class="word-spacing-demo"> Word  Spacing Example </p>
+        
+        <div class="targent-notes"> CSS Target: &lt; class="word-spacing-demo" &gt; -> .word-spacing-demo {word-spacing:10px;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>12. line height</h2>
+        <p class="line-height-demo">Line 1 <br> Line 2 <br> Line 3</p>
+        
+        <div class="targent-notes"> CSS Target: &lt; class="line-height-demo" &gt; -> .line-height-demo {line-height:4;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>13. Border proporty</h2>
+        <div class="border-solid"> Solid Border  </div>
+        <div class="border-dotted"> Dotted Border  </div>
+        <div class="border-dashed"> Dashed Border  </div>
+        <div class="border-double"> Double Border  </div>
+
+        <div class="targent-notes"> CSS Target: &lt; class="border-solid/dotted/dashed/double" &gt; -> css {border:value}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>14. border radius</h2>
+        <div class="radius-demo"> rounded cornors </div>
+        <br>
+        <div class="circle"> circle </div>
+
+        <div class="targent-notes"> CSS Target: &lt; class="radius-demo" &gt; -> .radius-demo {border-radius:vlaue;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>15. height & width</h2>
+        <div class="size-demo"> 100 X 300  </div>
+        <div class="targent-notes"> CSS Target: &lt; class="size-demo" &gt; -> .size-demo {height:100px; width:300px;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>16. Padding</h2>
+        <div class="padding-demo"> Padding creates the sapce inside the border.   </div>
+        <div class="targent-notes"> CSS Target: &lt; class="padding-demo"" &gt; -> .padding-demo {padding:value;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>17. Margin</h2>
+        <div class="margin-demo"> Margin creates space outside the border.  </div>
+        <div class="targent-notes"> CSS Target: &lt; class="margin-demo" &gt; -> .margin-demo {margin:value;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>18. Box Shadow </h2>
+        <div class="shadow-demo"> Box Shadow </div>
+        <div class="targent-notes"> CSS Target: &lt; class="shadow-demo" &gt; -> .shadow-demo {box-shadow:0px 0px 15px ;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>19. Cursor proporty </h2>
+        <div class="cursor-demo">Hover Mouse Here </div>
+        <div class="targent-notes"> CSS Target: &lt; class="cursor-demo" &gt; -> .cursor-demo {cursor:pointer;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>20. Display proporty </h2>
+        <span class="inline">Inline</span> 
+        <span class="inline">Inline</span>
+        <br> <br>
+        <div class="block"> block element </div>
+        <br>
+        <div class="lnline-block"> block element </div>
+
+        <div class="targent-notes"> CSS Target: &lt; class="inline/block/Lnline-block" &gt; -> css {proporty : value;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>21. Hover Effect </h2>
+        <button class="hover-btn">Hover me </button>
+        <div class="targent-notes"> CSS Target: &lt; class="hover-btn" &gt; -> .hover-btn {proporty:value;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>22. Css Box Model </h2>
+        <div class="box-model"> Conet Area </div>
+        <p> 
+            Margin  -> Ouside Space <br>
+            Border  -> Border Area <br>
+            Padding -> Inside Space <br>
+            content -> Actual contnet 
+
+
+        </p>
+        <div class="targent-notes"> CSS Target: &lt; class="box-model" &gt; -> .box-model {proporty:value;}  </div>
+    </section>
+    <hr>
+    <section>
+        <h2>24. Inline CSS </h2>
+        <p> inline css is written dirctly inside the HTML tag using style attribute. but it applys to that single emelent only we canot add it multiple blocks.</p>
+        <p style="color:purple; font-size: 20px; font-weight: 900; ">This is Inline CSS</p>
+        <div class="targent-notes"> CSS Target: &lt; style="color:purple; font-size: 20px; font-weight: 900;" &gt;  </div>
+    </section>
+     <hr>
+    <section>
+        <h2>25. Internal CSS </h2>
+        <p> Internal CSS is writtten in the &lt; Head tag &gt; using &lt; style tag &gt; section of the html document. it applies to all matcing elemnts on that page </p>
+        <button class="hover-btn">Hover me </button>
+        <div class="targent-notes"> CSS Target: &lt; class="hover-btn" &gt; -> .hover-btn {proporty:value;}  </div>  
+    </section>
+
+    
+
+
+
+    
+</body>
+</html>
+```
