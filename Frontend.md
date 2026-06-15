@@ -3913,6 +3913,507 @@ Topics Covered:
 * ID Selector
 * Class Selector
 
+---
+# CSS Complete Notes — Topics 1 to 50
+
+> Prepared for JFS Batch students. Each topic includes: **Definition**, **HTML snippet**, and **Corresponding CSS**.
+
+---
+
+## 1. Color Property
+
+**Definition:** The `color` property sets the text (foreground) color of an element.
+
+```html
+<p class="color-demo">This text is red.</p>
+```
+
+```css
+.color-demo {
+  color: red;
+}
+```
+
+---
+
+## 2. Background Color
+
+**Definition:** The `background-color` property sets the background color of an element.
+
+```html
+<div class="bg-demo">Background Color Example</div>
+```
+
+```css
+.bg-demo {
+  background-color: yellow;
+}
+```
+
+---
+
+## 3. Font Family
+
+**Definition:** The `font-family` property specifies the typeface used for text.
+
+```html
+<p class="font-family-demo">Times New Roman Font</p>
+```
+
+```css
+.font-family-demo {
+  font-family: 'Times New Roman';
+}
+```
+
+---
+
+## 4. Font Size
+
+**Definition:** The `font-size` property controls the size of the text.
+
+```html
+<p class="font-size-demo">Font Size 30px</p>
+```
+
+```css
+.font-size-demo {
+  font-size: 30px;
+}
+```
+
+---
+
+## 5. Font Weight
+
+**Definition:** The `font-weight` property controls the thickness/boldness of text.
+
+```html
+<p class="font-weight-demo">Bold Text Example</p>
+```
+
+```css
+.font-weight-demo {
+  font-weight: bold;
+}
+```
+
+---
+
+## 6. Font Style
+
+**Definition:** The `font-style` property is mainly used to set italic text.
+
+```html
+<p class="font-style-demo">Italic Text Example</p>
+```
+
+```css
+.font-style-demo {
+  font-style: italic;
+}
+```
+
+---
+
+## 7. Text Align
+
+**Definition:** The `text-align` property sets the horizontal alignment of text inside an element.
+
+```html
+<div class="text-align-demo">Centered Text</div>
+```
+
+```css
+.text-align-demo {
+  text-align: center;
+}
+```
+
+---
+
+## 8. Text Decoration
+
+**Definition:** The `text-decoration` property adds or removes decoration lines from text (underline, overline, line-through, none).
+
+```html
+<p class="underline">Underline</p>
+<p class="overline">Overline</p>
+<p class="line-through">Line Through</p>
+<a href="#" class="none">Link Without Underline</a>
+```
+
+```css
+.underline {
+  text-decoration: underline;
+}
+.overline {
+  text-decoration: overline;
+}
+.line-through {
+  text-decoration: line-through;
+}
+.none {
+  text-decoration: none;
+}
+```
+
+---
+
+## 9. Text Transform
+
+**Definition:** The `text-transform` property changes the capitalization of text (uppercase, lowercase, capitalize).
+
+```html
+<p class="uppercase">hello world</p>
+<p class="lowercase">HELLO WORLD</p>
+<p class="capitalize">hello world css</p>
+```
+
+```css
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+```
+
+---
+
+## 10. Letter Spacing
+
+**Definition:** The `letter-spacing` property controls the space between individual characters.
+
+```html
+<p class="letter-spacing-demo">LETTER SPACING</p>
+```
+
+```css
+.letter-spacing-demo {
+  letter-spacing: 5px;
+}
+```
+
+---
+
+## 11. Word Spacing
+
+**Definition:** The `word-spacing` property controls the space between words.
+
+```html
+<p class="word-spacing-demo">Word Spacing Example</p>
+```
+
+```css
+.word-spacing-demo {
+  word-spacing: 15px;
+}
+```
+
+---
+
+## 12. Line Height
+
+**Definition:** The `line-height` property sets the height of a line of text, affecting spacing between lines.
+
+```html
+<p class="line-height-demo">
+  Line 1<br>
+  Line 2<br>
+  Line 3
+</p>
+```
+
+```css
+.line-height-demo {
+  line-height: 3;
+}
+```
+
+---
+
+## 13. Border Property
+
+**Definition:** The `border` property sets the width, style, and color of an element's border. Styles include solid, dotted, dashed, and double.
+
+```html
+<div class="border-demo">Solid Border</div>
+<div class="dotted">Dotted Border</div>
+<div class="dashed">Dashed Border</div>
+<div class="double">Double Border</div>
+```
+
+```css
+.border-demo {
+  border: 3px solid red;
+}
+.dotted {
+  border: 3px dotted blue;
+}
+.dashed {
+  border: 3px dashed green;
+}
+.double {
+  border: 5px double black;
+}
+```
+
+---
+
+## 14. Border Radius
+
+**Definition:** The `border-radius` property rounds the corners of an element's border. A value of `50%` on an equal width/height element creates a circle.
+
+```html
+<div class="radius-demo">Rounded Corners</div>
+<div class="circle">Circle</div>
+```
+
+```css
+.radius-demo {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 20px;
+}
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: lightblue;
+  text-align: center;
+  line-height: 150px;
+}
+```
+
+---
+
+## 15. Width and Height
+
+**Definition:** The `width` and `height` properties set the dimensions of an element's content box.
+
+```html
+<div class="size-demo">300 x 100</div>
+```
+
+```css
+.size-demo {
+  width: 300px;
+  height: 100px;
+  background-color: lightgreen;
+}
+```
+
+---
+
+## 16. Padding
+
+**Definition:** The `padding` property creates space *inside* an element, between its content and its border.
+
+```html
+<div class="padding-demo">Padding Creates Space Inside Border</div>
+```
+
+```css
+.padding-demo {
+  border: 2px solid black;
+  padding: 30px;
+}
+```
+
+---
+
+## 17. Margin
+
+**Definition:** The `margin` property creates space *outside* an element, between its border and neighboring elements.
+
+```html
+<div class="margin-demo">Margin Creates Space Outside Border</div>
+```
+
+```css
+.margin-demo {
+  border: 2px solid red;
+  margin: 40px;
+}
+```
+
+---
+
+## 18. Box Shadow
+
+**Definition:** The `box-shadow` property adds a shadow effect around an element's frame.
+
+```html
+<div class="shadow-demo">Shadow Effect</div>
+```
+
+```css
+.shadow-demo {
+  padding: 20px;
+  box-shadow: 0px 0px 15px gray;
+}
+```
+
+---
+
+## 19. Cursor Property
+
+**Definition:** The `cursor` property sets the type of mouse cursor shown when hovering over an element.
+
+```html
+<button class="cursor-demo-1">Hover Mouse Here</button>
+```
+
+```css
+.cursor-demo-1 {
+  cursor: pointer;
+}
+```
+
+---
+
+## 20. Opacity
+
+**Definition:** The `opacity` property sets the transparency level of an element (0 = fully transparent, 1 = fully opaque).
+
+```html
+<div class="opacity-demo">Opacity 0.5 Example</div>
+```
+
+```css
+.opacity-demo {
+  opacity: 0.5;
+}
+```
+
+---
+
+## 21. Display Property
+
+**Definition:** The `display` property defines how an element is rendered in the document flow — `inline` (no line break, only content width), `block` (full width, line break before/after), or `inline-block` (sits inline but can have width/height).
+
+```html
+<span class="inline">Inline</span>
+<span class="inline">Inline</span>
+
+<div class="block">Block Element</div>
+
+<div class="inline-block">Inline Block</div>
+```
+
+```css
+.inline {
+  display: inline;
+  background: yellow;
+}
+.block {
+  display: block;
+  background: lightblue;
+}
+.inline-block {
+  display: inline-block;
+  background: lightgreen;
+  width: 150px;
+}
+```
+
+---
+
+## 22. Hover Effect
+
+**Definition:** The `:hover` pseudo-class applies styles when the user places the mouse pointer over an element.
+
+```html
+<button class="hover-btn">Hover Me</button>
+```
+
+```css
+.hover-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: blue;
+  color: white;
+}
+.hover-btn:hover {
+  background-color: red;
+}
+```
+
+---
+
+## 23. CSS Box Model
+
+**Definition:** The Box Model describes how every HTML element is structured: **Content** (actual content) → **Padding** (space inside border) → **Border** (the border line) → **Margin** (space outside border).
+
+```html
+<div class="box-model">Content Area</div>
+<p>
+  Margin → Outside Space<br>
+  Border → Border Area<br>
+  Padding → Inside Space<br>
+  Content → Actual Content
+</p>
+```
+
+```css
+.box-model {
+  margin: 20px;
+  border: 5px solid red;
+  padding: 30px;
+  background-color: lightyellow;
+}
+```
+
+---
+
+## 24. Inline CSS
+
+**Definition:** Inline CSS is written directly inside an HTML tag using the `style` attribute. It applies only to that single element and has the highest priority among the three CSS types.
+
+```html
+<p style="color:purple; font-weight:bold;">
+  This text is styled using Inline CSS.
+</p>
+```
+
+```css
+/* No separate CSS file/block needed —
+   styles are written directly in the style="" attribute */
+```
+
+---
+
+## 25. Internal CSS
+
+**Definition:** Internal CSS is written inside a `<style>` tag in the `<head>` section of an HTML document. It applies to all matching elements within that single page only.
+
+```html
+<head>
+  <style>
+    .font-weight-demo {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <p class="font-weight-demo">Styled using Internal CSS</p>
+</body>
+```
+
+```css
+/* This entire block, placed inside <head><style>...</style></head>,
+   is an example of Internal CSS */
+.font-weight-demo {
+  font-weight: bold;
+}
+```
+
+---
+
 
 # Day 4 Full code 
 
