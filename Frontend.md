@@ -7404,6 +7404,10 @@ Food 4    Food 5    Food 6
 ```
 
 ---
+# Reference Image 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/920bb120-0e36-4834-9f3f-0b1dc9e263ba" />
+
+---
 
 # Assignment 2: Responsive E-Commerce Product Page
 
@@ -7502,6 +7506,10 @@ Use
 ```html
 col-12 col-sm-6 col-lg-3
 ```
+
+---
+# Reference Image 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/f7d46209-ce22-48f4-bc4e-00f98453f4eb" />
 
 ---
 
@@ -7629,6 +7637,9 @@ col-md-6
 col-lg-4
 col-xl-3
 ```
+---
+# Reference Image 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/0a8ec341-e2b8-4f45-9f50-4df9c98232d5" />
 
 ---
 
