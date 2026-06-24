@@ -1,4 +1,4 @@
-# HTML Complete Notes - Day 1
+# HTML Complete Notes -  
 
 # Introduction to Frontend Development
 
@@ -836,7 +836,7 @@ height="200px">
 
 ---
 
-# Day 1 Practice Tasks
+#   Practice Tasks
 
 ## Task 1
 
@@ -912,7 +912,7 @@ Backend
 
 ---
 
-# Day 1 Interview Questions
+#   Interview Questions
 
 ### Q1. What is HTML?
 
@@ -964,7 +964,7 @@ Used to display images on webpage.
 
 ---
 
-# Day 1 Summary
+#   Summary
 
 Topics Covered:
 
@@ -1006,8 +1006,8 @@ Width & Height Attributes
 
 ---
 
-**End of Day 1 Notes**
-# HTML Complete Notes - Day 2
+**End of   Notes**
+# HTML Complete Notes -  
 
 # Advanced HTML
 
@@ -1514,7 +1514,7 @@ Alternative text displayed when image fails.
 
 ---
 
-# Day 2 Summary
+#   Summary
 
 Topics Covered:
 
@@ -1554,7 +1554,7 @@ day2.html
 
     <meta
         name="description"
-        content="Advanced HTML Day 2">
+        content="Advanced HTML  ">
 
     <meta
         name="keywords"
@@ -1564,7 +1564,7 @@ day2.html
         name="author"
         content="Maheswaram">
 
-    <title>Advanced HTML - Day 2</title>
+    <title>Advanced HTML -  </title>
 
 </head>
 
@@ -1581,7 +1581,7 @@ day2.html
         </h1>
 
         <p align="center">
-            Complete Day 2 Demonstration File
+            Complete   Demonstration File
         </p>
 
     </header>
@@ -2183,7 +2183,7 @@ day2.html
 
     <h2 align="center">
 
-        Day 2 Advanced HTML Completed
+          Advanced HTML Completed
 
     </h2>
 
@@ -2510,7 +2510,7 @@ Example:
 **End of Day2**
 
 
-# Day 3 - HTML Semantic Tags & CSS Basics
+#   - HTML Semantic Tags & CSS Basics
 
 ## Topics Covered
 
@@ -3025,7 +3025,7 @@ Both elements become blue.
 ```
 
 ---
-# Day 3 - HTML Semantic Tags & CSS Basics
+#   - HTML Semantic Tags & CSS Basics
 
 ## Complete Example Project
 
@@ -3057,7 +3057,7 @@ This project demonstrates:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 3 HTML & CSS Concepts</title>
+    <title>  HTML & CSS Concepts</title>
 
     <style>
 
@@ -3323,7 +3323,7 @@ This project demonstrates:
 
 ## Objective
 
-Create a complete Student Portfolio Website using all concepts learned in Day 1, Day 2, and Day 3.
+Create a complete Student Portfolio Website using all concepts learned in  ,  , and  .
 
 ---
 
@@ -3893,7 +3893,7 @@ FAQ
 ----------------------------------
 Footer
 ```
-# Day 3 Summary
+#   Summary
 
 Topics Covered:
 
@@ -3914,7 +3914,7 @@ Topics Covered:
 * Class Selector
 
 ---
-# Day 4 CSS Complete Notes — Topics 1 to 25
+#   CSS Complete Notes — Topics 1 to 25
 
 > Prepared for JFS Batch students. Each topic includes: **Definition**, **HTML snippet**, and **Corresponding CSS**.
 
@@ -4415,7 +4415,7 @@ Topics Covered:
 ---
 
 
-# Day 4 Full code 
+#   Full code 
 
 ```html
 <!DOCTYPE html>
@@ -4982,7 +4982,7 @@ Display Property (inline-block)
 * Use `display: inline-block` for feature badges.
 
 ---
-# Day 5
+#  
 
 
 ## 26. Text Shadow
