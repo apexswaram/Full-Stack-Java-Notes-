@@ -7641,8 +7641,1724 @@ col-xl-3
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/0a8ec341-e2b8-4f45-9f50-4df9c98232d5" />
 
 ---
-```javascript
-console.log("hellow");
+
+# JavaScript Introduction
+
+---
+
+# What is JavaScript?
+
+**JavaScript (JS)** is a high-level, interpreted, lightweight, object-oriented, and dynamically typed programming language used to make web pages interactive and dynamic.
+
+HTML provides the **structure** of a webpage.
+
+CSS provides the **style** of a webpage.
+
+JavaScript provides the **behavior and functionality** of a webpage.
+
+Without JavaScript, a website is mostly static. JavaScript allows users to interact with web pages.
+
+Examples include:
+
+* Login Forms
+* Registration Forms
+* Image Sliders
+* Dark Mode
+* Pop-up Messages
+* Online Calculators
+* Games
+* Real-time Chat Applications
+* Shopping Cart
+* Dynamic Content Updates
+
+---
+
+# Real World Example
+
+Think of a Car.
+
+* Engine → JavaScript
+* Body → HTML
+* Paint → CSS
+
+The car body gives the structure.
+
+The paint makes it attractive.
+
+The engine makes it move.
+
+Similarly,
+
+HTML builds the webpage.
+
+CSS designs the webpage.
+
+JavaScript makes it interactive.
+
+---
+
+# Features of JavaScript
+
+* Easy to Learn
+* Lightweight Language
+* Object-Oriented
+* Cross Platform
+* Event Driven
+* Dynamic Typing
+* Client Side Scripting
+* Server Side Development using Node.js
+* Supports Asynchronous Programming
+* Large Community Support
+
+---
+
+# Why Learn JavaScript?
+
+JavaScript is one of the most popular programming languages in the world.
+
+It is used in:
+
+* Frontend Development
+* Backend Development
+* Mobile App Development
+* Desktop Applications
+* Game Development
+* Artificial Intelligence
+* APIs
+* Cloud Applications
+
+---
+
+# Applications of JavaScript
+
+## Frontend
+
+Examples
+
+* Interactive Websites
+* Animations
+* Forms
+* Dashboard
+
+Frameworks
+
+* React
+* Angular
+* Vue
+
+---
+
+## Backend
+
+Using
+
+Node.js
+
+Examples
+
+* REST APIs
+* Authentication
+* Database Operations
+
+---
+
+## Mobile Apps
+
+Using
+
+* React Native
+
+---
+
+## Desktop Applications
+
+Using
+
+* Electron
+
+Applications
+
+* VS Code
+* Discord
+* Slack
+
+---
+
+# Advantages of JavaScript
+
+* Fast Execution
+* Easy Syntax
+* Huge Community
+* Runs in Browser
+* No Compilation Required
+* Free to Use
+* Platform Independent
+
+---
+
+# JavaScript Versions
+
+| Version | Features                             |
+| ------- | ------------------------------------ |
+| ES5     | Basic JavaScript                     |
+| ES6     | let, const, Arrow Functions, Classes |
+| ES7     | Async Features                       |
+| ES8     | Async Await                          |
+| ES2020+ | Modern Features                      |
+
+Today we mostly use **ES6+ JavaScript**.
+
+---
+
+# How JavaScript Works
 
 ```
+User Clicks Button
+        │
+        ▼
+Browser Receives Event
+        │
+        ▼
+JavaScript Executes
+        │
+        ▼
+HTML Updated
+        │
+        ▼
+User Sees Result
+```
 
+---
+
+# Ways to Add JavaScript
+
+## 1. Inline JavaScript
+
+```html
+<button onclick="alert('Welcome')">
+Click
+</button>
+```
+
+Not recommended for large applications.
+
+---
+
+## 2. Internal JavaScript
+
+```html
+<script>
+
+console.log("Hello JavaScript");
+
+</script>
+```
+
+---
+
+## 3. External JavaScript
+
+HTML
+
+```html
+<script src="script.js"></script>
+```
+
+script.js
+
+```javascript
+console.log("External JavaScript");
+```
+
+Best Practice.
+
+---
+
+# First JavaScript Program
+
+```javascript
+console.log("Hello World");
+```
+
+Output
+
+```
+Hello World
+```
+
+---
+
+# Printing Multiple Lines
+
+```javascript
+console.log("Welcome");
+console.log("JavaScript");
+console.log("Course");
+```
+
+Output
+
+```
+Welcome
+JavaScript
+Course
+```
+
+---
+
+# Comments
+
+Comments are ignored by JavaScript.
+
+Used to explain code.
+
+---
+
+## Single Line Comment
+
+```javascript
+// This is comment
+```
+
+---
+
+## Multi Line Comment
+
+```javascript
+/*
+This
+is
+comment
+*/
+```
+
+---
+
+# VARIABLES
+
+---
+
+# What is a Variable?
+
+A variable is a container used to store data.
+
+Variables help us store information that can be used later.
+
+Real-world Example
+
+Think of a Water Bottle.
+
+Bottle = Variable
+
+Water = Data
+
+You can fill different liquids in the same bottle.
+
+Similarly,
+
+Variables store different values.
+
+---
+
+# Why Variables?
+
+Without Variables
+
+```javascript
+console.log("Rahul");
+console.log("Rahul");
+console.log("Rahul");
+```
+
+With Variables
+
+```javascript
+let name = "Rahul";
+
+console.log(name);
+console.log(name);
+console.log(name);
+```
+
+Much easier to manage.
+
+---
+
+# Syntax
+
+```javascript
+keyword variableName = value;
+```
+
+Example
+
+```javascript
+let age = 20;
+```
+
+---
+
+# Types of Variables
+
+JavaScript has three keywords.
+
+```
+var
+
+let
+
+const
+```
+
+---
+
+# var
+
+Old way of declaring variables.
+
+```javascript
+var name = "Rahul";
+```
+
+---
+
+Properties
+
+* Can Redeclare
+* Can Reassign
+* Function Scoped
+
+Example
+
+```javascript
+var a = 10;
+
+var a = 20;
+
+a = 30;
+
+console.log(a);
+```
+
+Output
+
+```
+30
+```
+
+---
+
+# let
+
+Modern way.
+
+Most commonly used.
+
+```javascript
+let age = 22;
+```
+
+Properties
+
+* Cannot Redeclare
+* Can Reassign
+* Block Scoped
+
+Example
+
+```javascript
+let marks = 90;
+
+marks = 95;
+
+console.log(marks);
+```
+
+Output
+
+```
+95
+```
+
+---
+
+Redeclaration Error
+
+```javascript
+let age = 20;
+
+let age = 30;
+```
+
+Output
+
+```
+Error
+```
+
+---
+
+# const
+
+Constant Variable.
+
+Cannot change value.
+
+```javascript
+const PI = 3.14;
+```
+
+Properties
+
+* Cannot Redeclare
+* Cannot Reassign
+* Block Scoped
+
+Example
+
+```javascript
+const country = "India";
+
+console.log(country);
+```
+
+Output
+
+```
+India
+```
+
+---
+
+Trying to Change
+
+```javascript
+const country = "India";
+
+country = "USA";
+```
+
+Output
+
+```
+Error
+```
+
+---
+
+# Comparison
+
+| Feature   | var      | let   | const |
+| --------- | -------- | ----- | ----- |
+| Redeclare | Yes      | No    | No    |
+| Reassign  | Yes      | Yes   | No    |
+| Scope     | Function | Block | Block |
+| Modern    | No       | Yes   | Yes   |
+
+---
+
+# Variable Naming Rules
+
+Allowed
+
+```javascript
+let name;
+
+let studentName;
+
+let student_name;
+
+let student1;
+
+let $price;
+
+let _total;
+```
+
+---
+
+Not Allowed
+
+```javascript
+let 1name;
+
+let first-name;
+
+let class;
+
+let let;
+```
+
+---
+
+# Best Practices
+
+Good
+
+```javascript
+let firstName;
+
+let studentAge;
+
+let totalAmount;
+```
+
+Bad
+
+```javascript
+let a;
+
+let b;
+
+let x1;
+
+let abc123;
+```
+
+Always use meaningful names.
+
+---
+
+# Multiple Variables
+
+```javascript
+let name = "John";
+
+let age = 25;
+
+let city = "Hyderabad";
+```
+
+---
+
+Or
+
+```javascript
+let a = 10,
+    b = 20,
+    c = 30;
+```
+
+---
+
+# Variable Example
+
+```javascript
+let student = "Ravi";
+
+let age = 21;
+
+console.log(student);
+
+console.log(age);
+```
+
+Output
+
+```
+Ravi
+
+21
+```
+
+---
+
+# Swapping Variables
+
+```javascript
+let a = 10;
+
+let b = 20;
+
+let temp = a;
+
+a = b;
+
+b = temp;
+
+console.log(a);
+
+console.log(b);
+```
+
+Output
+
+```
+20
+
+10
+```
+
+---
+
+# DATA TYPES
+
+---
+
+# What is Data Type?
+
+A Data Type specifies what type of value a variable stores.
+
+Example
+
+Age
+
+```
+20
+```
+
+Name
+
+```
+Rahul
+```
+
+Married
+
+```
+true
+```
+
+Different values have different data types.
+
+---
+
+# JavaScript Data Types
+
+Two Categories
+
+```
+Primitive
+
+Non Primitive
+```
+
+---
+
+# Primitive Data Types
+
+1 Number
+
+2 String
+
+3 Boolean
+
+4 Undefined
+
+5 Null
+
+6 BigInt
+
+7 Symbol
+
+---
+
+# Non Primitive
+
+Objects
+
+Arrays
+
+Functions
+
+Dates
+
+Maps
+
+Sets
+
+---
+
+# Number
+
+Stores
+
+* Integer
+* Decimal
+
+Example
+
+```javascript
+let age = 20;
+
+let price = 99.99;
+```
+
+Output
+
+```
+20
+
+99.99
+```
+
+---
+
+Arithmetic
+
+```javascript
+let a = 10;
+
+let b = 5;
+
+console.log(a+b);
+
+console.log(a-b);
+
+console.log(a*b);
+
+console.log(a/b);
+```
+
+Output
+
+```
+15
+
+5
+
+50
+
+2
+```
+
+---
+
+# String
+
+Stores Text.
+
+Can use
+
+```
+" "
+
+' '
+
+` `
+```
+
+Example
+
+```javascript
+let name = "Rahul";
+
+console.log(name);
+```
+
+Output
+
+```
+Rahul
+```
+
+---
+
+Concatenation
+
+```javascript
+let first = "Java";
+
+let second = "Script";
+
+console.log(first + second);
+```
+
+Output
+
+```
+JavaScript
+```
+
+---
+
+Template Literal
+
+```javascript
+let name = "Rahul";
+
+let age = 20;
+
+console.log(`My name is ${name} and age is ${age}`);
+```
+
+Output
+
+```
+My name is Rahul and age is 20
+```
+
+---
+
+# Boolean
+
+Stores
+
+```
+true
+
+false
+```
+
+Example
+
+```javascript
+let isStudent = true;
+
+console.log(isStudent);
+```
+
+Output
+
+```
+true
+```
+
+---
+
+# Undefined
+
+Variable declared but not assigned.
+
+```javascript
+let city;
+
+console.log(city);
+```
+
+Output
+
+```
+undefined
+```
+
+---
+
+# Null
+
+Represents empty value.
+
+```javascript
+let phone = null;
+
+console.log(phone);
+```
+
+Output
+
+```
+null
+```
+
+---
+
+# BigInt
+
+Used for very large integers.
+
+```javascript
+let big = 123456789012345678901234567890n;
+
+console.log(big);
+```
+
+---
+
+# Symbol
+
+Unique identifier.
+
+```javascript
+let id = Symbol("id");
+```
+
+Mostly used in advanced JavaScript.
+
+---
+
+# Object
+
+Stores data in key-value pairs.
+
+```javascript
+let student = {
+
+name : "Rahul",
+
+age : 20,
+
+city : "Hyderabad"
+
+};
+
+console.log(student);
+```
+
+Output
+
+```
+{name:"Rahul",age:20,city:"Hyderabad"}
+```
+
+---
+
+# Array
+
+Stores multiple values.
+
+```javascript
+let colors = [
+
+"Red",
+
+"Blue",
+
+"Green"
+
+];
+
+console.log(colors);
+```
+
+Output
+
+```
+["Red","Blue","Green"]
+```
+
+---
+
+# Function
+
+Stores reusable code.
+
+```javascript
+function greet(){
+
+console.log("Hello");
+
+}
+
+greet();
+```
+
+Output
+
+```
+Hello
+```
+
+---
+
+# typeof Operator
+
+Used to identify data type.
+
+Syntax
+
+```javascript
+typeof variable
+```
+
+Example
+
+```javascript
+console.log(typeof 10);
+
+console.log(typeof "Java");
+
+console.log(typeof true);
+
+console.log(typeof undefined);
+
+console.log(typeof null);
+```
+
+Output
+
+```
+number
+
+string
+
+boolean
+
+undefined
+
+object
+```
+
+**Note:** `typeof null` returns `"object"` due to a historical bug in JavaScript.
+
+---
+
+# Type Conversion
+
+## Automatic Conversion (Implicit)
+
+```javascript
+console.log("10" + 5);
+```
+
+Output
+
+```
+105
+```
+
+Because number `5` is converted into a string.
+
+---
+
+```javascript
+console.log("10" - 5);
+```
+
+Output
+
+```
+5
+```
+
+Here JavaScript converts `"10"` into a number automatically.
+
+---
+
+## Manual Conversion (Explicit)
+
+Convert String to Number
+
+```javascript
+let age = "25";
+
+let numAge = Number(age);
+
+console.log(numAge);
+
+console.log(typeof numAge);
+```
+
+Output
+
+```
+25
+
+number
+```
+
+---
+
+Convert Number to String
+
+```javascript
+let price = 500;
+
+let text = String(price);
+
+console.log(text);
+
+console.log(typeof text);
+```
+
+Output
+
+```
+500
+
+string
+```
+
+---
+
+Convert String to Boolean
+
+```javascript
+console.log(Boolean("Hello"));
+
+console.log(Boolean(""));
+```
+
+Output
+
+```
+true
+
+false
+```
+
+---
+
+# Primitive vs Non-Primitive
+
+| Primitive                | Non-Primitive           |
+| ------------------------ | ----------------------- |
+| Stores single value      | Stores multiple values  |
+| Immutable                | Mutable                 |
+| Compared by value        | Compared by reference   |
+| Examples: Number, String | Object, Array, Function |
+
+---
+
+# Memory Tip
+
+```
+Primitive
+↓
+
+Simple Values
+
+Number
+
+String
+
+Boolean
+
+Undefined
+
+Null
+
+BigInt
+
+Symbol
+```
+
+```
+Non Primitive
+↓
+
+Complex Values
+
+Object
+
+Array
+
+Function
+```
+
+---
+
+# Common Beginner Mistakes
+
+ Using `var` everywhere.
+
+ Prefer `let` and `const`.
+
+---
+
+ Variable names like
+
+```javascript
+let a;
+let x;
+let abc;
+```
+
+ Use meaningful names.
+
+```javascript
+let studentName;
+let totalMarks;
+let employeeSalary;
+```
+
+---
+
+ Forgetting quotes for strings.
+
+Wrong
+
+```javascript
+let name = Rahul;
+```
+
+Correct
+
+```javascript
+let name = "Rahul";
+```
+
+---
+
+ Confusing `=` and `==`
+
+`=` → Assignment
+
+`==` → Comparison (covered later)
+
+---
+
+# Interview Questions
+
+# JavaScript Interview Questions & Answers
+
+---
+
+## 1. What is JavaScript?
+
+**Answer:**
+
+JavaScript is a high-level, interpreted programming language used to make web pages interactive and dynamic. It allows developers to create features like form validation, animations, popups, API calls, games, and much more.
+
+**Example:**
+```javascript
+console.log("Hello, JavaScript!");
+```
+
+---
+
+## 2. Difference between HTML, CSS, and JavaScript?
+
+| HTML | CSS | JavaScript |
+|------|-----|------------|
+| Creates the structure of a webpage | Styles the webpage | Adds functionality and interactivity |
+| Skeleton | Design | Brain |
+| Uses tags | Uses selectors | Uses programming logic |
+
+**Example:**
+
+```html
+<h1>Hello</h1>
+```
+
+```css
+h1{
+    color: blue;
+}
+```
+
+```javascript
+document.querySelector("h1").innerText = "Welcome";
+```
+
+---
+
+## 3. What are Variables?
+
+**Answer:**
+
+Variables are containers used to store data in memory so it can be used later in the program.
+
+**Example:**
+
+```javascript
+let name = "John";
+let age = 25;
+
+console.log(name);
+console.log(age);
+```
+
+---
+
+## 4. Difference between `var`, `let`, and `const`?
+
+| var | let | const |
+|------|------|--------|
+| Function scoped | Block scoped | Block scoped |
+| Can be redeclared | Cannot be redeclared | Cannot be redeclared |
+| Can be reassigned | Can be reassigned | Cannot be reassigned |
+| Hoisted with `undefined` | Hoisted but in TDZ | Hoisted but in TDZ |
+
+**Example:**
+
+```javascript
+var a = 10;
+var a = 20; // Allowed
+
+let b = 30;
+// let b = 40; // Error
+
+const c = 50;
+// c = 60; // Error
+```
+
+---
+
+## 5. What is Block Scope?
+
+**Answer:**
+
+A block scope means a variable declared inside `{}` can only be accessed within that block.
+
+`let` and `const` are block-scoped.
+
+**Example:**
+
+```javascript
+{
+    let x = 10;
+    console.log(x);
+}
+
+// console.log(x); // Error
+```
+
+---
+
+## 6. What are Primitive Data Types?
+
+**Answer:**
+
+Primitive data types store a single value.
+
+There are **7 primitive data types**:
+
+- String
+- Number
+- Boolean
+- Undefined
+- Null
+- BigInt
+- Symbol
+
+**Example:**
+
+```javascript
+let name = "John";
+let age = 22;
+let isStudent = true;
+let salary;
+let value = null;
+let big = 12345678901234567890n;
+let id = Symbol("id");
+```
+
+---
+
+## 7. What is `undefined`?
+
+**Answer:**
+
+`undefined` means a variable has been declared but has not been assigned any value.
+
+**Example:**
+
+```javascript
+let x;
+
+console.log(x);
+```
+
+**Output**
+
+```
+undefined
+```
+
+---
+
+## 8. Difference between `undefined` and `null`?
+
+| undefined | null |
+|------------|------|
+| Default value assigned by JavaScript | Assigned intentionally by the programmer |
+| Means value is not assigned | Means empty value |
+| Type is `"undefined"` | Type is `"object"` (historical bug) |
+
+**Example:**
+
+```javascript
+let a;
+let b = null;
+
+console.log(a);
+console.log(b);
+```
+
+---
+
+## 9. What is `typeof`?
+
+**Answer:**
+
+`typeof` is an operator used to determine the data type of a variable or value.
+
+**Example:**
+
+```javascript
+console.log(typeof "Hello");
+console.log(typeof 100);
+console.log(typeof true);
+console.log(typeof undefined);
+```
+
+**Output**
+
+```
+string
+number
+boolean
+undefined
+```
+
+---
+
+## 10. Why does `typeof null` return `"object"`?
+
+**Answer:**
+
+This is a historical bug in JavaScript.
+
+When JavaScript was first created, values were stored internally in a way that caused `null` to be identified as an object. This mistake has been preserved to maintain backward compatibility with older code.
+
+**Example:**
+
+```javascript
+console.log(typeof null);
+```
+
+**Output**
+
+```
+object
+```
+
+> **Interview Tip:**  
+> Although `typeof null` returns `"object"`, **`null` is not actually an object**.
+
+---
+
+## 11. What is a Template Literal?
+
+**Answer:**
+
+Template literals allow you to create strings using backticks (`` ` ``). They support multi-line strings and variable interpolation using `${}`.
+
+**Example:**
+
+```javascript
+let name = "John";
+let age = 25;
+
+console.log(`My name is ${name} and I am ${age} years old.`);
+```
+
+**Output**
+
+```
+My name is John and I am 25 years old.
+```
+
+---
+
+## 12. What is Type Conversion?
+
+**Answer:**
+
+Type conversion is the process of converting one data type into another.
+
+There are two types:
+
+- Implicit Conversion
+- Explicit Conversion
+
+---
+
+## 13. Difference between Implicit and Explicit Conversion?
+
+| Implicit Conversion | Explicit Conversion |
+|---------------------|--------------------|
+| Done automatically by JavaScript | Done manually by the programmer |
+| Also called Type Coercion | Uses conversion functions |
+
+### Implicit Example
+
+```javascript
+console.log("5" + 2);
+```
+
+**Output**
+
+```
+52
+```
+
+---
+
+### Explicit Example
+
+```javascript
+let num = Number("5");
+
+console.log(num + 2);
+```
+
+**Output**
+
+```
+7
+```
+
+---
+
+## 14. What is BigInt?
+
+**Answer:**
+
+BigInt is a primitive data type used to store very large integers that exceed the safe limit of the `Number` type.
+
+A BigInt is created by adding `n` at the end of an integer.
+
+**Example:**
+
+```javascript
+let bigNumber = 123456789012345678901234567890n;
+
+console.log(bigNumber);
+```
+
+**Why use BigInt?**
+
+The `Number` type can safely store integers only up to:
+
+```javascript
+9007199254740991
+```
+
+For larger integers, use `BigInt`.
+
+---
+
+## 15. What are Non-Primitive Data Types?
+
+**Answer:**
+
+Non-primitive data types can store multiple values and are mutable (their contents can be changed).
+
+Common non-primitive data types include:
+
+- Object
+- Array
+- Function
+- Date
+- Map
+- Set
+
+### Object Example
+
+```javascript
+let student = {
+    name: "Rahul",
+    age: 22
+};
+```
+
+### Array Example
+
+```javascript
+let colors = ["Red", "Green", "Blue"];
+```
+
+### Function Example
+
+```javascript
+function greet() {
+    console.log("Hello");
+}
+```
+
+---
+
+# Quick Revision
+
+| Question | Short Answer |
+|-----------|--------------|
+| What is JavaScript? | Programming language for web interactivity |
+| HTML | Structure |
+| CSS | Styling |
+| JavaScript | Functionality |
+| Variables | Store data |
+| var | Function scoped |
+| let | Block scoped, reassignable |
+| const | Block scoped, cannot reassign |
+| Primitive Types | String, Number, Boolean, Undefined, Null, BigInt, Symbol |
+| Undefined | Variable declared but no value assigned |
+| Null | Intentional empty value |
+| typeof | Returns the data type |
+| typeof null | `"object"` (historical bug) |
+| Template Literal | String using backticks and `${}` |
+| Type Conversion | Changing one data type to another |
+| Implicit Conversion | Automatic conversion |
+| Explicit Conversion | Manual conversion |
+| BigInt | Stores very large integers |
+| Non-Primitive Types | Object, Array, Function, Date, Map, Set |
+
+---
+
+# Practice Programs
+
+### Program 1
+
+```javascript
+let name = "Apex";
+
+console.log(name);
+```
+
+---
+
+### Program 2
+
+```javascript
+let age = 22;
+
+console.log(age);
+```
+
+---
+
+### Program 3
+
+```javascript
+let first = "Hello";
+
+let second = "World";
+
+console.log(first + " " + second);
+```
+
+---
+
+### Program 4
+
+```javascript
+const PI = 3.14159;
+
+console.log(PI);
+```
+
+---
+
+### Program 5
+
+```javascript
+let student = {
+    name: "Rahul",
+    age: 20,
+    course: "Java Full Stack"
+};
+
+console.log(student);
+```
+
+---
+
+### Program 6
+
+```javascript
+let fruits = ["Apple", "Mango", "Orange"];
+
+console.log(fruits);
+```
+
+---
+
+### Program 7
+
+```javascript
+let salary = "50000";
+
+console.log(Number(salary));
+```
+
+---
