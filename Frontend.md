@@ -11764,8 +11764,4069 @@ for(let i = 1; i <= 10; i++){
     console.log(i);
 }
 ```
+---
+
+# Functions
+
+---
+
+# What is a Function?
+
+A **Function** is a reusable block of code designed to perform a specific task.
+
+Instead of writing the same code again and again, we can place it inside a function and call it whenever needed.
+
+In simple words,
+
+> A function is like a machine that takes some input, performs a task, and gives an output.
+
+---
+
+# Real World Example
+
+Imagine a **Coffee Machine**.
+
+```text
+Coffee Machine
+      │
+      ▼
+Insert Money
+      │
+      ▼
+Select Coffee
+      │
+      ▼
+Machine Prepares Coffee
+      │
+      ▼
+Coffee Ready 
+```
+
+Every time you want coffee, you don't build the machine again.
+
+You simply press the button.
+
+Similarly,
+
+A function is written **once** but can be called **many times**.
+
+---
+
+# Why Do We Need Functions?
+
+Without Functions
+
+```javascript
+console.log("Welcome to JavaScript");
+console.log("Learn Functions");
+console.log("Happy Coding");
+
+console.log("Welcome to JavaScript");
+console.log("Learn Functions");
+console.log("Happy Coding");
+
+console.log("Welcome to JavaScript");
+console.log("Learn Functions");
+console.log("Happy Coding");
+```
+
+Notice that the same code is repeated multiple times.
+
+---
+
+With Functions
+
+```javascript
+function welcome(){
+
+    console.log("Welcome to JavaScript");
+    console.log("Learn Functions");
+    console.log("Happy Coding");
+
+}
+
+welcome();
+welcome();
+welcome();
+```
+
+Output
+
+```text
+Welcome to JavaScript
+Learn Functions
+Happy Coding
+
+Welcome to JavaScript
+Learn Functions
+Happy Coding
+
+Welcome to JavaScript
+Learn Functions
+Happy Coding
+```
+
+The code becomes shorter, cleaner, and easier to maintain.
+
+---
+
+# Advantages of Functions
+
+Functions provide many benefits.
+
+* Code Reusability
+* Easy Maintenance
+* Better Readability
+* Less Code Duplication
+* Easier Debugging
+* Modular Programming
+* Faster Development
+
+---
+
+# Function Syntax
+
+```javascript
+function functionName(){
+
+    // Code
+
+}
+```
+
+---
+
+# Understanding the Syntax
+
+```javascript
+function greet(){
+
+    console.log("Hello");
+
+}
+```
+
+Here,
+
+```text
+function
+```
+
+Keyword used to create a function.
+
+```text
+greet
+```
+
+Function Name.
+
+```text
+()
+```
+
+Parentheses.
+
+Used to receive input (Parameters).
+
+```text
+{}
+```
+
+Function Body.
+
+Contains the code.
+
+---
+
+# Function Flow
+
+```text
+Function Created
+        │
+        ▼
+Stored in Memory
+        │
+        ▼
+Function Called
+        │
+        ▼
+Code Executes
+        │
+        ▼
+Output
+```
+
+---
+
+# Creating Your First Function
+
+```javascript
+function greet(){
+
+    console.log("Hello Students");
+
+}
+```
+
+Nothing happens yet.
+
+Because the function is only created.
+
+---
+
+# Calling a Function
+
+```javascript
+function greet(){
+
+    console.log("Hello Students");
+
+}
+
+greet();
+```
+
+Output
+
+```text
+Hello Students
+```
+
+---
+
+# Calling Multiple Times
+
+```javascript
+function greet(){
+
+    console.log("Welcome");
+
+}
+
+greet();
+
+greet();
+
+greet();
+```
+
+Output
+
+```text
+Welcome
+Welcome
+Welcome
+```
+
+---
+
+# Function Naming Rules
+
+Good Names
+
+```javascript
+calculateTotal()
+
+printInvoice()
+
+findMaximum()
+
+displayStudent()
+
+showProfile()
+```
+
+Bad Names
+
+```javascript
+a()
+
+abc()
+
+x1()
+
+test123()
+```
+
+Always use meaningful names.
+
+---
+
+# Function Parameters
+
+A **Parameter** is a variable declared inside the function definition.
+
+Parameters receive values from the function call.
+
+---
+
+# Syntax
+
+```javascript
+function functionName(parameter){
+
+}
+```
+
+---
+
+# Example
+
+```javascript
+function greet(name){
+
+    console.log("Hello " + name);
+
+}
+
+greet("Rahul");
+```
+
+Output
+
+```text
+Hello Rahul
+```
+
+---
+
+# Multiple Parameters
+
+```javascript
+function student(name, age){
+
+    console.log(name);
+
+    console.log(age);
+
+}
+
+student("Ravi",21);
+```
+
+Output
+
+```text
+Ravi
+
+21
+```
+
+---
+
+# Parameters Flow
+
+```text
+Function Call
+
+student("Ravi",21)
+
+        │
+
+        ▼
+
+name = Ravi
+
+age = 21
+
+        │
+
+        ▼
+
+Code Executes
+```
+
+---
+
+# Function Arguments
+
+The actual values passed while calling a function are called **Arguments**.
+
+Example
+
+```javascript
+function greet(name){
+
+    console.log(name);
+
+}
+
+greet("Apex");
+```
+
+Here,
+
+Parameter
+
+```text
+name
+```
+
+Argument
+
+```text
+"Apex"
+```
+
+---
+
+# Parameters vs Arguments
+
+| Parameters            | Arguments     |
+| --------------------- | ------------- |
+| Variables in Function | Actual Values |
+| Declared              | Passed        |
+| Receive Data          | Send Data     |
+
+---
+
+# Example
+
+```javascript
+function add(a,b){
+
+    console.log(a+b);
+
+}
+
+add(20,30);
+```
+
+Output
+
+```text
+50
+```
+
+---
+
+# Default Parameters
+
+Sometimes users don't provide arguments.
+
+We can assign default values.
+
+Syntax
+
+```javascript
+function greet(name="Guest"){
+
+}
+```
+
+---
+
+Example
+
+```javascript
+function greet(name="Guest"){
+
+    console.log("Hello " + name);
+
+}
+
+greet();
+```
+
+Output
+
+```text
+Hello Guest
+```
+
+---
+
+Calling with Value
+
+```javascript
+function greet(name="Guest"){
+
+    console.log("Hello " + name);
+
+}
+
+greet("Rahul");
+```
+
+Output
+
+```text
+Hello Rahul
+```
+
+---
+
+# Return Statement
+
+The **return** statement sends a value back to the place where the function was called.
+
+---
+
+# Why Return?
+
+Without Return
+
+```javascript
+function add(a,b){
+
+console.log(a+b);
+
+}
+
+let result = add(10,20);
+
+console.log(result);
+```
+
+Output
+
+```text
+30
+
+undefined
+```
+
+Because nothing was returned.
+
+---
+
+Correct Way
+
+```javascript
+function add(a,b){
+
+return a+b;
+
+}
+
+let result = add(10,20);
+
+console.log(result);
+```
+
+Output
+
+```text
+30
+```
+
+---
+
+# Return Flow
+
+```text
+Call Function
+
+↓
+
+Execute Code
+
+↓
+
+Return Value
+
+↓
+
+Store Result
+```
+
+---
+
+# Returning String
+
+```javascript
+function fullName(first,last){
+
+return first+" "+last;
+
+}
+
+console.log(fullName("Rahul","Sharma"));
+```
+
+Output
+
+```text
+Rahul Sharma
+```
+
+---
+
+# Returning Boolean
+
+```javascript
+function isAdult(age){
+
+return age>=18;
+
+}
+
+console.log(isAdult(20));
+```
+
+Output
+
+```text
+true
+```
+
+---
+
+# Returning Object
+
+```javascript
+function student(){
+
+return{
+
+name:"Rahul",
+
+age:20
+
+};
+
+}
+
+console.log(student());
+```
+
+Output
+
+```text
+{name:"Rahul",age:20}
+```
+
+---
+
+# Function Expression
+
+Functions can also be stored inside variables.
+
+Syntax
+
+```javascript
+let variable=function(){
+
+};
+```
+
+---
+
+Example
+
+```javascript
+let greet=function(){
+
+console.log("Hello");
+
+};
+
+greet();
+```
+
+Output
+
+```text
+Hello
+```
+
+---
+
+# Function Declaration vs Function Expression
+
+| Function Declaration         | Function Expression       |
+| ---------------------------- | ------------------------- |
+| Starts with function keyword | Stored inside variable    |
+| Hoisted                      | Not Fully Hoisted         |
+| Most Common                  | Used in Modern JavaScript |
+
+---
+
+Declaration
+
+```javascript
+function greet(){
+
+console.log("Hello");
+
+}
+```
+
+---
+
+Expression
+
+```javascript
+let greet=function(){
+
+console.log("Hello");
+
+};
+```
+
+---
+
+# Anonymous Function
+
+A function without a name is called an **Anonymous Function**.
+
+Example
+
+```javascript
+let message=function(){
+
+console.log("Anonymous Function");
+
+};
+
+message();
+```
+
+Output
+
+```text
+Anonymous Function
+```
+
+---
+
+# Immediately Invoked Function Expression (IIFE)
+
+An IIFE executes immediately after it is defined.
+
+Syntax
+
+```javascript
+(function(){
+
+})();
+```
+
+---
+
+Example
+
+```javascript
+(function(){
+
+console.log("Executed Immediately");
+
+})();
+```
+
+Output
+
+```text
+Executed Immediately
+```
+
+---
+
+# Callback Function
+
+A **Callback Function** is a function passed as an argument to another function.
+
+---
+
+Real World Example
+
+Imagine ordering food online.
+
+```text
+Place Order
+      │
+      ▼
+Restaurant Prepares Food
+      │
+      ▼
+Delivery Partner Calls You
+```
+
+The call happens **after** the order is ready.
+
+Similarly,
+
+Callbacks execute after another function completes.
+
+---
+
+Example
+
+```javascript
+function greet(name){
+
+console.log("Hello "+name);
+
+}
+
+function process(callback){
+
+callback("Rahul");
+
+}
+
+process(greet);
+```
+
+Output
+
+```text
+Hello Rahul
+```
+
+---
+
+# Types of Functions Learned
+
+* Function Declaration
+* Function Expression
+* Anonymous Function
+* Callback Function
+* IIFE
+
+---
+
+# Common Beginner Mistakes
+
+  Forgetting Parentheses
+
+Wrong
+
+```javascript
+greet;
+```
+
+Correct
+
+```javascript
+greet();
+```
+
+---
+
+  Forgetting return
+
+Wrong
+
+```javascript
+function add(a,b){
+
+a+b;
+
+}
+```
+
+Correct
+
+```javascript
+function add(a,b){
+
+return a+b;
+
+}
+```
+
+---
+
+  Passing Wrong Number of Arguments
+
+```javascript
+function add(a,b){
+
+return a+b;
+
+}
+
+add(10);
+```
+
+Result
+
+```text
+NaN
+```
+
+Because
+
+```text
+b = undefined
+```
+
+---
+
+  Confusing Parameters and Arguments
+
+```text
+Parameters
+
+↓
+
+Variables
+
+Arguments
+
+↓
+
+Actual Values
+```
+
+---
+
+# Memory Tips
+
+### Function
+
+```text
+Write Once
+
+↓
+
+Call Many Times
+```
+
+---
+
+### Parameter
+
+```text
+Receives Data
+```
+
+---
+
+### Argument
+
+```text
+Sends Data
+```
+
+---
+
+### Return
+
+```text
+Function
+
+↓
+
+Returns Value
+
+↓
+
+Caller Receives Value
+```
+
+---
+
+# Interview Questions
+
+1. What is a function in JavaScript?
+2. Why do we use functions?
+3. What are the advantages of functions?
+4. What is the syntax of a function?
+5. What is the difference between parameters and arguments?
+6. What is a return statement?
+7. What happens if a function does not return anything?
+8. What is a function expression?
+9. What is an anonymous function?
+10. What is an IIFE?
+11. What is a callback function?
+12. Difference between function declaration and function expression?
+13. What are default parameters?
+14. Can a function return an object?
+15. Can a function return another function? (Advanced concept)
+
+---
+
+# Practice Programs
+
+### Program 1 - Simple Function
+
+```javascript
+function welcome(){
+
+    console.log("Welcome to JavaScript");
+
+}
+
+welcome();
+```
+
+---
+
+### Program 2 - Addition Function
+
+```javascript
+function add(a,b){
+
+    return a+b;
+
+}
+
+console.log(add(15,25));
+```
+
+---
+
+### Program 3 - Area of Rectangle
+
+```javascript
+function area(length,width){
+
+    return length*width;
+
+}
+
+console.log(area(10,5));
+```
+
+---
+
+### Program 4 - Check Even Number
+
+```javascript
+function isEven(number){
+
+    return number%2===0;
+
+}
+
+console.log(isEven(18));
+```
+
+---
+
+### Program 5 - Greeting Function
+
+```javascript
+function greet(name="Guest"){
+
+    console.log("Hello "+name);
+
+}
+
+greet();
+
+greet("Rahul");
+```
+
+---
+
+### Program 6 - Function Expression
+
+```javascript
+let square=function(number){
+
+    return number*number;
+
+};
+
+console.log(square(8));
+```
+
+---
+
+### Program 7 - Anonymous Function
+
+```javascript
+let message=function(){
+
+    console.log("Learning JavaScript Functions");
+
+};
+
+message();
+```
+
+---
+
+### Program 8 - Callback Function
+
+```javascript
+function display(name){
+
+    console.log("Welcome "+name);
+
+}
+
+function process(callback){
+
+    callback("Apex");
+
+}
+
+process(display);
+```
+
+---
+
+### Program 9 - Student Details
+
+```javascript
+function student(name,age,course){
+
+    console.log("Name :",name);
+    console.log("Age :",age);
+    console.log("Course :",course);
+
+}
+
+student("Rahul",21,"Java Full Stack");
+```
+
+---
+
+### Program 10 - Calculator
+
+```javascript
+function calculator(a,b){
+
+    console.log("Addition :",a+b);
+    console.log("Subtraction :",a-b);
+    console.log("Multiplication :",a*b);
+    console.log("Division :",a/b);
+
+}
+
+calculator(20,5);
+```
+
+---
+
+
+---
+
+# Arrow Functions
+
+---
+
+# What is an Arrow Function?
+
+An **Arrow Function** is a shorter and modern way of writing functions in JavaScript.
+
+Arrow Functions were introduced in **ES6 (ECMAScript 2015)**.
+
+They make the code shorter, cleaner, and easier to read.
+
+In simple words,
+
+> An Arrow Function is a simplified version of a traditional function.
+
+---
+
+# Real World Example
+
+Imagine writing an address.
+
+Traditional Way
+
+```text
+House No: 101
+Street: MG Road
+City: Hyderabad
+State: Telangana
+Country: India
+```
+
+Short Way
+
+```text
+101, MG Road,
+Hyderabad, Telangana
+```
+
+Both represent the same address.
+
+Similarly,
+
+Traditional Functions and Arrow Functions perform the same task, but Arrow Functions use less code.
+
+---
+
+# Why Were Arrow Functions Introduced?
+
+Before ES6, JavaScript developers had to write many lines of code even for simple functions.
+
+Example
+
+```javascript
+function add(a, b){
+
+    return a + b;
+
+}
+```
+
+After ES6
+
+```javascript
+const add = (a, b) => a + b;
+```
+
+Both produce the same result.
+
+Arrow Functions reduce unnecessary code.
+
+---
+
+# Traditional Function Syntax
+
+```javascript
+function functionName(parameters){
+
+    // Code
+
+}
+```
+
+Example
+
+```javascript
+function greet(){
+
+    console.log("Hello Students");
+
+}
+```
+
+---
+
+# Arrow Function Syntax
+
+```javascript
+const functionName = (parameters) => {
+
+    // Code
+
+};
+```
+
+Example
+
+```javascript
+const greet = () => {
+
+    console.log("Hello Students");
+
+};
+```
+
+---
+
+# Understanding the Syntax
+
+```javascript
+const add = (a, b) => {
+
+    return a + b;
+
+};
+```
+
+Explanation
+
+```text
+const
+
+↓
+
+Stores Function
+
+add
+
+↓
+
+Function Name
+
+(a, b)
+
+↓
+
+Parameters
+
+=>
+
+↓
+
+Arrow Operator
+
+{}
+
+↓
+
+Function Body
+```
+
+---
+
+# First Arrow Function
+
+```javascript
+const welcome = () => {
+
+    console.log("Welcome to JavaScript");
+
+};
+
+welcome();
+```
+
+Output
+
+```text
+Welcome to JavaScript
+```
+
+---
+
+# Arrow Function with Parameters
+
+```javascript
+const greet = (name) => {
+
+    console.log("Hello " + name);
+
+};
+
+greet("Rahul");
+```
+
+Output
+
+```text
+Hello Rahul
+```
+
+---
+
+# Arrow Function with Multiple Parameters
+
+```javascript
+const student = (name, age) => {
+
+    console.log(name);
+
+    console.log(age);
+
+};
+
+student("Ravi", 21);
+```
+
+Output
+
+```text
+Ravi
+21
+```
+
+---
+
+# Arrow Function Returning a Value
+
+```javascript
+const add = (a, b) => {
+
+    return a + b;
+
+};
+
+console.log(add(10, 20));
+```
+
+Output
+
+```text
+30
+```
+
+---
+
+# Explicit Return
+
+When we use the `return` keyword inside the function body, it is called an **Explicit Return**.
+
+Syntax
+
+```javascript
+const functionName = () => {
+
+    return value;
+
+};
+```
+
+Example
+
+```javascript
+const square = (number) => {
+
+    return number * number;
+
+};
+
+console.log(square(5));
+```
+
+Output
+
+```text
+25
+```
+
+---
+
+# Implicit Return
+
+If the function contains only **one expression**, JavaScript automatically returns the value.
+
+No need to write `return`.
+
+Syntax
+
+```javascript
+const functionName = () => expression;
+```
+
+Example
+
+```javascript
+const square = number => number * number;
+
+console.log(square(6));
+```
+
+Output
+
+```text
+36
+```
+
+---
+
+# Explicit vs Implicit Return
+
+| Explicit Return        | Implicit Return       |
+| ---------------------- | --------------------- |
+| Uses `return`          | No `return`           |
+| Uses `{}`              | No `{}` required      |
+| Multiple Statements    | Single Expression     |
+| Easy for Complex Logic | Best for Simple Logic |
+
+---
+
+Example
+
+Explicit
+
+```javascript
+const multiply = (a, b) => {
+
+    return a * b;
+
+};
+
+console.log(multiply(5, 4));
+```
+
+Output
+
+```text
+20
+```
+
+---
+
+Implicit
+
+```javascript
+const multiply = (a, b) => a * b;
+
+console.log(multiply(5, 4));
+```
+
+Output
+
+```text
+20
+```
+
+---
+
+# Arrow Function with No Parameters
+
+```javascript
+const message = () => {
+
+    console.log("Learning Arrow Functions");
+
+};
+
+message();
+```
+
+Output
+
+```text
+Learning Arrow Functions
+```
+
+---
+
+# Arrow Function with One Parameter
+
+If there is only **one parameter**, parentheses are optional.
+
+Both are correct.
+
+```javascript
+const greet = (name) => {
+
+    console.log(name);
+
+};
+```
+
+or
+
+```javascript
+const greet = name => {
+
+    console.log(name);
+
+};
+```
+
+Example
+
+```javascript
+const cube = number => number * number * number;
+
+console.log(cube(3));
+```
+
+Output
+
+```text
+27
+```
+
+---
+
+# Arrow Function with Multiple Parameters
+
+If there are two or more parameters, parentheses are required.
+
+```javascript
+const add = (a, b) => a + b;
+
+console.log(add(20, 15));
+```
+
+Output
+
+```text
+35
+```
+
+---
+
+# Returning an Object
+
+When returning an object using an implicit return, wrap it inside parentheses.
+
+Wrong
+
+```javascript
+const student = () => {
+    name: "Rahul"
+};
+```
+
+Correct
+
+```javascript
+const student = () => ({
+    name: "Rahul",
+    age: 20
+});
+
+console.log(student());
+```
+
+Output
+
+```text
+{ name: 'Rahul', age: 20 }
+```
+
+---
+
+# Traditional Function vs Arrow Function
+
+| Traditional Function    | Arrow Function                       |
+| ----------------------- | ------------------------------------ |
+| Uses `function` keyword | Uses `=>`                            |
+| Longer Syntax           | Shorter Syntax                       |
+| Has its own `this`      | Does not have its own `this`         |
+| Best for Object Methods | Best for Callbacks & Short Functions |
+| Available before ES6    | Introduced in ES6                    |
+
+---
+
+Example
+
+Traditional
+
+```javascript
+function add(a, b){
+
+    return a + b;
+
+}
+```
+
+Arrow
+
+```javascript
+const add = (a, b) => a + b;
+```
+
+---
+
+# Arrow Functions and `this`
+
+One of the biggest differences is how `this` behaves.
+
+Traditional Function
+
+```javascript
+const person = {
+
+    name: "Rahul",
+
+    greet: function(){
+
+        console.log(this.name);
+
+    }
+
+};
+
+person.greet();
+```
+
+Output
+
+```text
+Rahul
+```
+
+Arrow Function
+
+```javascript
+const person = {
+
+    name: "Rahul",
+
+    greet: () => {
+
+        console.log(this.name);
+
+    }
+
+};
+
+person.greet();
+```
+
+Output
+
+```text
+undefined
+```
+
+### Why?
+
+Arrow Functions **do not create their own `this`**.
+
+They inherit `this` from the surrounding scope.
+
+**Note:** We'll study `this` in detail later.
+
+---
+
+# Where Should We Use Arrow Functions?
+
+Arrow Functions are commonly used in:
+
+* Callback Functions
+* Array Methods
+* Event Handlers (with care)
+* Simple Utility Functions
+* Promise Functions
+* API Calls
+
+---
+
+# Real World Example
+
+Suppose you want to calculate the GST amount.
+
+Traditional Function
+
+```javascript
+function calculateGST(amount){
+
+    return amount * 0.18;
+
+}
+
+console.log(calculateGST(1000));
+```
+
+Output
+
+```text
+180
+```
+
+Arrow Function
+
+```javascript
+const calculateGST = amount => amount * 0.18;
+
+console.log(calculateGST(1000));
+```
+
+Output
+
+```text
+180
+```
+
+---
+
+# Nested Arrow Function
+
+```javascript
+const outer = () => {
+
+    const inner = () => {
+
+        console.log("Inner Function");
+
+    };
+
+    inner();
+
+};
+
+outer();
+```
+
+Output
+
+```text
+Inner Function
+```
+
+---
+
+# Callback Using Arrow Function
+
+Traditional Callback
+
+```javascript
+function process(callback){
+
+    callback();
+
+}
+
+process(function(){
+
+    console.log("Processing...");
+
+});
+```
+
+Output
+
+```text
+Processing...
+```
+
+---
+
+Arrow Callback
+
+```javascript
+function process(callback){
+
+    callback();
+
+}
+
+process(() => {
+
+    console.log("Processing...");
+
+});
+```
+
+Output
+
+```text
+Processing...
+```
+
+---
+
+# Common Beginner Mistakes
+
+  Forgetting Parentheses for Multiple Parameters
+
+Wrong
+
+```javascript
+const add = a, b => a + b;
+```
+
+Correct
+
+```javascript
+const add = (a, b) => a + b;
+```
+
+---
+
+  Forgetting `return` with Braces
+
+Wrong
+
+```javascript
+const square = number => {
+
+    number * number;
+
+};
+```
+
+Output
+
+```text
+undefined
+```
+
+Correct
+
+```javascript
+const square = number => {
+
+    return number * number;
+
+};
+```
+
+---
+
+  Returning Object Incorrectly
+
+Wrong
+
+```javascript
+const student = () => {
+
+    name: "Rahul";
+
+};
+```
+
+Correct
+
+```javascript
+const student = () => ({
+
+    name: "Rahul"
+
+});
+```
+
+---
+
+  Using Arrow Functions for Object Methods
+
+Avoid
+
+```javascript
+const person = {
+
+    name: "Rahul",
+
+    greet: () => {
+
+        console.log(this.name);
+
+    }
+
+};
+```
+
+Prefer
+
+```javascript
+const person = {
+
+    name: "Rahul",
+
+    greet(){
+
+        console.log(this.name);
+
+    }
+
+};
+```
+
+---
+
+# Memory Tips
+
+### Arrow Function
+
+```text
+Traditional Function
+
+↓
+
+Long Syntax
+
+Arrow Function
+
+↓
+
+Short Syntax
+```
+
+---
+
+### Parameters
+
+```text
+0 Parameters
+
+↓
+
+()
+
+1 Parameter
+
+↓
+
+parameter
+
+2+ Parameters
+
+↓
+
+(parameter1, parameter2)
+```
+
+---
+
+### Return
+
+```text
+{}
+
+↓
+
+Need return
+
+No {}
+
+↓
+
+Automatic Return
+```
+
+---
+
+### `this`
+
+```text
+Traditional Function
+
+↓
+
+Own this
+
+Arrow Function
+
+↓
+
+Uses Parent this
+```
+
+---
+
+# Interview Questions
+
+1. What is an Arrow Function?
+2. When were Arrow Functions introduced?
+3. What are the advantages of Arrow Functions?
+4. What is the syntax of an Arrow Function?
+5. What is the difference between a Traditional Function and an Arrow Function?
+6. What is an Implicit Return?
+7. What is an Explicit Return?
+8. Can Arrow Functions have multiple parameters?
+9. How do you return an object from an Arrow Function?
+10. Does an Arrow Function have its own `this`?
+11. Why are Arrow Functions popular in callbacks?
+12. When should you avoid using Arrow Functions?
+13. Can Arrow Functions be anonymous?
+14. What is the difference between `() => {}` and `() => expression`?
+15. Are Arrow Functions hoisted like function declarations?
+
+---
+
+# Practice Programs
+
+### Program 1 - Simple Arrow Function
+
+```javascript
+const welcome = () => {
+
+    console.log("Welcome to JavaScript");
+
+};
+
+welcome();
+```
+
+---
+
+### Program 2 - Addition
+
+```javascript
+const add = (a, b) => a + b;
+
+console.log(add(25, 15));
+```
+
+---
+
+### Program 3 - Square
+
+```javascript
+const square = number => number * number;
+
+console.log(square(8));
+```
+
+---
+
+### Program 4 - Greeting
+
+```javascript
+const greet = name => {
+
+    console.log("Hello " + name);
+
+};
+
+greet("Apex");
+```
+
+---
+
+### Program 5 - Area of Circle
+
+```javascript
+const area = radius => 3.14 * radius * radius;
+
+console.log(area(5));
+```
+
+---
+
+### Program 6 - Even or Odd
+
+```javascript
+const isEven = number => number % 2 === 0;
+
+console.log(isEven(18));
+console.log(isEven(15));
+```
+
+---
+
+### Program 7 - Maximum Number
+
+```javascript
+const maximum = (a, b) => a > b ? a : b;
+
+console.log(maximum(45, 60));
+```
+
+---
+
+### Program 8 - Returning Object
+
+```javascript
+const employee = () => ({
+
+    id: 101,
+
+    name: "Rahul",
+
+    department: "IT"
+
+});
+
+console.log(employee());
+```
+
+---
+
+### Program 9 - Callback Function
+
+```javascript
+function execute(callback){
+
+    callback();
+
+}
+
+execute(() => {
+
+    console.log("Callback Executed");
+
+});
+```
+
+---
+
+### Program 10 - Calculator
+
+```javascript
+const calculator = (a, b) => {
+
+    console.log("Addition :", a + b);
+    console.log("Subtraction :", a - b);
+    console.log("Multiplication :", a * b);
+    console.log("Division :", a / b);
+
+};
+
+calculator(20, 5);
+```
+
+---
+
 
 
 
 ---
+# Scope in JavaScript
+
+---
+
+# What is Scope?
+
+**Scope** is the area or region of a program where a variable can be accessed.
+
+In simple words,
+
+> Scope determines **where a variable is available** and **where it cannot be used**.
+
+If a variable is created inside one scope, it may not be accessible outside that scope.
+
+Understanding scope is one of the most important concepts in JavaScript because it helps us avoid errors and write secure, organized code.
+
+---
+
+# Real World Example
+
+Imagine a school.
+
+```text
+School
+│
+├── Principal Room
+│
+├── Staff Room
+│
+├── Classroom 1
+│
+└── Classroom 2
+```
+
+A student from Classroom 1 cannot enter the Principal's room without permission.
+
+Similarly,
+
+Variables belong to certain areas of a program.
+
+Some variables are available everywhere.
+
+Some variables are available only inside a specific block.
+
+---
+
+# Why Do We Need Scope?
+
+Suppose every variable in a program was accessible from anywhere.
+
+Problems:
+
+* Variables may accidentally change.
+* Different developers may use the same variable names.
+* Bugs become difficult to find.
+* Large projects become difficult to maintain.
+
+Scope solves these problems by limiting where variables can be used.
+
+---
+
+# Types of Scope
+
+JavaScript mainly has four types of scope.
+
+* Global Scope
+* Local Scope
+* Function Scope
+* Block Scope
+
+Later, we'll learn:
+
+* Lexical Scope
+* Scope Chain
+* Closures
+
+---
+
+# Global Scope
+
+---
+
+## What is Global Scope?
+
+A variable declared **outside every function and block** belongs to the **Global Scope**.
+
+Global variables can be accessed from anywhere in the program.
+
+---
+
+## Syntax
+
+```javascript
+let variableName = value;
+```
+
+Declared outside all functions.
+
+---
+
+## Example
+
+```javascript
+let company = "ApexSwaram";
+
+console.log(company);
+```
+
+Output
+
+```text
+ApexSwaram
+```
+
+---
+
+## Accessing Global Variable Inside Function
+
+```javascript
+let company = "ApexSwaram";
+
+function display(){
+
+    console.log(company);
+
+}
+
+display();
+```
+
+Output
+
+```text
+ApexSwaram
+```
+
+Why?
+
+Because global variables are accessible everywhere.
+
+---
+
+## Example
+
+```javascript
+let course = "JavaScript";
+
+function student1(){
+
+    console.log(course);
+
+}
+
+function student2(){
+
+    console.log(course);
+
+}
+
+student1();
+
+student2();
+```
+
+Output
+
+```text
+JavaScript
+
+JavaScript
+```
+
+Both functions can access the same variable.
+
+---
+
+# Global Scope Diagram
+
+```text
+Global Scope
+
+course
+
+company
+
+price
+
+age
+
+↓
+
+Accessible Everywhere
+```
+
+---
+
+# Advantages of Global Variables
+
+* Can be accessed from any function.
+* Easy to share data.
+* Useful for constants.
+* Good for application-wide settings.
+
+---
+
+# Disadvantages of Global Variables
+
+* Any function can change them.
+* Difficult to debug.
+* Memory remains occupied throughout the program.
+* May create naming conflicts.
+
+---
+
+# Example of Problem
+
+```javascript
+let total = 100;
+
+function increase(){
+
+    total = total + 50;
+
+}
+
+function decrease(){
+
+    total = total - 20;
+
+}
+
+increase();
+
+decrease();
+
+console.log(total);
+```
+
+Output
+
+```text
+130
+```
+
+Since everyone can modify the same variable, unexpected changes may occur.
+
+---
+
+# Local Scope
+
+---
+
+## What is Local Scope?
+
+Variables declared **inside a function** or **inside a block** are called Local Variables.
+
+They are available only within that particular area.
+
+---
+
+## Example
+
+```javascript
+function student(){
+
+    let name = "Rahul";
+
+    console.log(name);
+
+}
+
+student();
+```
+
+Output
+
+```text
+Rahul
+```
+
+---
+
+Trying to Access Outside
+
+```javascript
+function student(){
+
+    let name = "Rahul";
+
+}
+
+console.log(name);
+```
+
+Output
+
+```text
+ReferenceError
+```
+
+Because
+
+```text
+name
+```
+
+exists only inside the function.
+
+---
+
+# Local Scope Diagram
+
+```text
+Function
+
+↓
+
+name
+
+age
+
+marks
+
+↓
+
+Available Only Here
+```
+
+---
+
+# Global vs Local
+
+```javascript
+let city = "Hyderabad";
+
+function display(){
+
+    let name = "Rahul";
+
+    console.log(name);
+
+    console.log(city);
+
+}
+
+display();
+
+console.log(city);
+```
+
+Output
+
+```text
+Rahul
+
+Hyderabad
+
+Hyderabad
+```
+
+Notice
+
+Global variable
+
+```text
+city
+```
+
+works everywhere.
+
+Local variable
+
+```text
+name
+```
+
+works only inside the function.
+
+---
+
+# Function Scope
+
+---
+
+## What is Function Scope?
+
+Variables declared using
+
+```text
+var
+
+let
+
+const
+```
+
+inside a function belong only to that function.
+
+---
+
+## Example
+
+```javascript
+function addition(){
+
+    let a = 20;
+
+    let b = 30;
+
+    console.log(a + b);
+
+}
+
+addition();
+```
+
+Output
+
+```text
+50
+```
+
+---
+
+Trying Outside
+
+```javascript
+function addition(){
+
+    let a = 20;
+
+}
+
+console.log(a);
+```
+
+Output
+
+```text
+ReferenceError
+```
+
+---
+
+# Another Example
+
+```javascript
+function employee(){
+
+    let salary = 50000;
+
+    console.log(salary);
+
+}
+
+employee();
+```
+
+Output
+
+```text
+50000
+```
+
+---
+
+# Memory Representation
+
+```text
+Global Memory
+
+↓
+
+employee()
+
+↓
+
+salary
+
+↓
+
+Destroyed After Function Ends
+```
+
+Local variables are removed from memory after the function finishes execution.
+
+---
+
+# Block Scope
+
+---
+
+## What is Block Scope?
+
+A block is any code written inside
+
+```text
+{
+
+}
+```
+
+Variables declared using
+
+```text
+let
+
+const
+```
+
+are available only inside that block.
+
+---
+
+## Example
+
+```javascript
+{
+
+let message = "Hello";
+
+console.log(message);
+
+}
+```
+
+Output
+
+```text
+Hello
+```
+
+---
+
+Outside
+
+```javascript
+{
+
+let message = "Hello";
+
+}
+
+console.log(message);
+```
+
+Output
+
+```text
+ReferenceError
+```
+
+---
+
+# Example with if
+
+```javascript
+if(true){
+
+let marks = 90;
+
+console.log(marks);
+
+}
+```
+
+Output
+
+```text
+90
+```
+
+Outside
+
+```javascript
+if(true){
+
+let marks = 90;
+
+}
+
+console.log(marks);
+```
+
+Output
+
+```text
+ReferenceError
+```
+
+---
+
+# Example with for Loop
+
+```javascript
+for(let i=1;i<=3;i++){
+
+console.log(i);
+
+}
+```
+
+Output
+
+```text
+1
+
+2
+
+3
+```
+
+Outside
+
+```javascript
+for(let i=1;i<=3;i++){
+
+}
+
+console.log(i);
+```
+
+Output
+
+```text
+ReferenceError
+```
+
+---
+
+# Block Scope Diagram
+
+```text
+{
+
+let a
+
+const b
+
+}
+
+↓
+
+Available Only Here
+```
+
+---
+
+# Important Difference
+
+```javascript
+{
+
+var x = 10;
+
+}
+
+console.log(x);
+```
+
+Output
+
+```text
+10
+```
+
+Because
+
+```text
+var
+```
+
+does **NOT** follow block scope.
+
+---
+
+Using let
+
+```javascript
+{
+
+let x = 10;
+
+}
+
+console.log(x);
+```
+
+Output
+
+```text
+ReferenceError
+```
+
+---
+
+Using const
+
+```javascript
+{
+
+const x = 10;
+
+}
+
+console.log(x);
+```
+
+Output
+
+```text
+ReferenceError
+```
+
+---
+
+# Function Scope vs Block Scope
+
+| Function Scope               | Block Scope                          |
+| ---------------------------- | ------------------------------------ |
+| Exists inside function       | Exists inside `{}`                   |
+| `var` follows function scope | `let` and `const` follow block scope |
+| Ends when function ends      | Ends when block ends                 |
+
+---
+
+# Scope Hierarchy
+
+```text
+Global Scope
+
+↓
+
+Function Scope
+
+↓
+
+Block Scope
+```
+
+Inner scopes can access outer scopes.
+
+Outer scopes cannot access inner scopes.
+
+---
+
+# Scope Flow
+
+```text
+Global Variable
+
+↓
+
+Accessible Inside Function
+
+↓
+
+Accessible Inside Block
+```
+
+But
+
+```text
+Block Variable
+
+↓
+
+Cannot Access Outside Block
+```
+
+---
+
+# Real World Example
+
+Imagine a company.
+
+```text
+Company
+
+↓
+
+Department
+
+↓
+
+Employee
+```
+
+Company Rules
+
+Accessible to everyone.
+
+Department Rules
+
+Accessible only to that department.
+
+Employee Personal File
+
+Accessible only to that employee.
+
+Similarly,
+
+Global Variables
+
+↓
+
+Available everywhere.
+
+Local Variables
+
+↓
+
+Available only in their own area.
+
+---
+
+# Best Practices
+
+  Prefer
+
+```javascript
+let
+```
+
+for changing values.
+
+---
+
+  Prefer
+
+```javascript
+const
+```
+
+for fixed values.
+
+---
+
+  Avoid
+
+```javascript
+var
+```
+
+in modern JavaScript unless necessary.
+
+---
+
+Keep variables inside the smallest possible scope.
+
+This makes programs safer and easier to maintain.
+
+---
+
+# Common Beginner Mistakes
+
+### Mistake 1
+
+Trying to access local variables outside.
+
+Wrong
+
+```javascript
+function test(){
+
+let age = 20;
+
+}
+
+console.log(age);
+```
+
+---
+
+### Mistake 2
+
+Using too many global variables.
+
+```javascript
+let a=10;
+
+let b=20;
+
+let c=30;
+
+let d=40;
+```
+
+Avoid unnecessary globals.
+
+---
+
+### Mistake 3
+
+Thinking
+
+```text
+var
+```
+
+is block scoped.
+
+Wrong
+
+```javascript
+if(true){
+
+var x=100;
+
+}
+
+console.log(x);
+```
+
+Output
+
+```text
+100
+```
+
+---
+
+### Mistake 4
+
+Using the same variable name everywhere.
+
+Instead
+
+```javascript
+let studentName;
+```
+
+Use meaningful names.
+
+---
+
+# Memory Tips
+
+## Global Scope
+
+```text
+Outside Everything
+
+↓
+
+Accessible Everywhere
+```
+
+---
+
+## Function Scope
+
+```text
+Inside Function
+
+↓
+
+Only Inside Function
+```
+
+---
+
+## Block Scope
+
+```text
+Inside {}
+
+↓
+
+Only Inside Block
+```
+
+---
+
+## Remember
+
+```text
+var
+
+↓
+
+Function Scope
+
+let
+
+↓
+
+Block Scope
+
+const
+
+↓
+
+Block Scope
+```
+
+---
+
+# Interview Questions
+
+1. What is Scope?
+2. Why is Scope important?
+3. What is Global Scope?
+4. What is Local Scope?
+5. What is Function Scope?
+6. What is Block Scope?
+7. Difference between Global and Local Variables?
+8. Why is `let` block scoped?
+9. Why is `var` not block scoped?
+10. Which is better: `var`, `let`, or `const`?
+11. Can a function access a global variable?
+12. Can global code access a local variable?
+13. What happens to local variables after a function finishes?
+14. Why should we avoid too many global variables?
+15. What is the difference between Function Scope and Block Scope?
+
+---
+
+# Practice Programs
+
+## Program 1 - Global Variable
+
+```javascript
+let company = "ApexSwaram";
+
+function showCompany(){
+
+    console.log(company);
+
+}
+
+showCompany();
+
+console.log(company);
+```
+
+---
+
+## Program 2 - Local Variable
+
+```javascript
+function student(){
+
+    let name = "Rahul";
+
+    console.log(name);
+
+}
+
+student();
+```
+
+---
+
+## Program 3 - Function Scope
+
+```javascript
+function add(){
+
+    let a = 10;
+
+    let b = 20;
+
+    console.log(a + b);
+
+}
+
+add();
+```
+
+---
+
+## Program 4 - Block Scope
+
+```javascript
+if(true){
+
+    let marks = 95;
+
+    console.log(marks);
+
+}
+```
+
+---
+
+## Program 5 - var Example
+
+```javascript
+if(true){
+
+    var x = 100;
+
+}
+
+console.log(x);
+```
+
+---
+
+## Program 6 - let Example
+
+```javascript
+if(true){
+
+    let x = 100;
+
+    console.log(x);
+
+}
+```
+
+---
+
+## Program 7 - const Example
+
+```javascript
+{
+
+    const PI = 3.14;
+
+    console.log(PI);
+
+}
+```
+
+---
+
+## Program 8 - Global and Local Together
+
+```javascript
+let college = "ABC College";
+
+function details(){
+
+    let student = "Rahul";
+
+    console.log(student);
+
+    console.log(college);
+
+}
+
+details();
+
+console.log(college);
+```
+
+---
+
+## Program 9 - Multiple Functions
+
+```javascript
+let language = "JavaScript";
+
+function first(){
+
+    console.log(language);
+
+}
+
+function second(){
+
+    console.log(language);
+
+}
+
+first();
+
+second();
+```
+
+---
+
+## Program 10 - Block Inside Function
+
+```javascript
+function demo(){
+
+    let name = "Apex";
+
+    if(true){
+
+        let course = "JavaScript";
+
+        console.log(name);
+
+        console.log(course);
+
+    }
+
+}
+
+demo();
+```
+
+---
+
+
+# Arrays
+
+---
+
+# What is an Array?
+
+An **Array** is a special data structure in JavaScript that is used to store **multiple values in a single variable**.
+
+Instead of creating many variables to store similar data, we can store all the values inside one array.
+
+In simple words,
+
+> **An Array is a collection of multiple values stored under a single variable name.**
+
+---
+
+# Real World Example
+
+Imagine a classroom.
+
+Without an Array
+
+```javascript
+let student1 = "Rahul";
+let student2 = "Ravi";
+let student3 = "Kiran";
+let student4 = "Akhil";
+```
+
+Creating separate variables for every student becomes difficult.
+
+Using an Array
+
+```javascript
+let students = ["Rahul", "Ravi", "Kiran", "Akhil"];
+```
+
+Now all student names are stored inside one variable.
+
+---
+
+# Why Do We Need Arrays?
+
+Without Arrays
+
+```javascript
+let mark1 = 90;
+let mark2 = 85;
+let mark3 = 76;
+let mark4 = 95;
+```
+
+With Arrays
+
+```javascript
+let marks = [90, 85, 76, 95];
+```
+
+Arrays make programs
+
+* Easier to write
+* Easier to maintain
+* Easy to search
+* Easy to update
+* Easy to loop through data
+
+---
+
+# Characteristics of Arrays
+
+* Stores multiple values.
+* Can store different data types.
+* Starts with index **0**.
+* Dynamic in size.
+* Ordered collection.
+
+Example
+
+```javascript
+let data = [
+    "Rahul",
+    22,
+    true,
+    85.5
+];
+```
+
+---
+
+# Array Syntax
+
+```javascript
+let arrayName = [value1, value2, value3];
+```
+
+Example
+
+```javascript
+let colors = ["Red", "Green", "Blue"];
+```
+
+---
+
+# Creating Arrays
+
+## Method 1 (Recommended)
+
+```javascript
+let fruits = ["Apple", "Banana", "Mango"];
+```
+
+---
+
+## Method 2
+
+```javascript
+let numbers = new Array(10, 20, 30);
+```
+
+Both create arrays.
+
+---
+
+# Array Structure
+
+```text
+Index      0        1        2
+
+Value   Apple    Banana    Mango
+```
+
+---
+
+# Accessing Elements
+
+Syntax
+
+```javascript
+arrayName[index];
+```
+
+Example
+
+```javascript
+let fruits = ["Apple", "Banana", "Mango"];
+
+console.log(fruits[0]);
+console.log(fruits[1]);
+console.log(fruits[2]);
+```
+
+Output
+
+```text
+Apple
+Banana
+Mango
+```
+
+---
+
+# Why Index Starts from 0?
+
+JavaScript stores the first element at position **0**.
+
+```text
+Index
+
+0  1  2  3
+
+↓
+
+First Element = 0
+```
+
+---
+
+# Updating Array Elements
+
+```javascript
+let fruits = ["Apple", "Banana", "Mango"];
+
+fruits[1] = "Orange";
+
+console.log(fruits);
+```
+
+Output
+
+```text
+["Apple","Orange","Mango"]
+```
+
+---
+
+# Array Length
+
+The `length` property returns the total number of elements.
+
+```javascript
+let fruits = ["Apple", "Banana", "Mango"];
+
+console.log(fruits.length);
+```
+
+Output
+
+```text
+3
+```
+
+---
+
+# Traversing an Array
+
+Traversing means visiting every element one by one.
+
+---
+
+## Using for Loop
+
+```javascript
+let fruits = ["Apple", "Banana", "Mango"];
+
+for(let i = 0; i < fruits.length; i++){
+
+    console.log(fruits[i]);
+
+}
+```
+
+Output
+
+```text
+Apple
+Banana
+Mango
+```
+
+---
+
+## Using for...of Loop
+
+```javascript
+let fruits = ["Apple", "Banana", "Mango"];
+
+for(let fruit of fruits){
+
+    console.log(fruit);
+
+}
+```
+
+Output
+
+```text
+Apple
+Banana
+Mango
+```
+
+---
+
+# Array Methods
+
+---
+
+# push()
+
+Adds an element at the **end**.
+
+Syntax
+
+```javascript
+array.push(value);
+```
+
+Example
+
+```javascript
+let colors = ["Red", "Blue"];
+
+colors.push("Green");
+
+console.log(colors);
+```
+
+Output
+
+```text
+["Red","Blue","Green"]
+```
+
+---
+
+# pop()
+
+Removes the **last** element.
+
+```javascript
+let colors = ["Red", "Blue", "Green"];
+
+colors.pop();
+
+console.log(colors);
+```
+
+Output
+
+```text
+["Red","Blue"]
+```
+
+---
+
+# shift()
+
+Removes the **first** element.
+
+```javascript
+let colors = ["Red", "Blue", "Green"];
+
+colors.shift();
+
+console.log(colors);
+```
+
+Output
+
+```text
+["Blue","Green"]
+```
+
+---
+
+# unshift()
+
+Adds an element at the **beginning**.
+
+```javascript
+let colors = ["Blue", "Green"];
+
+colors.unshift("Red");
+
+console.log(colors);
+```
+
+Output
+
+```text
+["Red","Blue","Green"]
+```
+
+---
+
+# includes()
+
+Checks whether an element exists.
+
+```javascript
+let fruits = ["Apple", "Banana", "Mango"];
+
+console.log(fruits.includes("Banana"));
+```
+
+Output
+
+```text
+true
+```
+
+---
+
+# indexOf()
+
+Returns the index of an element.
+
+```javascript
+let fruits = ["Apple", "Banana", "Mango"];
+
+console.log(fruits.indexOf("Mango"));
+```
+
+Output
+
+```text
+2
+```
+
+If not found
+
+```text
+-1
+```
+
+---
+
+# slice()
+
+Returns a portion of an array.
+
+Original array remains unchanged.
+
+```javascript
+let numbers = [10,20,30,40,50];
+
+console.log(numbers.slice(1,4));
+```
+
+Output
+
+```text
+[20,30,40]
+```
+
+---
+
+# splice()
+
+Adds or removes elements.
+
+```javascript
+let numbers = [10,20,30,40];
+
+numbers.splice(2,1);
+
+console.log(numbers);
+```
+
+Output
+
+```text
+[10,20,40]
+```
+
+---
+
+# concat()
+
+Joins two arrays.
+
+```javascript
+let a = [1,2];
+
+let b = [3,4];
+
+console.log(a.concat(b));
+```
+
+Output
+
+```text
+[1,2,3,4]
+```
+
+---
+
+# join()
+
+Converts an array into a string.
+
+```javascript
+let fruits = ["Apple","Banana","Mango"];
+
+console.log(fruits.join("-"));
+```
+
+Output
+
+```text
+Apple-Banana-Mango
+```
+
+---
+
+# Real World Example
+
+Store student marks.
+
+```javascript
+let marks = [95,88,76,90,85];
+
+console.log(marks);
+```
+
+Store employee names.
+
+```javascript
+let employees = [
+
+"Rahul",
+
+"Ravi",
+
+"Kiran",
+
+"Akhil"
+
+];
+
+console.log(employees);
+```
+
+---
+
+# Common Beginner Mistakes
+
+### Mistake 1
+
+Using an invalid index.
+
+```javascript
+let fruits = ["Apple"];
+
+console.log(fruits[5]);
+```
+
+Output
+
+```text
+undefined
+```
+
+---
+
+### Mistake 2
+
+Using parentheses instead of brackets.
+
+Wrong
+
+```javascript
+let numbers = (10,20,30);
+```
+
+Correct
+
+```javascript
+let numbers = [10,20,30];
+```
+
+---
+
+### Mistake 3
+
+Forgetting the array length in loops.
+
+Wrong
+
+```javascript
+for(let i=0;i<=fruits.length;i++)
+```
+
+Correct
+
+```javascript
+for(let i=0;i<fruits.length;i++)
+```
+
+---
+
+# Memory Tips
+
+```text
+push()
+
+↓
+
+Add Last
+
+pop()
+
+↓
+
+Remove Last
+
+shift()
+
+↓
+
+Remove First
+
+unshift()
+
+↓
+
+Add First
+```
+
+---
+
+# Interview Questions
+
+1. What is an Array?
+2. Why do we use Arrays?
+3. Why does array indexing start from 0?
+4. How do you access array elements?
+5. Difference between `push()` and `pop()`?
+6. Difference between `shift()` and `unshift()`?
+7. Difference between `slice()` and `splice()`?
+8. What does `includes()` do?
+9. What does `indexOf()` return if an element is not found?
+10. What is the purpose of the `length` property?
+
+---
+
+# Practice Programs
+
+### Program 1 - Print Array
+
+```javascript
+let fruits = ["Apple","Banana","Mango"];
+
+console.log(fruits);
+```
+
+---
+
+### Program 2 - Print Each Element
+
+```javascript
+let numbers = [10,20,30,40];
+
+for(let i=0;i<numbers.length;i++){
+
+    console.log(numbers[i]);
+
+}
+```
+
+---
+
+### Program 3 - Add an Element
+
+```javascript
+let colors = ["Red","Blue"];
+
+colors.push("Green");
+
+console.log(colors);
+```
+
+---
+
+### Program 4 - Remove Last Element
+
+```javascript
+let colors = ["Red","Blue","Green"];
+
+colors.pop();
+
+console.log(colors);
+```
+
+---
+
+### Program 5 - Find an Element
+
+```javascript
+let students = ["Rahul","Ravi","Kiran"];
+
+console.log(students.includes("Ravi"));
+```
+
+---
+
+### Program 6 - Merge Arrays
+
+```javascript
+let first = [1,2,3];
+
+let second = [4,5,6];
+
+console.log(first.concat(second));
+```
+
+---
+
+### Program 7 - Convert Array to String
+
+```javascript
+let cities = ["Hyderabad","Delhi","Mumbai"];
+
+console.log(cities.join(", "));
+```
+
+---
+
+### Program 8 - Update an Element
+
+```javascript
+let fruits = ["Apple","Banana","Mango"];
+
+fruits[1] = "Orange";
+
+console.log(fruits);
+```
+
+---
+
+
 
