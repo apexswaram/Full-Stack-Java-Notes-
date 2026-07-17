@@ -10447,7 +10447,7 @@ console.log(result);
 
 ---
 
-# Day 1 - JavaScript Fundamentals (Part 3)
+#  
 
 # Conditional Statements
 
