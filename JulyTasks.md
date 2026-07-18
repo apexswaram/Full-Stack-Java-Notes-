@@ -1,5 +1,4 @@
-That's actually a better approach. Since you're traveling, you can give them a **mini project specification document** just like a company would. They should be able to build it without your help.
-
+# 18th 19th 20th July Tasks 
 ---
 
 # **TASK 1 - HOTEL ROOM BOOKING MANAGEMENT SYSTEM**
