@@ -16491,3 +16491,4730 @@ Explain the difference between the **Window Object** and the **Document Object**
 Write five real-world applications where the DOM is used.
 
 ---
+
+
+# getElementById()
+
+## Definition
+
+The `getElementById()` method is used to select an HTML element using its **id** attribute.
+
+Since an **id** must be unique in an HTML document, this method always returns **only one element**.
+
+It is one of the most commonly used DOM methods because it allows JavaScript to directly access and manipulate a specific HTML element.
+
+---
+
+## Why do we use getElementById()?
+
+Suppose we have a heading on a webpage.
+
+```html
+<h1 id="title">Welcome Students</h1>
+```
+
+When a user clicks a button, we want to change the heading to another text.
+
+JavaScript first finds the element using its ID and then performs the required action.
+
+---
+
+## Syntax
+
+```javascript
+document.getElementById("idName");
+```
+
+### Parameter
+
+| Parameter | Description |
+|-----------|-------------|
+| idName | The ID of the HTML element |
+
+### Return Value
+
+Returns the HTML element with the specified ID.
+
+If no matching element is found, it returns **null**.
+
+---
+
+## Complete Example 1 - Change Text
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>getElementById()</title>
+</head>
+<body>
+
+<h1 id="title">Welcome Students</h1>
+
+<button onclick="changeText()">Change Text</button>
+
+<script>
+
+function changeText(){
+
+    document.getElementById("title").innerHTML =
+    "Welcome Java Full Stack Students";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+### Output
+
+Before clicking the button
+
+```
+Welcome Students
+```
+
+After clicking the button
+
+```
+Welcome Java Full Stack Students
+```
+
+---
+
+## Complete Example 2 - Change Color
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Color</title>
+</head>
+<body>
+
+<h1 id="heading">JavaScript DOM</h1>
+
+<button onclick="changeColor()">Change Color</button>
+
+<script>
+
+function changeColor(){
+
+    document.getElementById("heading").style.color="red";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Complete Example 3 - Hide Element
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hide Element</title>
+</head>
+<body>
+
+<h1 id="text">Hello Students</h1>
+
+<button onclick="hideText()">Hide</button>
+
+<script>
+
+function hideText(){
+
+    document.getElementById("text").style.display="none";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Complete Example 4 - Change Image
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Change Image</title>
+</head>
+<body>
+
+<img id="photo"
+src="https://via.placeholder.com/200">
+
+<br><br>
+
+<button onclick="changeImage()">Change Image</button>
+
+<script>
+
+function changeImage(){
+
+document.getElementById("photo").src="https://picsum.photos/200";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## How getElementById() Works
+
+```
+document
+
+↓
+
+Search HTML Document
+
+↓
+
+Find Matching ID
+
+↓
+
+Return HTML Element
+
+↓
+
+JavaScript Manipulates It
+```
+
+---
+
+## Important Points
+
+- ID must be unique.
+- Returns only one element.
+- Faster than most selector methods.
+- Returns `null` if the ID is not found.
+- IDs are case-sensitive.
+
+---
+
+## Common Mistakes
+
+### Wrong ID
+
+```javascript
+document.getElementById("Heading");
+```
+
+```html
+<h1 id="heading">
+```
+
+These are different because IDs are case-sensitive.
+
+---
+
+### Duplicate IDs
+
+ Wrong
+
+```html
+<h1 id="title">Java</h1>
+
+<h1 id="title">Python</h1>
+```
+
+ Correct
+
+```html
+<h1 id="java">Java</h1>
+
+<h1 id="python">Python</h1>
+```
+
+---
+
+## Interview Questions
+
+1. What is `getElementById()`?
+2. Why should an ID be unique?
+3. What happens if the ID is not found?
+4. Does `getElementById()` return one element or multiple elements?
+5. Is `getElementById()` case-sensitive?
+
+---
+
+## Assignment
+
+Create a webpage where clicking a button changes the heading color, font size, and text using `getElementById()`.
+
+---
+
+# getElementsByClassName()
+
+## Definition
+
+The `getElementsByClassName()` method is used to select **all HTML elements** having the same class name.
+
+Unlike `getElementById()`, this method returns a **collection of elements**, not a single element.
+
+---
+
+## Why do we use getElementsByClassName()?
+
+Sometimes multiple elements share the same class.
+
+Example
+
+```html
+<p class="msg">Java</p>
+
+<p class="msg">Python</p>
+
+<p class="msg">JavaScript</p>
+```
+
+Instead of changing one element, we can change all of them together.
+
+---
+
+## Syntax
+
+```javascript
+document.getElementsByClassName("className");
+```
+
+### Parameter
+
+| Parameter | Description |
+|-----------|-------------|
+| className | Name of the class |
+
+### Return Value
+
+Returns an **HTMLCollection**.
+
+---
+
+## Complete Example 1 - Change First Element
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Class Example</title>
+</head>
+<body>
+
+<p class="msg">Java</p>
+<p class="msg">Python</p>
+<p class="msg">JavaScript</p>
+
+<button onclick="changeFirst()">Click</button>
+
+<script>
+
+function changeFirst(){
+
+document.getElementsByClassName("msg")[0].style.color="red";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Complete Example 2 - Change All Elements
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Loop Example</title>
+</head>
+<body>
+
+<p class="msg">Java</p>
+<p class="msg">Python</p>
+<p class="msg">JavaScript</p>
+
+<button onclick="changeAll()">Click</button>
+
+<script>
+
+function changeAll(){
+
+let x=document.getElementsByClassName("msg");
+
+for(let i=0;i<x.length;i++){
+
+x[i].style.color="blue";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## How getElementsByClassName() Works
+
+```
+document
+
+↓
+
+Search Class Name
+
+↓
+
+Find All Matching Elements
+
+↓
+
+Return HTMLCollection
+
+↓
+
+Access Using Index
+```
+
+---
+
+## Important Points
+
+- Returns multiple elements.
+- Uses index numbers.
+- Starts from index 0.
+- Returns an HTMLCollection.
+- Use loops to modify all elements.
+
+---
+
+## Common Mistakes
+
+Wrong
+
+```javascript
+document.getElementsByClassName("msg").style.color="red";
+```
+
+Correct
+
+```javascript
+document.getElementsByClassName("msg")[0].style.color="red";
+```
+
+---
+
+## Interview Questions
+
+1. What does `getElementsByClassName()` return?
+2. Can it return one element?
+3. Why do we use indexes?
+4. Which loop is commonly used with HTMLCollection?
+
+---
+
+## Assignment
+
+Create four paragraphs with the same class.
+
+When clicking a button, all paragraphs should become green.
+
+---
+
+# getElementsByTagName()
+
+## Definition
+
+The `getElementsByTagName()` method selects **all HTML elements having the same tag name**.
+
+It returns an HTMLCollection.
+
+---
+
+## Why do we use getElementsByTagName()?
+
+Suppose a webpage has many paragraphs.
+
+```html
+<p>Java</p>
+
+<p>Python</p>
+
+<p>JavaScript</p>
+```
+
+Instead of giving every paragraph an ID or class, JavaScript can directly select all `<p>` tags.
+
+---
+
+## Syntax
+
+```javascript
+document.getElementsByTagName("tagName");
+```
+
+### Parameter
+
+| Parameter | Description |
+|-----------|-------------|
+| tagName | HTML Tag Name |
+
+---
+
+## Complete Example 1
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tag Example</title>
+</head>
+<body>
+
+<p>Java</p>
+
+<p>Python</p>
+
+<p>JavaScript</p>
+
+<button onclick="changeColor()">Change Color</button>
+
+<script>
+
+function changeColor(){
+
+let p=document.getElementsByTagName("p");
+
+for(let i=0;i<p.length;i++){
+
+p[i].style.color="red";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Complete Example 2
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Font Size</title>
+</head>
+<body>
+
+<h2>Java</h2>
+
+<h2>Python</h2>
+
+<h2>JavaScript</h2>
+
+<button onclick="increaseFont()">Increase Font</button>
+
+<script>
+
+function increaseFont(){
+
+let h=document.getElementsByTagName("h2");
+
+for(let i=0;i<h.length;i++){
+
+h[i].style.fontSize="40px";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## How getElementsByTagName() Works
+
+```
+document
+
+↓
+
+Search Tag Name
+
+↓
+
+Find All Matching Tags
+
+↓
+
+Return HTMLCollection
+
+↓
+
+Access Using Index
+```
+
+---
+
+## Important Points
+
+- Returns multiple elements.
+- Uses tag names like `p`, `h1`, `img`, `button`.
+- Returns an HTMLCollection.
+- Uses index numbers.
+- Usually used with loops.
+
+---
+
+## Common Mistakes
+
+Wrong
+
+```javascript
+document.getElementsByTagName("p").style.color="red";
+```
+
+Correct
+
+```javascript
+document.getElementsByTagName("p")[0].style.color="red";
+```
+
+or
+
+```javascript
+let p=document.getElementsByTagName("p");
+
+for(let i=0;i<p.length;i++){
+
+p[i].style.color="red";
+
+}
+```
+
+---
+
+## Interview Questions
+
+1. What is `getElementsByTagName()`?
+2. What does it return?
+3. Can it select multiple elements?
+4. Why do we use loops with it?
+5. What is the difference between `getElementsByTagName()` and `getElementsByClassName()`?
+
+---
+
+## Assignment
+
+Create five `<h3>` headings.
+
+When clicking a button:
+
+- Change all heading colors to blue.
+- Increase the font size.
+- Make all headings bold using JavaScript.
+  
+---
+# querySelector()
+
+## Definition
+
+The `querySelector()` method is used to select the **first HTML element** that matches a specified CSS selector.
+
+Unlike `getElementById()`, `querySelector()` can select elements using:
+
+- ID (`#`)
+- Class (`.`)
+- Tag Name
+- Attribute
+- CSS Selectors
+
+If multiple elements match the selector, it returns **only the first matching element**.
+
+---
+
+## Why do we use querySelector()?
+
+Suppose we have three paragraphs.
+
+```html
+<p class="msg">Java</p>
+<p class="msg">Python</p>
+<p class="msg">JavaScript</p>
+```
+
+If we want to change **only the first paragraph**, we can use `querySelector()`.
+
+---
+
+## Syntax
+
+```javascript
+document.querySelector("CSS Selector");
+```
+
+### Parameter
+
+| Parameter | Description |
+|-----------|-------------|
+| CSS Selector | ID, Class, Tag Name or any valid CSS Selector |
+
+### Return Value
+
+Returns the **first matching HTML element**.
+
+If no matching element exists, it returns **null**.
+
+---
+
+## Example 1 - Select by ID
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>querySelector()</title>
+</head>
+<body>
+
+<h1 id="title">Welcome Students</h1>
+
+<button onclick="changeText()">Click</button>
+
+<script>
+
+function changeText(){
+
+document.querySelector("#title").innerHTML="Welcome Java Full Stack";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Select by Class
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>querySelector()</title>
+</head>
+<body>
+
+<p class="msg">Java</p>
+<p class="msg">Python</p>
+<p class="msg">JavaScript</p>
+
+<button onclick="changeColor()">Click</button>
+
+<script>
+
+function changeColor(){
+
+document.querySelector(".msg").style.color="red";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+Only the first paragraph changes.
+
+---
+
+## Example 3 - Select by Tag Name
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>querySelector()</title>
+</head>
+<body>
+
+<h2>Java</h2>
+
+<h2>Python</h2>
+
+<h2>JavaScript</h2>
+
+<button onclick="changeFont()">Click</button>
+
+<script>
+
+function changeFont(){
+
+document.querySelector("h2").style.fontSize="45px";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+Only the first `<h2>` changes.
+
+---
+
+## Example 4 - Change Background
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>querySelector()</title>
+</head>
+<body>
+
+<div class="box">
+
+Welcome Students
+
+</div>
+
+<br>
+
+<button onclick="changeBG()">Click</button>
+
+<script>
+
+function changeBG(){
+
+let box=document.querySelector(".box");
+
+box.style.backgroundColor="yellow";
+box.style.padding="20px";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## How querySelector() Works
+
+```
+document
+
+↓
+
+Search CSS Selector
+
+↓
+
+Find Matching Elements
+
+↓
+
+Return First Element
+
+↓
+
+JavaScript Manipulates It
+```
+
+---
+
+## Important Points
+
+- Returns only one element.
+- Returns the first matching element.
+- Accepts CSS selectors.
+- Returns `null` if no element exists.
+
+---
+
+## Common Mistakes
+
+Wrong
+
+```javascript
+document.querySelector("title");
+```
+
+Correct
+
+```javascript
+document.querySelector("#title");
+```
+
+---
+
+## Difference Between getElementById() and querySelector()
+
+| getElementById() | querySelector() |
+|-----------------|-----------------|
+| Uses ID only | Uses any CSS Selector |
+| Faster | Slightly slower |
+| Returns one element | Returns first matching element |
+
+---
+
+## Interview Questions
+
+1. What is querySelector()?
+2. What does it return?
+3. Can querySelector() select by class?
+4. Can querySelector() select by ID?
+5. What happens if multiple elements match?
+
+---
+
+## Assignment
+
+Create three headings having the same class.
+
+When clicking a button, change only the first heading color to blue.
+
+---
+
+# querySelectorAll()
+
+## Definition
+
+The `querySelectorAll()` method selects **all HTML elements** that match a specified CSS selector.
+
+It returns a **NodeList**.
+
+Unlike `querySelector()`, it returns **every matching element**.
+
+---
+
+## Why do we use querySelectorAll()?
+
+Suppose we have
+
+```html
+<p class="msg">Java</p>
+
+<p class="msg">Python</p>
+
+<p class="msg">JavaScript</p>
+```
+
+We want to change all paragraphs together.
+
+Instead of selecting one by one, `querySelectorAll()` selects all at once.
+
+---
+
+## Syntax
+
+```javascript
+document.querySelectorAll("CSS Selector");
+```
+
+### Return Value
+
+Returns a **NodeList**.
+
+---
+
+## Example 1 - Change Color
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>querySelectorAll()</title>
+</head>
+<body>
+
+<p class="msg">Java</p>
+<p class="msg">Python</p>
+<p class="msg">JavaScript</p>
+
+<button onclick="changeColor()">Click</button>
+
+<script>
+
+function changeColor(){
+
+let x=document.querySelectorAll(".msg");
+
+x.forEach(function(item){
+
+item.style.color="red";
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Increase Font Size
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>querySelectorAll()</title>
+</head>
+<body>
+
+<h2>Java</h2>
+
+<h2>Python</h2>
+
+<h2>JavaScript</h2>
+
+<button onclick="increaseFont()">Increase</button>
+
+<script>
+
+function increaseFont(){
+
+let h=document.querySelectorAll("h2");
+
+h.forEach(function(item){
+
+item.style.fontSize="40px";
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 3 - Using for Loop
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>querySelectorAll()</title>
+</head>
+<body>
+
+<p>Java</p>
+<p>Python</p>
+<p>JavaScript</p>
+
+<button onclick="change()">Click</button>
+
+<script>
+
+function change(){
+
+let p=document.querySelectorAll("p");
+
+for(let i=0;i<p.length;i++){
+
+p[i].style.color="green";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## How querySelectorAll() Works
+
+```
+document
+
+↓
+
+Search CSS Selector
+
+↓
+
+Find All Matching Elements
+
+↓
+
+Return NodeList
+
+↓
+
+Loop Through Elements
+
+↓
+
+JavaScript Manipulates Them
+```
+
+---
+
+## Important Points
+
+- Returns all matching elements.
+- Returns a NodeList.
+- Supports `forEach()`.
+- Supports `for` loop.
+- Accepts CSS selectors.
+
+---
+
+## Difference Between querySelector() and querySelectorAll()
+
+| querySelector() | querySelectorAll() |
+|----------------|--------------------|
+| Returns first element | Returns all elements |
+| Single Element | NodeList |
+| No loop needed | Usually uses loop |
+
+---
+
+## Interview Questions
+
+1. What is querySelectorAll()?
+2. What does it return?
+3. What is NodeList?
+4. Can we use forEach() with querySelectorAll()?
+5. Difference between querySelector() and querySelectorAll()?
+
+---
+
+## Assignment
+
+Create five paragraphs having the same class.
+
+When clicking a button,
+
+- Change all paragraph colors to blue.
+- Increase font size.
+- Make text bold.
+
+---
+
+# innerHTML
+
+## Definition
+
+`innerHTML` is used to **read or change the HTML content** inside an HTML element.
+
+It can display plain text as well as HTML tags.
+
+---
+
+## Why do we use innerHTML?
+
+Suppose we have
+
+```html
+<h1>Welcome</h1>
+```
+
+When the user clicks a button, we want to change it into
+
+```html
+<h2>Hello Students</h2>
+```
+
+`innerHTML` allows us to do this.
+
+---
+
+## Syntax
+
+```javascript
+element.innerHTML="Content";
+```
+
+---
+
+## Example 1 - Change Text
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>innerHTML</title>
+</head>
+<body>
+
+<h1 id="title">Welcome</h1>
+
+<button onclick="changeText()">Click</button>
+
+<script>
+
+function changeText(){
+
+document.getElementById("title").innerHTML="Hello Students";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Add HTML Tags
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>innerHTML</title>
+</head>
+<body>
+
+<div id="box"></div>
+
+<button onclick="show()">Show</button>
+
+<script>
+
+function show(){
+
+document.getElementById("box").innerHTML="<h2 style='color:red;'>JavaScript DOM</h2>";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 3 - Add Image
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>innerHTML</title>
+</head>
+<body>
+
+<div id="image"></div>
+
+<button onclick="showImage()">Show Image</button>
+
+<script>
+
+function showImage(){
+
+document.getElementById("image").innerHTML="<img src='https://picsum.photos/200'>";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Can read HTML.
+- Can write HTML.
+- Supports HTML tags.
+- Can create dynamic webpages.
+
+---
+
+## Interview Questions
+
+1. What is innerHTML?
+2. Can innerHTML insert HTML tags?
+3. Can innerHTML replace existing content?
+
+---
+
+## Assignment
+
+Create a button that displays an image and a heading using `innerHTML`.
+
+---
+
+# innerText
+
+## Definition
+
+`innerText` is used to **read or change only the text** inside an HTML element.
+
+It does **not** interpret HTML tags.
+
+---
+
+## Why do we use innerText?
+
+Use `innerText` when you only want to display or change text without rendering HTML.
+
+---
+
+## Syntax
+
+```javascript
+element.innerText="New Text";
+```
+
+---
+
+## Example 1 - Change Text
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>innerText</title>
+</head>
+<body>
+
+<h1 id="title">Welcome</h1>
+
+<button onclick="change()">Change</button>
+
+<script>
+
+function change(){
+
+document.getElementById("title").innerText="Hello Java Full Stack";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Read Text
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>innerText</title>
+</head>
+<body>
+
+<h1 id="title">JavaScript DOM</h1>
+
+<button onclick="show()">Show</button>
+
+<script>
+
+function show(){
+
+alert(document.getElementById("title").innerText);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Difference Between innerHTML and innerText
+
+| innerHTML | innerText |
+|-----------|-----------|
+| Reads HTML | Reads only text |
+| Supports HTML tags | Ignores HTML tags |
+| Can insert images, buttons, headings | Can insert only plain text |
+
+---
+
+## Important Points
+
+- Used for text only.
+- Does not render HTML tags.
+- Safer when displaying user input.
+
+---
+
+## Interview Questions
+
+1. What is innerText?
+2. Difference between innerHTML and innerText?
+3. Which one is used to insert HTML code?
+
+---
+
+## Assignment
+
+Create a webpage with a heading and a button.
+
+When clicking the button, change the heading text using `innerText`.
+
+---
+# style Property
+
+## Definition
+
+The `style` property is used to **change the CSS styles of an HTML element** using JavaScript.
+
+It allows us to dynamically change the appearance of an element without modifying the CSS file.
+
+Using the `style` property, we can change:
+
+- Text Color
+- Background Color
+- Font Size
+- Width
+- Height
+- Border
+- Margin
+- Padding
+- Display
+- Visibility
+- Opacity
+- Border Radius
+- Text Alignment
+- and many more CSS properties.
+
+---
+
+## Why do we use style Property?
+
+Suppose a webpage contains a heading.
+
+```html
+<h1>Welcome Students</h1>
+```
+
+When the user clicks a button, we may want to
+
+- Change the text color
+- Increase font size
+- Change the background color
+
+Instead of writing CSS again, JavaScript can modify the CSS using the `style` property.
+
+---
+
+## Syntax
+
+```javascript
+element.style.property = "value";
+```
+
+---
+
+## Example 1 - Change Text Color
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>style Property</title>
+</head>
+<body>
+
+<h1 id="heading">JavaScript DOM</h1>
+
+<button onclick="changeColor()">Change Color</button>
+
+<script>
+
+function changeColor(){
+
+document.getElementById("heading").style.color="red";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Change Background Color
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Background Color</title>
+</head>
+<body>
+
+<h1 id="heading">Welcome Students</h1>
+
+<button onclick="changeBG()">Background</button>
+
+<script>
+
+function changeBG(){
+
+document.getElementById("heading").style.backgroundColor="yellow";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 3 - Change Font Size
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Font Size</title>
+</head>
+<body>
+
+<h1 id="heading">JavaScript</h1>
+
+<button onclick="increaseFont()">Increase</button>
+
+<script>
+
+function increaseFont(){
+
+document.getElementById("heading").style.fontSize="50px";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 4 - Change Multiple Styles
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Multiple Styles</title>
+</head>
+<body>
+
+<h1 id="heading">JavaScript DOM</h1>
+
+<button onclick="changeStyle()">Click</button>
+
+<script>
+
+function changeStyle(){
+
+let h=document.getElementById("heading");
+
+h.style.color="white";
+h.style.backgroundColor="blue";
+h.style.padding="20px";
+h.style.borderRadius="10px";
+h.style.textAlign="center";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Common Style Properties
+
+| Property | Example |
+|----------|---------|
+| color | red |
+| backgroundColor | yellow |
+| fontSize | 40px |
+| width | 300px |
+| height | 200px |
+| border | 2px solid black |
+| borderRadius | 20px |
+| padding | 15px |
+| margin | 20px |
+| textAlign | center |
+| display | none |
+| visibility | hidden |
+| opacity | 0.5 |
+
+---
+
+## Important Points
+
+- CSS property names use **camelCase**.
+- `background-color` becomes `backgroundColor`.
+- `font-size` becomes `fontSize`.
+- Values should be written inside quotes.
+
+---
+
+## Interview Questions
+
+1. What is the style property?
+2. Why do we use camelCase?
+3. How do you change the background color using JavaScript?
+4. How do you increase the font size?
+
+---
+
+## Assignment
+
+Create a button that changes
+
+- Text Color
+- Background Color
+- Font Size
+- Border
+- Border Radius
+
+of a heading.
+
+---
+
+# value Property
+
+## Definition
+
+The `value` property is used to **get or set the value of form elements** such as:
+
+- Text Box
+- Password Box
+- Text Area
+- Drop-down List
+- Radio Button
+- Checkbox
+
+It is one of the most commonly used properties in form validation.
+
+---
+
+## Why do we use value?
+
+Suppose a user enters
+
+```
+Mahesh
+```
+
+inside a textbox.
+
+JavaScript uses `.value` to read the entered text.
+
+---
+
+## Syntax
+
+```javascript
+element.value;
+```
+
+---
+
+## Example 1 - Read Textbox Value
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>value Property</title>
+</head>
+<body>
+
+<input type="text" id="name">
+
+<button onclick="show()">Show</button>
+
+<script>
+
+function show(){
+
+let username=document.getElementById("name").value;
+
+alert(username);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Display Input
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Input Example</title>
+</head>
+<body>
+
+<input type="text" id="name">
+
+<button onclick="display()">Display</button>
+
+<h2 id="result"></h2>
+
+<script>
+
+function display(){
+
+let user=document.getElementById("name").value;
+
+document.getElementById("result").innerHTML=user;
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 3 - Set Value
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Set Value</title>
+</head>
+<body>
+
+<input type="text" id="name">
+
+<button onclick="setValue()">Set Value</button>
+
+<script>
+
+function setValue(){
+
+document.getElementById("name").value="Java Full Stack";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Used only for form elements.
+- Can read user input.
+- Can also change input values.
+
+---
+
+## Interview Questions
+
+1. What is the value property?
+2. Which HTML elements use value?
+3. Can value set data as well as read data?
+
+---
+
+## Assignment
+
+Create a textbox.
+
+When clicking a button,
+
+display the entered text inside a heading.
+
+---
+
+# setAttribute()
+
+## Definition
+
+The `setAttribute()` method is used to **add a new attribute or change the value of an existing attribute** of an HTML element.
+
+---
+
+## Why do we use setAttribute()?
+
+We can dynamically change
+
+- Image Source
+- Link
+- Width
+- Height
+- Placeholder
+- Class
+- ID
+- Title
+
+without editing the HTML.
+
+---
+
+## Syntax
+
+```javascript
+element.setAttribute("attribute","value");
+```
+
+---
+
+## Example 1 - Change Image
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>setAttribute()</title>
+</head>
+<body>
+
+<img id="photo"
+src="https://picsum.photos/200">
+
+<br><br>
+
+<button onclick="changeImage()">Change</button>
+
+<script>
+
+function changeImage(){
+
+document.getElementById("photo")
+.setAttribute("src","https://picsum.photos/300");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Add Placeholder
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Placeholder</title>
+</head>
+<body>
+
+<input type="text" id="name">
+
+<button onclick="addPlaceholder()">Click</button>
+
+<script>
+
+function addPlaceholder(){
+
+document.getElementById("name")
+.setAttribute("placeholder","Enter Your Name");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Adds a new attribute.
+- Updates an existing attribute.
+- Works with almost every HTML element.
+
+---
+
+## Interview Questions
+
+1. What is setAttribute()?
+2. Can it modify an existing attribute?
+3. Give two examples of attributes changed using setAttribute().
+
+---
+
+## Assignment
+
+Create an image and a button.
+
+When clicking the button,
+
+change the image using `setAttribute()`.
+
+---
+
+# getAttribute()
+
+## Definition
+
+The `getAttribute()` method is used to **read the value of an HTML attribute**.
+
+---
+
+## Why do we use getAttribute()?
+
+Suppose an image contains
+
+```html
+<img src="image.jpg">
+```
+
+JavaScript can read the value of the `src` attribute.
+
+---
+
+## Syntax
+
+```javascript
+element.getAttribute("attribute");
+```
+
+---
+
+## Example 1 - Read Image Source
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>getAttribute()</title>
+</head>
+<body>
+
+<img id="photo"
+src="https://picsum.photos/200">
+
+<br><br>
+
+<button onclick="show()">Show Source</button>
+
+<script>
+
+function show(){
+
+let image=document.getElementById("photo")
+.getAttribute("src");
+
+alert(image);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Read Placeholder
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Placeholder</title>
+</head>
+<body>
+
+<input
+id="name"
+placeholder="Enter Name">
+
+<button onclick="readPlaceholder()">Click</button>
+
+<script>
+
+function readPlaceholder(){
+
+let text=document.getElementById("name")
+.getAttribute("placeholder");
+
+alert(text);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Reads attribute values.
+- Does not change attributes.
+- Returns the attribute value as a string.
+
+---
+
+## Difference Between setAttribute() and getAttribute()
+
+| setAttribute() | getAttribute() |
+|---------------|----------------|
+| Adds or updates an attribute | Reads an attribute |
+| Requires attribute and value | Requires only attribute name |
+| Modifies HTML | Reads HTML |
+
+---
+
+## Interview Questions
+
+1. What is getAttribute()?
+2. What does it return?
+3. Difference between setAttribute() and getAttribute()?
+4. Can getAttribute() modify an attribute?
+
+---
+
+## Assignment
+
+Create an image.
+
+Display its `src` value in an alert box using `getAttribute()`.
+
+---
+
+# removeAttribute()
+
+## Definition
+
+The `removeAttribute()` method is used to **remove an attribute** from an HTML element.
+
+After removing the attribute, the element behaves as if that attribute never existed.
+
+---
+
+## Why do we use removeAttribute()?
+
+Suppose we have a textbox.
+
+```html
+<input type="text" disabled>
+```
+
+Since it is disabled, the user cannot type.
+
+Using JavaScript, we can remove the **disabled** attribute and allow the user to enter data.
+
+---
+
+## Syntax
+
+```javascript
+element.removeAttribute("attributeName");
+```
+
+### Parameter
+
+| Parameter | Description |
+|-----------|-------------|
+| attributeName | Name of the attribute to remove |
+
+---
+
+## Example 1 - Remove Disabled Attribute
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>removeAttribute()</title>
+</head>
+<body>
+
+<input
+type="text"
+id="name"
+placeholder="Enter Name"
+disabled>
+
+<br><br>
+
+<button onclick="enableTextbox()">Enable</button>
+
+<script>
+
+function enableTextbox(){
+
+document.getElementById("name")
+.removeAttribute("disabled");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Remove Placeholder
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>removeAttribute()</title>
+</head>
+<body>
+
+<input
+type="text"
+id="name"
+placeholder="Enter Your Name">
+
+<br><br>
+
+<button onclick="removePlaceholder()">Remove Placeholder</button>
+
+<script>
+
+function removePlaceholder(){
+
+document.getElementById("name")
+.removeAttribute("placeholder");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 3 - Remove Width Attribute
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>removeAttribute()</title>
+</head>
+<body>
+
+<img
+id="photo"
+src="https://picsum.photos/200"
+width="300">
+
+<br><br>
+
+<button onclick="removeWidth()">Remove Width</button>
+
+<script>
+
+function removeWidth(){
+
+document.getElementById("photo")
+.removeAttribute("width");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Removes only one attribute at a time.
+- Does not remove the HTML element.
+- Removes attributes like:
+  - disabled
+  - placeholder
+  - width
+  - height
+  - title
+  - style
+  - class
+
+---
+
+## Interview Questions
+
+1. What is removeAttribute()?
+2. Can removeAttribute() delete an HTML element?
+3. Which attributes can be removed?
+
+---
+
+## Assignment
+
+Create a disabled button.
+
+When clicking another button,
+
+enable it using `removeAttribute()`.
+
+---
+
+# classList.add()
+
+## Definition
+
+The `classList.add()` method is used to **add one or more CSS classes** to an HTML element.
+
+It applies the CSS styles defined in that class.
+
+---
+
+## Why do we use classList.add()?
+
+Instead of writing multiple style properties using JavaScript,
+
+we can create a CSS class once and apply it whenever required.
+
+---
+
+## Syntax
+
+```javascript
+element.classList.add("className");
+```
+
+---
+
+## Example 1 - Add CSS Class
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>classList.add()</title>
+
+<style>
+
+.box{
+
+background-color:blue;
+color:white;
+padding:20px;
+font-size:35px;
+text-align:center;
+border-radius:10px;
+
+}
+
+</style>
+
+</head>
+<body>
+
+<h1 id="heading">
+
+Welcome Students
+
+</h1>
+
+<button onclick="addClass()">
+
+Add Class
+
+</button>
+
+<script>
+
+function addClass(){
+
+document.getElementById("heading")
+.classList.add("box");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Add Multiple Classes
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+.red{
+
+color:red;
+
+}
+
+.big{
+
+font-size:40px;
+
+}
+
+</style>
+
+</head>
+<body>
+
+<h1 id="title">
+
+JavaScript
+
+</h1>
+
+<button onclick="styleText()">
+
+Click
+
+</button>
+
+<script>
+
+function styleText(){
+
+let h=document.getElementById("title");
+
+h.classList.add("red");
+
+h.classList.add("big");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Adds one or more CSS classes.
+- Existing classes are not removed.
+- Same class is not added twice.
+
+---
+
+## Interview Questions
+
+1. What is classList.add()?
+2. Why is classList.add() better than changing multiple style properties?
+3. Can we add multiple classes?
+
+---
+
+## Assignment
+
+Create a CSS class named **success**.
+
+When clicking a button,
+
+apply the class to a paragraph.
+
+---
+
+# classList.remove()
+
+## Definition
+
+The `classList.remove()` method is used to **remove a CSS class** from an HTML element.
+
+After removing the class, all styles belonging to that class disappear.
+
+---
+
+## Syntax
+
+```javascript
+element.classList.remove("className");
+```
+
+---
+
+## Example 1
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+.box{
+
+background:green;
+color:white;
+padding:20px;
+font-size:35px;
+
+}
+
+</style>
+
+</head>
+<body>
+
+<h1
+id="heading"
+class="box">
+
+JavaScript DOM
+
+</h1>
+
+<button onclick="removeClass()">
+
+Remove Class
+
+</button>
+
+<script>
+
+function removeClass(){
+
+document.getElementById("heading")
+.classList.remove("box");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+.red{
+
+color:red;
+
+}
+
+</style>
+
+</head>
+<body>
+
+<p
+id="text"
+class="red">
+
+Hello Students
+
+</p>
+
+<button onclick="removeColor()">
+
+Remove Color
+
+</button>
+
+<script>
+
+function removeColor(){
+
+document.getElementById("text")
+.classList.remove("red");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Removes only the specified class.
+- Does not remove other classes.
+- The HTML element remains on the page.
+
+---
+
+## Interview Questions
+
+1. What is classList.remove()?
+2. Does it remove the HTML element?
+3. Can it remove multiple classes?
+
+---
+
+## Assignment
+
+Create a heading with a CSS class.
+
+Remove the class when clicking a button.
+
+---
+
+# classList.toggle()
+
+## Definition
+
+The `classList.toggle()` method is used to **add a class if it does not exist and remove it if it already exists**.
+
+It acts like an ON/OFF switch.
+
+---
+
+## Why do we use classList.toggle()?
+
+It is commonly used for:
+
+- Dark Mode
+- Navigation Menu
+- Sidebar
+- Show/Hide Password
+- Responsive Menu
+- Popup Windows
+
+---
+
+## Syntax
+
+```javascript
+element.classList.toggle("className");
+```
+
+---
+
+## Example 1 - Dark Mode
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+.dark{
+
+background:black;
+color:white;
+
+}
+
+</style>
+
+</head>
+<body id="body">
+
+<h1>
+
+JavaScript DOM
+
+</h1>
+
+<button onclick="darkMode()">
+
+Dark Mode
+
+</button>
+
+<script>
+
+function darkMode(){
+
+document.getElementById("body")
+.classList.toggle("dark");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Show Border
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+.border{
+
+border:5px solid red;
+padding:20px;
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="box">
+
+Hello Students
+
+</div>
+
+<br>
+
+<button onclick="toggleBorder()">
+
+Toggle Border
+
+</button>
+
+<script>
+
+function toggleBorder(){
+
+document.getElementById("box")
+.classList.toggle("border");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 3 - Highlight Text
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+.highlight{
+
+background:yellow;
+font-size:35px;
+
+}
+
+</style>
+
+</head>
+<body>
+
+<p id="text">
+
+Java Full Stack
+
+</p>
+
+<button onclick="highlightText()">
+
+Highlight
+
+</button>
+
+<script>
+
+function highlightText(){
+
+document.getElementById("text")
+.classList.toggle("highlight");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## How classList.toggle() Works
+
+```
+Click Button
+
+↓
+
+Class Exists?
+
+↓
+
+Yes
+
+↓
+
+Remove Class
+
+OR
+
+No
+
+↓
+
+Add Class
+```
+
+---
+
+## Difference Between add(), remove() and toggle()
+
+| Method | Purpose |
+|---------|----------|
+| classList.add() | Adds a class |
+| classList.remove() | Removes a class |
+| classList.toggle() | Adds or removes a class automatically |
+
+---
+
+## Important Points
+
+- Used for ON/OFF functionality.
+- Very useful for Dark Mode.
+- Eliminates the need for writing if-else conditions in many cases.
+
+---
+
+## Interview Questions
+
+1. What is classList.toggle()?
+2. Why is toggle() used in Dark Mode?
+3. Difference between add(), remove(), and toggle()?
+4. What happens if the class already exists?
+
+---
+
+## Assignment
+
+Create a webpage with:
+
+- One heading
+- One button
+
+When clicking the button,
+
+- First click → Change background to black and text to white.
+- Second click → Restore the original colors using `classList.toggle()`.
+
+---
+# createElement()
+
+## Definition
+
+The `createElement()` method is used to **create a new HTML element dynamically** using JavaScript.
+
+The created element is **not visible** on the webpage until it is added to the HTML document.
+
+---
+
+## Why do we use createElement()?
+
+Suppose we want to add a new paragraph, heading, button, or image after the webpage has already loaded.
+
+Instead of writing HTML manually, JavaScript can create new elements dynamically.
+
+---
+
+## Syntax
+
+```javascript
+document.createElement("tagName");
+```
+
+### Parameter
+
+| Parameter | Description |
+|-----------|-------------|
+| tagName | Name of the HTML element to create |
+
+---
+
+## Example 1 - Create Heading
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>createElement()</title>
+</head>
+<body>
+
+<button onclick="createHeading()">
+
+Create Heading
+
+</button>
+
+<script>
+
+function createHeading(){
+
+let h1=document.createElement("h1");
+
+h1.innerHTML="Welcome Java Full Stack";
+
+document.body.appendChild(h1);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Create Paragraph
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create Paragraph</title>
+</head>
+<body>
+
+<button onclick="createParagraph()">
+
+Create Paragraph
+
+</button>
+
+<script>
+
+function createParagraph(){
+
+let p=document.createElement("p");
+
+p.innerHTML="JavaScript is awesome!";
+
+document.body.appendChild(p);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 3 - Create Button
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create Button</title>
+</head>
+<body>
+
+<button onclick="createButton()">
+
+Create New Button
+
+</button>
+
+<script>
+
+function createButton(){
+
+let btn=document.createElement("button");
+
+btn.innerHTML="New Button";
+
+document.body.appendChild(btn);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Creates only the element.
+- The element is not displayed until it is added to the webpage.
+- Works with any HTML tag.
+
+---
+
+## Interview Questions
+
+1. What is createElement()?
+2. Does createElement() display the element automatically?
+3. Which method is used to display the created element?
+
+---
+
+## Assignment
+
+Create a webpage where clicking a button creates a new `<h2>` element.
+
+---
+
+# appendChild()
+
+## Definition
+
+The `appendChild()` method is used to **add a newly created element as the last child** of another HTML element.
+
+It is commonly used together with `createElement()`.
+
+---
+
+## Why do we use appendChild()?
+
+After creating an element using `createElement()`, it exists only in memory.
+
+To display it on the webpage, we must append it to an existing element.
+
+---
+
+## Syntax
+
+```javascript
+parentElement.appendChild(childElement);
+```
+
+---
+
+## Example 1 - Add List Item
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>appendChild()</title>
+</head>
+<body>
+
+<ul id="list">
+
+<li>Java</li>
+
+<li>Python</li>
+
+</ul>
+
+<button onclick="addItem()">
+
+Add JavaScript
+
+</button>
+
+<script>
+
+function addItem(){
+
+let li=document.createElement("li");
+
+li.innerHTML="JavaScript";
+
+document.getElementById("list").appendChild(li);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Add Paragraph
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>appendChild()</title>
+</head>
+<body>
+
+<div id="box">
+
+</div>
+
+<button onclick="addParagraph()">
+
+Add Paragraph
+
+</button>
+
+<script>
+
+function addParagraph(){
+
+let p=document.createElement("p");
+
+p.innerHTML="Welcome Students";
+
+document.getElementById("box").appendChild(p);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Adds an element to the end.
+- Requires a parent element.
+- Usually used with `createElement()`.
+
+---
+
+## Interview Questions
+
+1. What is appendChild()?
+2. Why is appendChild() used with createElement()?
+3. Where does appendChild() add the new element?
+
+---
+
+## Assignment
+
+Create a button that adds a new `<li>` item to an unordered list.
+
+---
+
+# remove()
+
+## Definition
+
+The `remove()` method is used to **delete an HTML element** from the webpage.
+
+Once removed, the element disappears completely.
+
+---
+
+## Syntax
+
+```javascript
+element.remove();
+```
+
+---
+
+## Example 1 - Remove Heading
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>remove()</title>
+</head>
+<body>
+
+<h1 id="heading">
+
+JavaScript DOM
+
+</h1>
+
+<button onclick="removeHeading()">
+
+Remove Heading
+
+</button>
+
+<script>
+
+function removeHeading(){
+
+document.getElementById("heading").remove();
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Remove Paragraph
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Remove Paragraph</title>
+</head>
+<body>
+
+<p id="text">
+
+Hello Students
+
+</p>
+
+<button onclick="removeText()">
+
+Remove Paragraph
+
+</button>
+
+<script>
+
+function removeText(){
+
+document.getElementById("text").remove();
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Deletes the selected HTML element.
+- Permanently removes it from the webpage.
+- Does not remove only the text; it removes the entire element.
+
+---
+
+## Interview Questions
+
+1. What is remove()?
+2. Can remove() delete multiple elements at once?
+3. What happens after an element is removed?
+
+---
+
+## Assignment
+
+Create two paragraphs.
+
+Remove the second paragraph when clicking a button.
+
+---
+
+# replaceChild()
+
+## Definition
+
+The `replaceChild()` method is used to **replace an existing child element with a new child element**.
+
+---
+
+## Why do we use replaceChild()?
+
+Sometimes we don't want to remove an element completely.
+
+Instead, we replace it with another element.
+
+---
+
+## Syntax
+
+```javascript
+parentElement.replaceChild(newElement, oldElement);
+```
+
+---
+
+## Example 1 - Replace Heading
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>replaceChild()</title>
+</head>
+<body>
+
+<div id="container">
+
+<h2 id="oldHeading">
+
+Old Heading
+
+</h2>
+
+</div>
+
+<button onclick="replaceHeading()">
+
+Replace Heading
+
+</button>
+
+<script>
+
+function replaceHeading(){
+
+let newHeading=document.createElement("h2");
+
+newHeading.innerHTML="New Heading";
+
+let oldHeading=document.getElementById("oldHeading");
+
+let parent=document.getElementById("container");
+
+parent.replaceChild(newHeading,oldHeading);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Replace Paragraph
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Replace Paragraph</title>
+</head>
+<body>
+
+<div id="box">
+
+<p id="oldText">
+
+Old Paragraph
+
+</p>
+
+</div>
+
+<button onclick="replaceText()">
+
+Replace
+
+</button>
+
+<script>
+
+function replaceText(){
+
+let p=document.createElement("p");
+
+p.innerHTML="New Paragraph";
+
+let old=document.getElementById("oldText");
+
+document.getElementById("box").replaceChild(p,old);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Requires a parent element.
+- Replaces only child elements.
+- The old element is removed automatically.
+
+---
+
+## Difference Between appendChild() and replaceChild()
+
+| appendChild() | replaceChild() |
+|--------------|----------------|
+| Adds a new element | Replaces an existing element |
+| Old element remains | Old element is removed |
+| Inserts at the end | Replaces at the same position |
+
+---
+
+## Interview Questions
+
+1. What is replaceChild()?
+2. Why do we need the parent element?
+3. Difference between appendChild() and replaceChild()?
+4. What happens to the old element after replacement?
+
+---
+
+## Assignment
+
+Create a webpage with:
+
+- One `<h1>` heading
+- One button
+
+When clicking the button,
+
+replace the existing heading with a new heading saying **"JavaScript DOM Completed"**.
+
+---
+# addEventListener()
+
+## Definition
+
+The `addEventListener()` method is used to **attach an event to an HTML element**.
+
+Unlike `onclick`, it separates JavaScript from HTML, making the code cleaner and easier to maintain.
+
+It is the most commonly used method for handling events in modern JavaScript.
+
+---
+
+## Why do we use addEventListener()?
+
+Suppose we have a button.
+
+When the user clicks the button, we want to perform an action.
+
+Instead of writing
+
+```html
+<button onclick="show()">
+```
+
+we can write
+
+```javascript
+button.addEventListener("click", show);
+```
+
+This keeps HTML and JavaScript separate.
+
+---
+
+## Syntax
+
+```javascript
+element.addEventListener("eventName", functionName);
+```
+
+or
+
+```javascript
+element.addEventListener("eventName", function(){
+
+// code
+
+});
+```
+
+### Parameters
+
+| Parameter | Description |
+|-----------|-------------|
+| eventName | Name of the event |
+| function | Function that executes when the event occurs |
+
+---
+
+## Example 1 - Button Click
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>addEventListener()</title>
+</head>
+<body>
+
+<h1 id="heading">
+
+Welcome Students
+
+</h1>
+
+<button id="btn">
+
+Click Me
+
+</button>
+
+<script>
+
+document.getElementById("btn")
+.addEventListener("click",changeText);
+
+function changeText(){
+
+document.getElementById("heading").innerHTML="JavaScript DOM";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Change Background
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Background</title>
+</head>
+<body>
+
+<button id="btn">
+
+Background Color
+
+</button>
+
+<script>
+
+document.getElementById("btn")
+.addEventListener("click",function(){
+
+document.body.style.backgroundColor="yellow";
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Modern way of handling events.
+- Keeps HTML clean.
+- Multiple events can be attached to the same element.
+
+---
+
+## Difference Between onclick and addEventListener()
+
+| onclick | addEventListener() |
+|----------|--------------------|
+| Old Method | Modern Method |
+| One event at a time | Multiple events can be attached |
+| Written inside HTML | Written inside JavaScript |
+
+---
+
+## Interview Questions
+
+1. What is addEventListener()?
+2. Why is it preferred over onclick?
+3. Can we attach multiple events?
+
+---
+
+## Assignment
+
+Create a button.
+
+When clicking it,
+
+change the heading text using `addEventListener()`.
+
+---
+
+# Mouse Events
+
+## Definition
+
+Mouse Events are triggered when the user interacts with the mouse.
+
+Examples include:
+
+- click
+- dblclick
+- mouseover
+- mouseout
+- mousedown
+- mouseup
+- mousemove
+
+---
+
+## Common Mouse Events
+
+| Event | Description |
+|--------|-------------|
+| click | Single mouse click |
+| dblclick | Double click |
+| mouseover | Mouse enters an element |
+| mouseout | Mouse leaves an element |
+| mousedown | Mouse button is pressed |
+| mouseup | Mouse button is released |
+| mousemove | Mouse moves over an element |
+
+---
+
+# click Event
+
+## Example
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Click Event</title>
+</head>
+<body>
+
+<button id="btn">
+
+Click Me
+
+</button>
+
+<script>
+
+document.getElementById("btn")
+.addEventListener("click",function(){
+
+alert("Button Clicked");
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+# dblclick Event
+
+## Example
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Double Click</title>
+</head>
+<body>
+
+<button id="btn">
+
+Double Click
+
+</button>
+
+<script>
+
+document.getElementById("btn")
+.addEventListener("dblclick",function(){
+
+alert("Double Click Detected");
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+# mouseover Event
+
+## Example
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mouse Over</title>
+</head>
+<body>
+
+<h1 id="heading">
+
+Move Mouse Here
+
+</h1>
+
+<script>
+
+document.getElementById("heading")
+.addEventListener("mouseover",function(){
+
+this.style.color="red";
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+# mouseout Event
+
+## Example
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mouse Out</title>
+</head>
+<body>
+
+<h1 id="heading">
+
+Move Mouse Here
+
+</h1>
+
+<script>
+
+let h=document.getElementById("heading");
+
+h.addEventListener("mouseover",function(){
+
+h.style.color="red";
+
+});
+
+h.addEventListener("mouseout",function(){
+
+h.style.color="black";
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Assignment
+
+Create a paragraph.
+
+- Mouse Over → Text becomes blue.
+- Mouse Out → Text becomes black.
+
+---
+
+# Keyboard Events
+
+## Definition
+
+Keyboard Events occur when the user presses or releases a key on the keyboard.
+
+They are mainly used for:
+
+- Shortcuts
+- Games
+- Search Boxes
+- Form Validation
+- Keyboard Controls
+
+---
+
+## Common Keyboard Events
+
+| Event | Description |
+|--------|-------------|
+| keydown | Fires when a key is pressed |
+| keyup | Fires when a key is released |
+| keypress | Fires while typing (deprecated) |
+
+---
+
+# keydown Event
+
+## Example
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Key Down</title>
+</head>
+<body>
+
+<script>
+
+document.addEventListener("keydown",function(){
+
+alert("Key Pressed");
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+# event.key
+
+The `event.key` property returns the key pressed by the user.
+
+---
+
+## Example - Detect A and B
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Keyboard Event</title>
+</head>
+<body>
+
+<h1 id="result">
+
+Press A or B
+
+</h1>
+
+<script>
+
+document.addEventListener("keydown",function(event){
+
+if(event.key=="a" || event.key=="A"){
+
+result.innerHTML="You Pressed A";
+
+}
+
+else if(event.key=="b" || event.key=="B"){
+
+result.innerHTML="You Pressed B";
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example - Ctrl + N
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ctrl + N</title>
+</head>
+<body>
+
+<h1>
+
+Press Ctrl + N
+
+</h1>
+
+<script>
+
+document.addEventListener("keydown",function(event){
+
+if(event.ctrlKey && event.key=="n"){
+
+event.preventDefault();
+
+alert("Ctrl + N Pressed");
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example - Arrow Keys
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Arrow Keys</title>
+</head>
+<body>
+
+<h1 id="text">
+
+Press Arrow Keys
+
+</h1>
+
+<script>
+
+document.addEventListener("keydown",function(event){
+
+if(event.key=="ArrowUp"){
+
+text.innerHTML="⬆ UP";
+
+}
+
+else if(event.key=="ArrowDown"){
+
+text.innerHTML="⬇ DOWN";
+
+}
+
+else if(event.key=="ArrowLeft"){
+
+text.innerHTML="⬅ LEFT";
+
+}
+
+else if(event.key=="ArrowRight"){
+
+text.innerHTML="➡ RIGHT";
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Assignment
+
+Create a webpage where:
+
+- Press **R** → Background becomes Red.
+- Press **G** → Background becomes Green.
+- Press **B** → Background becomes Blue.
+
+---
+
+# Form Events
+
+## Definition
+
+Form Events occur when the user interacts with form elements like:
+
+- Text Box
+- Password
+- Text Area
+- Select Box
+
+---
+
+## Common Form Events
+
+| Event | Description |
+|--------|-------------|
+| focus | Fires when an element gets focus |
+| blur | Fires when an element loses focus |
+| change | Fires when the value changes |
+| submit | Fires when the form is submitted |
+
+---
+
+# focus Event
+
+## Example
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Focus</title>
+</head>
+<body>
+
+<input type="text" id="name">
+
+<script>
+
+document.getElementById("name")
+.addEventListener("focus",function(){
+
+this.style.backgroundColor="yellow";
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+# blur Event
+
+## Example
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blur</title>
+</head>
+<body>
+
+<input type="text" id="name">
+
+<script>
+
+let input=document.getElementById("name");
+
+input.addEventListener("focus",function(){
+
+input.style.backgroundColor="yellow";
+
+});
+
+input.addEventListener("blur",function(){
+
+input.style.backgroundColor="white";
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+# change Event
+
+## Example
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Change Event</title>
+</head>
+<body>
+
+<select id="course">
+
+<option>Java</option>
+<option>Python</option>
+<option>JavaScript</option>
+
+</select>
+
+<h2 id="result"></h2>
+
+<script>
+
+document.getElementById("course")
+.addEventListener("change",function(){
+
+result.innerHTML=this.value;
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+# submit Event
+
+## Example
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Submit Event</title>
+</head>
+<body>
+
+<form id="myForm">
+
+<input
+type="text"
+placeholder="Enter Name">
+
+<br><br>
+
+<button>
+
+Submit
+
+</button>
+
+</form>
+
+<script>
+
+document.getElementById("myForm")
+.addEventListener("submit",function(event){
+
+event.preventDefault();
+
+alert("Form Submitted");
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- `focus` → Cursor enters an input.
+- `blur` → Cursor leaves an input.
+- `change` → Value changes.
+- `submit` → Form submission.
+
+---
+
+## Interview Questions
+
+1. What are Form Events?
+2. Difference between focus and blur?
+3. Why do we use preventDefault() in submit?
+4. Difference between keydown and keyup?
+5. Difference between click and dblclick?
+
+---
+
+## Assignment
+
+Create a Registration Form.
+
+- Focus → Yellow Background.
+- Blur → White Background.
+- Submit → Show "Registration Successful" using `alert()`.
+
+---
+# textContent
+
+## Definition
+
+The `textContent` property is used to **get or set the text content** of an HTML element.
+
+Unlike `innerHTML`, it treats everything as plain text and does not render HTML tags.
+
+---
+
+## Why do we use textContent?
+
+Suppose you want to display user input exactly as entered without interpreting HTML tags.
+
+`textContent` is the best choice.
+
+It is also slightly faster than `innerHTML` because it does not parse HTML.
+
+---
+
+## Syntax
+
+```javascript
+element.textContent="New Text";
+```
+
+---
+
+## Example 1 - Change Text
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>textContent</title>
+</head>
+<body>
+
+<h1 id="title">
+
+Welcome Students
+
+</h1>
+
+<button onclick="changeText()">
+
+Change Text
+
+</button>
+
+<script>
+
+function changeText(){
+
+document.getElementById("title").textContent="JavaScript DOM";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Show HTML Tags as Text
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>textContent</title>
+</head>
+<body>
+
+<div id="box">
+
+Hello
+
+</div>
+
+<button onclick="showText()">
+
+Show
+
+</button>
+
+<script>
+
+function showText(){
+
+document.getElementById("box").textContent="<h1>Hello Students</h1>";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+### Output
+
+Instead of creating a heading, it displays:
+
+```
+<h1>Hello Students</h1>
+```
+
+---
+
+## Difference Between innerHTML, innerText and textContent
+
+| innerHTML | innerText | textContent |
+|------------|-----------|-------------|
+| Reads and writes HTML | Reads and writes only visible text | Reads and writes all text |
+| Supports HTML tags | Ignores HTML tags | Shows HTML tags as text |
+| Parses HTML | Plain Text | Plain Text |
+
+---
+
+## Important Points
+
+- Faster than `innerHTML`.
+- Does not render HTML tags.
+- Best for displaying user input safely.
+
+---
+
+## Interview Questions
+
+1. What is `textContent`?
+2. Difference between `innerText` and `textContent`?
+3. Difference between `innerHTML` and `textContent`?
+
+---
+
+## Assignment
+
+Create a button.
+
+When clicking it,
+
+display `<b>Hello Students</b>` using `textContent`.
+
+---
+
+# setTimeout()
+
+## Definition
+
+The `setTimeout()` method executes a function **only once** after a specified delay.
+
+The delay is measured in **milliseconds (ms).**
+
+```
+1000 ms = 1 second
+```
+
+---
+
+## Why do we use setTimeout()?
+
+It is used for
+
+- Splash Screens
+- Notifications
+- Automatic Messages
+- Delayed Animations
+- Redirecting Pages
+
+---
+
+## Syntax
+
+```javascript
+setTimeout(functionName,time);
+```
+
+or
+
+```javascript
+setTimeout(function(){
+
+// code
+
+},3000);
+```
+
+---
+
+## Example 1 - Alert After 3 Seconds
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>setTimeout()</title>
+</head>
+<body>
+
+<script>
+
+setTimeout(function(){
+
+alert("Welcome Students");
+
+},3000);
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Change Text After 5 Seconds
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>setTimeout()</title>
+</head>
+<body>
+
+<h1 id="heading">
+
+Loading...
+
+</h1>
+
+<script>
+
+setTimeout(function(){
+
+document.getElementById("heading").innerHTML="Page Loaded Successfully";
+
+},5000);
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Executes only once.
+- Time is measured in milliseconds.
+- Returns a timeout ID.
+
+---
+
+## Interview Questions
+
+1. What is setTimeout()?
+2. How many times does it execute?
+3. What is the unit of time used?
+
+---
+
+## Assignment
+
+Display "Welcome to JavaScript" after 4 seconds.
+
+---
+
+# setInterval()
+
+## Definition
+
+The `setInterval()` method executes a function **repeatedly** after a specified interval.
+
+Unlike `setTimeout()`, it keeps running until it is stopped.
+
+---
+
+## Why do we use setInterval()?
+
+It is used for
+
+- Digital Clock
+- Countdown Timer
+- Live Score
+- Weather Updates
+- Auto Refresh
+- Animations
+
+---
+
+## Syntax
+
+```javascript
+setInterval(functionName,time);
+```
+
+---
+
+## Example 1 - Show Alert Every 5 Seconds
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>setInterval()</title>
+</head>
+<body>
+
+<script>
+
+setInterval(function(){
+
+alert("JavaScript DOM");
+
+},5000);
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Digital Clock
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Digital Clock</title>
+</head>
+<body>
+
+<h1 id="clock"></h1>
+
+<script>
+
+setInterval(function(){
+
+let d=new Date();
+
+document.getElementById("clock").innerHTML=d.toLocaleTimeString();
+
+},1000);
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 3 - Counter
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Counter</title>
+</head>
+<body>
+
+<h1 id="count">
+
+0
+
+</h1>
+
+<script>
+
+let i=0;
+
+setInterval(function(){
+
+i++;
+
+document.getElementById("count").innerHTML=i;
+
+},1000);
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Important Points
+
+- Executes repeatedly.
+- Runs until stopped.
+- Time is measured in milliseconds.
+
+---
+
+## Interview Questions
+
+1. What is setInterval()?
+2. Difference between setTimeout() and setInterval()?
+3. Give two real-world applications of setInterval().
+
+---
+
+## Assignment
+
+Create a counter that increases every second using `setInterval()`.
+
+---
+
+# clearInterval()
+
+## Definition
+
+The `clearInterval()` method is used to **stop** a running `setInterval()`.
+
+---
+
+## Why do we use clearInterval()?
+
+Suppose a counter is increasing every second.
+
+If we want to stop it,
+
+we use `clearInterval()`.
+
+---
+
+## Syntax
+
+```javascript
+clearInterval(intervalID);
+```
+
+---
+
+## Example 1 - Stop Counter
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>clearInterval()</title>
+</head>
+<body>
+
+<h1 id="count">
+
+0
+
+</h1>
+
+<button onclick="stopCounter()">
+
+Stop Counter
+
+</button>
+
+<script>
+
+let i=0;
+
+let timer=setInterval(function(){
+
+i++;
+
+document.getElementById("count").innerHTML=i;
+
+},1000);
+
+function stopCounter(){
+
+clearInterval(timer);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Example 2 - Stop Clock
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stop Clock</title>
+</head>
+<body>
+
+<h1 id="clock"></h1>
+
+<button onclick="stopClock()">
+
+Stop Clock
+
+</button>
+
+<script>
+
+let timer=setInterval(function(){
+
+let d=new Date();
+
+document.getElementById("clock").innerHTML=d.toLocaleTimeString();
+
+},1000);
+
+function stopClock(){
+
+clearInterval(timer);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Difference Between setTimeout() and setInterval()
+
+| setTimeout() | setInterval() |
+|---------------|---------------|
+| Executes once | Executes repeatedly |
+| Stops automatically | Requires `clearInterval()` to stop |
+| Used for delayed execution | Used for repeated execution |
+
+---
+
+## Important Points
+
+- Stops only `setInterval()`.
+- Requires the interval ID returned by `setInterval()`.
+- Used for timers, counters, and clocks.
+
+---
+
+## Interview Questions
+
+1. What is `clearInterval()`?
+2. Why do we need the interval ID?
+3. Can `clearInterval()` stop `setTimeout()`?
+4. Difference between `clearInterval()` and `setInterval()`?
+
+---
+
+## Assignment
+
+Create a webpage with:
+
+- Start Counter button
+- Stop Counter button
+
+The counter should increase every second and stop when the **Stop Counter** button is clicked.
+
+---
+
+
