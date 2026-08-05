@@ -21216,5 +21216,635 @@ Create a webpage with:
 The counter should increase every second and stop when the **Stop Counter** button is clicked.
 
 ---
+# Mini Project 1 - Live Character Counter
 
+## Objective
 
+Count the number of characters entered in a textarea.
+
+---
+
+## Complete Program
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Character Counter</title>
+</head>
+<body>
+
+<h2>Character Counter</h2>
+
+<textarea
+id="text"
+rows="5"
+cols="30"
+onkeyup="countCharacters()">
+</textarea>
+
+<h3>
+
+Characters :
+<span id="count">0</span>
+
+</h3>
+
+<script>
+
+function countCharacters(){
+
+let text=document.getElementById("text").value;
+
+document.getElementById("count").innerHTML=text.length;
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Concepts Used
+
+- DOM
+- value
+- innerHTML
+- onkeyup
+
+---
+
+# Mini Project 2 - Digital Clock
+
+## Objective
+
+Display the current time and update it every second.
+
+---
+
+## Complete Program
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Digital Clock</title>
+</head>
+<body>
+
+<h1 id="clock"></h1>
+
+<script>
+
+setInterval(function(){
+
+let d=new Date();
+
+document.getElementById("clock").innerHTML=d.toLocaleTimeString();
+
+},1000);
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Concepts Used
+
+- Date Object
+- setInterval()
+- innerHTML
+
+---
+
+# Mini Project 3 - Counter Application
+
+## Objective
+
+Increase and decrease a counter using buttons.
+
+---
+
+## Complete Program
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Counter</title>
+</head>
+<body>
+
+<h1 id="count">
+
+0
+
+</h1>
+
+<button onclick="increase()">
+
++
+
+</button>
+
+<button onclick="decrease()">
+
+-
+
+</button>
+
+<script>
+
+let count=0;
+
+function increase(){
+
+count++;
+
+document.getElementById("count").innerHTML=count;
+
+}
+
+function decrease(){
+
+count--;
+
+document.getElementById("count").innerHTML=count;
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Concepts Used
+
+- Variables
+- Functions
+- DOM
+- innerHTML
+
+---
+
+# Mini Project 4 - Password Show / Hide
+
+## Objective
+
+Show and hide the password.
+
+---
+
+## Complete Program
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Password Toggle</title>
+</head>
+<body>
+
+<input
+type="password"
+id="password">
+
+<button onclick="showPassword()">
+
+Show / Hide
+
+</button>
+
+<script>
+
+function showPassword(){
+
+let pass=document.getElementById("password");
+
+if(pass.type=="password"){
+
+pass.type="text";
+
+}
+
+else{
+
+pass.type="password";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Concepts Used
+
+- value
+- type
+- if else
+
+---
+
+# Mini Project 5 - Light ON / OFF
+
+## Objective
+
+Switch a bulb ON and OFF.
+
+---
+
+## Complete Program
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bulb</title>
+</head>
+<body>
+
+<img
+id="bulb"
+src="https://www.w3schools.com/js/pic_bulboff.gif">
+
+<br><br>
+
+<button onclick="lightOn()">
+
+ON
+
+</button>
+
+<button onclick="lightOff()">
+
+OFF
+
+</button>
+
+<script>
+
+function lightOn(){
+
+document.getElementById("bulb").src="https://www.w3schools.com/js/pic_bulbon.gif";
+
+}
+
+function lightOff(){
+
+document.getElementById("bulb").src="https://www.w3schools.com/js/pic_bulboff.gif";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Concepts Used
+
+- getElementById()
+- src
+- Event Handling
+
+---
+
+# Mini Project 6 - Random Background Color
+
+## Objective
+
+Generate a random background color whenever the button is clicked.
+
+---
+
+## Complete Program
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Random Color</title>
+</head>
+<body>
+
+<button onclick="randomColor()">
+
+Generate Color
+
+</button>
+
+<script>
+
+function randomColor(){
+
+let colors=[
+
+"red",
+"blue",
+"green",
+"yellow",
+"orange",
+"pink",
+"purple"
+
+];
+
+let random=Math.floor(Math.random()*colors.length);
+
+document.body.style.backgroundColor=colors[random];
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Concepts Used
+
+- Arrays
+- Math.random()
+- Math.floor()
+- style
+
+---
+
+# Mini Project 7 - Simple Calculator
+
+## Objective
+
+Perform Addition of two numbers.
+
+---
+
+## Complete Program
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculator</title>
+</head>
+<body>
+
+<input
+type="number"
+id="num1"
+placeholder="First Number">
+
+<br><br>
+
+<input
+type="number"
+id="num2"
+placeholder="Second Number">
+
+<br><br>
+
+<button onclick="add()">
+
+Add
+
+</button>
+
+<h2 id="result"></h2>
+
+<script>
+
+function add(){
+
+let a=parseInt(document.getElementById("num1").value);
+
+let b=parseInt(document.getElementById("num2").value);
+
+document.getElementById("result").innerHTML="Result : "+(a+b);
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Concepts Used
+
+- value
+- parseInt()
+- innerHTML
+
+---
+
+# Mini Project 8 - Image Changer
+
+## Objective
+
+Change images when the button is clicked.
+
+---
+
+## Complete Program
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Changer</title>
+</head>
+<body>
+
+<img
+id="photo"
+src="https://picsum.photos/250">
+
+<br><br>
+
+<button onclick="changeImage()">
+
+Change Image
+
+</button>
+
+<script>
+
+function changeImage(){
+
+document.getElementById("photo").src="https://picsum.photos/251";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Concepts Used
+
+- src
+- getElementById()
+
+---
+
+# Frequently Asked Interview Questions
+
+## Basic Level
+
+1. What is JavaScript?
+2. What is DOM?
+3. What is the full form of DOM?
+4. What is the difference between HTML and DOM?
+5. What is the Window Object?
+6. What is the Document Object?
+7. What is a Node?
+8. What is the DOM Tree?
+
+---
+
+## DOM Methods
+
+9. What is `getElementById()`?
+10. Difference between `getElementById()` and `querySelector()`?
+11. Difference between `querySelector()` and `querySelectorAll()`?
+12. What does `getElementsByClassName()` return?
+13. What does `getElementsByTagName()` return?
+
+---
+
+## DOM Properties
+
+14. Difference between `innerHTML` and `innerText`?
+15. Difference between `innerText` and `textContent`?
+16. What is the `style` property?
+17. What is the `value` property?
+
+---
+
+## DOM Attributes
+
+18. What is `setAttribute()`?
+19. What is `getAttribute()`?
+20. What is `removeAttribute()`?
+
+---
+
+## DOM Classes
+
+21. Difference between:
+
+- `classList.add()`
+- `classList.remove()`
+- `classList.toggle()`
+
+---
+
+## DOM Manipulation
+
+22. What is `createElement()`?
+23. What is `appendChild()`?
+24. Difference between `appendChild()` and `replaceChild()`?
+25. What is `remove()`?
+
+---
+
+## Events
+
+26. What is an Event?
+27. Difference between `onclick` and `addEventListener()`?
+28. Name different Mouse Events.
+29. Name different Keyboard Events.
+30. What is `event.key`?
+31. What is `preventDefault()`?
+
+---
+
+## Timers
+
+32. Difference between `setTimeout()` and `setInterval()`?
+33. What is `clearInterval()`?
+
+---
+
+# Practice Assignments
+
+### Assignment 1
+
+Create a webpage that changes the heading color when a button is clicked.
+
+---
+
+### Assignment 2
+
+Create a Dark Mode toggle using `classList.toggle()`.
+
+---
+
+### Assignment 3
+
+Create a webpage where pressing:
+
+- A → Apple
+- B → Ball
+- C → Cat
+
+is displayed on the screen.
+
+---
+
+### Assignment 4
+
+Create a Registration Form and validate that all fields are filled before submitting.
+
+---
+
+### Assignment 5
+
+Create a Digital Clock using `setInterval()`.
+
+---
+
+### Assignment 6
+
+Create a Live Character Counter.
+
+---
+
+### Assignment 7
+
+Create an Image Gallery where clicking **Next** changes the image.
+
+---
+
+### Assignment 8
+
+Create a Simple To-Do List using:
+
+- createElement()
+- appendChild()
+- remove()
+
+---
