@@ -15827,6 +15827,667 @@ console.log(fruits);
 ```
 
 ---
+Excellent. We'll build this like a professional textbook.
 
+# JavaScript DOM 
 
+## Introduction to JavaScript DOM
 
+# 1. Introduction to JavaScript
+
+## What is JavaScript?
+
+JavaScript is a **high-level, lightweight, interpreted programming language** used to make web pages interactive and dynamic.
+
+HTML is responsible for creating the structure of a webpage.
+
+CSS is responsible for designing the webpage.
+
+JavaScript is responsible for adding intelligence and interactivity to the webpage.
+
+Without JavaScript, webpages are static. JavaScript allows users to interact with webpages by clicking buttons, submitting forms, changing images, validating user input, displaying animations, communicating with servers, and much more.
+
+---
+
+## Role of HTML, CSS and JavaScript
+
+| Technology | Purpose                              |
+| ---------- | ------------------------------------ |
+| HTML       | Creates the structure of the webpage |
+| CSS        | Styles and designs the webpage       |
+| JavaScript | Adds functionality and interactivity |
+
+### Example
+
+Think of a human body.
+
+* HTML → Skeleton
+* CSS → Clothes and Appearance
+* JavaScript → Brain and Muscles
+
+Without JavaScript, a webpage cannot respond to user actions.
+
+---
+
+## Example
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Welcome Students</h1>
+
+<button>Click Me</button>
+
+</body>
+</html>
+```
+
+Nothing happens when the button is clicked.
+
+Now add JavaScript.
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="title">Welcome Students</h1>
+
+<button onclick="changeText()">Click Me</button>
+
+<script>
+
+function changeText(){
+
+document.getElementById("title").innerHTML="Welcome Java Full Stack Students";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
+Now clicking the button changes the heading.
+
+This is the power of JavaScript.
+
+---
+
+# 2. What is DOM?
+
+## Definition
+
+DOM stands for
+
+> **Document Object Model**
+
+DOM is a programming interface provided by the browser that represents an HTML document as a collection of objects.
+
+It allows JavaScript to access, modify, create, update, and delete HTML elements dynamically.
+
+In simple words,
+
+DOM acts as a bridge between HTML and JavaScript.
+
+Without DOM, JavaScript cannot access HTML elements.
+
+---
+
+## Full Form
+
+```
+D → Document
+
+O → Object
+
+M → Model
+```
+
+---
+
+## Meaning of Each Word
+
+### Document
+
+The webpage itself is called a document.
+
+Example
+
+```html
+index.html
+```
+
+The entire HTML page is considered one document.
+
+---
+
+### Object
+
+Every HTML element becomes an object.
+
+Example
+
+```html
+<h1>Hello</h1>
+
+<p>Welcome</p>
+
+<button>Click</button>
+```
+
+Each of these elements becomes an object.
+
+JavaScript can control these objects.
+
+---
+
+### Model
+
+Model means the browser arranges all HTML elements in a tree-like structure.
+
+This structure is called the DOM Tree.
+
+---
+
+# 3. Why DOM is Required?
+
+Imagine a webpage without DOM.
+
+```html
+<h1>Hello Students</h1>
+
+<button>Click</button>
+```
+
+Suppose you want
+
+* Change the heading
+* Hide the heading
+* Change color
+* Change font size
+* Add another heading
+
+Can HTML do this?
+
+No.
+
+Can CSS do this?
+
+No.
+
+Only JavaScript can perform these operations.
+
+But JavaScript needs a way to find the HTML elements.
+
+DOM provides that way.
+
+---
+
+## Why do we use DOM?
+
+DOM allows JavaScript to
+
+* Read HTML
+* Change HTML
+* Change CSS
+* Add new elements
+* Remove elements
+* Replace elements
+* Read form values
+* Validate forms
+* Handle mouse events
+* Handle keyboard events
+* Create animations
+
+Without DOM, JavaScript cannot manipulate a webpage.
+
+---
+
+# 4. How Browser Works?
+
+Whenever a user opens a webpage,
+
+the browser performs the following steps.
+
+```
+User Opens Website
+
+↓
+
+Browser Reads HTML File
+
+↓
+
+Browser Parses HTML
+
+↓
+
+Browser Creates DOM Tree
+
+↓
+
+Browser Displays Webpage
+
+↓
+
+JavaScript Accesses DOM
+
+↓
+
+User Interacts With Page
+```
+
+---
+
+## Example
+
+Suppose this HTML is loaded.
+
+```html
+<body>
+
+<h1>Java</h1>
+
+<p>Welcome</p>
+
+<button>Click</button>
+
+</body>
+```
+
+The browser converts it into objects.
+
+---
+
+# 5. How Browser Creates DOM?
+
+Suppose we have
+
+```html
+<html>
+
+<body>
+
+<h1>Hello</h1>
+
+<p>Welcome</p>
+
+<button>Click</button>
+
+</body>
+
+</html>
+```
+
+The browser converts this into
+
+```
+Document
+    │
+   HTML
+    │
+   BODY
+ ┌──┼──────────┐
+ │  │          │
+H1  P      BUTTON
+```
+
+Each box is called a **Node**.
+
+Every HTML element becomes one node.
+
+---
+
+## Types of Nodes
+
+* Document Node
+* Element Node
+* Text Node
+* Attribute Node
+* Comment Node
+
+Example
+
+```html
+<h1>Hello</h1>
+```
+
+```
+Element Node
+
+↓
+
+H1
+
+↓
+
+Text Node
+
+↓
+
+Hello
+```
+
+---
+
+# 6. DOM Tree Structure
+
+DOM is organized in the form of a tree.
+
+```
+Document
+│
+HTML
+│
+├── HEAD
+│      ├── TITLE
+│      └── META
+│
+└── BODY
+       ├── H1
+       ├── P
+       ├── IMG
+       ├── INPUT
+       └── BUTTON
+```
+
+Because of this structure,
+
+JavaScript can easily move between parent, child, and sibling elements.
+
+---
+
+## Parent Node
+
+```html
+<body>
+
+<h1>Hello</h1>
+
+</body>
+```
+
+BODY is the parent.
+
+H1 is the child.
+
+---
+
+## Child Node
+
+```html
+<div>
+
+<p>Hello</p>
+
+</div>
+```
+
+P is the child of DIV.
+
+---
+
+## Sibling Nodes
+
+```html
+<h1>Java</h1>
+
+<p>Python</p>
+
+<button>Click</button>
+```
+
+All three are siblings because they share the same parent.
+
+---
+
+# 7. Window Object
+
+Whenever a webpage loads,
+
+the browser automatically creates a **Window Object**.
+
+It is the top-most object in JavaScript.
+
+Everything belongs to the Window object.
+
+```
+Window
+
+↓
+
+Document
+
+↓
+
+HTML Elements
+```
+
+---
+
+## Examples
+
+```javascript
+alert("Hello");
+```
+
+Actually,
+
+```javascript
+window.alert("Hello");
+```
+
+---
+
+```javascript
+console.log("Java");
+```
+
+Actually,
+
+```javascript
+window.console.log("Java");
+```
+
+---
+
+```javascript
+setTimeout(fun,1000);
+```
+
+Actually,
+
+```javascript
+window.setTimeout(fun,1000);
+```
+
+The `window` keyword is optional because JavaScript assumes it automatically.
+
+---
+
+# 8. Document Object
+
+Inside the Window object is the **Document Object**.
+
+The document object represents the complete HTML page.
+
+Whenever we write
+
+```javascript
+document.getElementById("heading");
+```
+
+JavaScript first enters the document object.
+
+Then it searches for the HTML element.
+
+Without the document object, JavaScript cannot access HTML elements.
+
+---
+
+## Example
+
+```javascript
+document.getElementById("title");
+```
+
+Meaning
+
+```
+Document
+
+↓
+
+Find the element
+
+↓
+
+ID = title
+
+↓
+
+Return the element
+```
+
+---
+
+# Window Object vs Document Object
+
+| Window Object                    | Document Object              |
+| -------------------------------- | ---------------------------- |
+| Top-level browser object         | Represents the HTML document |
+| Created automatically            | Created inside Window        |
+| Contains Browser APIs            | Contains HTML Elements       |
+| Used for alerts, timers, history | Used for DOM manipulation    |
+
+Relationship
+
+```
+Window
+
+↓
+
+Document
+
+↓
+
+HTML
+
+↓
+
+BODY
+
+↓
+
+Elements
+```
+
+---
+
+# 9. HTML Document vs DOM
+
+| HTML Document        | DOM                      |
+| -------------------- | ------------------------ |
+| Written by Developer | Created by Browser       |
+| Static               | Dynamic                  |
+| Contains Tags        | Contains Objects         |
+| Cannot change itself | JavaScript can modify it |
+
+---
+
+# 10. Advantages of DOM
+
+* Makes webpages interactive.
+* Changes content without reloading the page.
+* Dynamically updates HTML and CSS.
+* Creates responsive user interfaces.
+* Simplifies form validation.
+* Supports animations and dynamic effects.
+* Enables event handling.
+* Allows creation and deletion of HTML elements at runtime.
+
+---
+
+# 11. Real World Applications of DOM
+
+DOM is used in almost every modern website.
+
+Examples include:
+
+* Login Forms
+* Registration Forms
+* Shopping Carts
+* Online Banking
+* Facebook Likes
+* Instagram Comments
+* YouTube Video Controls
+* Amazon Product Filters
+* Flipkart Search
+* Gmail Compose Window
+* Live Notifications
+* Dark Mode
+* Online Exams
+* Image Sliders
+* To-Do Lists
+* Weather Applications
+
+Whenever you see a webpage changing without refreshing, JavaScript is using the DOM.
+
+---
+
+# 12. Summary
+
+* JavaScript makes webpages interactive.
+* DOM stands for Document Object Model.
+* The browser converts HTML into a DOM Tree.
+* Every HTML element becomes an object.
+* JavaScript uses the Document object to access HTML elements.
+* The Window object is the top-level browser object.
+* DOM allows reading, modifying, creating, and deleting HTML elements dynamically.
+
+---
+
+# Interview Questions
+
+1. What is DOM?
+2. What is the full form of DOM?
+3. Why is DOM required?
+4. What is the difference between HTML and DOM?
+5. What is a DOM Tree?
+6. What is a Node?
+7. What is the Window Object?
+8. What is the Document Object?
+9. Which object is the parent: Window or Document?
+10. Can JavaScript manipulate HTML without the DOM? Why or why not?
+
+---
+
+# Assignment
+
+### Assignment 1
+
+Draw the DOM Tree for the following HTML:
+
+```html
+<html>
+<body>
+<h1>Welcome</h1>
+<p>JavaScript</p>
+<button>Click Me</button>
+</body>
+</html>
+```
+
+### Assignment 2
+
+Explain the difference between the **Window Object** and the **Document Object** with examples.
+
+### Assignment 3
+
+Write five real-world applications where the DOM is used.
+
+---
