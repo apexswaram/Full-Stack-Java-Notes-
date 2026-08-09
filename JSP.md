@@ -14,11 +14,11 @@ By the end of this class, students should be able to:
 ## 1. What is JSP?
 - JSP (JavaServer Pages) is a server-side technology used to create dynamic, platform-independent web pages.
 - It allows embedding Java code inside HTML using special tags.
-- JSP is built **on top of Servlet technology** — every JSP page is internally converted into a servlet by the container (Tomcat).
+- JSP is built **on top of Servlet technology** - every JSP page is internally converted into a servlet by the container (Tomcat).
 
 ## 2. Why JSP? (Problem with Servlets)
-- In Servlets, HTML is written inside Java code using `out.println()` — messy and hard to maintain for UI-heavy pages.
-- JSP flips this: Java code is embedded inside HTML — easier for designing the view/presentation layer.
+- In Servlets, HTML is written inside Java code using `out.println()` - messy and hard to maintain for UI-heavy pages.
+- JSP flips this: Java code is embedded inside HTML - easier for designing the view/presentation layer.
 - Separation of concerns: Servlet = logic (Controller), JSP = presentation (View) → foundation for MVC (covered later in course).
 
 ## 3. JSP vs Servlet (Quick Comparison)
@@ -31,18 +31,18 @@ By the end of this class, students should be able to:
 | Ease of UI design | Difficult | Easy |
 
 ## 4. JSP Life Cycle
-1. **Translation** — JSP file is translated into a Servlet (`.java`) by the container.
-2. **Compilation** — The generated servlet is compiled into a `.class` file.
-3. **Class Loading** — Servlet class is loaded into memory.
-4. **Instantiation** — Object of the servlet is created.
-5. **Initialization** — `jspInit()` is called (once).
-6. **Request Processing** — `_jspService()` is called for every request.
-7. **Destroy** — `jspDestroy()` is called when the container shuts down/unloads the JSP.
+1. **Translation** - JSP file is translated into a Servlet (`.java`) by the container.
+2. **Compilation** - The generated servlet is compiled into a `.class` file.
+3. **Class Loading** - Servlet class is loaded into memory.
+4. **Instantiation** - Object of the servlet is created.
+5. **Initialization** - `jspInit()` is called (once).
+6. **Request Processing** - `_jspService()` is called for every request.
+7. **Destroy** - `jspDestroy()` is called when the container shuts down/unloads the JSP.
 
 
 ## 5. Setting Up a JSP Project
 - Use the same Dynamic Web Project / Maven webapp structure used earlier in the course (you already know this from Servlets).
-- JSP files go inside `webapp` (or `WebContent`) folder — **not** inside `WEB-INF` (else it can't be accessed directly via browser).
+- JSP files go inside `webapp` (or `WebContent`) folder - **not** inside `WEB-INF` (else it can't be accessed directly via browser).
 - Server: Apache Tomcat (already configured from Servlet classes).
 
 ## 6. First JSP Program
@@ -74,7 +74,7 @@ By the end of this class, students should be able to:
   3. Scriptlets
   4. Expressions
 
-## 8. Directives — `<%@ %>`
+## 8. Directives - `<%@ %>`
 - Give instructions to the container about the page itself (not executed per request, just configuration).
 - Three types:
 
@@ -84,11 +84,11 @@ By the end of this class, students should be able to:
 | `include` | Static include of another file at translation time | `<%@ include file="header.jsp" %>` |
 | `taglib` | Declare a tag library (used later with JSTL) | `<%@ taglib uri="..." prefix="c" %>` |
 
-- Focus mainly on `page` directive today — `taglib` will be revisited on (JSTL).
+- Focus mainly on `page` directive today - `taglib` will be revisited on (JSTL).
 
-## 9. Declarations — `<%! %>`
+## 9. Declarations - `<%! %>`
 - Used to declare **variables and methods** at the class level (outside `_jspService()`).
-- Memory allocated once — shared across all requests (like instance variables of the generated servlet).
+- Memory allocated once - shared across all requests (like instance variables of the generated servlet).
 
 ```jsp
 <%!
@@ -100,8 +100,8 @@ By the end of this class, students should be able to:
 ```
 
 
-## 10. Scriptlets — `<% %>`
-- Used to write **Java code blocks** that go inside `_jspService()` — executed on every request.
+## 10. Scriptlets - `<% %>`
+- Used to write **Java code blocks** that go inside `_jspService()` - executed on every request.
 - Local variables, loops, conditions, etc.
 
 ```jsp
@@ -123,15 +123,15 @@ By the end of this class, students should be able to:
 %>
 ```
 
-## 11. Expressions — `<%= %>`
-- Used to directly print a value to the output — shorthand for `out.print(...)`.
+## 11. Expressions - `<%= %>`
+- Used to directly print a value to the output - shorthand for `out.print(...)`.
 - No semicolon at the end.
 
 ```jsp
 <p>Today's date: <%= new java.util.Date() %></p>
 ```
 
-## 12. Declarations vs Scriptlets — Key Difference (Important, students often confuse this)
+## 12. Declarations vs Scriptlets - Key Difference (Important, students often confuse this)
 
 | Aspect | Declaration `<%! %>` | Scriptlet `<% %>` |
 |---|---|---|
@@ -140,7 +140,7 @@ By the end of this class, students should be able to:
 | Can declare methods? | Yes | No |
 | Thread safety | Not thread-safe (shared) | Thread-safe (local to each request) |
 
-## 13. Putting It All Together — Example
+## 13. Putting It All Together - Example
 
 ```jsp
 <%@ page import="java.util.Date" %>
@@ -156,7 +156,7 @@ By the end of this class, students should be able to:
 </body>
 </html>
 ```
-- Run this and refresh the browser a few times — students will see `visitCount` increasing, which nicely demonstrates the declaration's shared/class-level nature.
+- Run this and refresh the browser a few times - students will see `visitCount` increasing, which nicely demonstrates the declaration's shared/class-level nature.
 
 ## 14. In-Class Activity
   - Displays their name and today's date using `<% %>` scriptlet
