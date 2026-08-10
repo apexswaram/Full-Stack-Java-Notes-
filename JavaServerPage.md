@@ -156,7 +156,6 @@ By the end of this class, students should be able to:
 </body>
 </html>
 ```
-- Run this and refresh the browser a few times - students will see `visitCount` increasing, which nicely demonstrates the declaration's shared/class-level nature.
 
 ## 14. In-Class Activity
   - Displays their name and today's date using `<% %>` scriptlet
@@ -174,5 +173,276 @@ By the end of this class, students should be able to:
 4. Which scripting element executes only once, regardless of how many requests come in?
 5. Why can't we declare a method inside a scriptlet?
 6. What is the shorthand tag for printing a value directly in JSP?
+
+---
+# Expression Language (EL) & JSTL Core Tags
+
+## Objectives
+By the end of this class, students should be able to:
+- Explain why EL and JSTL exist and what problem they solve
+- Read and write EL expressions to access data from different scopes
+- Use the most important JSTL core tags with full working examples
+
+
+## 1. Why EL and JSTL? (The Problem We're Solving)
+
+So far, every dynamic value we printed used scriptlets (`<% %>`) and expressions (`<%= %>`) — this means **raw Java code mixed inside HTML**. This is exactly the problem JSP was meant to solve compared to Servlets, but scriptlets bring the same mess back in a smaller form.
+
+**Bad practice (what we've been doing so far):**
+```jsp
+<%
+    String uname = (String) session.getAttribute("user");
+%>
+<p>Welcome, <%= uname %></p>
+```
+
+**Better practice (what we learn today):**
+```jsp
+<p>Welcome, ${sessionScope.user}</p>
+```
+
+- **EL (Expression Language)** — a simple syntax `${ }` to access data without loss Java code.
+- **JSTL (JSP Standard Tag Library)** — ready-made tags (`c:if`, `c:forEach`, etc.) that replace `if`, `for`, loops written in scriptlets.
+
+Together, EL + JSTL let us write JSP pages with **zero scriptlets** — this is considered the correct, professional way to write JSP in real projects (scriptlets are now considered bad practice in the industry).
+
+---
+
+## 2. Expression Language (EL) Basics
+
+### 2.1 Syntax
+```
+${ expression }
+```
+
+### 2.2 Accessing Scoped Data — Full Example
+
+`setData.jsp`
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%
+    request.setAttribute("course", "Java Full Stack");
+    session.setAttribute("studentName", "Ravi Kumar");
+    application.setAttribute("collegeName", "ApexSwaram Institute");
+%>
+<html>
+<body>
+    <a href="showData.jsp">View Data using EL</a>
+</body>
+</html>
+```
+
+`showData.jsp`
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<html>
+<body>
+    <h3>Course: ${requestScope.course}</h3>
+    <h3>Student: ${sessionScope.studentName}</h3>
+    <h3>College: ${applicationScope.collegeName}</h3>
+</body>
+</html>
+```
+
+**Explanation:**
+- `${requestScope.course}` reads the `course` attribute directly from `request` — no need for `request.getAttribute("course")` + typecasting.
+- Similarly `sessionScope` and `applicationScope` map directly to the `session` and `application` objects from Day 3.
+- **Important gotcha to mention:** `request.setAttribute()` only lives for that one request. If a user directly opens `showData.jsp` in a new tab (a fresh request), `${requestScope.course}` will be empty — but `${sessionScope.studentName}` will still work because session data persists. This is a great moment to reinforce the scope hierarchy from last class.
+- If you don't specify a scope prefix, EL automatically searches **page → request → session → application** in that order. Example: `${studentName}` (without `sessionScope.`) would still work here.
+
+### 2.3 EL with Request Parameters — Full Example
+
+`searchForm.jsp`
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<html>
+<body>
+    <form action="searchResult.jsp" method="get">
+        Enter roll number: <input type="text" name="rollNo">
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>
+```
+
+`searchResult.jsp`
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<html>
+<body>
+    <h3>You searched for roll number: ${param.rollNo}</h3>
+</body>
+</html>
+```
+
+**Explanation:**
+- `${param.rollNo}` is EL's shortcut for `request.getParameter("rollNo")` — no scriptlet, no typecasting, much shorter.
+- This is the EL equivalent of the `request.getParameter()` pattern we used heavily on Day 3.
+
+### 2.4 EL Operators — Full Example
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%
+    request.setAttribute("marks", 78);
+%>
+<html>
+<body>
+    <p>Marks: ${marks}</p>
+    <p>Marks + 5 bonus: ${marks + 5}</p>
+    <p>Is pass (marks >= 35)? ${marks >= 35}</p>
+    <p>Grade check: ${marks >= 75 ? "Distinction" : "Pass"}</p>
+</body>
+</html>
+```
+
+**Explanation:**
+- EL supports arithmetic (`+ - * /`), relational (`>= <= == !=`), logical (`&& || !`), and the ternary operator `? :` — all without a single scriptlet.
+- This alone replaces a huge number of scriptlet `if` blocks we'd otherwise write.
+
+---
+
+## 3. JSTL — Setup First
+
+Before using JSTL tags, we must declare the `taglib` directive (introduced briefly on Day 3):
+
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+```
+
+**Setup note :** the JSTL library JAR (`jstl-1.2.jar` or the Jakarta equivalent depending on server version) must be present in `WEB-INF/lib`. Confirm this is already added to the project (should be, since we set up the project structure earlier in the course).
+
+---
+
+## 4. JSTL Core Tags
+
+### 4.1 `<c:out>` — Safe Printing
+
+```jsp
+<c:out value="${sessionScope.studentName}" default="Guest"/>
+```
+
+**Explanation:**
+- Similar to `${ }` but safer — escapes special HTML characters (prevents basic HTML/script injection) and supports a `default` value if the expression is null. Prefer `<c:out>` over raw `${ }` when printing user-submitted data.
+
+### 4.2 `<c:if>` — Conditional Logic — Full Example
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+    request.setAttribute("marks", 42);
+%>
+<html>
+<body>
+    <c:if test="${marks >= 35}">
+        <p>Result: PASS</p>
+    </c:if>
+    <c:if test="${marks < 35}">
+        <p>Result: FAIL</p>
+    </c:if>
+</body>
+</html>
+```
+
+**Explanation:**
+- `<c:if test="condition">` replaces a scriptlet `if` block. The `test` attribute takes an EL boolean expression.
+- **Important limitation to point out:** `<c:if>` has **no else** — that's why we wrote it twice with the opposite condition. For proper if-else, we use `<c:choose>` next.
+
+### 4.3 `<c:choose>`, `<c:when>`, `<c:otherwise>` — If-Else Logic — Full Example
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+    request.setAttribute("marks", 68);
+%>
+<html>
+<body>
+    <c:choose>
+        <c:when test="${marks >= 75}">
+            <p>Grade: Distinction</p>
+        </c:when>
+        <c:when test="${marks >= 60}">
+            <p>Grade: First Class</p>
+        </c:when>
+        <c:when test="${marks >= 35}">
+            <p>Grade: Pass</p>
+        </c:when>
+        <c:otherwise>
+            <p>Grade: Fail</p>
+        </c:otherwise>
+    </c:choose>
+</body>
+</html>
+```
+
+**Explanation:**
+- `<c:choose>` is the JSTL equivalent of `if-else if-else` in Java.
+- Each `<c:when>` is checked top to bottom — the first one that matches runs, rest are skipped (like a switch/if-else chain).
+- `<c:otherwise>` runs only if none of the `<c:when>` conditions matched — equivalent to the final `else`.
+
+### 4.4 `<c:forEach>` — Loops — Full Example
+
+**Simple counting loop:**
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<html>
+<body>
+    <h3>Multiplication Table of 5</h3>
+    <c:forEach var="i" begin="1" end="10">
+        <p>5 x ${i} = ${5 * i}</p>
+    </c:forEach>
+</body>
+</html>
+```
+
+**Looping over a Java collection (very commonly used in real projects):**
+
+```jsp
+<%@ page import="java.util.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+    List<String> students = new ArrayList<>();
+    students.add("Ravi Kumar");
+    students.add("Priya Sharma");
+    students.add("Anil Reddy");
+    request.setAttribute("studentList", students);
+%>
+<html>
+<body>
+    <h3>Student List</h3>
+    <ul>
+        <c:forEach var="student" items="${studentList}">
+            <li>${student}</li>
+        </c:forEach>
+    </ul>
+</body>
+</html>
+```
+
+**Explanation:**
+- `begin`/`end` version: like a Java `for (int i = 1; i <= 10; i++)` loop — good for counters, tables, pagination-style numbering.
+- `items` version: loops over a `List`/array/`Map` stored in any scope — `var="student"` becomes the loop variable for each item, very similar to Java's enhanced for-loop (`for (String student : studentList)`).
+
+### 4.5 `<c:set>` and `<c:remove>` — Working with Variables
+
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="collegeName" value="ApexSwaram Institute" scope="session"/>
+<p>College: ${sessionScope.collegeName}</p>
+<c:remove var="collegeName" scope="session"/>
+```
+
+**Explanation:**
+- `<c:set>` is the JSTL way of doing `session.setAttribute()` — set `var`, `value`, and optionally `scope` (`page`, `request`, `session`, `application`; defaults to `page` if omitted).
+- `<c:remove>` deletes the attribute — JSTL equivalent of `session.removeAttribute()`.
+
+---
+
+
+
 
 ---
