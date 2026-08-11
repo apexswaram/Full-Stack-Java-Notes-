@@ -641,7 +641,7 @@ We used `session.setAttribute()`/`getAttribute()` briefly on Day 3. Today we bui
 
 **Explanation:**
 - `empty sessionScope.loggedInUser` is EL's `empty` operator — checks if the value is `null` or an empty string in one clean expression, avoiding a scriptlet null-check.
-- This pattern — checking session at the top of every protected page — is exactly what real login-gated pages do. (Mention: in a full project, this check is usually centralized using a Filter, which is beyond today's scope but worth a one-line mention since some students may already know Servlet Filters.)
+- This pattern — checking session at the top of every protected page — is exactly what real login-gated pages do. 
 
 ### 3.4 `logout.jsp` — Destroy the Session
 
@@ -656,6 +656,6 @@ We used `session.setAttribute()`/`getAttribute()` briefly on Day 3. Today we bui
 **Explanation:**
 - `session.invalidate()` destroys the entire session — all data stored in it (`loggedInUser` etc.) is wiped out.
 - Redirect back to `login.jsp` afterward so the user lands on a clean login screen.
--   students: "What happens if you click browser Back after logout?" — good discussion point (answer: without a session, `dashboard.jsp`'s `<c:when>` check will correctly show "not logged in" instead of the cached dashboard).
+- "What happens if you click browser Back after logout?" (without a session, `dashboard.jsp`'s `<c:when>` check will correctly show "not logged in" instead of the cached dashboard).
 
 ---
